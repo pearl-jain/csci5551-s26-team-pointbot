@@ -3,6 +3,9 @@
 Team Members:
 
 Pearl Jain: jain0377@umn.edu: Vision Perception
-Adam Yaj: yaj00002: Coordinator/Integration/Documention
+
+Adam Yaj: yaj00002: Coordinator/Integration/Documentation
+
 Alex Wan: wan02096@umn.edu: Planning
+
 Nathan Stangler: stang451@umn.edu: Control + Manipulation
