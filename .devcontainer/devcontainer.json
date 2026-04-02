@@ -1,0 +1,51 @@
+{
+    "name": "ROS 2 Point Bot Workspace",
+    "build": {
+        "dockerfile": "Dockerfile",
+        "args": {
+            // Dynamically pass the host username or default to 'devuser'
+            "USERNAME": "${localEnv:USER}"
+        }
+    },
+
+    // Use a standard location inside the container
+    "workspaceFolder": "/home/devuser/point_bot_ws",
+    "workspaceMount": "source=${localWorkspaceFolder},target=/home/devuser/point_bot_ws,type=bind",
+
+    "containerEnv": {
+        "DISPLAY": "${localEnv:DISPLAY}",
+        "XDG_RUNTIME_DIR": "${localEnv:XDG_RUNTIME_DIR}",
+        "WAYLAND_DISPLAY": "${localEnv:WAYLAND_DISPLAY}",
+        // Provide a fallback for QT to try multiple platforms
+        "QT_QPA_PLATFORM": "wayland;xcb",
+        "ROS_DOMAIN_ID": "42",
+        "ROS_AUTOMATIC_DISCOVERY_RANGE": "LOCALHOST"
+    },
+
+    "runArgs": [
+        "--privileged",
+        "--net=host",
+        "--ipc=host",
+        // Map the user ID dynamically to avoid permission issues
+        "--user=1000:1000",
+        // Hardware acceleration (Works on Linux/WSL2, ignored/soft-fail on macOS)
+        "--device=/dev/dri:/dev/dri",
+        // Video devices (Will need to be plugged in to work)
+        "--group-add=video",
+        
+        "-v", "/tmp/.X11-unix:/tmp/.X11-unix:rw"
+    ],
+
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "ms-vscode.cpptools",
+                "ms-iot.vscode-ros",
+                "ms-vscode.cmake-tools",
+                "ms-python.python"
+            ]
+        }
+    },
+
+    "postCreateCommand": "sudo rosdep update && sudo rosdep install --from-paths src --ignore-src -y && sudo chown -R $(whoami) ${containerWorkspaceFolder}"
+}
