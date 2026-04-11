@@ -1,28 +1,28 @@
 from visualization_msgs.msg import Marker, MarkerArray
-from geometry_msgs.msg import Point
+from geometry_msgs.msg import Point, PoseStamped
 from std_msgs.msg import ColorRGBA
 
 COLORS = {"red": ColorRGBA(r=1.0, g=0.0, b=0.0, a=1.0), "green": ColorRGBA(r=0.0, g=1.0, b=0.0, a=1.0), "blue": ColorRGBA(r=0.0, g=0.0, b=1.0, a=1.0)}
 
-def publish_object_markers(publisher, positions=[(0.0, 0.0, 0.0)], color="red"):
+def publish_object_markers(publisher, poses: list[PoseStamped], color="red"):
     objects = MarkerArray()
-    for i, position in enumerate(positions):
+    for i, pose in enumerate(poses):
         m = Marker()
-        m.header.frame_id = "world"
+        m.header.frame_id = pose.header.frame_id
         m.id = i
         m.type = Marker.CUBE
         m.action = Marker.ADD
-        m.pose.position.x = position[0]
-        m.pose.position.y = position[1]
-        m.pose.position.z = position[2]
+        m.pose = pose.pose
         m.scale.x, m.scale.y, m.scale.z = 0.025, 0.025, 0.025
         m.color = COLORS.get(color)
         objects.markers.append(m)
     publisher.publish(objects)
 
-def publish_hand_marker(publisher, corner1=(0.35, -0.6, 0.45), corner2=(0.65, -0.4, 0.55)):
-    x1, y1, z1 = corner1
-    x2, y2, z2 = corner2
+def publish_hand_marker(publisher, corner1: PoseStamped, corner2: PoseStamped):
+    c1 = corner1.pose.position
+    c2 = corner2.pose.position
+    x1, y1, z1 = c1.x, c1.y, c1.z
+    x2, y2, z2 = c2.x, c2.y, c2.z
     xmin, xmax = (x1, x2) if x1 <= x2 else (x2, x1)
     ymin, ymax = (y1, y2) if y1 <= y2 else (y2, y1)
     zmin, zmax = (z1, z2) if z1 <= z2 else (z2, z1)
@@ -51,7 +51,9 @@ def publish_hand_marker(publisher, corner1=(0.35, -0.6, 0.45), corner2=(0.65, -0
         m.points.append(b)
     publisher.publish(m)
 
-def publish_pointing_vector_marker(publisher, start=(0.5, -0.5, 0.5), end=(0.5, 0.2, 0.0)):
+def publish_pointing_vector_marker(publisher, start: PoseStamped, end: PoseStamped):
+    s = start.pose.position
+    e = end.pose.position
     m = Marker()
     m.header.frame_id = "world"
     m.id = 200
@@ -59,31 +61,27 @@ def publish_pointing_vector_marker(publisher, start=(0.5, -0.5, 0.5), end=(0.5, 
     m.action = Marker.ADD
     m.scale.x = 0.01
     m.color = ColorRGBA(r=1.0, g=1.0, b=1.0, a=1.0)
-    m.points = [Point(x=start[0], y=start[1], z=start[2]), Point(x=end[0], y=end[1], z=end[2])]
+    m.points = [Point(x=s.x, y=s.y, z=s.z), Point(x=e.x, y=e.y, z=e.z)]
     publisher.publish(m)
 
-def publish_selected_marker(publisher, position=(0.5, 0.2, 0.0)):
+def publish_selected_marker(publisher, pose: PoseStamped):
     m = Marker()
-    m.header.frame_id = "world"
+    m.header.frame_id = pose.header.frame_id
     m.id = 300
     m.type = Marker.CUBE
     m.action = Marker.ADD
-    m.pose.position.x = position[0]
-    m.pose.position.y = position[1]
-    m.pose.position.z = position[2]
+    m.pose = pose.pose
     m.scale.x, m.scale.y, m.scale.z = 0.026, 0.026, 0.026
     m.color = ColorRGBA(r=1.0, g=0.7, b=0.3, a=1.0)
     publisher.publish(m)
 
-def publish_goal_marker(publisher, position=(0.2, 0.4, 0.0)):
+def publish_goal_marker(publisher, pose: PoseStamped):
     m = Marker()
-    m.header.frame_id = "world"
+    m.header.frame_id = pose.header.frame_id
     m.id = 400
     m.type = Marker.CUBE
     m.action = Marker.ADD
-    m.pose.position.x = position[0]
-    m.pose.position.y = position[1]
-    m.pose.position.z = position[2]
+    m.pose = pose.pose
     m.scale.x, m.scale.y, m.scale.z = 0.025, 0.025, 0.025
     m.color = ColorRGBA(r=0.0, g=0.0, b=0.0, a=0.5)
     publisher.publish(m)
