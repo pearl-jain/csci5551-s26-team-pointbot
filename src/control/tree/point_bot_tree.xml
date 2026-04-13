@@ -1,18 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <root BTCPP_format="4">
   <BehaviorTree ID="Untitled">
-    <Repeat num_cycles="5">
+    <KeepRunningUntilFailure>
       <Sequence>
-        <Sleep msec="1000"/>
-        <LogString/>
+        <RetryUntilSuccessful num_attempts="-1">
+          <DetectObject object_pose="{object_pose}"/>
+        </RetryUntilSuccessful>
+        <RetryUntilSuccessful num_attempts="-1">
+          <DetectGoal goal_pose="{goal_pose}"/>
+        </RetryUntilSuccessful>
+        <MoveObject object_pose="{object_pose}"
+                    goal_pose="{goal_pose}"/>
       </Sequence>
-    </Repeat>
+    </KeepRunningUntilFailure>
   </BehaviorTree>
 
   <!-- Description of Node Models (used by Groot) -->
   <TreeNodesModel>
-    <Action ID="LogString"
-            editable="true"/>
+    <Action ID="DetectGoal"
+            editable="true">
+      <output_port name="goal_pose"/>
+    </Action>
+    <Action ID="DetectObject"
+            editable="true">
+      <output_port name="object_pose"/>
+    </Action>
+    <Action ID="MoveObject"
+            editable="true">
+      <input_port name="object_pose"/>
+      <input_port name="goal_pose"/>
+    </Action>
   </TreeNodesModel>
 
 </root>

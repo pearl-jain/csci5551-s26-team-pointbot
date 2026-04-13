@@ -21,6 +21,8 @@ endif()
 find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(behaviortree_ros2 REQUIRED)
+find_package(point_bot_interfaces REQUIRED)
+find_package(geometry_msgs REQUIRED)
 # uncomment the following section in order to fill in
 # further dependencies manually.
 # find_package(<dependency> REQUIRED)
@@ -32,7 +34,7 @@ target_include_directories(control_tree PUBLIC
   $<INSTALL_INTERFACE:include>
 )
 
-ament_target_dependencies(control_tree rclcpp behaviortree_ros2)
+ament_target_dependencies(control_tree rclcpp behaviortree_ros2 point_bot_interfaces geometry_msgs)
 
 install(TARGETS
   control_tree

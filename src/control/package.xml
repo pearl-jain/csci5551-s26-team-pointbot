@@ -10,6 +10,7 @@
   <depend>rclcpp</depend>
   <depend>geometry_msgs</depend>
   <depend>behaviortree_ros2</depend>
+  <depend>point_bot_interfaces</depend>
 
   <buildtool_depend>ament_cmake</buildtool_depend>
 
