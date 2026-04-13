@@ -5,6 +5,7 @@ from rclpy.node import Node
 from point_bot_interfaces.action import MoveObject
 
 import time
+import random
 
 class PlanningActionServer(Node):
     def __init__(self):
@@ -16,18 +17,20 @@ class PlanningActionServer(Node):
             self.execute_callback)
 
     def execute_callback(self, goal_handle):
-        self.get_logger().info("Executing action...")
-
         object_pose = goal_handle.request.object
         target_goal = goal_handle.request.goal
         
         self.get_logger().info(f"Moving object from {object_pose} to {target_goal}")
         goal_handle.succeed() # Tell the client that the goal was handled successfully
 
+        # TODO: Properly implement planning!
         time.sleep(10)
 
         result = MoveObject.Result()
         result.success = True
+
+        if random.random() > 0.5:
+            result.success = False
 
         return result
 

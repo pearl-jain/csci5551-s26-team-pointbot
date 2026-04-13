@@ -25,13 +25,13 @@ public:
         auto node_ptr = node_.lock();
         if (node_ptr) {
             if (res.code != rclcpp_action::ResultCode::SUCCEEDED || !res.result->success) {
-                RCLCPP_WARN(node_ptr->get_logger(), "[%s]: Perception failed.", name().c_str());
+                RCLCPP_WARN(node_ptr->get_logger(), "[%s]: Object perception failed.", name().c_str());
                 return BT::NodeStatus::FAILURE;
             }
 
             setOutput("object_pose", res.result->pose);
             
-            RCLCPP_INFO(node_ptr->get_logger(), "[%s]: Detected successfully.", name().c_str());
+            RCLCPP_INFO(node_ptr->get_logger(), "[%s]: Object detected successfully.", name().c_str());
         }
 
         return BT::NodeStatus::SUCCESS;

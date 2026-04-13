@@ -19,16 +19,15 @@ class PerceptionActionServer(Node):
             self.execute_callback)
 
     def execute_callback(self, goal_handle):
-        self.get_logger().info("Executing perception...")
-
         task = goal_handle.request.task
-
-        if random.random() > 0.5:
-            task = "weeee!"
 
         self.get_logger().info(f"Peforming perception task {task}")
         goal_handle.succeed() # Tell the client that the goal was handled successfully
 
+        # TODO: Properly implement perception!
+        if random.random() > 0.5:
+            task = "weeee!"
+        
         time.sleep(5)
         
         result = Perception.Result()

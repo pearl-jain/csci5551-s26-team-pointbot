@@ -1,18 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <root BTCPP_format="4">
   <BehaviorTree ID="Untitled">
-    <KeepRunningUntilFailure>
-      <Sequence>
-        <RetryUntilSuccessful num_attempts="-1">
-          <DetectObject object_pose="{object_pose}"/>
-        </RetryUntilSuccessful>
-        <RetryUntilSuccessful num_attempts="-1">
-          <DetectGoal goal_pose="{goal_pose}"/>
-        </RetryUntilSuccessful>
-        <MoveObject object_pose="{object_pose}"
-                    goal_pose="{goal_pose}"/>
-      </Sequence>
-    </KeepRunningUntilFailure>
+    <Sequence>
+      <Inverter>
+        <KeepRunningUntilFailure>
+          <Sequence>
+            <RetryUntilSuccessful num_attempts="-1">
+              <DetectObject object_pose="{object_pose}"/>
+            </RetryUntilSuccessful>
+            <Sleep msec="3000"/>
+            <RetryUntilSuccessful num_attempts="-1">
+              <DetectGoal goal_pose="{goal_pose}"/>
+            </RetryUntilSuccessful>
+            <MoveObject object_pose="{object_pose}"
+                        goal_pose="{goal_pose}"/>
+          </Sequence>
+        </KeepRunningUntilFailure>
+      </Inverter>
+      <LogString message="Home the Robot, it failed, or perform recovery."/>
+      <AlwaysFailure/>
+    </Sequence>
   </BehaviorTree>
 
   <!-- Description of Node Models (used by Groot) -->
@@ -24,6 +31,10 @@
     <Action ID="DetectObject"
             editable="true">
       <output_port name="object_pose"/>
+    </Action>
+    <Action ID="LogString"
+            editable="true">
+      <input_port name="message"/>
     </Action>
     <Action ID="MoveObject"
             editable="true">
