@@ -25,6 +25,8 @@ public:
         BT::BehaviorTreeFactory factory;
 
         // Lambda functions tell the behavior tree how to make the node
+
+        // Setup Log String Tree Node
         factory.registerBuilder<LogString>(
             "LogString",
             [this](const std::string& name, const BT::NodeConfiguration& config) { 
@@ -32,17 +34,25 @@ public:
             }
         );
 
-        factory.registerBuilder<DetectObject>(
+        // Setup Detect Object Action
+        BT::RosNodeParams detect_object_params;
+        detect_object_params.nh = shared_from_this();
+        detect_object_params.default_port_value = "perception";
+        factory.registerBuilder<DetectObjectAction>(
             "DetectObject",
-            [this](const std::string& name, const BT::NodeConfiguration& config) {
-                return std::make_unique<DetectObject>(name, config, this->get_logger()); 
+            [detect_object_params](const std::string& name, const BT::NodeConfiguration& config) {
+                return std::make_unique<DetectObjectAction>(name, config, detect_object_params);
             }
         );
 
-        factory.registerBuilder<DetectGoal>(
+        // Setup Detect Goal Action
+        BT::RosNodeParams detect_goal_params;
+        detect_goal_params.nh = shared_from_this();
+        detect_goal_params.default_port_value = "perception";
+        factory.registerBuilder<DetectGoalAction>(
             "DetectGoal",
-            [this](const std::string& name, const BT::NodeConfiguration& config) {
-                return std::make_unique<DetectGoal>(name, config, this->get_logger()); 
+            [detect_goal_params](const std::string& name, const BT::NodeConfiguration& config) {
+                return std::make_unique<DetectGoalAction>(name, config, detect_goal_params);
             }
         );
 
@@ -86,7 +96,7 @@ private:
 int main(int argc, char * argv[]) {
     rclcpp::init(argc, argv);
 
-    auto node = std::make_shared<ControlTreeNode>("Control_Tree_Node");
+    auto node = std::make_shared<ControlTreeNode>("control_tree_node");
 
     node->setup_tree();
 

@@ -16,7 +16,7 @@ find_package(sensor_msgs REQUIRED)
 find_package(rosidl_default_generators REQUIRED)
 
 rosidl_generate_interfaces(${PROJECT_NAME}
-  "msg/PerceptionDetection.msg"
+  "action/Perception.action"
   "action/MoveObject.action"
   DEPENDENCIES sensor_msgs geometry_msgs
 )

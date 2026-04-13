@@ -1,39 +1,39 @@
-#include "behaviortree_cpp/action_node.h"
-#include "rclcpp/rclcpp.hpp"
+#include "behaviortree_ros2/plugins.hpp"
+#include "behaviortree_ros2/bt_action_node.hpp"
 
+#include "rclcpp/rclcpp.hpp"
+#include "point_bot_interfaces/action/perception.hpp"
 #include "geometry_msgs/msg/pose_stamped.hpp"
 
-class DetectObject : public BT::SyncActionNode {
+class DetectObjectAction : public BT::RosActionNode<point_bot_interfaces::action::Perception> {
 public:
-    DetectObject(const std::string& name, const BT::NodeConfiguration& config, rclcpp::Logger node_logger)
-    : BT::SyncActionNode(name, config), logger(node_logger) {
-        std::srand(std::time(0));
-    }
+    DetectObjectAction(const std::string& name, const BT::NodeConfiguration& config, const BT::RosNodeParams& params) 
+    : BT::RosActionNode<point_bot_interfaces::action::Perception>(name, config, params) {}
 
     static BT::PortsList providedPorts() {
-        return {BT::OutputPort<geometry_msgs::msg::PoseStamped>("object_pose")};
+        return providedBasicPorts({
+            BT::OutputPort<geometry_msgs::msg::PoseStamped>("object_pose"),
+        });
+    }
+    
+    bool setGoal(Goal& goal) override {
+        goal.task = "detect_object";
+        return true;
     }
 
-    BT::NodeStatus tick() override {
-        RCLCPP_INFO(logger, "Detect Object: Running");
-        std::this_thread::sleep_for(std::chrono::seconds(1));
+    BT::NodeStatus onResultReceived(const WrappedResult& res) override {
+        auto node_ptr = node_.lock();
+        if (node_ptr) {
+            if (res.code != rclcpp_action::ResultCode::SUCCEEDED || !res.result->success) {
+                RCLCPP_WARN(node_ptr->get_logger(), "[%s]: Perception failed.", name().c_str());
+                return BT::NodeStatus::FAILURE;
+            }
 
-        int result = std::rand() % 100 + 1;
-        if (result > 50) {
-            auto pose_object = geometry_msgs::msg::PoseStamped();
-            pose_object.header.frame_id = "panda_link0";
-            pose_object.pose.orientation.w = 1.0;
-            pose_object.pose.position.x = 0.28;
-            pose_object.pose.position.y = -0.2;
-            pose_object.pose.position.z = 0.5;
-
-            setOutput("object_pose", pose_object);
-
-            return BT::NodeStatus::SUCCESS;
+            setOutput("object_pose", res.result->pose);
+            
+            RCLCPP_INFO(node_ptr->get_logger(), "[%s]: Detected successfully.", name().c_str());
         }
 
-        return BT::NodeStatus::FAILURE;
+        return BT::NodeStatus::SUCCESS;
     }
-private:
-    rclcpp::Logger logger;
 };
