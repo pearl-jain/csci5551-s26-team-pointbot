@@ -1,0 +1,9 @@
+source;share/pointbot_rviz/hook/cmake_prefix_path.ps1
+source;share/pointbot_rviz/hook/cmake_prefix_path.dsv
+source;share/pointbot_rviz/hook/cmake_prefix_path.sh
+source;share/pointbot_rviz/hook/ld_library_path_lib.ps1
+source;share/pointbot_rviz/hook/ld_library_path_lib.dsv
+source;share/pointbot_rviz/hook/ld_library_path_lib.sh
+source;share/pointbot_rviz/hook/pythonpath.ps1
+source;share/pointbot_rviz/hook/pythonpath.dsv
+source;share/pointbot_rviz/hook/pythonpath.sh

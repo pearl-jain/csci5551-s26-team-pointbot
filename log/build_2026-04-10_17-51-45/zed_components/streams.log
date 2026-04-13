@@ -1,0 +1,44 @@
+[0.027s] Invoking command in '/home/rob/project/csci5551-s26-team-pointbot/build/zed_components': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy CONDA_PROMPT_MODIFIER=(base) DEBUGINFOD_URLS=https://debuginfod.ubuntu.com LD_LIBRARY_PATH=/home/rob/project/csci5551-s26-team-pointbot/install/lib:/opt/ros/jazzy/opt/sdformat_vendor/lib:/opt/ros/jazzy/opt/rviz_ogre_vendor/lib:/opt/ros/jazzy/lib/x86_64-linux-gnu:/opt/ros/jazzy/opt/gz_math_vendor/lib:/opt/ros/jazzy/opt/gz_utils_vendor/lib:/opt/ros/jazzy/opt/gz_tools_vendor/lib:/opt/ros/jazzy/opt/gz_cmake_vendor/lib:/opt/ros/jazzy/lib:/usr/local/cuda-12.8/lib64’ PYTHONPATH=/home/rob/project/csci5551-s26-team-pointbot/install/lib/python3.12/site-packages:/home/rob/project/csci5551-s26-team-pointbot/install/lib/python3.13/site-packages:/opt/ros/jazzy/lib/python3.12/site-packages:/home/rob/robotics5551:/home/rob/robotics5551 /usr/bin/cmake --build /home/rob/project/csci5551-s26-team-pointbot/build/zed_components -- -j16 -l16
+[0.106s] [100%] Built target zed_camera_one_component
+[0.106s] [100%] Built target zed_camera_component
+[0.115s] Invoked command in '/home/rob/project/csci5551-s26-team-pointbot/build/zed_components' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy CONDA_PROMPT_MODIFIER=(base) DEBUGINFOD_URLS=https://debuginfod.ubuntu.com LD_LIBRARY_PATH=/home/rob/project/csci5551-s26-team-pointbot/install/lib:/opt/ros/jazzy/opt/sdformat_vendor/lib:/opt/ros/jazzy/opt/rviz_ogre_vendor/lib:/opt/ros/jazzy/lib/x86_64-linux-gnu:/opt/ros/jazzy/opt/gz_math_vendor/lib:/opt/ros/jazzy/opt/gz_utils_vendor/lib:/opt/ros/jazzy/opt/gz_tools_vendor/lib:/opt/ros/jazzy/opt/gz_cmake_vendor/lib:/opt/ros/jazzy/lib:/usr/local/cuda-12.8/lib64’ PYTHONPATH=/home/rob/project/csci5551-s26-team-pointbot/install/lib/python3.12/site-packages:/home/rob/project/csci5551-s26-team-pointbot/install/lib/python3.13/site-packages:/opt/ros/jazzy/lib/python3.12/site-packages:/home/rob/robotics5551:/home/rob/robotics5551 /usr/bin/cmake --build /home/rob/project/csci5551-s26-team-pointbot/build/zed_components -- -j16 -l16
+[0.117s] Invoking command in '/home/rob/project/csci5551-s26-team-pointbot/build/zed_components': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy CONDA_PROMPT_MODIFIER=(base) DEBUGINFOD_URLS=https://debuginfod.ubuntu.com LD_LIBRARY_PATH=/home/rob/project/csci5551-s26-team-pointbot/install/lib:/opt/ros/jazzy/opt/sdformat_vendor/lib:/opt/ros/jazzy/opt/rviz_ogre_vendor/lib:/opt/ros/jazzy/lib/x86_64-linux-gnu:/opt/ros/jazzy/opt/gz_math_vendor/lib:/opt/ros/jazzy/opt/gz_utils_vendor/lib:/opt/ros/jazzy/opt/gz_tools_vendor/lib:/opt/ros/jazzy/opt/gz_cmake_vendor/lib:/opt/ros/jazzy/lib:/usr/local/cuda-12.8/lib64’ PYTHONPATH=/home/rob/project/csci5551-s26-team-pointbot/install/lib/python3.12/site-packages:/home/rob/project/csci5551-s26-team-pointbot/install/lib/python3.13/site-packages:/opt/ros/jazzy/lib/python3.12/site-packages:/home/rob/robotics5551:/home/rob/robotics5551 /usr/bin/cmake --install /home/rob/project/csci5551-s26-team-pointbot/build/zed_components
+[0.124s] -- Install configuration: "Release"
+[0.124s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/lib/libzed_camera_component.so
+[0.124s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/lib/libzed_camera_one_component.so
+[0.124s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_components/
+[0.125s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_components//zed_camera_component.hpp
+[0.125s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_components//cost_traversability.hpp
+[0.125s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_components/
+[0.125s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_components//zed_camera_one_component.hpp
+[0.125s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_components/
+[0.125s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_components//sl_logging.hpp
+[0.125s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_components//sl_types.hpp
+[0.125s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_components//sl_win_avg.hpp
+[0.125s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_components//sl_tools.hpp
+[0.125s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_components//gnss_replay.hpp
+[0.125s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_components/
+[0.126s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_components//visibility_control.hpp
+[0.126s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_components//sl_version.hpp
+[0.126s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/share/zed_components/environment/library_path.sh
+[0.126s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/share/zed_components/environment/library_path.dsv
+[0.126s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/share/ament_index/resource_index/package_run_dependencies/zed_components
+[0.126s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/share/ament_index/resource_index/parent_prefix_path/zed_components
+[0.126s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/share/zed_components/environment/ament_prefix_path.sh
+[0.126s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/share/zed_components/environment/ament_prefix_path.dsv
+[0.126s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/share/zed_components/environment/path.sh
+[0.126s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/share/zed_components/environment/path.dsv
+[0.126s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/share/zed_components/local_setup.bash
+[0.126s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/share/zed_components/local_setup.sh
+[0.126s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/share/zed_components/local_setup.zsh
+[0.126s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/share/zed_components/local_setup.dsv
+[0.127s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/share/zed_components/package.dsv
+[0.127s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/share/ament_index/resource_index/packages/zed_components
+[0.127s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/share/ament_index/resource_index/rclcpp_components/zed_components
+[0.127s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/share/zed_components/cmake/ament_cmake_export_include_directories-extras.cmake
+[0.127s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/share/zed_components/cmake/ament_cmake_export_libraries-extras.cmake
+[0.127s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/share/zed_components/cmake/ament_cmake_export_dependencies-extras.cmake
+[0.127s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/share/zed_components/cmake/zed_componentsConfig.cmake
+[0.127s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/share/zed_components/cmake/zed_componentsConfig-version.cmake
+[0.127s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/share/zed_components/package.xml
+[0.129s] Invoked command in '/home/rob/project/csci5551-s26-team-pointbot/build/zed_components' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy CONDA_PROMPT_MODIFIER=(base) DEBUGINFOD_URLS=https://debuginfod.ubuntu.com LD_LIBRARY_PATH=/home/rob/project/csci5551-s26-team-pointbot/install/lib:/opt/ros/jazzy/opt/sdformat_vendor/lib:/opt/ros/jazzy/opt/rviz_ogre_vendor/lib:/opt/ros/jazzy/lib/x86_64-linux-gnu:/opt/ros/jazzy/opt/gz_math_vendor/lib:/opt/ros/jazzy/opt/gz_utils_vendor/lib:/opt/ros/jazzy/opt/gz_tools_vendor/lib:/opt/ros/jazzy/opt/gz_cmake_vendor/lib:/opt/ros/jazzy/lib:/usr/local/cuda-12.8/lib64’ PYTHONPATH=/home/rob/project/csci5551-s26-team-pointbot/install/lib/python3.12/site-packages:/home/rob/project/csci5551-s26-team-pointbot/install/lib/python3.13/site-packages:/opt/ros/jazzy/lib/python3.12/site-packages:/home/rob/robotics5551:/home/rob/robotics5551 /usr/bin/cmake --install /home/rob/project/csci5551-s26-team-pointbot/build/zed_components

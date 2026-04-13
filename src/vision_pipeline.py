@@ -16,22 +16,29 @@ class PointBotVision:
             print("Failed to open ZED")
             exit()
 
+        # Get calibration parameters for 3D -> 2D projection
+        calibration_params = self.zed.get_camera_information().camera_configuration.calibration_parameters
+        self.fx = calibration_params.left_cam.fx
+        self.fy = calibration_params.left_cam.fy
+        self.cx = calibration_params.left_cam.cx
+        self.cy = calibration_params.left_cam.cy
+
         self.mp_hands = mp.solutions.hands
         self.hands = self.mp_hands.Hands(
             static_image_mode=False, 
             max_num_hands=1, 
-            min_detection_confidence=0.7
+            min_detection_confidence=0.4
         )
         self.mp_draw = mp.solutions.drawing_utils
 
-        # 3. Stability Logic Variables
         self.last_pos_3d = None
         self.start_time = None
-        self.STABILITY_THRESHOLD = 0.05 # Meters (5cm)
-        self.HOLD_DURATION = 2.5 # Seconds
+        self.STABILITY_THRESHOLD = 0.05 
+        self.HOLD_DURATION = .5
+
+        self.active_ray = None # Stores (origin_3d, direction_3d)
 
     def get_zed_data(self):
-        """Grabs the latest image and depth map from ZED so we can stream"""
         image = sl.Mat()
         depth = sl.Mat()
         runtime_params = sl.RuntimeParameters()
@@ -43,35 +50,71 @@ class PointBotVision:
         return None, None
 
     def calculate_ray(self, tip_3d, knuckle_3d):
-        """Vector from finger knuckle to tip."""
         direction = tip_3d - knuckle_3d
-        unit_direction = direction / np.linalg.norm(direction)
+        norm = np.linalg.norm(direction)
+        if norm == 0: return tip_3d, direction
+        unit_direction = direction / norm
         return tip_3d, unit_direction
 
-    def run(self):        
-        while True:
-            frame, xyz_map = self.get_zed_data()
-            if frame is None: continue
+    def project_3d_to_2d(self, point_3d):
+        """Projects a 3D ZED coordinate (x, y, z) to 2D pixel (u, v)"""
+        if point_3d is None:
+            return None
+        if not np.isfinite(point_3d).all():
+            return None
 
-            # BGRA --> RGB for MediaPipe
-            rgb_frame = cv2.cvtColor(frame, cv2.COLOR_BGRA2RGB)
+        x, y, z = point_3d
+        if z <= 0: 
+            return None
+            
+        u = int((x * self.fx / z) + self.cx)
+        v = int((y * self.fy / z) + self.cy)
+        return (u, v)
+
+    def draw_active_ray(self, frame):
+        """Draws the currently stored ray on the frame"""
+        if self.active_ray is None:
+            return
+
+        origin_3d, direction_3d = self.active_ray
+        
+        # Create a second point far along the ray (e.g., 5 meters away)
+        end_3d = origin_3d + (direction_3d * 1.0)
+
+        p1 = self.project_3d_to_2d(origin_3d)
+        p2 = self.project_3d_to_2d(end_3d)
+
+        if p1 and p2:
+            cv2.line(frame, p1, p2, (255, 0, 255), 3) # Neon Purple line
+            cv2.circle(frame, p1, 5, (0, 0, 255), -1) # Red dot at origin
+
+    def run(self):  
+        while True:
+            frame_raw, xyz_map = self.get_zed_data()
+            if frame_raw is None: continue
+
+            frame = cv2.cvtColor(frame_raw, cv2.COLOR_BGRA2BGR)
+            rgb_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
             results = self.hands.process(rgb_frame)
+
+            # Draw the persistent ray from the last capture
+            self.draw_active_ray(frame)
 
             if results.multi_hand_landmarks:
                 for hand_landmarks in results.multi_hand_landmarks:
                     self.mp_draw.draw_landmarks(frame, hand_landmarks, self.mp_hands.HAND_CONNECTIONS)
-
-                    # Get Pixel Coordinates for Index Tip (8) and Knuckle (5)
+                
                     h, w, _ = frame.shape
-                    tip_pixel = (int(hand_landmarks.landmark[8].x * w), int(hand_landmarks.landmark[8].y * h))
-                    knuckle_pixel = (int(hand_landmarks.landmark[5].x * w), int(hand_landmarks.landmark[5].y * h))
+                    # Clamp coordinates to avoid index errors on edge of screen
+                    tx = max(0, min(w-1, int(hand_landmarks.landmark[8].x * w)))
+                    ty = max(0, min(h-1, int(hand_landmarks.landmark[8].y * h)))
+                    kx = max(0, min(w-1, int(hand_landmarks.landmark[5].x * w)))
+                    ky = max(0, min(h-1, int(hand_landmarks.landmark[5].y * h)))
 
-                    # Actual 3D coordinates from ZED XYZ map
-                    tip_3d = xyz_map[tip_pixel[1], tip_pixel[0]][:3]
-                    knuckle_3d = xyz_map[knuckle_pixel[1], knuckle_pixel[0]][:3]
+                    tip_3d = xyz_map[ty, tx][:3]
+                    knuckle_3d = xyz_map[ky, kx][:3]
 
-                    # Check for Stability (Ignore NaN values from depth map)
-                    if not np.isnan(tip_3d).any():
+                    if not np.isnan(tip_3d).any() and not np.isnan(knuckle_3d).any():
                         if self.last_pos_3d is None:
                             self.last_pos_3d = tip_3d
                             self.start_time = time.time()
@@ -80,15 +123,16 @@ class PointBotVision:
 
                         if dist < self.STABILITY_THRESHOLD:
                             elapsed = time.time() - self.start_time
-                            # Visual feedback: Progress bar
-                            cv2.putText(frame, f"Holding: {round(elapsed, 1)}s", (50, 50), 
+                            cv2.putText(frame, f"Steady: {round(elapsed, 1)}s", (50, 80), 
                                         cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2)
-                            
+                                                        
                             if elapsed >= self.HOLD_DURATION:
+                                # Update the active ray (This replaces the old one)
                                 origin, direction = self.calculate_ray(tip_3d, knuckle_3d)
-                                print(f"RAY CAPTURED! Origin: {origin}, Dir: {direction}")
-                                # --- TRIGGER ROBOT ACTION HERE ---
-                                self.start_time = time.time() # Reset
+                                if not np.isnan(origin).any() and not np.isnan(direction).any():
+                                    self.active_ray = (origin, direction)
+                                print(f"NEW RAY: Origin {origin}, Dir {direction}")
+                                self.start_time = time.time() # Reset to allow immediate re-pointing
                         else:
                             self.start_time = time.time()
                             self.last_pos_3d = tip_3d

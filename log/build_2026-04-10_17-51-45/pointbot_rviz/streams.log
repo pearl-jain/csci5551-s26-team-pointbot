@@ -1,0 +1,21 @@
+[0.651s] Invoking command in '/home/rob/project/csci5551-s26-team-pointbot/src/pointbot_rviz': CONDA_PROMPT_MODIFIER=(base) DEBUGINFOD_URLS=https://debuginfod.ubuntu.com PYTHONPATH=/home/rob/project/csci5551-s26-team-pointbot/build/pointbot_rviz/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/rob/project/csci5551-s26-team-pointbot/install/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/pointbot_rviz build --build-base /home/rob/project/csci5551-s26-team-pointbot/build/pointbot_rviz/build install --record /home/rob/project/csci5551-s26-team-pointbot/build/pointbot_rviz/install.log --single-version-externally-managed install_data
+[0.811s] running egg_info
+[0.819s] writing ../../build/pointbot_rviz/pointbot_rviz.egg-info/PKG-INFO
+[0.819s] writing dependency_links to ../../build/pointbot_rviz/pointbot_rviz.egg-info/dependency_links.txt
+[0.819s] writing entry points to ../../build/pointbot_rviz/pointbot_rviz.egg-info/entry_points.txt
+[0.819s] writing requirements to ../../build/pointbot_rviz/pointbot_rviz.egg-info/requires.txt
+[0.819s] writing top-level names to ../../build/pointbot_rviz/pointbot_rviz.egg-info/top_level.txt
+[0.838s] reading manifest file '../../build/pointbot_rviz/pointbot_rviz.egg-info/SOURCES.txt'
+[0.839s] writing manifest file '../../build/pointbot_rviz/pointbot_rviz.egg-info/SOURCES.txt'
+[0.839s] running build
+[0.839s] running build_py
+[0.839s] running install
+[0.843s] running install_lib
+[0.851s] running install_data
+[0.851s] running install_egg_info
+[0.862s] removing '/home/rob/project/csci5551-s26-team-pointbot/install/lib/python3.12/site-packages/pointbot_rviz-0.0.0-py3.12.egg-info' (and everything under it)
+[0.862s] Copying ../../build/pointbot_rviz/pointbot_rviz.egg-info to /home/rob/project/csci5551-s26-team-pointbot/install/lib/python3.12/site-packages/pointbot_rviz-0.0.0-py3.12.egg-info
+[0.862s] running install_scripts
+[0.932s] Installing test_visualizer script to /home/rob/project/csci5551-s26-team-pointbot/install/lib/pointbot_rviz
+[0.932s] writing list of installed files to '/home/rob/project/csci5551-s26-team-pointbot/build/pointbot_rviz/install.log'
+[0.982s] Invoked command in '/home/rob/project/csci5551-s26-team-pointbot/src/pointbot_rviz' returned '0': CONDA_PROMPT_MODIFIER=(base) DEBUGINFOD_URLS=https://debuginfod.ubuntu.com PYTHONPATH=/home/rob/project/csci5551-s26-team-pointbot/build/pointbot_rviz/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/rob/project/csci5551-s26-team-pointbot/install/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/pointbot_rviz build --build-base /home/rob/project/csci5551-s26-team-pointbot/build/pointbot_rviz/build install --record /home/rob/project/csci5551-s26-team-pointbot/build/pointbot_rviz/install.log --single-version-externally-managed install_data
