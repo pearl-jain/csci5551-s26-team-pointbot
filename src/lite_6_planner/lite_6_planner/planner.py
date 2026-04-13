@@ -17,6 +17,7 @@ class planner(Node):
         self.goal_subscriber = self.create_subscription(PoseStamped, '/goal', self.plan_and_execute_callback, 1)
 
     def plan_and_execute_callback(self, msg : PoseStamped):
+        self.arm.set_start_state_to_current_state()     
         self.arm.set_goal_state(pose_stamped_msg=msg, pose_link="link_eef")
         self.plan_and_execute(self.lite6, self.arm, self.logger)
 
