@@ -63,6 +63,7 @@ RUN apt-get update && apt-get install -y \
     ros-jazzy-slam-toolbox \
     ros-jazzy-webots-ros2 \
     ros-jazzy-moveit \
+    ros-jazzy-behaviortree-cpp \
     && rm -rf /var/lib/apt/lists/*
 
 # --- Environment variables ---
