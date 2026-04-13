@@ -21,6 +21,7 @@ public:
     }
 
     void setup_tree() {
+        // Setup Groot2 Behavior Tree
         BT::BehaviorTreeFactory factory;
 
         // Lambda functions tell the behavior tree how to make the node
@@ -45,6 +46,7 @@ public:
             }
         );
 
+        // Setup Move Object Action
         BT::RosNodeParams move_object_params;
         move_object_params.nh = shared_from_this();
         move_object_params.default_port_value = "move_object";
@@ -63,6 +65,7 @@ public:
 
 private:
     void behavior_tree_callback() {
+        // Control tree node logic with ros
         BT::NodeStatus status = tree.tickOnce();
 
         if (status == BT::NodeStatus::SUCCESS) {
