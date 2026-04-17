@@ -173,6 +173,27 @@ class PointBotPerception:
     def zed_capture(self):
         instance = self.grab()
         return instance.image(), instance.point_cloud
+    
+    def intersect_line_plane(self, line_point, line_dir, plane_point, plane_normal):        
+        # Ensure inputs are numpy arrays
+        P0 = np.array(line_point)
+        v = np.array(line_dir)
+        Pp = np.array(plane_point)
+        n = np.array(plane_normal)
+        
+        # Calculate dot products
+        numerator = np.dot(Pp - P0, n)
+        denominator = np.dot(v, n)
+        
+        # Check if line is parallel to plane
+        if abs(denominator) < 1e-6:
+            return None  # Parallel
+            
+        # Calculate intersection t
+        t = numerator / denominator
+        
+        # Return intersection point
+        return P0 + t * v
 
 def main():
     zed = ZedCamera()
