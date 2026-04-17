@@ -72,9 +72,8 @@ class PointBotPerception:
                     self.h = h
                     self.w = w
                     tx, ty = np.clip(int(lm.landmark[8].x*w), 0, w-1), np.clip(int(lm.landmark[8].y*h), 0, h-1)
-                    wx, wy = np.clip(int(lm.landmark[6].x*w), 0, w-1), np.clip(int(lm.landmark[0].y*h), 0, h-1)
+                    wx, wy = np.clip(int(lm.landmark[6].x*w), 0, w-1), np.clip(int(lm.landmark[6].y*h), 0, h-1)
                     p_tip, p_wrist = xyz_map[ty, tx][:3], xyz_map[wy, wx][:3]
-
 
                     if np.all(np.isfinite(p_tip)) and np.all(np.isfinite(p_wrist)):
                         current_tags = {}
@@ -115,10 +114,13 @@ class PointBotPerception:
         avg_d_rob = (t_robot_cam[:3, :3] @ avg_d_cam)
         
         # t = -o_z / d_z
-        t = -avg_o_rob[2] / avg_d_rob[2]
-        target_rob = avg_o_rob + t * avg_d_rob
+        # t = -avg_o_rob[2] / avg_d_rob[2]
+        # target_rob = avg_o_rob + t * avg_d_rob
 
-        print(avg_d_rob)
+        # print(avg_d_rob)
+
+        target_rob = self.intersect_line_plane(avg_o_rob, avg_d_rob, [0,0,0], [0,0,1])
+        print(target_rob)
         
         # Target in Cam Frame (for drawing)
         target_cam = (t_cam_robot @ np.append(target_rob, 1.0))[:3]
@@ -150,10 +152,14 @@ class PointBotPerception:
 
             
         # Draw Static View
+        print(target_cam)
+
         p_start = self.project_3d_to_2d(tip)
         p_end = self.project_3d_to_2d(target_cam)
 
-        print(p_start, p_end,)
+        # p_end = (-p_end[0], -p_end[1])
+
+        print(p_start, p_end)
         if p_start and p_end:
             color = (0, 255, 0) if mode == "pick" else (255, 200, 0)
             cv2.line(last_frame, p_end, p_start, color, 4)
@@ -209,7 +215,7 @@ def main():
         # PICK PHASE
         cv_image = zed.image
         # target_place_rob, target_place_cam= perception.run_cycle("pick", t_cam_robot)
-        target_pick_rob, target_pick_cam  = perception.run_cycle("place", t_cam_robot)
+        target_pick_rob, target_pick_cam  = perception.run_cycle("pick", t_cam_robot)
         if target_pick_rob is not None:
 
             #grasp_cube(arm, target_pick, is_pick=True)
