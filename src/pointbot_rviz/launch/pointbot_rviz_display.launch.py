@@ -35,7 +35,7 @@ def generate_launch_description():
 		pitch = math.atan2(transform[2][1] / cos_roll, transform[2][2] / cos_roll)
 		yaw = math.atan2(transform[1][0] / cos_roll, transform[0][0] / cos_roll)
 	else:
-		if (R[2][0] == -1):
+		if (transform[2][0] == -1):
 			roll = math.pi / 2
 			yaw = math.atant2(transform[0][1], transform[0][2])
 		else:
