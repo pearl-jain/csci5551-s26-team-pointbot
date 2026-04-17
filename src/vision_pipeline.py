@@ -7,6 +7,7 @@ from pupil_apriltags import Detector
 from xarm.wrapper import XArmAPI
 from utils.zed_camera import ZedCamera
 from checkpoint0 import get_transform_camera_robot, ROBOT_IP
+from utils.vis_utils import draw_pose_axes
 
 # --- Configuration ---
 CUBE_TAG_SIZE = 0.02045
@@ -16,7 +17,7 @@ ACCELERATION = 1000
 
 # Perception Tuning
 TARGET_FRAMES = 50         # Total frames to wait
-COLLECTION_WINDOW = 10     # Frames to actually average
+COLLECTION_WINDOW = 1    # Frames to actually average
 SNAP_DISTANCE = 0.12       # 12cm snapping window for AprilTags
 
 class PointBotPerception:
@@ -68,9 +69,12 @@ class PointBotPerception:
                 # Capture Window (frames 48, 49, 50)
                 if self.frame_counter > (TARGET_FRAMES - COLLECTION_WINDOW):
                     h, w = frame_display.shape[:2]
+                    self.h = h
+                    self.w = w
                     tx, ty = np.clip(int(lm.landmark[8].x*w), 0, w-1), np.clip(int(lm.landmark[8].y*h), 0, h-1)
-                    wx, wy = np.clip(int(lm.landmark[0].x*w), 0, w-1), np.clip(int(lm.landmark[0].y*h), 0, h-1)
+                    wx, wy = np.clip(int(lm.landmark[6].x*w), 0, w-1), np.clip(int(lm.landmark[0].y*h), 0, h-1)
                     p_tip, p_wrist = xyz_map[ty, tx][:3], xyz_map[wy, wx][:3]
+
 
                     if np.all(np.isfinite(p_tip)) and np.all(np.isfinite(p_wrist)):
                         current_tags = {}
@@ -78,20 +82,26 @@ class PointBotPerception:
                             gray = cv2.cvtColor(frame_display, cv2.COLOR_BGR2GRAY)
                             params = [self.intrinsic[0,0], self.intrinsic[1,1], self.intrinsic[0,2], self.intrinsic[1,2]]
                             tags = self.detector.detect(gray, estimate_tag_pose=True, camera_params=params, tag_size=CUBE_TAG_SIZE)
-                            for t in tags: current_tags[t.tag_id] = t.pose_t.flatten()
+                            tag_positions = []
+                            for tag in tags:
+                                if tag.tag_id != 4:
+                                    continue
+                                
+                                cube_center = tag.center
+                                tag_positions.append(cube_center)
 
                         direction = (p_tip - p_wrist) / np.linalg.norm(p_tip - p_wrist)
-                        self.frame_buffer.append((p_tip, direction, current_tags))
+                        self.frame_buffer.append((p_tip, direction, tag_positions))
 
                 if self.frame_counter >= TARGET_FRAMES:
                     if len(self.frame_buffer) > 0:
-                        return self.finalize_and_freeze(frame_display, mode, t_cam_robot)
+                        return self.finalize_and_freeze(frame_display, mode, t_cam_robot, p_tip)
                     self.frame_counter = 0 # Reset if no valid 3D points were found
 
             cv2.imshow("PointBot Perception", frame_display)
             if cv2.waitKey(1) & 0xFF == ord('q'): return None
 
-    def finalize_and_freeze(self, last_frame, mode, t_cam_robot):
+    def finalize_and_freeze(self, last_frame, mode, t_cam_robot, tip):
         # Average Ray (Camera Frame)
         avg_o_cam = np.mean([f[0] for f in self.frame_buffer], axis=0)
         avg_d_cam = np.mean([f[1] for f in self.frame_buffer], axis=0)
@@ -111,23 +121,41 @@ class PointBotPerception:
 
         # Snap to Tags (Pick Mode Only)
         if mode == "pick":
-            all_ids = set().union(*[f[2].keys() for f in self.frame_buffer])
-            if all_ids:
+            # all_ids = set().union(*[f[2].keys() for f in])
+            print(self.frame_buffer[0][2])
+            # all_ids = self.b
+            positions = self.frame_buffer[0][2]
+            if positions:
                 min_dist = float('inf')
-                for tid in all_ids:
-                    pts = [f[2][tid] for f in self.frame_buffer if tid in f[2]]
-                    avg_tag_cam = np.mean(pts, axis=0)
-                    d = np.linalg.norm(avg_tag_cam - target_cam)
-                    if d < min_dist and d < SNAP_DISTANCE:
-                        min_dist, target_cam = d, avg_tag_cam
-                target_rob = (t_robot_cam @ np.append(target_cam, 1.0))[:3]
-   
+                target_cube = None
+                w,h = self.w, self.h
+                for pos in positions:
+
+                    tx, ty = np.clip(int(pos[0]*w), 0, w-1), np.clip(int(pos[1]*h), 0, h-1)
+                    pos_3d = self.zed.point_cloud[ty, tx][:3]
+                    print(pos_3d)
+
+                    d = np.linalg.norm(pos_3d - target_cam)
+                    if d < min_dist:
+                        min_dist= d
+                        target_cube = pos_3d
+
+            
+                if target_cube is not None:
+                    t_robot_cam = target_cube
+                    target_rob = (t_robot_cam @ np.append(target_cam, 1.0))[:3]
+
+            
+
+        print(target_cam, tip)
         # Draw Static View
-        p_start = self.project_3d_to_2d(avg_o_cam)
+        p_start = self.project_3d_to_2d(tip)
         p_end = self.project_3d_to_2d(target_cam)
+
+        print(p_start, p_end,)
         if p_start and p_end:
             color = (0, 255, 0) if mode == "pick" else (255, 200, 0)
-            cv2.line(last_frame, p_start, p_end, color, 4)
+            cv2.line(last_frame, p_end, p_start, color, 4)
             cv2.circle(last_frame, p_end, 10, (0, 0, 255), -1)
         
         cv2.putText(last_frame, "CONFIRM: 'K' | RESET: 'R'", (50, 120), 1, 2, (255,255,255), 2)
@@ -146,24 +174,37 @@ class PointBotPerception:
 
 def main():
     zed = ZedCamera()
+    camera_intrinsic = zed.camera_intrinsic
     perception = PointBotPerception(zed)
     
     try:
-        # t_cam_robot = get_transform_camera_robot(zed.image, zed.camera_intrinsic)
-        # if t_cam_robot is None: return
+        t_cam_robot = get_transform_camera_robot(zed.image, zed.camera_intrinsic)
+        if t_cam_robot is None: return
 
-        t_cam_robot = np.array([[1,0,0,0], [0,1,0,0], [0,0,1,0], [0,0,0,1]])
+        # t_cam_robot = np.array([[1,0,0,0], [0,1,0,0], [0,0,1,0], [0,0,0,1]])
 
         # PICK PHASE
+        cv_image = zed.image
+        # target_place_rob, target_place_cam= perception.run_cycle("pick", t_cam_robot)
         target_pick_rob, target_pick_cam  = perception.run_cycle("pick", t_cam_robot)
         if target_pick_rob is not None:
+
             #grasp_cube(arm, target_pick, is_pick=True)
 
-            # PLACE PHASE
-            target_place_rob, target_place_cam= perception.run_cycle("place", t_cam_robot)
-            if target_place_rob is not None:
-                pass
-                #place_cube(arm, target_place, is_pick=False)
+            draw_pose_axes(cv_image, camera_intrinsic, target_pick_cam,  size=CUBE_TAG_SIZE)
+            cv2.namedWindow('Verifying Cube Pose', cv2.WINDOW_NORMAL)
+            cv2.resizeWindow('Verifying Cube Pose', 1280, 720)
+            cv2.imshow('Verifying Cube Pose', cv_image)
+            key = cv2.waitKey(0)
+
+            if key == ord('k'):
+                cv2.destroyAllWindows()
+
+        #     # PLACE PHASE
+        #     target_place_rob, target_place_cam= perception.run_cycle("place", t_cam_robot)
+        #     if target_place_rob is not None:
+        #         pass
+        #         #place_cube(arm, target_place, is_pick=False)
     finally:
 
         zed.close()
