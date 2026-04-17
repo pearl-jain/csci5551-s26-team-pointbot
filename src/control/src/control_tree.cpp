@@ -69,7 +69,7 @@ public:
 
         // Load behavior tree from Groot2
         std::string package_share_directory = ament_index_cpp::get_package_share_directory("control");
-        std::string behavior_tree_path = package_share_directory + "/point_bot_tree.btproj";
+        std::string behavior_tree_path = package_share_directory + "/point_bot_tree.xml";
         tree = factory.createTreeFromFile(behavior_tree_path);
     }
 

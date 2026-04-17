@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<root BTCPP_format="4">
-  <BehaviorTree ID="Untitled">
+<root BTCPP_format="4"
+      main_tree_to_execute="MainTree">
+  <BehaviorTree ID="ActionTree">
+    <Sequence>
+      <LogString message="Determine target"/>
+      <MoveObject object_pose="{object_pose}"
+                  goal_pose="{goal_pose}"/>
+    </Sequence>
+  </BehaviorTree>
+
+  <BehaviorTree ID="MainTree">
     <Sequence>
       <Inverter>
         <KeepRunningUntilFailure>
@@ -12,8 +21,9 @@
             <RetryUntilSuccessful num_attempts="-1">
               <DetectGoal goal_pose="{goal_pose}"/>
             </RetryUntilSuccessful>
-            <MoveObject object_pose="{object_pose}"
-                        goal_pose="{goal_pose}"/>
+            <SubTree ID="ActionTree"
+                     goal_pose="{goal_pose}"
+                     object_pose="{object_pose}"/>
           </Sequence>
         </KeepRunningUntilFailure>
       </Inverter>
