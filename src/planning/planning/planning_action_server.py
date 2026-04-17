@@ -9,9 +9,12 @@ from xarm_msgs.srv import Call
 import copy
 import time
 
-# For the planning code to run, in addition to interfacing with the lite6 control drivers,
-# xarm_moveit_config lite6_moveit_realmove.launch.py must be launched (currently launched with the Rvis package/launch file)
 # Referenced: https://moveit.picknik.ai/main/doc/examples/motion_planning_python_api/motion_planning_python_api_tutorial.html
+# Other notes for setup:
+# xarm_moveit_config lite6_moveit_realmove.launch.py must be launched (currently launched with the Rviz package/launch file)
+# xarm_ros2/xarm_moveit_config/config/lite6 must contain sensors_3d.yaml for collision detection, subscribes to pointcloud topic
+# in xarm_ros2/xarm_api/config/xarm_params.yaml "open_lite6_gripper: true" "close_lite6_gripper: true" "stop_lite6_gripper: true" to use gripper clients
+
 
 class PlanningActionServer(Node):
     def __init__(self):
@@ -33,6 +36,8 @@ class PlanningActionServer(Node):
             Call, '/ufactory/open_lite6_gripper')
         self.close_gripper_client = self.create_client(
             Call, '/ufactory/close_lite6_gripper')
+        self.close_gripper_client = self.create_client(
+            Call, '/ufactory/stop_lite6_gripper')
 
     def execute_callback(self, goal_handle):
         object_pose = goal_handle.request.object
@@ -51,7 +56,8 @@ class PlanningActionServer(Node):
         result.success = self.place_object(target_goal)
         if not result.success:
             return result
-
+        
+        self.stop_gripper()
         return result
     
     def grasp_object(self, object_pose):
@@ -107,6 +113,11 @@ class PlanningActionServer(Node):
 
     def close_gripper(self):
         future = self.close_gripper_client.call_async(Call.Request())
+        rclpy.spin_until_future_complete(self, future)
+        time.sleep(1.0)
+
+    def stop_gripper(self):
+        future = self.stop_gripper_client.call_async(Call.Request())
         rclpy.spin_until_future_complete(self, future)
         time.sleep(1.0)
 
