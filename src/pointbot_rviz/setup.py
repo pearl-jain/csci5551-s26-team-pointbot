@@ -16,7 +16,7 @@ setup(
     install_requires=['setuptools'],
     zip_safe=True,
     maintainer='',
-    maintainer_email='',
+    maintainer_email='stang451@umn.edu',
     description='',
     license='',
     extras_require={
