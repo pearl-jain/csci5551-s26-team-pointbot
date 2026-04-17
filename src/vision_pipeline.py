@@ -84,14 +84,16 @@ class PointBotPerception:
                             tags = self.detector.detect(gray, estimate_tag_pose=True, camera_params=params, tag_size=CUBE_TAG_SIZE)
                             tag_positions = []
                             for tag in tags:
-                                if tag.tag_id != 4:
-                                    continue
+                                # if tag.tag_id != 4:
+                                #     continue
                                 
-                                cube_center = tag.center
+                                cube_center = tag.pose_t.flatten()
                                 tag_positions.append(cube_center)
 
+                            direction = (p_tip - p_wrist) / np.linalg.norm(p_tip - p_wrist)
+                            self.frame_buffer.append((p_tip, direction, tag_positions))
                         direction = (p_tip - p_wrist) / np.linalg.norm(p_tip - p_wrist)
-                        self.frame_buffer.append((p_tip, direction, tag_positions))
+                        self.frame_buffer.append((p_tip, direction))
 
                 if self.frame_counter >= TARGET_FRAMES:
                     if len(self.frame_buffer) > 0:
@@ -115,6 +117,8 @@ class PointBotPerception:
         # t = -o_z / d_z
         t = -avg_o_rob[2] / avg_d_rob[2]
         target_rob = avg_o_rob + t * avg_d_rob
+
+        print(avg_d_rob)
         
         # Target in Cam Frame (for drawing)
         target_cam = (t_cam_robot @ np.append(target_rob, 1.0))[:3]
@@ -122,32 +126,29 @@ class PointBotPerception:
         # Snap to Tags (Pick Mode Only)
         if mode == "pick":
             # all_ids = set().union(*[f[2].keys() for f in])
-            print(self.frame_buffer[0][2])
+            print(target_cam)
             # all_ids = self.b
             positions = self.frame_buffer[0][2]
             if positions:
                 min_dist = float('inf')
                 target_cube = None
                 w,h = self.w, self.h
+                print(len(positions))
                 for pos in positions:
 
-                    tx, ty = np.clip(int(pos[0]*w), 0, w-1), np.clip(int(pos[1]*h), 0, h-1)
-                    pos_3d = self.zed.point_cloud[ty, tx][:3]
-                    print(pos_3d)
-
-                    d = np.linalg.norm(pos_3d - target_cam)
+                    d = np.linalg.norm(pos - target_cam)
                     if d < min_dist:
                         min_dist= d
-                        target_cube = pos_3d
-
-            
+                        target_cube = pos
                 if target_cube is not None:
-                    t_robot_cam = target_cube
+                    target_cam = target_cube
                     target_rob = (t_robot_cam @ np.append(target_cam, 1.0))[:3]
 
-            
+            for pos in self.frame_buffer[0][2]:
+                end = self.project_3d_to_2d(pos)
+                cv2.circle(last_frame, end, 20, (0, 255, 0), -1)
 
-        print(target_cam, tip)
+            
         # Draw Static View
         p_start = self.project_3d_to_2d(tip)
         p_end = self.project_3d_to_2d(target_cam)
@@ -157,6 +158,7 @@ class PointBotPerception:
             color = (0, 255, 0) if mode == "pick" else (255, 200, 0)
             cv2.line(last_frame, p_end, p_start, color, 4)
             cv2.circle(last_frame, p_end, 10, (0, 0, 255), -1)
+        
         
         cv2.putText(last_frame, "CONFIRM: 'K' | RESET: 'R'", (50, 120), 1, 2, (255,255,255), 2)
         while True:
@@ -186,7 +188,7 @@ def main():
         # PICK PHASE
         cv_image = zed.image
         # target_place_rob, target_place_cam= perception.run_cycle("pick", t_cam_robot)
-        target_pick_rob, target_pick_cam  = perception.run_cycle("pick", t_cam_robot)
+        target_pick_rob, target_pick_cam  = perception.run_cycle("place", t_cam_robot)
         if target_pick_rob is not None:
 
             #grasp_cube(arm, target_pick, is_pick=True)
