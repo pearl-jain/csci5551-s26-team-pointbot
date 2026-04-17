@@ -1,141 +1,172 @@
-import pyzed.sl as sl
 import cv2
-import mediapipe as mp
 import numpy as np
-import open3d as o3d
-from ultralytics import YOLO
 import time
+import math
+import mediapipe as mp
+from pupil_apriltags import Detector
+from xarm.wrapper import XArmAPI
+from utils.zed_camera import ZedCamera
+from checkpoint0 import get_transform_camera_robot, ROBOT_IP
+
+# --- Configuration ---
+CUBE_TAG_SIZE = 0.02045
+GRIPPER_LENGTH = 0.067 * 1000  # mm
+SPEED = 500
+ACCELERATION = 1000
+
+# Perception Tuning
+TARGET_FRAMES = 50         # Total frames to wait
+COLLECTION_WINDOW = 10     # Frames to actually average
+SNAP_DISTANCE = 0.12       # 12cm snapping window for AprilTags
 
 class PointBotPerception:
-    def __init__(self):
-        self.zed = sl.Camera()
-        init_params = sl.InitParameters()
-        init_params.camera_resolution = sl.RESOLUTION.HD720
-        init_params.coordinate_units = sl.UNIT.METER 
-        init_params.depth_mode = sl.DEPTH_MODE.ULTRA
-        if self.zed.open(init_params) != sl.ERROR_CODE.SUCCESS:
-            exit("Failed to open ZED")
-
-        self.model = YOLO('yolov8n.pt') 
-
+    def __init__(self, zed):
+        self.zed = zed
+        self.intrinsic = zed.camera_intrinsic
+        self.detector = Detector(families='tag36h11')
         self.mp_hands = mp.solutions.hands
-        self.hands = self.mp_hands.Hands(min_detection_confidence=0.6)
-
-        self.active_ray = None 
-        self.last_pos_3d = None
-        self.start_time = None
-        self.STABILITY_THRESHOLD = 0.05 
-        self.HOLD_DURATION = 0.8
-
-    def get_zed_data(self):
-        image, depth, point_cloud = sl.Mat(), sl.Mat(), sl.Mat()
-        runtime_params = sl.RuntimeParameters()
-        if self.zed.grab(runtime_params) == sl.ERROR_CODE.SUCCESS:
-            self.zed.retrieve_image(image, sl.VIEW.LEFT)
-            self.zed.retrieve_measure(point_cloud, sl.MEASURE.XYZRGBA)
-            return image.get_data(), point_cloud.get_data()
-        return None, None
-
-    def process_object_at_ray(self, frame_rgb, xyz_map, ray):
-        """Implementation of the 'Object Detection' block in your diagram"""
-        origin, direction = ray
+        self.hands = self.mp_hands.Hands(min_detection_confidence=0.8, min_tracking_confidence=0.8)
+        self.mp_draw = mp.solutions.drawing_utils
         
-        results = self.model(frame_rgb, verbose=False)[0]
-        
-        best_target = None
-        min_dist_to_ray = float('inf')
+        self.frame_counter = 0
+        self.frame_buffer = []
 
-        for box in results.boxes:
-            x1, y1, x2, y2 = map(int, box.xyxy[0])
-            
-            # Crop 3D Point Cloud to the box
-            roi_xyz = xyz_map[y1:y2, x1:x2, :3].reshape(-1, 3)
-            roi_xyz = roi_xyz[~np.isnan(roi_xyz).any(axis=1)] # Remove NaNs
-            
-            if len(roi_xyz) < 50: continue
+    def project_3d_to_2d(self, p):
+        if p is None or not np.isfinite(p[2]) or p[2] < 0.05: return None
+        x = int((p[0] * self.intrinsic[0,0] / p[2]) + self.intrinsic[0,2])
+        y = int((p[1] * self.intrinsic[1,1] / p[2]) + self.intrinsic[1,2])
+        return (x, y)
 
-            pcd = o3d.geometry.PointCloud()
-            pcd.points = o3d.utility.Vector3dVector(roi_xyz)
+    def run_cycle(self, mode, t_cam_robot):
+        self.frame_counter = 0
+        self.frame_buffer = []
+        cv2.namedWindow("PointBot Perception", cv2.WINDOW_NORMAL)
 
-            plane_model, inliers = pcd.segment_plane(distance_threshold=0.01, ransac_n=3, num_iterations=1000)
-            pcd_cleaned = pcd.select_by_index(inliers, invert=True)
-
-            if len(pcd_cleaned.points) < 20: continue
-
-            center = pcd_cleaned.get_center()
-            dist = np.linalg.norm(np.cross(direction, center - origin))
-            
-            if dist < min_dist_to_ray:
-                min_dist_to_ray = dist
-                best_target = pcd_cleaned
-
-        if best_target:
-            obb = best_target.get_oriented_bounding_box()
-            obb.color = (0, 1, 0) # Green for target
-            
-            pos = obb.center
-            rot = obb.R
-            print(f"Target Acquired at: {pos}")
-            return pos, rot, obb
-        
-        return None, None, None
-
-    def run(self):
         while True:
-            frame_raw, xyz_map = self.get_zed_data()
-            if frame_raw is None: continue
+            color_img = self.zed.image
+            xyz_map = self.zed.point_cloud
+            if color_img is None: continue
 
-            frame = cv2.cvtColor(frame_raw, cv2.COLOR_BGRA2BGR)
-            rgb_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
-            results = self.hands.process(rgb_frame)
+            # Handle BGRA to BGR
+            frame_display = cv2.cvtColor(color_img, cv2.COLOR_BGRA2BGR) if color_img.shape[2] == 4 else color_img.copy()
+            
+            rgb = cv2.cvtColor(frame_display, cv2.COLOR_BGR2RGB)
+            results = self.hands.process(rgb)
 
             if results.multi_hand_landmarks:
-                for hand_landmarks in results.multi_hand_landmarks:
-                    self.mp_draw.draw_landmarks(frame, hand_landmarks, self.mp_hands.HAND_CONNECTIONS)
+                self.frame_counter += 1
+                lm = results.multi_hand_landmarks[0]
+                self.mp_draw.draw_landmarks(frame_display, lm, self.mp_hands.HAND_CONNECTIONS)
                 
-                    h, w, _ = frame.shape
-                    # Clamp coordinates to avoid index errors on edge of screen
-                    tx = max(0, min(w-1, int(hand_landmarks.landmark[8].x * w)))
-                    ty = max(0, min(h-1, int(hand_landmarks.landmark[8].y * h)))
-                    kx = max(0, min(w-1, int(hand_landmarks.landmark[5].x * w)))
-                    ky = max(0, min(h-1, int(hand_landmarks.landmark[5].y * h)))
+                # Progress Bar
+                progress = min(self.frame_counter / TARGET_FRAMES, 1.0)
+                color = (0, 255, 0) if mode == "pick" else (255, 200, 0)
+                cv2.rectangle(frame_display, (50, 50), (350, 80), (50, 50, 50), -1)
+                cv2.rectangle(frame_display, (50, 50), (50 + int(progress * 300), 80), color, -1)
+                cv2.putText(frame_display, f"{mode.upper()}: {self.frame_counter}/50", (60, 73), 1, 1, (255,255,255), 2)
 
-                    tip_3d = xyz_map[ty, tx][:3]
-                    knuckle_3d = xyz_map[ky, kx][:3]
+                # Capture Window (frames 48, 49, 50)
+                if self.frame_counter > (TARGET_FRAMES - COLLECTION_WINDOW):
+                    h, w = frame_display.shape[:2]
+                    tx, ty = np.clip(int(lm.landmark[8].x*w), 0, w-1), np.clip(int(lm.landmark[8].y*h), 0, h-1)
+                    wx, wy = np.clip(int(lm.landmark[0].x*w), 0, w-1), np.clip(int(lm.landmark[0].y*h), 0, h-1)
+                    p_tip, p_wrist = xyz_map[ty, tx][:3], xyz_map[wy, wx][:3]
 
-                    if not np.isnan(tip_3d).any() and not np.isnan(knuckle_3d).any():
-                        if self.last_pos_3d is None:
-                            self.last_pos_3d = tip_3d
-                            self.start_time = time.time()
-                        
-                        dist = np.linalg.norm(tip_3d - self.last_pos_3d)
+                    if np.all(np.isfinite(p_tip)) and np.all(np.isfinite(p_wrist)):
+                        current_tags = {}
+                        if mode == "pick":
+                            gray = cv2.cvtColor(frame_display, cv2.COLOR_BGR2GRAY)
+                            params = [self.intrinsic[0,0], self.intrinsic[1,1], self.intrinsic[0,2], self.intrinsic[1,2]]
+                            tags = self.detector.detect(gray, estimate_tag_pose=True, camera_params=params, tag_size=CUBE_TAG_SIZE)
+                            for t in tags: current_tags[t.tag_id] = t.pose_t.flatten()
 
-                        if dist < self.STABILITY_THRESHOLD:
-                            elapsed = time.time() - self.start_time
-                            cv2.putText(frame, f"Steady: {round(elapsed, 1)}s", (50, 80), 
-                                        cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2)
-                                                        
-                            if elapsed >= self.HOLD_DURATION:
-                                # Update the active ray (This replaces the old one)
-                                origin, direction = self.calculate_ray(tip_3d, knuckle_3d)
-                                if not np.isnan(origin).any() and not np.isnan(direction).any():
-                                    self.active_ray = (origin, direction)
-                                print(f"NEW RAY: Origin {origin}, Dir {direction}")
-                                self.start_time = time.time() # Reset to allow immediate re-pointing
-                        else:
-                            self.start_time = time.time()
-                            self.last_pos_3d = tip_3d
+                        direction = (p_tip - p_wrist) / np.linalg.norm(p_tip - p_wrist)
+                        self.frame_buffer.append((p_tip, direction, current_tags))
 
+                if self.frame_counter >= TARGET_FRAMES:
+                    if len(self.frame_buffer) > 0:
+                        return self.finalize_and_freeze(frame_display, mode, t_cam_robot)
+                    self.frame_counter = 0 # Reset if no valid 3D points were found
 
-                target_pos, target_rot, obb = self.process_object_at_ray(rgb_frame, xyz_map, self.active_ray)
-                if target_pos is not None:
-                    cv2.putText(frame, "OBJECT LOCKED", (50, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2)
+            cv2.imshow("PointBot Perception", frame_display)
+            if cv2.waitKey(1) & 0xFF == ord('q'): return None
 
-            cv2.imshow("PointBot Perception", frame)
-            if cv2.waitKey(1) & 0xFF == ord('q'): break
+    def finalize_and_freeze(self, last_frame, mode, t_cam_robot):
+        # Average Ray (Camera Frame)
+        avg_o_cam = np.mean([f[0] for f in self.frame_buffer], axis=0)
+        avg_d_cam = np.mean([f[1] for f in self.frame_buffer], axis=0)
+        avg_d_cam /= np.linalg.norm(avg_d_cam)
 
-        self.zed.close()
+        # Transform Ray to Robot Frame to find Z=0 intersection
+        t_robot_cam = np.linalg.inv(t_cam_robot)
+        avg_o_rob = (t_robot_cam @ np.append(avg_o_cam, 1.0))[:3]
+        avg_d_rob = (t_robot_cam[:3, :3] @ avg_d_cam)
+        
+        # t = -o_z / d_z
+        t = -avg_o_rob[2] / avg_d_rob[2]
+        target_rob = avg_o_rob + t * avg_d_rob
+        
+        # Target in Cam Frame (for drawing)
+        target_cam = (t_cam_robot @ np.append(target_rob, 1.0))[:3]
+
+        # Snap to Tags (Pick Mode Only)
+        if mode == "pick":
+            all_ids = set().union(*[f[2].keys() for f in self.frame_buffer])
+            if all_ids:
+                min_dist = float('inf')
+                for tid in all_ids:
+                    pts = [f[2][tid] for f in self.frame_buffer if tid in f[2]]
+                    avg_tag_cam = np.mean(pts, axis=0)
+                    d = np.linalg.norm(avg_tag_cam - target_cam)
+                    if d < min_dist and d < SNAP_DISTANCE:
+                        min_dist, target_cam = d, avg_tag_cam
+                target_rob = (t_robot_cam @ np.append(target_cam, 1.0))[:3]
+   
+        # Draw Static View
+        p_start = self.project_3d_to_2d(avg_o_cam)
+        p_end = self.project_3d_to_2d(target_cam)
+        if p_start and p_end:
+            color = (0, 255, 0) if mode == "pick" else (255, 200, 0)
+            cv2.line(last_frame, p_start, p_end, color, 4)
+            cv2.circle(last_frame, p_end, 10, (0, 0, 255), -1)
+        
+        cv2.putText(last_frame, "CONFIRM: 'K' | RESET: 'R'", (50, 120), 1, 2, (255,255,255), 2)
+        while True:
+            cv2.imshow("PointBot Perception", last_frame)
+            key = cv2.waitKey(0) & 0xFF
+            if key == ord('k'):
+                cv2.destroyWindow("PointBot Perception")
+                return target_rob, t_robot_cam
+            elif key == ord('r'):
+                return self.run_cycle(mode, t_cam_robot)
+            
+    def zed_capture(self):
+        instance = self.grab()
+        return instance.image(), instance.point_cloud
+
+def main():
+    zed = ZedCamera()
+    perception = PointBotPerception(zed)
+    
+    try:
+        # t_cam_robot = get_transform_camera_robot(zed.image, zed.camera_intrinsic)
+        # if t_cam_robot is None: return
+
+        t_cam_robot = np.array([[1,0,0,0], [0,1,0,0], [0,0,1,0], [0,0,0,1]])
+
+        # PICK PHASE
+        target_pick_rob, target_pick_cam  = perception.run_cycle("pick", t_cam_robot)
+        if target_pick_rob is not None:
+            #grasp_cube(arm, target_pick, is_pick=True)
+
+            # PLACE PHASE
+            target_place_rob, target_place_cam= perception.run_cycle("place", t_cam_robot)
+            if target_place_rob is not None:
+                pass
+                #place_cube(arm, target_place, is_pick=False)
+    finally:
+
+        zed.close()
 
 if __name__ == "__main__":
-    bot = PointBotPerception()
-    bot.run()
+    main()
