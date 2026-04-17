@@ -6,6 +6,9 @@ from point_bot_interfaces.action import Perception
 from sensor_msgs.msg import Image
 from geometry_msgs.msg import PoseStamped
 
+from perception.detect_object_pose import ObjectPoseDetector
+from perception.zed_camera import ZedCamera
+
 import time
 import random
 
@@ -16,7 +19,11 @@ class PerceptionActionServer(Node):
             self,
             Perception,
             'perception',
-            self.execute_callback)
+            self.execute_callback)        
+
+        zed = ZedCamera()
+
+        self.pose_detector = ObjectPoseDetector(zed.camera_intrinsic)
 
     def execute_callback(self, goal_handle):
         task = goal_handle.request.task

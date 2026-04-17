@@ -11,6 +11,10 @@ setup(
             ['resource/' + package_name]),
         ('share/' + package_name, ['package.xml']),
     ],
+    py_modules=[
+        'perception.detect_object_pose',
+        'perception.zed_camera'
+    ],
     install_requires=['setuptools'],
     zip_safe=True,
     maintainer='adam',
