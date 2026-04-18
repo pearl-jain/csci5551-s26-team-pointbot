@@ -12,15 +12,13 @@
 class ControlTreeNode : public rclcpp::Node {
 public:
     ControlTreeNode(const std::string & node_name) 
-    : Node(node_name) {
-        // Create Timer
-        timer = this->create_wall_timer(
-            std::chrono::milliseconds(100),
-            std::bind(&ControlTreeNode::behavior_tree_callback, this)
-        );
-    }
+    : Node(node_name) {}
 
     void setup_tree() {
+        // Delay to let ZED/Perception wake up
+        RCLCPP_INFO(this->get_logger(), "Waiting 15 seconds for other nodes to stabilize...");
+        rclcpp::sleep_for(std::chrono::seconds(15));
+
         // Setup Groot2 Behavior Tree
         BT::BehaviorTreeFactory factory;
 
@@ -71,6 +69,13 @@ public:
         std::string package_share_directory = ament_index_cpp::get_package_share_directory("control");
         std::string behavior_tree_path = package_share_directory + "/point_bot_tree.xml";
         tree = factory.createTreeFromFile(behavior_tree_path);
+
+        // Loop back timer
+        timer = this->create_wall_timer(
+            std::chrono::milliseconds(100),
+            std::bind(&ControlTreeNode::behavior_tree_callback, this)
+        );
+        RCLCPP_INFO(this->get_logger(), "Behavior Tree successfully initialized and timer started.");
     }
 
 private:
