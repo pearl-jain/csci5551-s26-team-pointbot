@@ -1,6 +1,15 @@
-[submodule "src/zed_ros2_wrapper"]
-	path = src/zed_ros2_wrapper
-	url = https://github.com/stereolabs/zed-ros2-wrapper.git
 [submodule "src/behavior_tree"]
 	path = src/behavior_tree
 	url = https://github.com/BehaviorTree/BehaviorTree.ROS2.git
+[submodule "src/xarm_ros2"]
+	path = src/xarm_ros2
+	url = https://github.com/xArm-Developer/xarm_ros2.git
+[submodule "src/zed-ros2-description"]
+	path = src/zed-ros2-description
+	url = https://github.com/stereolabs/zed-ros2-description.git
+[submodule "src/zed-ros2-interfaces"]
+	path = src/zed-ros2-interfaces
+	url = https://github.com/stereolabs/zed-ros2-interfaces.git
+[submodule "src/zed-ros2-wrapper"]
+	path = src/zed-ros2-wrapper
+	url = https://github.com/stereolabs/zed-ros2-wrapper.git
