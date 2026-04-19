@@ -2,9 +2,7 @@ import numpy, time, threading
 import pyzed.sl as sl
 
 class ZedCamera:
-
     def __init__(self, resolution=sl.RESOLUTION.HD2K, fps=15, exposure=20):
-
         # Initialize ZED Camera
         self._zed = sl.Camera()
         init_params = sl.InitParameters()

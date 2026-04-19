@@ -13,7 +13,8 @@ setup(
     ],
     py_modules=[
         'perception.detect_object_pose',
-        'perception.zed_camera'
+        'perception.zed_camera',
+        'perception.zed_transform'
     ],
     install_requires=['setuptools'],
     zip_safe=True,
