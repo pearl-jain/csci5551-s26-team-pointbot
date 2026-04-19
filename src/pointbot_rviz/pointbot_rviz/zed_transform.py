@@ -1,6 +1,6 @@
 import cv2, numpy
 from pupil_apriltags import Detector
-from zed_camera import ZedCamera
+from pointbot_rviz.zed_camera import ZedCamera
 
 TAG_SIZE = 0.08
 
