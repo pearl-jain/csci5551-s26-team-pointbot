@@ -52,3 +52,8 @@ Nathan Stangler: stang451@umn.edu: Control + Manipulation
 
 - Looking at running ROS2 nodes  
 `ros2 node list`
+
+#
+**Building pointbot_rviz**
+- Ignore xarm_gazebo
+`colcon build --packages-up-to pointbot_rviz --packages-skip xarm_gazebo`
