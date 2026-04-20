@@ -8,7 +8,7 @@ from perception.zed_transform import get_transform
 import math
 
 def generate_launch_description():
-	robot_ip = LaunchConfiguration('robot_ip', default='')
+	robot_ip = LaunchConfiguration('robot_ip', default='192.168.1.155')
 	realmove = IncludeLaunchDescription(
 		PythonLaunchDescriptionSource(PathJoinSubstitution([FindPackageShare('xarm_moveit_config'), 'launch', '_robot_moveit_realmove.launch.py'])),
 		launch_arguments={
@@ -19,6 +19,14 @@ def generate_launch_description():
 			'no_gui_ctrl': 'false',
 			'rviz_config': PathJoinSubstitution([FindPackageShare('pointbot_rviz'), 'rviz', 'pointbot.rviz']),
 			'add_gripper': 'true',
+		}.items(),
+	)
+
+
+	zed_cam = IncludeLaunchDescription(
+		PythonLaunchDescriptionSource(PathJoinSubstitution([FindPackageShare('zed_wrapper'), 'launch', 'zed_camera.launch.py'])),
+		launch_arguments={
+			'camera_model': 'zed2i',
 		}.items(),
 	)
 
@@ -38,20 +46,28 @@ def generate_launch_description():
 	else:
 		if (transform[2][0] == -1):
 			roll = math.pi / 2
-			yaw = math.atant2(transform[0][1], transform[0][2])
+			yaw = math.atan2(transform[0][1], transform[0][2])
 		else:
 			roll = -math.pi / 2
-			yaw = math.atant2(-transform[0][1], -transform[0][2])
+			yaw = math.atan2(-transform[0][1], -transform[0][2])
 
 	static_tf = Node(
         package='tf2_ros',
         executable='static_transform_publisher',
         name='static_transform_publisher',
         output='screen',
-        arguments=["--x", x, "--y", y, "--z", z, "--roll", roll, "--pitch", pitch, "--yaw", yaw, "--frame-id", "base_link", "--child-frame-id", "zed_camera_link"],
+        arguments=[
+			"--x", str(x), 
+			"--y", str(y), 
+			"--z", str(z), 
+			"--roll", str(roll), 
+			"--pitch", str(pitch), 
+			"--yaw", str(yaw), 
+			"--frame-id", "link_base", "--child-frame-id", "zed_camera_link"],
     )
 
 	return LaunchDescription([
 		realmove,
+		zed_cam,
 		static_tf
 	])
