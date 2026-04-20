@@ -5,6 +5,10 @@ from launch.substitutions import LaunchConfiguration, PathJoinSubstitution
 from launch_ros.substitutions import FindPackageShare
 from launch_ros.actions import Node
 from perception.zed_transform import get_transform
+
+import numpy as np
+from scipy.spatial.transform import Rotation as R
+
 import math
 
 def generate_launch_description():
@@ -31,43 +35,48 @@ def generate_launch_description():
 	)
 
 	transform = get_transform()
+
 	x = transform[0][3]
 	y = transform[1][3]
 	z = transform[2][3]
-	roll = 0
-	pitch = 0
-	yaw = 0
+	# roll = 0
+	# pitch = 0
+	# yaw = 0
 
-	if (transform[2][0] != -1 and transform[2][0] != 1):   
-		roll = -math.asin(transform[2][0])
-		cos_roll = math.cos(roll)
-		pitch = math.atan2(transform[2][1] / cos_roll, transform[2][2] / cos_roll)
-		yaw = math.atan2(transform[1][0] / cos_roll, transform[0][0] / cos_roll)
-	else:
-		if (transform[2][0] == -1):
-			roll = math.pi / 2
-			yaw = math.atan2(transform[0][1], transform[0][2])
-		else:
-			roll = -math.pi / 2
-			yaw = math.atan2(-transform[0][1], -transform[0][2])
+	# if (transform[2][0] != -1 and transform[2][0] != 1):   
+	# 	roll = -math.asin(transform[2][0])
+	# 	cos_roll = math.cos(roll)
+	# 	pitch = math.atan2(transform[2][1] / cos_roll, transform[2][2] / cos_roll)
+	# 	yaw = math.atan2(transform[1][0] / cos_roll, transform[0][0] / cos_roll)
+	# else:
+	# 	if (transform[2][0] == -1):
+	# 		roll = math.pi / 2
+	# 		yaw = math.atan2(transform[0][1], transform[0][2])
+	# 	else:
+	# 		roll = -math.pi / 2
+	# 		yaw = math.atan2(-transform[0][1], -transform[0][2])
 
-	static_tf = Node(
-        package='tf2_ros',
-        executable='static_transform_publisher',
-        name='static_transform_publisher',
-        output='screen',
-        arguments=[
-			"--x", str(x), 
-			"--y", str(y), 
-			"--z", str(z), 
-			"--roll", str(roll), 
-			"--pitch", str(pitch), 
-			"--yaw", str(yaw), 
-			"--frame-id", "link_base", "--child-frame-id", "zed_camera_link"],
-    )
+	r = R.from_matrix(transform[:3, :3])
+
+	quat = r.as_quat()
 
 	return LaunchDescription([
 		realmove,
 		zed_cam,
-		static_tf
+		# static_tf,
+		Node(
+			package='tf2_ros',
+			executable='static_transform_publisher',
+			arguments=['0', '0', '0', '0', '0', '0', 'world', 'link_base']
+		),
+		Node(
+			package='tf2_ros',
+			executable='static_transform_publisher',
+			arguments=[str(x), str(y), str(z), str(quat[0]), str(quat[1]), str(quat[2]), str(quat[3]), 'world', 'map']
+		),
+		# Node(
+		# 	package='tf2_ros',
+		# 	executable='static_transform_publisher',
+		# 	arguments=[str(x), str(y), str(z), str(roll), str(pitch), str(yaw), 'world', 'zed_camera_link']
+		# )
 	])
