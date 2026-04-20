@@ -31,6 +31,9 @@ def generate_launch_description():
 		PythonLaunchDescriptionSource(PathJoinSubstitution([FindPackageShare('zed_wrapper'), 'launch', 'zed_camera.launch.py'])),
 		launch_arguments={
 			'camera_model': 'zed2i',
+			'publish_tf': 'false',           # Stop ZED from publishing odom -> base
+			'publish_map_tf': 'false',       # Stop ZED from publishing map -> odom
+			'base_frame': 'zed_camera_center' # Ensure the ZED knows its root
 		}.items(),
 	)
 
@@ -72,7 +75,7 @@ def generate_launch_description():
 		Node(
 			package='tf2_ros',
 			executable='static_transform_publisher',
-			arguments=[str(x), str(y), str(z), str(quat[0]), str(quat[1]), str(quat[2]), str(quat[3]), 'world', 'map']
+			arguments=[str(x), str(y), str(z), str(quat[0]), str(quat[1]), str(quat[2]), str(quat[3]), 'world', 'zed_camera_link']
 		),
 		# Node(
 		# 	package='tf2_ros',
