@@ -29,8 +29,8 @@ class PlanningActionServer(Node):
         result = MoveObject.Result()
         result.success = True
 
-        if random.random() > 0.5:
-            result.success = False
+        # if random.random() > 0.5:
+        #     result.success = False
 
         return result
 

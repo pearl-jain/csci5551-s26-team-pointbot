@@ -2,6 +2,7 @@
 #include <ament_index_cpp/get_package_share_directory.hpp>
 #include "rclcpp/rclcpp.hpp"
 
+#include "behaviortree_cpp/loggers/groot2_publisher.h"
 #include "behaviortree_cpp/bt_factory.h"
 #include "behaviortree_ros2/plugins.hpp"
 #include "control/log_node.hpp"
@@ -71,6 +72,8 @@ public:
         std::string package_share_directory = ament_index_cpp::get_package_share_directory("control");
         std::string behavior_tree_path = package_share_directory + "/point_bot_tree.btproj";
         tree = factory.createTreeFromFile(behavior_tree_path);
+
+        publisher_ = std::make_unique<BT::Groot2Publisher>(tree, 1666);
     }
 
 private:
@@ -91,6 +94,7 @@ private:
 
     BT::Tree tree;
     rclcpp::TimerBase::SharedPtr timer;
+    std::unique_ptr<BT::Groot2Publisher> publisher_;
 };
 
 int main(int argc, char * argv[]) {
