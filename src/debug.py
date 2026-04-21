@@ -5,12 +5,18 @@ import open3d as o3d
 from utils.zed_camera import ZedCamera
 
 def zed_to_pcd(pcd, img):
-    points = pcd.reshape(-1, 3)
-    colors = img.reshape(-1, 3) / 255.0
 
+    rgb = img[:, :, :3][..., ::-1].reshape(-1, 3) / 255.0
+    xyz = pcd[:, :, :3].reshape(-1, 3)
+
+    mask = ~np.isnan(xyz).any(axis=1)
+    xyz_clean = xyz[mask]
+    rgb_clean = rgb[mask]
+    
     pcd = o3d.geometry.PointCloud()
-    pcd.points = o3d.utility.Vector3dVector(points)
-    pcd.colors = o3d.utility.Vector3dVector(colors)
+    pcd.points = o3d.utility.Vector3dVector(xyz_clean)
+    pcd.colors = o3d.utility.Vector3dVector(rgb_clean)
+
     return pcd
 
 def mediapipe_landmarks_to_o3d(landmarks, xyz_map, width, height, transform=None, color=[1, 0, 0]):
@@ -23,7 +29,7 @@ def mediapipe_landmarks_to_o3d(landmarks, xyz_map, width, height, transform=None
         u = np.clip(u, 0, width - 1)
         v = np.clip(v, 0, height - 1)
 
-        X, Y, Z = xyz_map[v, u]
+        X, Y, Z, _ = xyz_map[v, u]
         if not np.isfinite(Z) or Z <= 0:
             continue
         p = np.array([X, Y, Z, 1.0])
