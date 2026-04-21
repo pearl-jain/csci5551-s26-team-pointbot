@@ -1,6 +1,6 @@
 import cv2, numpy
 from pupil_apriltags import Detector
-from perception.zed_camera import ZedCamera
+from perception.zed_camera import get_zed_camera
 
 TAG_SIZE = 0.08
 
@@ -134,7 +134,7 @@ def get_transform_camera_robot(observation, camera_intrinsic):
 
 def get_transform():
     # Initialize ZED Camera
-    zed = ZedCamera()
+    zed = get_zed_camera()
     camera_intrinsic = zed.camera_intrinsic
     transform = None
 

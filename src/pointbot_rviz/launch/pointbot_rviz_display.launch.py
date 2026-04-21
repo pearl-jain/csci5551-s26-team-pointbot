@@ -26,7 +26,6 @@ def generate_launch_description():
 		}.items(),
 	)
 
-
 	zed_cam = IncludeLaunchDescription(
 		PythonLaunchDescriptionSource(PathJoinSubstitution([FindPackageShare('zed_wrapper'), 'launch', 'zed_camera.launch.py'])),
 		launch_arguments={

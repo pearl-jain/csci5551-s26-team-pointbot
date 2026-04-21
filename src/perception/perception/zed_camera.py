@@ -82,3 +82,12 @@ class ZedCamera:
     @property
     def camera_intrinsic(self):
         return self._camera_intrinsic
+
+
+zed = None
+
+def get_zed_camera(resolution=sl.RESOLUTION.HD2K, fps=15, exposure=20):
+    if zed is None:
+        zed = ZedCamera(resolution, fps, exposure)
+
+    return zed

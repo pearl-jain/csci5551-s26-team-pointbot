@@ -7,7 +7,7 @@ from sensor_msgs.msg import Image
 from geometry_msgs.msg import PoseStamped
 
 from perception.detect_object_pose import ObjectPoseDetector
-from perception.zed_camera import ZedCamera
+from perception.zed_camera import get_zed_camera
 
 import time
 import random
@@ -21,7 +21,7 @@ class PerceptionActionServer(Node):
             'perception',
             self.execute_callback)        
 
-        zed = ZedCamera()
+        zed = get_zed_camera()
 
         self.pose_detector = ObjectPoseDetector(zed.camera_intrinsic)
 
