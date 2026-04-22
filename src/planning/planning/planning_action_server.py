@@ -1,20 +1,20 @@
 import rclpy
 from rclpy.action import ActionServer
 from rclpy.node import Node
-from moveit.planning import MoveItPy
 
 from point_bot_interfaces.action import MoveObject
 from xarm_msgs.srv import Call
+from xarm.wrapper import XArmAPI # Might need to 'pip install xarm-python-sdk'
 
-import copy
 import time
+import numpy
+import tf_transformations as tf
 
-# Referenced: https://moveit.picknik.ai/main/doc/examples/motion_planning_python_api/motion_planning_python_api_tutorial.html
-# Other notes for setup:
-# xarm_moveit_config lite6_moveit_realmove.launch.py must be launched (currently launched with the Rviz package/launch file)
-# xarm_ros2/xarm_moveit_config/config/lite6 must contain sensors_3d.yaml for collision detection, subscribes to pointcloud topic
-# in xarm_ros2/xarm_api/config/xarm_params.yaml "open_lite6_gripper: true" "close_lite6_gripper: true" "stop_lite6_gripper: true" to use gripper clients
-
+GRIPPER_LENGTH = 0.067 * 1000
+SPEED = 500 # Values 0-1000
+ACCELERATION = 1000 # Values 0-50000
+ROBOT_IP = '192.168.1.xxx' # Hard coded ip, change this based on arm
+robot_ip = ROBOT_IP
 
 class PlanningActionServer(Node):
     def __init__(self):
@@ -25,19 +25,14 @@ class PlanningActionServer(Node):
             'move_object',
             self.execute_callback)
         
-        # Creates moveitpy instance/node
-        self.logger = rclpy.logging.get_logger("lite6 planning")
-        self.lite6 = MoveItPy(node_name="path_planner")
-        self.arm = self.lite6.get_planning_component("lite6")
-        self.logger.info("MoveItPy instance created")
-
-        # Create gripper client
-        self.open_gripper_client = self.create_client(
-            Call, '/ufactory/open_lite6_gripper')
-        self.close_gripper_client = self.create_client(
-            Call, '/ufactory/close_lite6_gripper')
-        self.close_gripper_client = self.create_client(
-            Call, '/ufactory/stop_lite6_gripper')
+        self.arm = XArmAPI(robot_ip)
+        self.arm.connect()
+        self.arm.motion_enable(enable=True)
+        self.arm.set_tcp_offset([0, 0, GRIPPER_LENGTH, 0, 0, 0])
+        self.arm.set_mode(0)
+        self.arm.set_state(0)
+        self.arm.move_gohome(wait=True)
+        time.sleep(0.5)
 
     def execute_callback(self, goal_handle):
         object_pose = goal_handle.request.object
@@ -46,113 +41,106 @@ class PlanningActionServer(Node):
         self.get_logger().info(f"Moving object from {object_pose} to {target_goal}")
         goal_handle.succeed() # Tell the client that the goal was handled successfully
         result = MoveObject.Result()
-        result.success = False
 
         # TODO: Properly implement planning!
-        result.success = self.grasp_object(object_pose)
-        if not result.success:
-            return result
-
-        result.success = self.place_object(target_goal)
-        if not result.success:
-            return result
-        
-        self.stop_gripper()
+        t_robot_object = self.pose_stamped_to_matrix(object_pose)
+        t_robot_goal = self.pose_stamped_to_matrix(target_goal)
+        self.grasp_cube(self.arm, t_robot_object)
+        self.place_cube(self.arm, t_robot_goal)
+        result.success = True
         return result
     
-    def grasp_object(self, object_pose):
-        # Opens gripper, plans and moves to position above the object
-        self.open_gripper()
-        self.arm.set_start_state_to_current_state()
-        object_pose_higher = copy.deepcopy(object_pose)
-        object_pose_higher.pose.position.z += 0.05
-        self.arm.set_goal_state(pose_stamped_msg=object_pose_higher, pose_link="link_eef")
-        if not self.plan_and_execute(self.lite6, self.arm, self.logger):
-            return False
+    def grasp_cube(self, arm, cube_pose):
+        """
+        Execute a pick sequence to grasp a cube at a specified pose.
 
-        # Plans and moves to object and closes gripper
-        self.arm.set_start_state_to_current_state()
-        self.arm.set_goal_state(pose_stamped_msg=object_pose, pose_link="link_eef")
-        if not self.plan_and_execute(self.lite6, self.arm, self.logger):
-            return False
-        self.close_gripper()
+        Parameters
+        ----------
+        arm : xarm.wrapper.XArmAPI
+            The initialized XArm API object controlling the Lite6 robot.
+        cube_pose : numpy.ndarray
+            A 4x4 transformation matrix representing the cube's pose in the robot base frame.
+            All translational units in this matrix are in meters.
+        """
+        x = cube_pose[0][3].astype(numpy.float32) * 1000
+        y = cube_pose[1][3].astype(numpy.float32) * 1000
+        z = cube_pose[2][3].astype(numpy.float32) * 1000
+        z_higher = z + 50
 
-        # Returns true if completed successfully
-        return True
+        #Find rpy
+        R = self.matrix_to_rpy(cube_pose)
+        roll = R[0]
+        pitch = R[1]
+        yaw = R[2]
 
-    def place_object(self, target_goal):
-        # Plans and moves to above goal location
-        self.arm.set_start_state_to_current_state()
-        target_goal_higher = copy.deepcopy(target_goal)
-        target_goal_higher.pose.position.z += 0.10  
-        self.arm.set_goal_state(pose_stamped_msg=target_goal_higher, pose_link="link_eef")
-        if not self.plan_and_execute(self.lite6, self.arm, self.logger):
-            return False
-        
-        # Plans and moves arm to goal location and opens gripper
-        self.arm.set_start_state_to_current_state()
-        self.arm.set_goal_state(pose_stamped_msg=target_goal, pose_link="link_eef")
-        if not self.plan_and_execute(self.lite6, self.arm, self.logger):
-            return False
-        self.open_gripper()
+        # Pick up and Place script
+        arm.set_position(x, y, z_higher, roll, pitch, yaw, is_radian=True, wait=True, speed=SPEED, mvacc=ACCELERATION)
+        time.sleep(0.01)
 
-        # Moves arm up after placing
-        self.arm.set_start_state_to_current_state()     
-        self.arm.set_goal_state(pose_stamped_msg=target_goal_higher, pose_link="link_eef")
-        if not self.plan_and_execute(self.lite6, self.arm, self.logger):
-            return False
-        
-        # Returns true if completed successfully
-        return True
+        arm.open_lite6_gripper()
+        time.sleep(1)
+        arm.stop_lite6_gripper()
 
-    # Helpers that open and close the gripper by calling the xarm ros2 gripper service
-    def open_gripper(self):
-        future = self.open_gripper_client.call_async(Call.Request())
-        rclpy.spin_until_future_complete(self, future)
-        time.sleep(1.0)
+        arm.set_position(x, y, z, roll, pitch, yaw, is_radian=True, wait=True, speed=SPEED, mvacc=ACCELERATION)
+        time.sleep(0.01)
 
-    def close_gripper(self):
-        future = self.close_gripper_client.call_async(Call.Request())
-        rclpy.spin_until_future_complete(self, future)
-        time.sleep(1.0)
+        arm.close_lite6_gripper()
+        time.sleep(1)
+        arm.stop_lite6_gripper()
 
-    def stop_gripper(self):
-        future = self.stop_gripper_client.call_async(Call.Request())
-        rclpy.spin_until_future_complete(self, future)
-        time.sleep(1.0)
+        arm.set_position(x, y, z_higher, roll, pitch, yaw, is_radian=True, wait=True, speed=SPEED, mvacc=ACCELERATION)
+        time.sleep(0.01)
 
-    # Helper plan and execute function
-    def plan_and_execute(
-        self,
-        robot,
-        planning_component,
-        logger,
-        single_plan_parameters=None,
-        multi_plan_parameters=None,
-        ):
-        """A helper function to plan and execute a motion."""
-        # Plan to goal
-        logger.info("Planning trajectory")
-        if multi_plan_parameters is not None:
-                plan_result = planning_component.plan(
-                        multi_plan_parameters=multi_plan_parameters
-                )
-        elif single_plan_parameters is not None:
-                plan_result = planning_component.plan(
-                        single_plan_parameters=single_plan_parameters
-                )
-        else:
-                plan_result = planning_component.plan()
+    def place_cube(self, arm, cube_pose):
+        """
+        Execute a place sequence to release a cube at a specified pose.
 
-        # Execute the plan
-        if plan_result:
-                logger.info("Executing plan")
-                robot_trajectory = plan_result.trajectory
-                robot.execute(robot_trajectory, controllers=[])
-                return True
-        else:
-                logger.error("Planning failed")
-                return False
+        Parameters
+        ----------
+        arm : xarm.wrapper.XArmAPI
+            The initialized XArm API object controlling the Lite6 robot.
+        cube_pose : numpy.ndarray
+            A 4x4 transformation matrix representing the target placement pose in the robot base frame.
+            All translational units in this matrix are in meters.
+        """
+        # Initialize where to release the cube
+        x = cube_pose[0][3].astype(numpy.float32) * 1000
+        y = cube_pose[1][3].astype(numpy.float32) * 1000
+        z = cube_pose[2][3].astype(numpy.float32) * 1000
+        z_higher = z + 50 #5 cm above cause matrix units in meters coverted to mm
+
+        R = self.matrix_to_rpy(cube_pose)
+        roll = R[0]
+        pitch = R[1]
+        yaw = R[2]
+
+        # Moves arm down to place cube
+        arm.set_position(x, y, z, roll, pitch, yaw, is_radian = True, wait = True, speed=SPEED, mvacc=ACCELERATION)
+
+        # Opens the gripper to release the cube
+        arm.open_lite6_gripper()
+        time.sleep(1)
+        arm.stop_lite6_gripper()
+
+        # Moves arm back up to position 15cm above the placed cube
+        arm.set_position(x, y, z_higher, roll, pitch, yaw, is_radian = True, wait = True, speed=SPEED, mvacc=ACCELERATION)
+
+    #3x3 rotation matrix to roll pitch yaw
+    def matrix_to_rpy(self, matrix):
+        r, p, y = tf.euler_from_matrix(matrix)
+        return [r, p, y]
+    
+    def pose_stamped_to_matrix(self, pose_stamped):
+        pos = pose_stamped.pose.position
+        ori = pose_stamped.pose.orientation
+
+        translation = [pos.x, pos.y, pos.z]
+        quaternion = [ori.x, ori.y, ori.z, ori.w]
+
+        T = tf.quaternion_matrix(quaternion)
+        T[0:3, 3] = translation
+
+        return T
 
 def main(args=None):
     rclpy.init(args=args)
