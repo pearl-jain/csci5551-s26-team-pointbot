@@ -1,0 +1,946 @@
+[0.127s] DEBUG:colcon:Command line arguments: ['/usr/bin/colcon', 'build', '--packages-up-to', 'pointbot_rviz', 'control']
+[0.127s] DEBUG:colcon:Parsed command line arguments: Namespace(log_base=None, log_level=None, verb_name='build', build_base='build', install_base='install', merge_install=False, symlink_install=False, test_result_base=None, continue_on_error=False, executor='parallel', parallel_workers=16, event_handlers=None, ignore_user_meta=False, metas=['./colcon.meta'], base_paths=['.'], packages_ignore=None, packages_ignore_regex=None, paths=None, packages_up_to=['pointbot_rviz', 'control'], packages_up_to_regex=None, packages_above=None, packages_above_and_dependencies=None, packages_above_depth=None, packages_select_by_dep=None, packages_skip_by_dep=None, packages_skip_up_to=None, packages_select_build_failed=False, packages_skip_build_finished=False, packages_select_test_failures=False, packages_skip_test_passed=False, packages_select=None, packages_skip=None, packages_select_regex=None, packages_skip_regex=None, packages_start=None, packages_end=None, allow_overriding=[], cmake_args=None, cmake_target=None, cmake_target_skip_unavailable=False, cmake_clean_cache=False, cmake_clean_first=False, cmake_force_configure=False, ament_cmake_args=None, catkin_cmake_args=None, catkin_skip_building_tests=False, mixin_files=None, mixin=None, verb_parser=<colcon_mixin.mixin.mixin_argument.MixinArgumentDecorator object at 0x7586dc398830>, verb_extension=<colcon_core.verb.build.BuildVerb object at 0x7586dc3985f0>, main=<bound method BuildVerb.main of <colcon_core.verb.build.BuildVerb object at 0x7586dc3985f0>>, mixin_verb=('build',))
+[0.169s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) check parameters
+[0.169s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) check parameters
+[0.169s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) check parameters
+[0.169s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) check parameters
+[0.169s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) discover
+[0.170s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) discover
+[0.170s] INFO:colcon.colcon_core.package_discovery:Crawling recursively for packages in '/home/rob/project/csci5551-s26-team-pointbot'
+[0.170s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ignore', 'ignore_ament_install']
+[0.170s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore'
+[0.170s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore_ament_install'
+[0.170s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_pkg']
+[0.170s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_pkg'
+[0.170s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_meta']
+[0.170s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_meta'
+[0.170s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ros']
+[0.170s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ros'
+[0.199s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['cmake', 'python']
+[0.199s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'cmake'
+[0.199s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python'
+[0.199s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['python_setup_py']
+[0.199s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python_setup_py'
+[0.199s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extensions ['ignore', 'ignore_ament_install']
+[0.199s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extension 'ignore'
+[0.199s] Level 1:colcon.colcon_core.package_identification:_identify(build) ignored
+[0.199s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extensions ['ignore', 'ignore_ament_install']
+[0.199s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extension 'ignore'
+[0.199s] Level 1:colcon.colcon_core.package_identification:_identify(install) ignored
+[0.200s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extensions ['ignore', 'ignore_ament_install']
+[0.200s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extension 'ignore'
+[0.200s] Level 1:colcon.colcon_core.package_identification:_identify(log) ignored
+[0.200s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['ignore', 'ignore_ament_install']
+[0.200s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ignore'
+[0.200s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ignore_ament_install'
+[0.200s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['colcon_pkg']
+[0.200s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'colcon_pkg'
+[0.200s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['colcon_meta']
+[0.200s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'colcon_meta'
+[0.200s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['ros']
+[0.200s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ros'
+[0.200s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['cmake', 'python']
+[0.200s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'cmake'
+[0.200s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'python'
+[0.200s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['python_setup_py']
+[0.200s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'python_setup_py'
+[0.200s] Level 1:colcon.colcon_core.package_identification:_identify(src/__pycache__) by extensions ['ignore', 'ignore_ament_install']
+[0.201s] Level 1:colcon.colcon_core.package_identification:_identify(src/__pycache__) by extension 'ignore'
+[0.201s] Level 1:colcon.colcon_core.package_identification:_identify(src/__pycache__) by extension 'ignore_ament_install'
+[0.201s] Level 1:colcon.colcon_core.package_identification:_identify(src/__pycache__) by extensions ['colcon_pkg']
+[0.201s] Level 1:colcon.colcon_core.package_identification:_identify(src/__pycache__) by extension 'colcon_pkg'
+[0.201s] Level 1:colcon.colcon_core.package_identification:_identify(src/__pycache__) by extensions ['colcon_meta']
+[0.201s] Level 1:colcon.colcon_core.package_identification:_identify(src/__pycache__) by extension 'colcon_meta'
+[0.201s] Level 1:colcon.colcon_core.package_identification:_identify(src/__pycache__) by extensions ['ros']
+[0.201s] Level 1:colcon.colcon_core.package_identification:_identify(src/__pycache__) by extension 'ros'
+[0.201s] Level 1:colcon.colcon_core.package_identification:_identify(src/__pycache__) by extensions ['cmake', 'python']
+[0.201s] Level 1:colcon.colcon_core.package_identification:_identify(src/__pycache__) by extension 'cmake'
+[0.201s] Level 1:colcon.colcon_core.package_identification:_identify(src/__pycache__) by extension 'python'
+[0.201s] Level 1:colcon.colcon_core.package_identification:_identify(src/__pycache__) by extensions ['python_setup_py']
+[0.201s] Level 1:colcon.colcon_core.package_identification:_identify(src/__pycache__) by extension 'python_setup_py'
+[0.201s] Level 1:colcon.colcon_core.package_identification:_identify(src/behavior_tree) by extensions ['ignore', 'ignore_ament_install']
+[0.201s] Level 1:colcon.colcon_core.package_identification:_identify(src/behavior_tree) by extension 'ignore'
+[0.201s] Level 1:colcon.colcon_core.package_identification:_identify(src/behavior_tree) by extension 'ignore_ament_install'
+[0.201s] Level 1:colcon.colcon_core.package_identification:_identify(src/behavior_tree) by extensions ['colcon_pkg']
+[0.201s] Level 1:colcon.colcon_core.package_identification:_identify(src/behavior_tree) by extension 'colcon_pkg'
+[0.201s] Level 1:colcon.colcon_core.package_identification:_identify(src/behavior_tree) by extensions ['colcon_meta']
+[0.201s] Level 1:colcon.colcon_core.package_identification:_identify(src/behavior_tree) by extension 'colcon_meta'
+[0.201s] Level 1:colcon.colcon_core.package_identification:_identify(src/behavior_tree) by extensions ['ros']
+[0.201s] Level 1:colcon.colcon_core.package_identification:_identify(src/behavior_tree) by extension 'ros'
+[0.201s] Level 1:colcon.colcon_core.package_identification:_identify(src/behavior_tree) by extensions ['cmake', 'python']
+[0.202s] Level 1:colcon.colcon_core.package_identification:_identify(src/behavior_tree) by extension 'cmake'
+[0.202s] Level 1:colcon.colcon_core.package_identification:_identify(src/behavior_tree) by extension 'python'
+[0.202s] Level 1:colcon.colcon_core.package_identification:_identify(src/behavior_tree) by extensions ['python_setup_py']
+[0.202s] Level 1:colcon.colcon_core.package_identification:_identify(src/behavior_tree) by extension 'python_setup_py'
+[0.202s] Level 1:colcon.colcon_core.package_identification:_identify(src/behavior_tree/behaviortree_ros2) by extensions ['ignore', 'ignore_ament_install']
+[0.202s] Level 1:colcon.colcon_core.package_identification:_identify(src/behavior_tree/behaviortree_ros2) by extension 'ignore'
+[0.202s] Level 1:colcon.colcon_core.package_identification:_identify(src/behavior_tree/behaviortree_ros2) by extension 'ignore_ament_install'
+[0.202s] Level 1:colcon.colcon_core.package_identification:_identify(src/behavior_tree/behaviortree_ros2) by extensions ['colcon_pkg']
+[0.202s] Level 1:colcon.colcon_core.package_identification:_identify(src/behavior_tree/behaviortree_ros2) by extension 'colcon_pkg'
+[0.202s] Level 1:colcon.colcon_core.package_identification:_identify(src/behavior_tree/behaviortree_ros2) by extensions ['colcon_meta']
+[0.202s] Level 1:colcon.colcon_core.package_identification:_identify(src/behavior_tree/behaviortree_ros2) by extension 'colcon_meta'
+[0.202s] Level 1:colcon.colcon_core.package_identification:_identify(src/behavior_tree/behaviortree_ros2) by extensions ['ros']
+[0.202s] Level 1:colcon.colcon_core.package_identification:_identify(src/behavior_tree/behaviortree_ros2) by extension 'ros'
+[0.205s] DEBUG:colcon.colcon_core.package_identification:Package 'src/behavior_tree/behaviortree_ros2' with type 'ros.ament_cmake' and name 'behaviortree_ros2'
+[0.205s] Level 1:colcon.colcon_core.package_identification:_identify(src/behavior_tree/btcpp_ros2_interfaces) by extensions ['ignore', 'ignore_ament_install']
+[0.205s] Level 1:colcon.colcon_core.package_identification:_identify(src/behavior_tree/btcpp_ros2_interfaces) by extension 'ignore'
+[0.205s] Level 1:colcon.colcon_core.package_identification:_identify(src/behavior_tree/btcpp_ros2_interfaces) by extension 'ignore_ament_install'
+[0.205s] Level 1:colcon.colcon_core.package_identification:_identify(src/behavior_tree/btcpp_ros2_interfaces) by extensions ['colcon_pkg']
+[0.205s] Level 1:colcon.colcon_core.package_identification:_identify(src/behavior_tree/btcpp_ros2_interfaces) by extension 'colcon_pkg'
+[0.205s] Level 1:colcon.colcon_core.package_identification:_identify(src/behavior_tree/btcpp_ros2_interfaces) by extensions ['colcon_meta']
+[0.205s] Level 1:colcon.colcon_core.package_identification:_identify(src/behavior_tree/btcpp_ros2_interfaces) by extension 'colcon_meta'
+[0.205s] Level 1:colcon.colcon_core.package_identification:_identify(src/behavior_tree/btcpp_ros2_interfaces) by extensions ['ros']
+[0.205s] Level 1:colcon.colcon_core.package_identification:_identify(src/behavior_tree/btcpp_ros2_interfaces) by extension 'ros'
+[0.206s] DEBUG:colcon.colcon_core.package_identification:Package 'src/behavior_tree/btcpp_ros2_interfaces' with type 'ros.ament_cmake' and name 'btcpp_ros2_interfaces'
+[0.206s] Level 1:colcon.colcon_core.package_identification:_identify(src/behavior_tree/btcpp_ros2_samples) by extensions ['ignore', 'ignore_ament_install']
+[0.206s] Level 1:colcon.colcon_core.package_identification:_identify(src/behavior_tree/btcpp_ros2_samples) by extension 'ignore'
+[0.206s] Level 1:colcon.colcon_core.package_identification:_identify(src/behavior_tree/btcpp_ros2_samples) by extension 'ignore_ament_install'
+[0.206s] Level 1:colcon.colcon_core.package_identification:_identify(src/behavior_tree/btcpp_ros2_samples) by extensions ['colcon_pkg']
+[0.206s] Level 1:colcon.colcon_core.package_identification:_identify(src/behavior_tree/btcpp_ros2_samples) by extension 'colcon_pkg'
+[0.206s] Level 1:colcon.colcon_core.package_identification:_identify(src/behavior_tree/btcpp_ros2_samples) by extensions ['colcon_meta']
+[0.206s] Level 1:colcon.colcon_core.package_identification:_identify(src/behavior_tree/btcpp_ros2_samples) by extension 'colcon_meta'
+[0.206s] Level 1:colcon.colcon_core.package_identification:_identify(src/behavior_tree/btcpp_ros2_samples) by extensions ['ros']
+[0.206s] Level 1:colcon.colcon_core.package_identification:_identify(src/behavior_tree/btcpp_ros2_samples) by extension 'ros'
+[0.207s] DEBUG:colcon.colcon_core.package_identification:Package 'src/behavior_tree/btcpp_ros2_samples' with type 'ros.ament_cmake' and name 'btcpp_ros2_samples'
+[0.207s] Level 1:colcon.colcon_core.package_identification:_identify(src/control) by extensions ['ignore', 'ignore_ament_install']
+[0.207s] Level 1:colcon.colcon_core.package_identification:_identify(src/control) by extension 'ignore'
+[0.207s] Level 1:colcon.colcon_core.package_identification:_identify(src/control) by extension 'ignore_ament_install'
+[0.207s] Level 1:colcon.colcon_core.package_identification:_identify(src/control) by extensions ['colcon_pkg']
+[0.207s] Level 1:colcon.colcon_core.package_identification:_identify(src/control) by extension 'colcon_pkg'
+[0.207s] Level 1:colcon.colcon_core.package_identification:_identify(src/control) by extensions ['colcon_meta']
+[0.207s] Level 1:colcon.colcon_core.package_identification:_identify(src/control) by extension 'colcon_meta'
+[0.207s] Level 1:colcon.colcon_core.package_identification:_identify(src/control) by extensions ['ros']
+[0.207s] Level 1:colcon.colcon_core.package_identification:_identify(src/control) by extension 'ros'
+[0.208s] DEBUG:colcon.colcon_core.package_identification:Package 'src/control' with type 'ros.ament_cmake' and name 'control'
+[0.208s] Level 1:colcon.colcon_core.package_identification:_identify(src/perception) by extensions ['ignore', 'ignore_ament_install']
+[0.208s] Level 1:colcon.colcon_core.package_identification:_identify(src/perception) by extension 'ignore'
+[0.208s] Level 1:colcon.colcon_core.package_identification:_identify(src/perception) by extension 'ignore_ament_install'
+[0.208s] Level 1:colcon.colcon_core.package_identification:_identify(src/perception) by extensions ['colcon_pkg']
+[0.209s] Level 1:colcon.colcon_core.package_identification:_identify(src/perception) by extension 'colcon_pkg'
+[0.209s] Level 1:colcon.colcon_core.package_identification:_identify(src/perception) by extensions ['colcon_meta']
+[0.209s] Level 1:colcon.colcon_core.package_identification:_identify(src/perception) by extension 'colcon_meta'
+[0.209s] Level 1:colcon.colcon_core.package_identification:_identify(src/perception) by extensions ['ros']
+[0.209s] Level 1:colcon.colcon_core.package_identification:_identify(src/perception) by extension 'ros'
+[0.209s] DEBUG:colcon.colcon_core.package_identification:Package 'src/perception' with type 'ros.ament_python' and name 'perception'
+[0.209s] Level 1:colcon.colcon_core.package_identification:_identify(src/planning) by extensions ['ignore', 'ignore_ament_install']
+[0.209s] Level 1:colcon.colcon_core.package_identification:_identify(src/planning) by extension 'ignore'
+[0.209s] Level 1:colcon.colcon_core.package_identification:_identify(src/planning) by extension 'ignore_ament_install'
+[0.209s] Level 1:colcon.colcon_core.package_identification:_identify(src/planning) by extensions ['colcon_pkg']
+[0.209s] Level 1:colcon.colcon_core.package_identification:_identify(src/planning) by extension 'colcon_pkg'
+[0.210s] Level 1:colcon.colcon_core.package_identification:_identify(src/planning) by extensions ['colcon_meta']
+[0.210s] Level 1:colcon.colcon_core.package_identification:_identify(src/planning) by extension 'colcon_meta'
+[0.210s] Level 1:colcon.colcon_core.package_identification:_identify(src/planning) by extensions ['ros']
+[0.210s] Level 1:colcon.colcon_core.package_identification:_identify(src/planning) by extension 'ros'
+[0.210s] DEBUG:colcon.colcon_core.package_identification:Package 'src/planning' with type 'ros.ament_python' and name 'planning'
+[0.210s] Level 1:colcon.colcon_core.package_identification:_identify(src/point_bot_interfaces) by extensions ['ignore', 'ignore_ament_install']
+[0.210s] Level 1:colcon.colcon_core.package_identification:_identify(src/point_bot_interfaces) by extension 'ignore'
+[0.210s] Level 1:colcon.colcon_core.package_identification:_identify(src/point_bot_interfaces) by extension 'ignore_ament_install'
+[0.210s] Level 1:colcon.colcon_core.package_identification:_identify(src/point_bot_interfaces) by extensions ['colcon_pkg']
+[0.210s] Level 1:colcon.colcon_core.package_identification:_identify(src/point_bot_interfaces) by extension 'colcon_pkg'
+[0.210s] Level 1:colcon.colcon_core.package_identification:_identify(src/point_bot_interfaces) by extensions ['colcon_meta']
+[0.210s] Level 1:colcon.colcon_core.package_identification:_identify(src/point_bot_interfaces) by extension 'colcon_meta'
+[0.210s] Level 1:colcon.colcon_core.package_identification:_identify(src/point_bot_interfaces) by extensions ['ros']
+[0.211s] Level 1:colcon.colcon_core.package_identification:_identify(src/point_bot_interfaces) by extension 'ros'
+[0.211s] DEBUG:colcon.colcon_core.package_identification:Package 'src/point_bot_interfaces' with type 'ros.ament_cmake' and name 'point_bot_interfaces'
+[0.211s] Level 1:colcon.colcon_core.package_identification:_identify(src/pointbot_rviz) by extensions ['ignore', 'ignore_ament_install']
+[0.211s] Level 1:colcon.colcon_core.package_identification:_identify(src/pointbot_rviz) by extension 'ignore'
+[0.211s] Level 1:colcon.colcon_core.package_identification:_identify(src/pointbot_rviz) by extension 'ignore_ament_install'
+[0.211s] Level 1:colcon.colcon_core.package_identification:_identify(src/pointbot_rviz) by extensions ['colcon_pkg']
+[0.211s] Level 1:colcon.colcon_core.package_identification:_identify(src/pointbot_rviz) by extension 'colcon_pkg'
+[0.211s] Level 1:colcon.colcon_core.package_identification:_identify(src/pointbot_rviz) by extensions ['colcon_meta']
+[0.211s] Level 1:colcon.colcon_core.package_identification:_identify(src/pointbot_rviz) by extension 'colcon_meta'
+[0.211s] Level 1:colcon.colcon_core.package_identification:_identify(src/pointbot_rviz) by extensions ['ros']
+[0.212s] Level 1:colcon.colcon_core.package_identification:_identify(src/pointbot_rviz) by extension 'ros'
+[0.212s] DEBUG:colcon.colcon_core.package_identification:Package 'src/pointbot_rviz' with type 'ros.ament_python' and name 'pointbot_rviz'
+[0.212s] Level 1:colcon.colcon_core.package_identification:_identify(src/utils) by extensions ['ignore', 'ignore_ament_install']
+[0.212s] Level 1:colcon.colcon_core.package_identification:_identify(src/utils) by extension 'ignore'
+[0.212s] Level 1:colcon.colcon_core.package_identification:_identify(src/utils) by extension 'ignore_ament_install'
+[0.212s] Level 1:colcon.colcon_core.package_identification:_identify(src/utils) by extensions ['colcon_pkg']
+[0.212s] Level 1:colcon.colcon_core.package_identification:_identify(src/utils) by extension 'colcon_pkg'
+[0.212s] Level 1:colcon.colcon_core.package_identification:_identify(src/utils) by extensions ['colcon_meta']
+[0.212s] Level 1:colcon.colcon_core.package_identification:_identify(src/utils) by extension 'colcon_meta'
+[0.212s] Level 1:colcon.colcon_core.package_identification:_identify(src/utils) by extensions ['ros']
+[0.212s] Level 1:colcon.colcon_core.package_identification:_identify(src/utils) by extension 'ros'
+[0.213s] Level 1:colcon.colcon_core.package_identification:_identify(src/utils) by extensions ['cmake', 'python']
+[0.213s] Level 1:colcon.colcon_core.package_identification:_identify(src/utils) by extension 'cmake'
+[0.213s] Level 1:colcon.colcon_core.package_identification:_identify(src/utils) by extension 'python'
+[0.213s] Level 1:colcon.colcon_core.package_identification:_identify(src/utils) by extensions ['python_setup_py']
+[0.213s] Level 1:colcon.colcon_core.package_identification:_identify(src/utils) by extension 'python_setup_py'
+[0.213s] Level 1:colcon.colcon_core.package_identification:_identify(src/utils/__pycache__) by extensions ['ignore', 'ignore_ament_install']
+[0.213s] Level 1:colcon.colcon_core.package_identification:_identify(src/utils/__pycache__) by extension 'ignore'
+[0.213s] Level 1:colcon.colcon_core.package_identification:_identify(src/utils/__pycache__) by extension 'ignore_ament_install'
+[0.213s] Level 1:colcon.colcon_core.package_identification:_identify(src/utils/__pycache__) by extensions ['colcon_pkg']
+[0.213s] Level 1:colcon.colcon_core.package_identification:_identify(src/utils/__pycache__) by extension 'colcon_pkg'
+[0.213s] Level 1:colcon.colcon_core.package_identification:_identify(src/utils/__pycache__) by extensions ['colcon_meta']
+[0.213s] Level 1:colcon.colcon_core.package_identification:_identify(src/utils/__pycache__) by extension 'colcon_meta'
+[0.213s] Level 1:colcon.colcon_core.package_identification:_identify(src/utils/__pycache__) by extensions ['ros']
+[0.213s] Level 1:colcon.colcon_core.package_identification:_identify(src/utils/__pycache__) by extension 'ros'
+[0.213s] Level 1:colcon.colcon_core.package_identification:_identify(src/utils/__pycache__) by extensions ['cmake', 'python']
+[0.213s] Level 1:colcon.colcon_core.package_identification:_identify(src/utils/__pycache__) by extension 'cmake'
+[0.213s] Level 1:colcon.colcon_core.package_identification:_identify(src/utils/__pycache__) by extension 'python'
+[0.213s] Level 1:colcon.colcon_core.package_identification:_identify(src/utils/__pycache__) by extensions ['python_setup_py']
+[0.213s] Level 1:colcon.colcon_core.package_identification:_identify(src/utils/__pycache__) by extension 'python_setup_py'
+[0.213s] Level 1:colcon.colcon_core.package_identification:_identify(src/xarm_ros2) by extensions ['ignore', 'ignore_ament_install']
+[0.213s] Level 1:colcon.colcon_core.package_identification:_identify(src/xarm_ros2) by extension 'ignore'
+[0.213s] Level 1:colcon.colcon_core.package_identification:_identify(src/xarm_ros2) by extension 'ignore_ament_install'
+[0.213s] Level 1:colcon.colcon_core.package_identification:_identify(src/xarm_ros2) by extensions ['colcon_pkg']
+[0.214s] Level 1:colcon.colcon_core.package_identification:_identify(src/xarm_ros2) by extension 'colcon_pkg'
+[0.214s] Level 1:colcon.colcon_core.package_identification:_identify(src/xarm_ros2) by extensions ['colcon_meta']
+[0.214s] Level 1:colcon.colcon_core.package_identification:_identify(src/xarm_ros2) by extension 'colcon_meta'
+[0.214s] Level 1:colcon.colcon_core.package_identification:_identify(src/xarm_ros2) by extensions ['ros']
+[0.214s] Level 1:colcon.colcon_core.package_identification:_identify(src/xarm_ros2) by extension 'ros'
+[0.214s] Level 1:colcon.colcon_core.package_identification:_identify(src/xarm_ros2) by extensions ['cmake', 'python']
+[0.214s] Level 1:colcon.colcon_core.package_identification:_identify(src/xarm_ros2) by extension 'cmake'
+[0.214s] Level 1:colcon.colcon_core.package_identification:_identify(src/xarm_ros2) by extension 'python'
+[0.214s] Level 1:colcon.colcon_core.package_identification:_identify(src/xarm_ros2) by extensions ['python_setup_py']
+[0.214s] Level 1:colcon.colcon_core.package_identification:_identify(src/xarm_ros2) by extension 'python_setup_py'
+[0.214s] Level 1:colcon.colcon_core.package_identification:_identify(src/xarm_ros2/demo) by extensions ['ignore', 'ignore_ament_install']
+[0.214s] Level 1:colcon.colcon_core.package_identification:_identify(src/xarm_ros2/demo) by extension 'ignore'
+[0.214s] Level 1:colcon.colcon_core.package_identification:_identify(src/xarm_ros2/demo) by extension 'ignore_ament_install'
+[0.214s] Level 1:colcon.colcon_core.package_identification:_identify(src/xarm_ros2/demo) by extensions ['colcon_pkg']
+[0.214s] Level 1:colcon.colcon_core.package_identification:_identify(src/xarm_ros2/demo) by extension 'colcon_pkg'
+[0.214s] Level 1:colcon.colcon_core.package_identification:_identify(src/xarm_ros2/demo) by extensions ['colcon_meta']
+[0.214s] Level 1:colcon.colcon_core.package_identification:_identify(src/xarm_ros2/demo) by extension 'colcon_meta'
+[0.214s] Level 1:colcon.colcon_core.package_identification:_identify(src/xarm_ros2/demo) by extensions ['ros']
+[0.214s] Level 1:colcon.colcon_core.package_identification:_identify(src/xarm_ros2/demo) by extension 'ros'
+[0.214s] Level 1:colcon.colcon_core.package_identification:_identify(src/xarm_ros2/demo) by extensions ['cmake', 'python']
+[0.214s] Level 1:colcon.colcon_core.package_identification:_identify(src/xarm_ros2/demo) by extension 'cmake'
+[0.214s] Level 1:colcon.colcon_core.package_identification:_identify(src/xarm_ros2/demo) by extension 'python'
+[0.214s] Level 1:colcon.colcon_core.package_identification:_identify(src/xarm_ros2/demo) by extensions ['python_setup_py']
+[0.214s] Level 1:colcon.colcon_core.package_identification:_identify(src/xarm_ros2/demo) by extension 'python_setup_py'
+[0.214s] Level 1:colcon.colcon_core.package_identification:_identify(src/xarm_ros2/demo/mbot_demo) by extensions ['ignore', 'ignore_ament_install']
+[0.215s] Level 1:colcon.colcon_core.package_identification:_identify(src/xarm_ros2/demo/mbot_demo) by extension 'ignore'
+[0.215s] Level 1:colcon.colcon_core.package_identification:_identify(src/xarm_ros2/demo/mbot_demo) by extension 'ignore_ament_install'
+[0.215s] Level 1:colcon.colcon_core.package_identification:_identify(src/xarm_ros2/demo/mbot_demo) by extensions ['colcon_pkg']
+[0.215s] Level 1:colcon.colcon_core.package_identification:_identify(src/xarm_ros2/demo/mbot_demo) by extension 'colcon_pkg'
+[0.215s] Level 1:colcon.colcon_core.package_identification:_identify(src/xarm_ros2/demo/mbot_demo) by extensions ['colcon_meta']
+[0.215s] Level 1:colcon.colcon_core.package_identification:_identify(src/xarm_ros2/demo/mbot_demo) by extension 'colcon_meta'
+[0.215s] Level 1:colcon.colcon_core.package_identification:_identify(src/xarm_ros2/demo/mbot_demo) by extensions ['ros']
+[0.215s] Level 1:colcon.colcon_core.package_identification:_identify(src/xarm_ros2/demo/mbot_demo) by extension 'ros'
+[0.215s] DEBUG:colcon.colcon_core.package_identification:Package 'src/xarm_ros2/demo/mbot_demo' with type 'ros.ament_cmake' and name 'mbot_demo'
+[0.215s] Level 1:colcon.colcon_core.package_identification:_identify(src/xarm_ros2/thirdparty) by extensions ['ignore', 'ignore_ament_install']
+[0.216s] Level 1:colcon.colcon_core.package_identification:_identify(src/xarm_ros2/thirdparty) by extension 'ignore'
+[0.216s] Level 1:colcon.colcon_core.package_identification:_identify(src/xarm_ros2/thirdparty) by extension 'ignore_ament_install'
+[0.216s] Level 1:colcon.colcon_core.package_identification:_identify(src/xarm_ros2/thirdparty) by extensions ['colcon_pkg']
+[0.216s] Level 1:colcon.colcon_core.package_identification:_identify(src/xarm_ros2/thirdparty) by extension 'colcon_pkg'
+[0.216s] Level 1:colcon.colcon_core.package_identification:_identify(src/xarm_ros2/thirdparty) by extensions ['colcon_meta']
+[0.216s] Level 1:colcon.colcon_core.package_identification:_identify(src/xarm_ros2/thirdparty) by extension 'colcon_meta'
+[0.216s] Level 1:colcon.colcon_core.package_identification:_identify(src/xarm_ros2/thirdparty) by extensions ['ros']
+[0.216s] Level 1:colcon.colcon_core.package_identification:_identify(src/xarm_ros2/thirdparty) by extension 'ros'
+[0.216s] Level 1:colcon.colcon_core.package_identification:_identify(src/xarm_ros2/thirdparty) by extensions ['cmake', 'python']
+[0.216s] Level 1:colcon.colcon_core.package_identification:_identify(src/xarm_ros2/thirdparty) by extension 'cmake'
+[0.216s] Level 1:colcon.colcon_core.package_identification:_identify(src/xarm_ros2/thirdparty) by extension 'python'
+[0.216s] Level 1:colcon.colcon_core.package_identification:_identify(src/xarm_ros2/thirdparty) by extensions ['python_setup_py']
+[0.216s] Level 1:colcon.colcon_core.package_identification:_identify(src/xarm_ros2/thirdparty) by extension 'python_setup_py'
+[0.216s] Level 1:colcon.colcon_core.package_identification:_identify(src/xarm_ros2/thirdparty/realsense_gazebo_plugin) by extensions ['ignore', 'ignore_ament_install']
+[0.216s] Level 1:colcon.colcon_core.package_identification:_identify(src/xarm_ros2/thirdparty/realsense_gazebo_plugin) by extension 'ignore'
+[0.216s] Level 1:colcon.colcon_core.package_identification:_identify(src/xarm_ros2/thirdparty/realsense_gazebo_plugin) by extension 'ignore_ament_install'
+[0.216s] Level 1:colcon.colcon_core.package_identification:_identify(src/xarm_ros2/thirdparty/realsense_gazebo_plugin) by extensions ['colcon_pkg']
+[0.216s] Level 1:colcon.colcon_core.package_identification:_identify(src/xarm_ros2/thirdparty/realsense_gazebo_plugin) by extension 'colcon_pkg'
+[0.216s] Level 1:colcon.colcon_core.package_identification:_identify(src/xarm_ros2/thirdparty/realsense_gazebo_plugin) by extensions ['colcon_meta']
+[0.216s] Level 1:colcon.colcon_core.package_identification:_identify(src/xarm_ros2/thirdparty/realsense_gazebo_plugin) by extension 'colcon_meta'
+[0.216s] Level 1:colcon.colcon_core.package_identification:_identify(src/xarm_ros2/thirdparty/realsense_gazebo_plugin) by extensions ['ros']
+[0.216s] Level 1:colcon.colcon_core.package_identification:_identify(src/xarm_ros2/thirdparty/realsense_gazebo_plugin) by extension 'ros'
+[0.217s] DEBUG:colcon.colcon_core.package_identification:Package 'src/xarm_ros2/thirdparty/realsense_gazebo_plugin' with type 'ros.ament_cmake' and name 'realsense_gazebo_plugin'
+[0.217s] Level 1:colcon.colcon_core.package_identification:_identify(src/xarm_ros2/uf_ros_lib) by extensions ['ignore', 'ignore_ament_install']
+[0.217s] Level 1:colcon.colcon_core.package_identification:_identify(src/xarm_ros2/uf_ros_lib) by extension 'ignore'
+[0.217s] Level 1:colcon.colcon_core.package_identification:_identify(src/xarm_ros2/uf_ros_lib) by extension 'ignore_ament_install'
+[0.217s] Level 1:colcon.colcon_core.package_identification:_identify(src/xarm_ros2/uf_ros_lib) by extensions ['colcon_pkg']
+[0.217s] Level 1:colcon.colcon_core.package_identification:_identify(src/xarm_ros2/uf_ros_lib) by extension 'colcon_pkg'
+[0.217s] Level 1:colcon.colcon_core.package_identification:_identify(src/xarm_ros2/uf_ros_lib) by extensions ['colcon_meta']
+[0.217s] Level 1:colcon.colcon_core.package_identification:_identify(src/xarm_ros2/uf_ros_lib) by extension 'colcon_meta'
+[0.217s] Level 1:colcon.colcon_core.package_identification:_identify(src/xarm_ros2/uf_ros_lib) by extensions ['ros']
+[0.217s] Level 1:colcon.colcon_core.package_identification:_identify(src/xarm_ros2/uf_ros_lib) by extension 'ros'
+[0.218s] DEBUG:colcon.colcon_core.package_identification:Package 'src/xarm_ros2/uf_ros_lib' with type 'ros.ament_python' and name 'uf_ros_lib'
+[0.218s] Level 1:colcon.colcon_core.package_identification:_identify(src/xarm_ros2/xarm_api) by extensions ['ignore', 'ignore_ament_install']
+[0.218s] Level 1:colcon.colcon_core.package_identification:_identify(src/xarm_ros2/xarm_api) by extension 'ignore'
+[0.218s] Level 1:colcon.colcon_core.package_identification:_identify(src/xarm_ros2/xarm_api) by extension 'ignore_ament_install'
+[0.218s] Level 1:colcon.colcon_core.package_identification:_identify(src/xarm_ros2/xarm_api) by extensions ['colcon_pkg']
+[0.218s] Level 1:colcon.colcon_core.package_identification:_identify(src/xarm_ros2/xarm_api) by extension 'colcon_pkg'
+[0.218s] Level 1:colcon.colcon_core.package_identification:_identify(src/xarm_ros2/xarm_api) by extensions ['colcon_meta']
+[0.218s] Level 1:colcon.colcon_core.package_identification:_identify(src/xarm_ros2/xarm_api) by extension 'colcon_meta'
+[0.218s] Level 1:colcon.colcon_core.package_identification:_identify(src/xarm_ros2/xarm_api) by extensions ['ros']
+[0.218s] Level 1:colcon.colcon_core.package_identification:_identify(src/xarm_ros2/xarm_api) by extension 'ros'
+[0.219s] DEBUG:colcon.colcon_core.package_identification:Package 'src/xarm_ros2/xarm_api' with type 'ros.ament_cmake' and name 'xarm_api'
+[0.219s] Level 1:colcon.colcon_core.package_identification:_identify(src/xarm_ros2/xarm_controller) by extensions ['ignore', 'ignore_ament_install']
+[0.219s] Level 1:colcon.colcon_core.package_identification:_identify(src/xarm_ros2/xarm_controller) by extension 'ignore'
+[0.219s] Level 1:colcon.colcon_core.package_identification:_identify(src/xarm_ros2/xarm_controller) by extension 'ignore_ament_install'
+[0.219s] Level 1:colcon.colcon_core.package_identification:_identify(src/xarm_ros2/xarm_controller) by extensions ['colcon_pkg']
+[0.219s] Level 1:colcon.colcon_core.package_identification:_identify(src/xarm_ros2/xarm_controller) by extension 'colcon_pkg'
+[0.219s] Level 1:colcon.colcon_core.package_identification:_identify(src/xarm_ros2/xarm_controller) by extensions ['colcon_meta']
+[0.219s] Level 1:colcon.colcon_core.package_identification:_identify(src/xarm_ros2/xarm_controller) by extension 'colcon_meta'
+[0.219s] Level 1:colcon.colcon_core.package_identification:_identify(src/xarm_ros2/xarm_controller) by extensions ['ros']
+[0.219s] Level 1:colcon.colcon_core.package_identification:_identify(src/xarm_ros2/xarm_controller) by extension 'ros'
+[0.220s] DEBUG:colcon.colcon_core.package_identification:Package 'src/xarm_ros2/xarm_controller' with type 'ros.ament_cmake' and name 'xarm_controller'
+[0.221s] Level 1:colcon.colcon_core.package_identification:_identify(src/xarm_ros2/xarm_description) by extensions ['ignore', 'ignore_ament_install']
+[0.221s] Level 1:colcon.colcon_core.package_identification:_identify(src/xarm_ros2/xarm_description) by extension 'ignore'
+[0.221s] Level 1:colcon.colcon_core.package_identification:_identify(src/xarm_ros2/xarm_description) by extension 'ignore_ament_install'
+[0.221s] Level 1:colcon.colcon_core.package_identification:_identify(src/xarm_ros2/xarm_description) by extensions ['colcon_pkg']
+[0.221s] Level 1:colcon.colcon_core.package_identification:_identify(src/xarm_ros2/xarm_description) by extension 'colcon_pkg'
+[0.221s] Level 1:colcon.colcon_core.package_identification:_identify(src/xarm_ros2/xarm_description) by extensions ['colcon_meta']
+[0.221s] Level 1:colcon.colcon_core.package_identification:_identify(src/xarm_ros2/xarm_description) by extension 'colcon_meta'
+[0.221s] Level 1:colcon.colcon_core.package_identification:_identify(src/xarm_ros2/xarm_description) by extensions ['ros']
+[0.221s] Level 1:colcon.colcon_core.package_identification:_identify(src/xarm_ros2/xarm_description) by extension 'ros'
+[0.221s] DEBUG:colcon.colcon_core.package_identification:Package 'src/xarm_ros2/xarm_description' with type 'ros.ament_cmake' and name 'xarm_description'
+[0.221s] Level 1:colcon.colcon_core.package_identification:_identify(src/xarm_ros2/xarm_gazebo) by extensions ['ignore', 'ignore_ament_install']
+[0.221s] Level 1:colcon.colcon_core.package_identification:_identify(src/xarm_ros2/xarm_gazebo) by extension 'ignore'
+[0.222s] Level 1:colcon.colcon_core.package_identification:_identify(src/xarm_ros2/xarm_gazebo) by extension 'ignore_ament_install'
+[0.222s] Level 1:colcon.colcon_core.package_identification:_identify(src/xarm_ros2/xarm_gazebo) by extensions ['colcon_pkg']
+[0.222s] Level 1:colcon.colcon_core.package_identification:_identify(src/xarm_ros2/xarm_gazebo) by extension 'colcon_pkg'
+[0.222s] Level 1:colcon.colcon_core.package_identification:_identify(src/xarm_ros2/xarm_gazebo) by extensions ['colcon_meta']
+[0.222s] Level 1:colcon.colcon_core.package_identification:_identify(src/xarm_ros2/xarm_gazebo) by extension 'colcon_meta'
+[0.222s] Level 1:colcon.colcon_core.package_identification:_identify(src/xarm_ros2/xarm_gazebo) by extensions ['ros']
+[0.222s] Level 1:colcon.colcon_core.package_identification:_identify(src/xarm_ros2/xarm_gazebo) by extension 'ros'
+[0.222s] DEBUG:colcon.colcon_core.package_identification:Package 'src/xarm_ros2/xarm_gazebo' with type 'ros.ament_cmake' and name 'xarm_gazebo'
+[0.223s] Level 1:colcon.colcon_core.package_identification:_identify(src/xarm_ros2/xarm_moveit_config) by extensions ['ignore', 'ignore_ament_install']
+[0.223s] Level 1:colcon.colcon_core.package_identification:_identify(src/xarm_ros2/xarm_moveit_config) by extension 'ignore'
+[0.223s] Level 1:colcon.colcon_core.package_identification:_identify(src/xarm_ros2/xarm_moveit_config) by extension 'ignore_ament_install'
+[0.223s] Level 1:colcon.colcon_core.package_identification:_identify(src/xarm_ros2/xarm_moveit_config) by extensions ['colcon_pkg']
+[0.223s] Level 1:colcon.colcon_core.package_identification:_identify(src/xarm_ros2/xarm_moveit_config) by extension 'colcon_pkg'
+[0.223s] Level 1:colcon.colcon_core.package_identification:_identify(src/xarm_ros2/xarm_moveit_config) by extensions ['colcon_meta']
+[0.223s] Level 1:colcon.colcon_core.package_identification:_identify(src/xarm_ros2/xarm_moveit_config) by extension 'colcon_meta'
+[0.223s] Level 1:colcon.colcon_core.package_identification:_identify(src/xarm_ros2/xarm_moveit_config) by extensions ['ros']
+[0.223s] Level 1:colcon.colcon_core.package_identification:_identify(src/xarm_ros2/xarm_moveit_config) by extension 'ros'
+[0.224s] DEBUG:colcon.colcon_core.package_identification:Package 'src/xarm_ros2/xarm_moveit_config' with type 'ros.ament_cmake' and name 'xarm_moveit_config'
+[0.224s] Level 1:colcon.colcon_core.package_identification:_identify(src/xarm_ros2/xarm_moveit_servo) by extensions ['ignore', 'ignore_ament_install']
+[0.224s] Level 1:colcon.colcon_core.package_identification:_identify(src/xarm_ros2/xarm_moveit_servo) by extension 'ignore'
+[0.224s] Level 1:colcon.colcon_core.package_identification:_identify(src/xarm_ros2/xarm_moveit_servo) by extension 'ignore_ament_install'
+[0.224s] Level 1:colcon.colcon_core.package_identification:_identify(src/xarm_ros2/xarm_moveit_servo) by extensions ['colcon_pkg']
+[0.224s] Level 1:colcon.colcon_core.package_identification:_identify(src/xarm_ros2/xarm_moveit_servo) by extension 'colcon_pkg'
+[0.224s] Level 1:colcon.colcon_core.package_identification:_identify(src/xarm_ros2/xarm_moveit_servo) by extensions ['colcon_meta']
+[0.224s] Level 1:colcon.colcon_core.package_identification:_identify(src/xarm_ros2/xarm_moveit_servo) by extension 'colcon_meta'
+[0.224s] Level 1:colcon.colcon_core.package_identification:_identify(src/xarm_ros2/xarm_moveit_servo) by extensions ['ros']
+[0.224s] Level 1:colcon.colcon_core.package_identification:_identify(src/xarm_ros2/xarm_moveit_servo) by extension 'ros'
+[0.225s] DEBUG:colcon.colcon_core.package_identification:Package 'src/xarm_ros2/xarm_moveit_servo' with type 'ros.ament_cmake' and name 'xarm_moveit_servo'
+[0.225s] Level 1:colcon.colcon_core.package_identification:_identify(src/xarm_ros2/xarm_msgs) by extensions ['ignore', 'ignore_ament_install']
+[0.225s] Level 1:colcon.colcon_core.package_identification:_identify(src/xarm_ros2/xarm_msgs) by extension 'ignore'
+[0.225s] Level 1:colcon.colcon_core.package_identification:_identify(src/xarm_ros2/xarm_msgs) by extension 'ignore_ament_install'
+[0.225s] Level 1:colcon.colcon_core.package_identification:_identify(src/xarm_ros2/xarm_msgs) by extensions ['colcon_pkg']
+[0.225s] Level 1:colcon.colcon_core.package_identification:_identify(src/xarm_ros2/xarm_msgs) by extension 'colcon_pkg'
+[0.225s] Level 1:colcon.colcon_core.package_identification:_identify(src/xarm_ros2/xarm_msgs) by extensions ['colcon_meta']
+[0.225s] Level 1:colcon.colcon_core.package_identification:_identify(src/xarm_ros2/xarm_msgs) by extension 'colcon_meta'
+[0.226s] Level 1:colcon.colcon_core.package_identification:_identify(src/xarm_ros2/xarm_msgs) by extensions ['ros']
+[0.226s] Level 1:colcon.colcon_core.package_identification:_identify(src/xarm_ros2/xarm_msgs) by extension 'ros'
+[0.226s] DEBUG:colcon.colcon_core.package_identification:Package 'src/xarm_ros2/xarm_msgs' with type 'ros.ament_cmake' and name 'xarm_msgs'
+[0.226s] Level 1:colcon.colcon_core.package_identification:_identify(src/xarm_ros2/xarm_planner) by extensions ['ignore', 'ignore_ament_install']
+[0.226s] Level 1:colcon.colcon_core.package_identification:_identify(src/xarm_ros2/xarm_planner) by extension 'ignore'
+[0.226s] Level 1:colcon.colcon_core.package_identification:_identify(src/xarm_ros2/xarm_planner) by extension 'ignore_ament_install'
+[0.226s] Level 1:colcon.colcon_core.package_identification:_identify(src/xarm_ros2/xarm_planner) by extensions ['colcon_pkg']
+[0.226s] Level 1:colcon.colcon_core.package_identification:_identify(src/xarm_ros2/xarm_planner) by extension 'colcon_pkg'
+[0.226s] Level 1:colcon.colcon_core.package_identification:_identify(src/xarm_ros2/xarm_planner) by extensions ['colcon_meta']
+[0.226s] Level 1:colcon.colcon_core.package_identification:_identify(src/xarm_ros2/xarm_planner) by extension 'colcon_meta'
+[0.226s] Level 1:colcon.colcon_core.package_identification:_identify(src/xarm_ros2/xarm_planner) by extensions ['ros']
+[0.226s] Level 1:colcon.colcon_core.package_identification:_identify(src/xarm_ros2/xarm_planner) by extension 'ros'
+[0.227s] DEBUG:colcon.colcon_core.package_identification:Package 'src/xarm_ros2/xarm_planner' with type 'ros.ament_cmake' and name 'xarm_planner'
+[0.227s] Level 1:colcon.colcon_core.package_identification:_identify(src/xarm_ros2/xarm_sdk) by extensions ['ignore', 'ignore_ament_install']
+[0.227s] Level 1:colcon.colcon_core.package_identification:_identify(src/xarm_ros2/xarm_sdk) by extension 'ignore'
+[0.227s] Level 1:colcon.colcon_core.package_identification:_identify(src/xarm_ros2/xarm_sdk) by extension 'ignore_ament_install'
+[0.228s] Level 1:colcon.colcon_core.package_identification:_identify(src/xarm_ros2/xarm_sdk) by extensions ['colcon_pkg']
+[0.228s] Level 1:colcon.colcon_core.package_identification:_identify(src/xarm_ros2/xarm_sdk) by extension 'colcon_pkg'
+[0.228s] Level 1:colcon.colcon_core.package_identification:_identify(src/xarm_ros2/xarm_sdk) by extensions ['colcon_meta']
+[0.228s] Level 1:colcon.colcon_core.package_identification:_identify(src/xarm_ros2/xarm_sdk) by extension 'colcon_meta'
+[0.228s] Level 1:colcon.colcon_core.package_identification:_identify(src/xarm_ros2/xarm_sdk) by extensions ['ros']
+[0.228s] Level 1:colcon.colcon_core.package_identification:_identify(src/xarm_ros2/xarm_sdk) by extension 'ros'
+[0.228s] DEBUG:colcon.colcon_core.package_identification:Package 'src/xarm_ros2/xarm_sdk' with type 'ros.ament_cmake' and name 'xarm_sdk'
+[0.228s] Level 1:colcon.colcon_core.package_identification:_identify(src/zed-ros2-description) by extensions ['ignore', 'ignore_ament_install']
+[0.228s] Level 1:colcon.colcon_core.package_identification:_identify(src/zed-ros2-description) by extension 'ignore'
+[0.228s] Level 1:colcon.colcon_core.package_identification:_identify(src/zed-ros2-description) by extension 'ignore_ament_install'
+[0.228s] Level 1:colcon.colcon_core.package_identification:_identify(src/zed-ros2-description) by extensions ['colcon_pkg']
+[0.228s] Level 1:colcon.colcon_core.package_identification:_identify(src/zed-ros2-description) by extension 'colcon_pkg'
+[0.228s] Level 1:colcon.colcon_core.package_identification:_identify(src/zed-ros2-description) by extensions ['colcon_meta']
+[0.228s] Level 1:colcon.colcon_core.package_identification:_identify(src/zed-ros2-description) by extension 'colcon_meta'
+[0.228s] Level 1:colcon.colcon_core.package_identification:_identify(src/zed-ros2-description) by extensions ['ros']
+[0.228s] Level 1:colcon.colcon_core.package_identification:_identify(src/zed-ros2-description) by extension 'ros'
+[0.229s] DEBUG:colcon.colcon_core.package_identification:Package 'src/zed-ros2-description' with type 'ros.ament_cmake' and name 'zed_description'
+[0.229s] Level 1:colcon.colcon_core.package_identification:_identify(src/zed-ros2-interfaces) by extensions ['ignore', 'ignore_ament_install']
+[0.229s] Level 1:colcon.colcon_core.package_identification:_identify(src/zed-ros2-interfaces) by extension 'ignore'
+[0.229s] Level 1:colcon.colcon_core.package_identification:_identify(src/zed-ros2-interfaces) by extension 'ignore_ament_install'
+[0.229s] Level 1:colcon.colcon_core.package_identification:_identify(src/zed-ros2-interfaces) by extensions ['colcon_pkg']
+[0.229s] Level 1:colcon.colcon_core.package_identification:_identify(src/zed-ros2-interfaces) by extension 'colcon_pkg'
+[0.229s] Level 1:colcon.colcon_core.package_identification:_identify(src/zed-ros2-interfaces) by extensions ['colcon_meta']
+[0.229s] Level 1:colcon.colcon_core.package_identification:_identify(src/zed-ros2-interfaces) by extension 'colcon_meta'
+[0.229s] Level 1:colcon.colcon_core.package_identification:_identify(src/zed-ros2-interfaces) by extensions ['ros']
+[0.230s] Level 1:colcon.colcon_core.package_identification:_identify(src/zed-ros2-interfaces) by extension 'ros'
+[0.230s] DEBUG:colcon.colcon_core.package_identification:Package 'src/zed-ros2-interfaces' with type 'ros.ament_cmake' and name 'zed_msgs'
+[0.230s] Level 1:colcon.colcon_core.package_identification:_identify(src/zed-ros2-wrapper) by extensions ['ignore', 'ignore_ament_install']
+[0.230s] Level 1:colcon.colcon_core.package_identification:_identify(src/zed-ros2-wrapper) by extension 'ignore'
+[0.230s] Level 1:colcon.colcon_core.package_identification:_identify(src/zed-ros2-wrapper) by extension 'ignore_ament_install'
+[0.230s] Level 1:colcon.colcon_core.package_identification:_identify(src/zed-ros2-wrapper) by extensions ['colcon_pkg']
+[0.230s] Level 1:colcon.colcon_core.package_identification:_identify(src/zed-ros2-wrapper) by extension 'colcon_pkg'
+[0.230s] Level 1:colcon.colcon_core.package_identification:_identify(src/zed-ros2-wrapper) by extensions ['colcon_meta']
+[0.230s] Level 1:colcon.colcon_core.package_identification:_identify(src/zed-ros2-wrapper) by extension 'colcon_meta'
+[0.230s] Level 1:colcon.colcon_core.package_identification:_identify(src/zed-ros2-wrapper) by extensions ['ros']
+[0.231s] Level 1:colcon.colcon_core.package_identification:_identify(src/zed-ros2-wrapper) by extension 'ros'
+[0.231s] Level 1:colcon.colcon_core.package_identification:_identify(src/zed-ros2-wrapper) by extensions ['cmake', 'python']
+[0.231s] Level 1:colcon.colcon_core.package_identification:_identify(src/zed-ros2-wrapper) by extension 'cmake'
+[0.231s] Level 1:colcon.colcon_core.package_identification:_identify(src/zed-ros2-wrapper) by extension 'python'
+[0.231s] Level 1:colcon.colcon_core.package_identification:_identify(src/zed-ros2-wrapper) by extensions ['python_setup_py']
+[0.231s] Level 1:colcon.colcon_core.package_identification:_identify(src/zed-ros2-wrapper) by extension 'python_setup_py'
+[0.231s] Level 1:colcon.colcon_core.package_identification:_identify(src/zed-ros2-wrapper/docker) by extensions ['ignore', 'ignore_ament_install']
+[0.231s] Level 1:colcon.colcon_core.package_identification:_identify(src/zed-ros2-wrapper/docker) by extension 'ignore'
+[0.231s] Level 1:colcon.colcon_core.package_identification:_identify(src/zed-ros2-wrapper/docker) by extension 'ignore_ament_install'
+[0.231s] Level 1:colcon.colcon_core.package_identification:_identify(src/zed-ros2-wrapper/docker) by extensions ['colcon_pkg']
+[0.231s] Level 1:colcon.colcon_core.package_identification:_identify(src/zed-ros2-wrapper/docker) by extension 'colcon_pkg'
+[0.231s] Level 1:colcon.colcon_core.package_identification:_identify(src/zed-ros2-wrapper/docker) by extensions ['colcon_meta']
+[0.231s] Level 1:colcon.colcon_core.package_identification:_identify(src/zed-ros2-wrapper/docker) by extension 'colcon_meta'
+[0.231s] Level 1:colcon.colcon_core.package_identification:_identify(src/zed-ros2-wrapper/docker) by extensions ['ros']
+[0.231s] Level 1:colcon.colcon_core.package_identification:_identify(src/zed-ros2-wrapper/docker) by extension 'ros'
+[0.231s] Level 1:colcon.colcon_core.package_identification:_identify(src/zed-ros2-wrapper/docker) by extensions ['cmake', 'python']
+[0.231s] Level 1:colcon.colcon_core.package_identification:_identify(src/zed-ros2-wrapper/docker) by extension 'cmake'
+[0.231s] Level 1:colcon.colcon_core.package_identification:_identify(src/zed-ros2-wrapper/docker) by extension 'python'
+[0.231s] Level 1:colcon.colcon_core.package_identification:_identify(src/zed-ros2-wrapper/docker) by extensions ['python_setup_py']
+[0.231s] Level 1:colcon.colcon_core.package_identification:_identify(src/zed-ros2-wrapper/docker) by extension 'python_setup_py'
+[0.231s] Level 1:colcon.colcon_core.package_identification:_identify(src/zed-ros2-wrapper/images) by extensions ['ignore', 'ignore_ament_install']
+[0.231s] Level 1:colcon.colcon_core.package_identification:_identify(src/zed-ros2-wrapper/images) by extension 'ignore'
+[0.232s] Level 1:colcon.colcon_core.package_identification:_identify(src/zed-ros2-wrapper/images) by extension 'ignore_ament_install'
+[0.232s] Level 1:colcon.colcon_core.package_identification:_identify(src/zed-ros2-wrapper/images) by extensions ['colcon_pkg']
+[0.232s] Level 1:colcon.colcon_core.package_identification:_identify(src/zed-ros2-wrapper/images) by extension 'colcon_pkg'
+[0.232s] Level 1:colcon.colcon_core.package_identification:_identify(src/zed-ros2-wrapper/images) by extensions ['colcon_meta']
+[0.232s] Level 1:colcon.colcon_core.package_identification:_identify(src/zed-ros2-wrapper/images) by extension 'colcon_meta'
+[0.232s] Level 1:colcon.colcon_core.package_identification:_identify(src/zed-ros2-wrapper/images) by extensions ['ros']
+[0.232s] Level 1:colcon.colcon_core.package_identification:_identify(src/zed-ros2-wrapper/images) by extension 'ros'
+[0.232s] Level 1:colcon.colcon_core.package_identification:_identify(src/zed-ros2-wrapper/images) by extensions ['cmake', 'python']
+[0.232s] Level 1:colcon.colcon_core.package_identification:_identify(src/zed-ros2-wrapper/images) by extension 'cmake'
+[0.232s] Level 1:colcon.colcon_core.package_identification:_identify(src/zed-ros2-wrapper/images) by extension 'python'
+[0.232s] Level 1:colcon.colcon_core.package_identification:_identify(src/zed-ros2-wrapper/images) by extensions ['python_setup_py']
+[0.232s] Level 1:colcon.colcon_core.package_identification:_identify(src/zed-ros2-wrapper/images) by extension 'python_setup_py'
+[0.232s] Level 1:colcon.colcon_core.package_identification:_identify(src/zed-ros2-wrapper/zed_components) by extensions ['ignore', 'ignore_ament_install']
+[0.232s] Level 1:colcon.colcon_core.package_identification:_identify(src/zed-ros2-wrapper/zed_components) by extension 'ignore'
+[0.232s] Level 1:colcon.colcon_core.package_identification:_identify(src/zed-ros2-wrapper/zed_components) by extension 'ignore_ament_install'
+[0.232s] Level 1:colcon.colcon_core.package_identification:_identify(src/zed-ros2-wrapper/zed_components) by extensions ['colcon_pkg']
+[0.232s] Level 1:colcon.colcon_core.package_identification:_identify(src/zed-ros2-wrapper/zed_components) by extension 'colcon_pkg'
+[0.232s] Level 1:colcon.colcon_core.package_identification:_identify(src/zed-ros2-wrapper/zed_components) by extensions ['colcon_meta']
+[0.232s] Level 1:colcon.colcon_core.package_identification:_identify(src/zed-ros2-wrapper/zed_components) by extension 'colcon_meta'
+[0.232s] Level 1:colcon.colcon_core.package_identification:_identify(src/zed-ros2-wrapper/zed_components) by extensions ['ros']
+[0.232s] Level 1:colcon.colcon_core.package_identification:_identify(src/zed-ros2-wrapper/zed_components) by extension 'ros'
+[0.234s] DEBUG:colcon.colcon_core.package_identification:Package 'src/zed-ros2-wrapper/zed_components' with type 'ros.ament_cmake' and name 'zed_components'
+[0.234s] Level 1:colcon.colcon_core.package_identification:_identify(src/zed-ros2-wrapper/zed_debug) by extensions ['ignore', 'ignore_ament_install']
+[0.234s] Level 1:colcon.colcon_core.package_identification:_identify(src/zed-ros2-wrapper/zed_debug) by extension 'ignore'
+[0.234s] Level 1:colcon.colcon_core.package_identification:_identify(src/zed-ros2-wrapper/zed_debug) by extension 'ignore_ament_install'
+[0.234s] Level 1:colcon.colcon_core.package_identification:_identify(src/zed-ros2-wrapper/zed_debug) by extensions ['colcon_pkg']
+[0.234s] Level 1:colcon.colcon_core.package_identification:_identify(src/zed-ros2-wrapper/zed_debug) by extension 'colcon_pkg'
+[0.234s] Level 1:colcon.colcon_core.package_identification:_identify(src/zed-ros2-wrapper/zed_debug) by extensions ['colcon_meta']
+[0.234s] Level 1:colcon.colcon_core.package_identification:_identify(src/zed-ros2-wrapper/zed_debug) by extension 'colcon_meta'
+[0.235s] Level 1:colcon.colcon_core.package_identification:_identify(src/zed-ros2-wrapper/zed_debug) by extensions ['ros']
+[0.235s] Level 1:colcon.colcon_core.package_identification:_identify(src/zed-ros2-wrapper/zed_debug) by extension 'ros'
+[0.235s] DEBUG:colcon.colcon_core.package_identification:Package 'src/zed-ros2-wrapper/zed_debug' with type 'ros.ament_cmake' and name 'zed_debug'
+[0.235s] Level 1:colcon.colcon_core.package_identification:_identify(src/zed-ros2-wrapper/zed_ros2) by extensions ['ignore', 'ignore_ament_install']
+[0.235s] Level 1:colcon.colcon_core.package_identification:_identify(src/zed-ros2-wrapper/zed_ros2) by extension 'ignore'
+[0.235s] Level 1:colcon.colcon_core.package_identification:_identify(src/zed-ros2-wrapper/zed_ros2) by extension 'ignore_ament_install'
+[0.236s] Level 1:colcon.colcon_core.package_identification:_identify(src/zed-ros2-wrapper/zed_ros2) by extensions ['colcon_pkg']
+[0.236s] Level 1:colcon.colcon_core.package_identification:_identify(src/zed-ros2-wrapper/zed_ros2) by extension 'colcon_pkg'
+[0.236s] Level 1:colcon.colcon_core.package_identification:_identify(src/zed-ros2-wrapper/zed_ros2) by extensions ['colcon_meta']
+[0.236s] Level 1:colcon.colcon_core.package_identification:_identify(src/zed-ros2-wrapper/zed_ros2) by extension 'colcon_meta'
+[0.236s] Level 1:colcon.colcon_core.package_identification:_identify(src/zed-ros2-wrapper/zed_ros2) by extensions ['ros']
+[0.236s] Level 1:colcon.colcon_core.package_identification:_identify(src/zed-ros2-wrapper/zed_ros2) by extension 'ros'
+[0.236s] DEBUG:colcon.colcon_core.package_identification:Package 'src/zed-ros2-wrapper/zed_ros2' with type 'ros.ament_cmake' and name 'zed_ros2'
+[0.236s] Level 1:colcon.colcon_core.package_identification:_identify(src/zed-ros2-wrapper/zed_wrapper) by extensions ['ignore', 'ignore_ament_install']
+[0.236s] Level 1:colcon.colcon_core.package_identification:_identify(src/zed-ros2-wrapper/zed_wrapper) by extension 'ignore'
+[0.236s] Level 1:colcon.colcon_core.package_identification:_identify(src/zed-ros2-wrapper/zed_wrapper) by extension 'ignore_ament_install'
+[0.236s] Level 1:colcon.colcon_core.package_identification:_identify(src/zed-ros2-wrapper/zed_wrapper) by extensions ['colcon_pkg']
+[0.236s] Level 1:colcon.colcon_core.package_identification:_identify(src/zed-ros2-wrapper/zed_wrapper) by extension 'colcon_pkg'
+[0.237s] Level 1:colcon.colcon_core.package_identification:_identify(src/zed-ros2-wrapper/zed_wrapper) by extensions ['colcon_meta']
+[0.237s] Level 1:colcon.colcon_core.package_identification:_identify(src/zed-ros2-wrapper/zed_wrapper) by extension 'colcon_meta'
+[0.237s] Level 1:colcon.colcon_core.package_identification:_identify(src/zed-ros2-wrapper/zed_wrapper) by extensions ['ros']
+[0.237s] Level 1:colcon.colcon_core.package_identification:_identify(src/zed-ros2-wrapper/zed_wrapper) by extension 'ros'
+[0.237s] DEBUG:colcon.colcon_core.package_identification:Package 'src/zed-ros2-wrapper/zed_wrapper' with type 'ros.ament_cmake' and name 'zed_wrapper'
+[0.237s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) using defaults
+[0.237s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) discover
+[0.237s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) using defaults
+[0.237s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) discover
+[0.237s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) using defaults
+[0.267s] INFO:colcon.colcon_core.package_selection:Skipping package 'xarm_planner' in 'src/xarm_ros2/xarm_planner'
+[0.267s] INFO:colcon.colcon_core.package_selection:Skipping package 'xarm_moveit_servo' in 'src/xarm_ros2/xarm_moveit_servo'
+[0.267s] INFO:colcon.colcon_core.package_selection:Skipping package 'zed_ros2' in 'src/zed-ros2-wrapper/zed_ros2'
+[0.267s] INFO:colcon.colcon_core.package_selection:Skipping package 'zed_debug' in 'src/zed-ros2-wrapper/zed_debug'
+[0.267s] INFO:colcon.colcon_core.package_selection:Skipping package 'btcpp_ros2_samples' in 'src/behavior_tree/btcpp_ros2_samples'
+[0.267s] INFO:colcon.colcon_core.package_selection:Skipping package 'mbot_demo' in 'src/xarm_ros2/demo/mbot_demo'
+[0.267s] INFO:colcon.colcon_core.package_selection:Skipping package 'realsense_gazebo_plugin' in 'src/xarm_ros2/thirdparty/realsense_gazebo_plugin'
+[0.268s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) check parameters
+[0.268s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) discover
+[0.271s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 19 installed packages in /home/rob/project/csci5551-s26-team-pointbot/install
+[0.272s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 416 installed packages in /opt/ros/jazzy
+[0.273s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) using defaults
+[0.341s] Level 5:colcon.colcon_core.verb:set package 'btcpp_ros2_interfaces' build argument 'cmake_args' from command line to 'None'
+[0.341s] Level 5:colcon.colcon_core.verb:set package 'btcpp_ros2_interfaces' build argument 'cmake_target' from command line to 'None'
+[0.341s] Level 5:colcon.colcon_core.verb:set package 'btcpp_ros2_interfaces' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.341s] Level 5:colcon.colcon_core.verb:set package 'btcpp_ros2_interfaces' build argument 'cmake_clean_cache' from command line to 'False'
+[0.341s] Level 5:colcon.colcon_core.verb:set package 'btcpp_ros2_interfaces' build argument 'cmake_clean_first' from command line to 'False'
+[0.341s] Level 5:colcon.colcon_core.verb:set package 'btcpp_ros2_interfaces' build argument 'cmake_force_configure' from command line to 'False'
+[0.341s] Level 5:colcon.colcon_core.verb:set package 'btcpp_ros2_interfaces' build argument 'ament_cmake_args' from command line to 'None'
+[0.341s] Level 5:colcon.colcon_core.verb:set package 'btcpp_ros2_interfaces' build argument 'catkin_cmake_args' from command line to 'None'
+[0.341s] Level 5:colcon.colcon_core.verb:set package 'btcpp_ros2_interfaces' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.341s] DEBUG:colcon.colcon_core.verb:Building package 'btcpp_ros2_interfaces' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/rob/project/csci5551-s26-team-pointbot/build/btcpp_ros2_interfaces', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces', 'merge_install': False, 'path': '/home/rob/project/csci5551-s26-team-pointbot/src/behavior_tree/btcpp_ros2_interfaces', 'symlink_install': False, 'test_result_base': None}
+[0.341s] Level 5:colcon.colcon_core.verb:set package 'point_bot_interfaces' build argument 'cmake_args' from command line to 'None'
+[0.341s] Level 5:colcon.colcon_core.verb:set package 'point_bot_interfaces' build argument 'cmake_target' from command line to 'None'
+[0.341s] Level 5:colcon.colcon_core.verb:set package 'point_bot_interfaces' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.341s] Level 5:colcon.colcon_core.verb:set package 'point_bot_interfaces' build argument 'cmake_clean_cache' from command line to 'False'
+[0.341s] Level 5:colcon.colcon_core.verb:set package 'point_bot_interfaces' build argument 'cmake_clean_first' from command line to 'False'
+[0.341s] Level 5:colcon.colcon_core.verb:set package 'point_bot_interfaces' build argument 'cmake_force_configure' from command line to 'False'
+[0.341s] Level 5:colcon.colcon_core.verb:set package 'point_bot_interfaces' build argument 'ament_cmake_args' from command line to 'None'
+[0.341s] Level 5:colcon.colcon_core.verb:set package 'point_bot_interfaces' build argument 'catkin_cmake_args' from command line to 'None'
+[0.341s] Level 5:colcon.colcon_core.verb:set package 'point_bot_interfaces' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.342s] DEBUG:colcon.colcon_core.verb:Building package 'point_bot_interfaces' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/rob/project/csci5551-s26-team-pointbot/build/point_bot_interfaces', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces', 'merge_install': False, 'path': '/home/rob/project/csci5551-s26-team-pointbot/src/point_bot_interfaces', 'symlink_install': False, 'test_result_base': None}
+[0.342s] Level 5:colcon.colcon_core.verb:set package 'uf_ros_lib' build argument 'cmake_args' from command line to 'None'
+[0.342s] Level 5:colcon.colcon_core.verb:set package 'uf_ros_lib' build argument 'cmake_target' from command line to 'None'
+[0.342s] Level 5:colcon.colcon_core.verb:set package 'uf_ros_lib' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.342s] Level 5:colcon.colcon_core.verb:set package 'uf_ros_lib' build argument 'cmake_clean_cache' from command line to 'False'
+[0.342s] Level 5:colcon.colcon_core.verb:set package 'uf_ros_lib' build argument 'cmake_clean_first' from command line to 'False'
+[0.342s] Level 5:colcon.colcon_core.verb:set package 'uf_ros_lib' build argument 'cmake_force_configure' from command line to 'False'
+[0.342s] Level 5:colcon.colcon_core.verb:set package 'uf_ros_lib' build argument 'ament_cmake_args' from command line to 'None'
+[0.342s] Level 5:colcon.colcon_core.verb:set package 'uf_ros_lib' build argument 'catkin_cmake_args' from command line to 'None'
+[0.342s] Level 5:colcon.colcon_core.verb:set package 'uf_ros_lib' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.342s] DEBUG:colcon.colcon_core.verb:Building package 'uf_ros_lib' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/rob/project/csci5551-s26-team-pointbot/build/uf_ros_lib', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/rob/project/csci5551-s26-team-pointbot/install/uf_ros_lib', 'merge_install': False, 'path': '/home/rob/project/csci5551-s26-team-pointbot/src/xarm_ros2/uf_ros_lib', 'symlink_install': False, 'test_result_base': None}
+[0.342s] Level 5:colcon.colcon_core.verb:set package 'xarm_description' build argument 'cmake_args' from command line to 'None'
+[0.342s] Level 5:colcon.colcon_core.verb:set package 'xarm_description' build argument 'cmake_target' from command line to 'None'
+[0.342s] Level 5:colcon.colcon_core.verb:set package 'xarm_description' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.342s] Level 5:colcon.colcon_core.verb:set package 'xarm_description' build argument 'cmake_clean_cache' from command line to 'False'
+[0.342s] Level 5:colcon.colcon_core.verb:set package 'xarm_description' build argument 'cmake_clean_first' from command line to 'False'
+[0.342s] Level 5:colcon.colcon_core.verb:set package 'xarm_description' build argument 'cmake_force_configure' from command line to 'False'
+[0.342s] Level 5:colcon.colcon_core.verb:set package 'xarm_description' build argument 'ament_cmake_args' from command line to 'None'
+[0.342s] Level 5:colcon.colcon_core.verb:set package 'xarm_description' build argument 'catkin_cmake_args' from command line to 'None'
+[0.342s] Level 5:colcon.colcon_core.verb:set package 'xarm_description' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.342s] DEBUG:colcon.colcon_core.verb:Building package 'xarm_description' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/rob/project/csci5551-s26-team-pointbot/build/xarm_description', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/rob/project/csci5551-s26-team-pointbot/install/xarm_description', 'merge_install': False, 'path': '/home/rob/project/csci5551-s26-team-pointbot/src/xarm_ros2/xarm_description', 'symlink_install': False, 'test_result_base': None}
+[0.342s] Level 5:colcon.colcon_core.verb:set package 'xarm_msgs' build argument 'cmake_args' from command line to 'None'
+[0.343s] Level 5:colcon.colcon_core.verb:set package 'xarm_msgs' build argument 'cmake_target' from command line to 'None'
+[0.343s] Level 5:colcon.colcon_core.verb:set package 'xarm_msgs' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.343s] Level 5:colcon.colcon_core.verb:set package 'xarm_msgs' build argument 'cmake_clean_cache' from command line to 'False'
+[0.343s] Level 5:colcon.colcon_core.verb:set package 'xarm_msgs' build argument 'cmake_clean_first' from command line to 'False'
+[0.343s] Level 5:colcon.colcon_core.verb:set package 'xarm_msgs' build argument 'cmake_force_configure' from command line to 'False'
+[0.343s] Level 5:colcon.colcon_core.verb:set package 'xarm_msgs' build argument 'ament_cmake_args' from command line to 'None'
+[0.343s] Level 5:colcon.colcon_core.verb:set package 'xarm_msgs' build argument 'catkin_cmake_args' from command line to 'None'
+[0.343s] Level 5:colcon.colcon_core.verb:set package 'xarm_msgs' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.343s] DEBUG:colcon.colcon_core.verb:Building package 'xarm_msgs' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/rob/project/csci5551-s26-team-pointbot/build/xarm_msgs', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/rob/project/csci5551-s26-team-pointbot/install/xarm_msgs', 'merge_install': False, 'path': '/home/rob/project/csci5551-s26-team-pointbot/src/xarm_ros2/xarm_msgs', 'symlink_install': False, 'test_result_base': None}
+[0.343s] Level 5:colcon.colcon_core.verb:set package 'xarm_sdk' build argument 'cmake_args' from command line to 'None'
+[0.343s] Level 5:colcon.colcon_core.verb:set package 'xarm_sdk' build argument 'cmake_target' from command line to 'None'
+[0.343s] Level 5:colcon.colcon_core.verb:set package 'xarm_sdk' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.343s] Level 5:colcon.colcon_core.verb:set package 'xarm_sdk' build argument 'cmake_clean_cache' from command line to 'False'
+[0.343s] Level 5:colcon.colcon_core.verb:set package 'xarm_sdk' build argument 'cmake_clean_first' from command line to 'False'
+[0.343s] Level 5:colcon.colcon_core.verb:set package 'xarm_sdk' build argument 'cmake_force_configure' from command line to 'False'
+[0.343s] Level 5:colcon.colcon_core.verb:set package 'xarm_sdk' build argument 'ament_cmake_args' from command line to 'None'
+[0.343s] Level 5:colcon.colcon_core.verb:set package 'xarm_sdk' build argument 'catkin_cmake_args' from command line to 'None'
+[0.343s] Level 5:colcon.colcon_core.verb:set package 'xarm_sdk' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.343s] DEBUG:colcon.colcon_core.verb:Building package 'xarm_sdk' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/rob/project/csci5551-s26-team-pointbot/build/xarm_sdk', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/rob/project/csci5551-s26-team-pointbot/install/xarm_sdk', 'merge_install': False, 'path': '/home/rob/project/csci5551-s26-team-pointbot/src/xarm_ros2/xarm_sdk', 'symlink_install': False, 'test_result_base': None}
+[0.343s] Level 5:colcon.colcon_core.verb:set package 'zed_description' build argument 'cmake_args' from command line to 'None'
+[0.343s] Level 5:colcon.colcon_core.verb:set package 'zed_description' build argument 'cmake_target' from command line to 'None'
+[0.343s] Level 5:colcon.colcon_core.verb:set package 'zed_description' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.343s] Level 5:colcon.colcon_core.verb:set package 'zed_description' build argument 'cmake_clean_cache' from command line to 'False'
+[0.343s] Level 5:colcon.colcon_core.verb:set package 'zed_description' build argument 'cmake_clean_first' from command line to 'False'
+[0.343s] Level 5:colcon.colcon_core.verb:set package 'zed_description' build argument 'cmake_force_configure' from command line to 'False'
+[0.343s] Level 5:colcon.colcon_core.verb:set package 'zed_description' build argument 'ament_cmake_args' from command line to 'None'
+[0.343s] Level 5:colcon.colcon_core.verb:set package 'zed_description' build argument 'catkin_cmake_args' from command line to 'None'
+[0.343s] Level 5:colcon.colcon_core.verb:set package 'zed_description' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.343s] DEBUG:colcon.colcon_core.verb:Building package 'zed_description' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/rob/project/csci5551-s26-team-pointbot/build/zed_description', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/rob/project/csci5551-s26-team-pointbot/install/zed_description', 'merge_install': False, 'path': '/home/rob/project/csci5551-s26-team-pointbot/src/zed-ros2-description', 'symlink_install': False, 'test_result_base': None}
+[0.344s] Level 5:colcon.colcon_core.verb:set package 'zed_msgs' build argument 'cmake_args' from command line to 'None'
+[0.344s] Level 5:colcon.colcon_core.verb:set package 'zed_msgs' build argument 'cmake_target' from command line to 'None'
+[0.344s] Level 5:colcon.colcon_core.verb:set package 'zed_msgs' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.344s] Level 5:colcon.colcon_core.verb:set package 'zed_msgs' build argument 'cmake_clean_cache' from command line to 'False'
+[0.344s] Level 5:colcon.colcon_core.verb:set package 'zed_msgs' build argument 'cmake_clean_first' from command line to 'False'
+[0.344s] Level 5:colcon.colcon_core.verb:set package 'zed_msgs' build argument 'cmake_force_configure' from command line to 'False'
+[0.344s] Level 5:colcon.colcon_core.verb:set package 'zed_msgs' build argument 'ament_cmake_args' from command line to 'None'
+[0.344s] Level 5:colcon.colcon_core.verb:set package 'zed_msgs' build argument 'catkin_cmake_args' from command line to 'None'
+[0.344s] Level 5:colcon.colcon_core.verb:set package 'zed_msgs' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.344s] DEBUG:colcon.colcon_core.verb:Building package 'zed_msgs' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/rob/project/csci5551-s26-team-pointbot/build/zed_msgs', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/rob/project/csci5551-s26-team-pointbot/install/zed_msgs', 'merge_install': False, 'path': '/home/rob/project/csci5551-s26-team-pointbot/src/zed-ros2-interfaces', 'symlink_install': False, 'test_result_base': None}
+[0.344s] Level 5:colcon.colcon_core.verb:set package 'behaviortree_ros2' build argument 'cmake_args' from command line to 'None'
+[0.344s] Level 5:colcon.colcon_core.verb:set package 'behaviortree_ros2' build argument 'cmake_target' from command line to 'None'
+[0.344s] Level 5:colcon.colcon_core.verb:set package 'behaviortree_ros2' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.344s] Level 5:colcon.colcon_core.verb:set package 'behaviortree_ros2' build argument 'cmake_clean_cache' from command line to 'False'
+[0.344s] Level 5:colcon.colcon_core.verb:set package 'behaviortree_ros2' build argument 'cmake_clean_first' from command line to 'False'
+[0.344s] Level 5:colcon.colcon_core.verb:set package 'behaviortree_ros2' build argument 'cmake_force_configure' from command line to 'False'
+[0.344s] Level 5:colcon.colcon_core.verb:set package 'behaviortree_ros2' build argument 'ament_cmake_args' from command line to 'None'
+[0.344s] Level 5:colcon.colcon_core.verb:set package 'behaviortree_ros2' build argument 'catkin_cmake_args' from command line to 'None'
+[0.344s] Level 5:colcon.colcon_core.verb:set package 'behaviortree_ros2' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.344s] DEBUG:colcon.colcon_core.verb:Building package 'behaviortree_ros2' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/rob/project/csci5551-s26-team-pointbot/build/behaviortree_ros2', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/rob/project/csci5551-s26-team-pointbot/install/behaviortree_ros2', 'merge_install': False, 'path': '/home/rob/project/csci5551-s26-team-pointbot/src/behavior_tree/behaviortree_ros2', 'symlink_install': False, 'test_result_base': None}
+[0.344s] Level 5:colcon.colcon_core.verb:set package 'perception' build argument 'cmake_args' from command line to 'None'
+[0.344s] Level 5:colcon.colcon_core.verb:set package 'perception' build argument 'cmake_target' from command line to 'None'
+[0.344s] Level 5:colcon.colcon_core.verb:set package 'perception' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.344s] Level 5:colcon.colcon_core.verb:set package 'perception' build argument 'cmake_clean_cache' from command line to 'False'
+[0.344s] Level 5:colcon.colcon_core.verb:set package 'perception' build argument 'cmake_clean_first' from command line to 'False'
+[0.344s] Level 5:colcon.colcon_core.verb:set package 'perception' build argument 'cmake_force_configure' from command line to 'False'
+[0.344s] Level 5:colcon.colcon_core.verb:set package 'perception' build argument 'ament_cmake_args' from command line to 'None'
+[0.344s] Level 5:colcon.colcon_core.verb:set package 'perception' build argument 'catkin_cmake_args' from command line to 'None'
+[0.344s] Level 5:colcon.colcon_core.verb:set package 'perception' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.344s] DEBUG:colcon.colcon_core.verb:Building package 'perception' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/rob/project/csci5551-s26-team-pointbot/build/perception', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/rob/project/csci5551-s26-team-pointbot/install/perception', 'merge_install': False, 'path': '/home/rob/project/csci5551-s26-team-pointbot/src/perception', 'symlink_install': False, 'test_result_base': None}
+[0.345s] Level 5:colcon.colcon_core.verb:set package 'planning' build argument 'cmake_args' from command line to 'None'
+[0.345s] Level 5:colcon.colcon_core.verb:set package 'planning' build argument 'cmake_target' from command line to 'None'
+[0.345s] Level 5:colcon.colcon_core.verb:set package 'planning' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.345s] Level 5:colcon.colcon_core.verb:set package 'planning' build argument 'cmake_clean_cache' from command line to 'False'
+[0.345s] Level 5:colcon.colcon_core.verb:set package 'planning' build argument 'cmake_clean_first' from command line to 'False'
+[0.345s] Level 5:colcon.colcon_core.verb:set package 'planning' build argument 'cmake_force_configure' from command line to 'False'
+[0.345s] Level 5:colcon.colcon_core.verb:set package 'planning' build argument 'ament_cmake_args' from command line to 'None'
+[0.345s] Level 5:colcon.colcon_core.verb:set package 'planning' build argument 'catkin_cmake_args' from command line to 'None'
+[0.345s] Level 5:colcon.colcon_core.verb:set package 'planning' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.345s] DEBUG:colcon.colcon_core.verb:Building package 'planning' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/rob/project/csci5551-s26-team-pointbot/build/planning', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/rob/project/csci5551-s26-team-pointbot/install/planning', 'merge_install': False, 'path': '/home/rob/project/csci5551-s26-team-pointbot/src/planning', 'symlink_install': False, 'test_result_base': None}
+[0.345s] Level 5:colcon.colcon_core.verb:set package 'xarm_api' build argument 'cmake_args' from command line to 'None'
+[0.345s] Level 5:colcon.colcon_core.verb:set package 'xarm_api' build argument 'cmake_target' from command line to 'None'
+[0.345s] Level 5:colcon.colcon_core.verb:set package 'xarm_api' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.345s] Level 5:colcon.colcon_core.verb:set package 'xarm_api' build argument 'cmake_clean_cache' from command line to 'False'
+[0.345s] Level 5:colcon.colcon_core.verb:set package 'xarm_api' build argument 'cmake_clean_first' from command line to 'False'
+[0.345s] Level 5:colcon.colcon_core.verb:set package 'xarm_api' build argument 'cmake_force_configure' from command line to 'False'
+[0.345s] Level 5:colcon.colcon_core.verb:set package 'xarm_api' build argument 'ament_cmake_args' from command line to 'None'
+[0.345s] Level 5:colcon.colcon_core.verb:set package 'xarm_api' build argument 'catkin_cmake_args' from command line to 'None'
+[0.345s] Level 5:colcon.colcon_core.verb:set package 'xarm_api' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.345s] DEBUG:colcon.colcon_core.verb:Building package 'xarm_api' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/rob/project/csci5551-s26-team-pointbot/build/xarm_api', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/rob/project/csci5551-s26-team-pointbot/install/xarm_api', 'merge_install': False, 'path': '/home/rob/project/csci5551-s26-team-pointbot/src/xarm_ros2/xarm_api', 'symlink_install': False, 'test_result_base': None}
+[0.345s] Level 5:colcon.colcon_core.verb:set package 'zed_components' build argument 'cmake_args' from command line to 'None'
+[0.345s] Level 5:colcon.colcon_core.verb:set package 'zed_components' build argument 'cmake_target' from command line to 'None'
+[0.345s] Level 5:colcon.colcon_core.verb:set package 'zed_components' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.345s] Level 5:colcon.colcon_core.verb:set package 'zed_components' build argument 'cmake_clean_cache' from command line to 'False'
+[0.345s] Level 5:colcon.colcon_core.verb:set package 'zed_components' build argument 'cmake_clean_first' from command line to 'False'
+[0.345s] Level 5:colcon.colcon_core.verb:set package 'zed_components' build argument 'cmake_force_configure' from command line to 'False'
+[0.345s] Level 5:colcon.colcon_core.verb:set package 'zed_components' build argument 'ament_cmake_args' from command line to 'None'
+[0.345s] Level 5:colcon.colcon_core.verb:set package 'zed_components' build argument 'catkin_cmake_args' from command line to 'None'
+[0.345s] Level 5:colcon.colcon_core.verb:set package 'zed_components' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.345s] DEBUG:colcon.colcon_core.verb:Building package 'zed_components' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/rob/project/csci5551-s26-team-pointbot/build/zed_components', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/rob/project/csci5551-s26-team-pointbot/install/zed_components', 'merge_install': False, 'path': '/home/rob/project/csci5551-s26-team-pointbot/src/zed-ros2-wrapper/zed_components', 'symlink_install': False, 'test_result_base': None}
+[0.346s] Level 5:colcon.colcon_core.verb:set package 'control' build argument 'cmake_args' from command line to 'None'
+[0.346s] Level 5:colcon.colcon_core.verb:set package 'control' build argument 'cmake_target' from command line to 'None'
+[0.346s] Level 5:colcon.colcon_core.verb:set package 'control' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.346s] Level 5:colcon.colcon_core.verb:set package 'control' build argument 'cmake_clean_cache' from command line to 'False'
+[0.346s] Level 5:colcon.colcon_core.verb:set package 'control' build argument 'cmake_clean_first' from command line to 'False'
+[0.346s] Level 5:colcon.colcon_core.verb:set package 'control' build argument 'cmake_force_configure' from command line to 'False'
+[0.346s] Level 5:colcon.colcon_core.verb:set package 'control' build argument 'ament_cmake_args' from command line to 'None'
+[0.346s] Level 5:colcon.colcon_core.verb:set package 'control' build argument 'catkin_cmake_args' from command line to 'None'
+[0.346s] Level 5:colcon.colcon_core.verb:set package 'control' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.346s] DEBUG:colcon.colcon_core.verb:Building package 'control' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/rob/project/csci5551-s26-team-pointbot/build/control', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/rob/project/csci5551-s26-team-pointbot/install/control', 'merge_install': False, 'path': '/home/rob/project/csci5551-s26-team-pointbot/src/control', 'symlink_install': False, 'test_result_base': None}
+[0.346s] Level 5:colcon.colcon_core.verb:set package 'xarm_controller' build argument 'cmake_args' from command line to 'None'
+[0.346s] Level 5:colcon.colcon_core.verb:set package 'xarm_controller' build argument 'cmake_target' from command line to 'None'
+[0.346s] Level 5:colcon.colcon_core.verb:set package 'xarm_controller' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.346s] Level 5:colcon.colcon_core.verb:set package 'xarm_controller' build argument 'cmake_clean_cache' from command line to 'False'
+[0.346s] Level 5:colcon.colcon_core.verb:set package 'xarm_controller' build argument 'cmake_clean_first' from command line to 'False'
+[0.346s] Level 5:colcon.colcon_core.verb:set package 'xarm_controller' build argument 'cmake_force_configure' from command line to 'False'
+[0.346s] Level 5:colcon.colcon_core.verb:set package 'xarm_controller' build argument 'ament_cmake_args' from command line to 'None'
+[0.346s] Level 5:colcon.colcon_core.verb:set package 'xarm_controller' build argument 'catkin_cmake_args' from command line to 'None'
+[0.346s] Level 5:colcon.colcon_core.verb:set package 'xarm_controller' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.346s] DEBUG:colcon.colcon_core.verb:Building package 'xarm_controller' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/rob/project/csci5551-s26-team-pointbot/build/xarm_controller', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/rob/project/csci5551-s26-team-pointbot/install/xarm_controller', 'merge_install': False, 'path': '/home/rob/project/csci5551-s26-team-pointbot/src/xarm_ros2/xarm_controller', 'symlink_install': False, 'test_result_base': None}
+[0.346s] Level 5:colcon.colcon_core.verb:set package 'zed_wrapper' build argument 'cmake_args' from command line to 'None'
+[0.346s] Level 5:colcon.colcon_core.verb:set package 'zed_wrapper' build argument 'cmake_target' from command line to 'None'
+[0.346s] Level 5:colcon.colcon_core.verb:set package 'zed_wrapper' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.346s] Level 5:colcon.colcon_core.verb:set package 'zed_wrapper' build argument 'cmake_clean_cache' from command line to 'False'
+[0.346s] Level 5:colcon.colcon_core.verb:set package 'zed_wrapper' build argument 'cmake_clean_first' from command line to 'False'
+[0.346s] Level 5:colcon.colcon_core.verb:set package 'zed_wrapper' build argument 'cmake_force_configure' from command line to 'False'
+[0.346s] Level 5:colcon.colcon_core.verb:set package 'zed_wrapper' build argument 'ament_cmake_args' from command line to 'None'
+[0.346s] Level 5:colcon.colcon_core.verb:set package 'zed_wrapper' build argument 'catkin_cmake_args' from command line to 'None'
+[0.347s] Level 5:colcon.colcon_core.verb:set package 'zed_wrapper' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.347s] DEBUG:colcon.colcon_core.verb:Building package 'zed_wrapper' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/rob/project/csci5551-s26-team-pointbot/build/zed_wrapper', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/rob/project/csci5551-s26-team-pointbot/install/zed_wrapper', 'merge_install': False, 'path': '/home/rob/project/csci5551-s26-team-pointbot/src/zed-ros2-wrapper/zed_wrapper', 'symlink_install': False, 'test_result_base': None}
+[0.347s] Level 5:colcon.colcon_core.verb:set package 'xarm_gazebo' build argument 'cmake_args' from command line to 'None'
+[0.347s] Level 5:colcon.colcon_core.verb:set package 'xarm_gazebo' build argument 'cmake_target' from command line to 'None'
+[0.347s] Level 5:colcon.colcon_core.verb:set package 'xarm_gazebo' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.347s] Level 5:colcon.colcon_core.verb:set package 'xarm_gazebo' build argument 'cmake_clean_cache' from command line to 'False'
+[0.347s] Level 5:colcon.colcon_core.verb:set package 'xarm_gazebo' build argument 'cmake_clean_first' from command line to 'False'
+[0.347s] Level 5:colcon.colcon_core.verb:set package 'xarm_gazebo' build argument 'cmake_force_configure' from command line to 'False'
+[0.347s] Level 5:colcon.colcon_core.verb:set package 'xarm_gazebo' build argument 'ament_cmake_args' from command line to 'None'
+[0.347s] Level 5:colcon.colcon_core.verb:set package 'xarm_gazebo' build argument 'catkin_cmake_args' from command line to 'None'
+[0.347s] Level 5:colcon.colcon_core.verb:set package 'xarm_gazebo' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.347s] DEBUG:colcon.colcon_core.verb:Building package 'xarm_gazebo' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/rob/project/csci5551-s26-team-pointbot/build/xarm_gazebo', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/rob/project/csci5551-s26-team-pointbot/install/xarm_gazebo', 'merge_install': False, 'path': '/home/rob/project/csci5551-s26-team-pointbot/src/xarm_ros2/xarm_gazebo', 'symlink_install': False, 'test_result_base': None}
+[0.347s] Level 5:colcon.colcon_core.verb:set package 'xarm_moveit_config' build argument 'cmake_args' from command line to 'None'
+[0.347s] Level 5:colcon.colcon_core.verb:set package 'xarm_moveit_config' build argument 'cmake_target' from command line to 'None'
+[0.347s] Level 5:colcon.colcon_core.verb:set package 'xarm_moveit_config' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.347s] Level 5:colcon.colcon_core.verb:set package 'xarm_moveit_config' build argument 'cmake_clean_cache' from command line to 'False'
+[0.347s] Level 5:colcon.colcon_core.verb:set package 'xarm_moveit_config' build argument 'cmake_clean_first' from command line to 'False'
+[0.347s] Level 5:colcon.colcon_core.verb:set package 'xarm_moveit_config' build argument 'cmake_force_configure' from command line to 'False'
+[0.347s] Level 5:colcon.colcon_core.verb:set package 'xarm_moveit_config' build argument 'ament_cmake_args' from command line to 'None'
+[0.347s] Level 5:colcon.colcon_core.verb:set package 'xarm_moveit_config' build argument 'catkin_cmake_args' from command line to 'None'
+[0.347s] Level 5:colcon.colcon_core.verb:set package 'xarm_moveit_config' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.347s] DEBUG:colcon.colcon_core.verb:Building package 'xarm_moveit_config' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/rob/project/csci5551-s26-team-pointbot/build/xarm_moveit_config', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/rob/project/csci5551-s26-team-pointbot/install/xarm_moveit_config', 'merge_install': False, 'path': '/home/rob/project/csci5551-s26-team-pointbot/src/xarm_ros2/xarm_moveit_config', 'symlink_install': False, 'test_result_base': None}
+[0.347s] Level 5:colcon.colcon_core.verb:set package 'pointbot_rviz' build argument 'cmake_args' from command line to 'None'
+[0.347s] Level 5:colcon.colcon_core.verb:set package 'pointbot_rviz' build argument 'cmake_target' from command line to 'None'
+[0.348s] Level 5:colcon.colcon_core.verb:set package 'pointbot_rviz' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.348s] Level 5:colcon.colcon_core.verb:set package 'pointbot_rviz' build argument 'cmake_clean_cache' from command line to 'False'
+[0.348s] Level 5:colcon.colcon_core.verb:set package 'pointbot_rviz' build argument 'cmake_clean_first' from command line to 'False'
+[0.348s] Level 5:colcon.colcon_core.verb:set package 'pointbot_rviz' build argument 'cmake_force_configure' from command line to 'False'
+[0.348s] Level 5:colcon.colcon_core.verb:set package 'pointbot_rviz' build argument 'ament_cmake_args' from command line to 'None'
+[0.348s] Level 5:colcon.colcon_core.verb:set package 'pointbot_rviz' build argument 'catkin_cmake_args' from command line to 'None'
+[0.348s] Level 5:colcon.colcon_core.verb:set package 'pointbot_rviz' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.348s] DEBUG:colcon.colcon_core.verb:Building package 'pointbot_rviz' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/rob/project/csci5551-s26-team-pointbot/build/pointbot_rviz', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/rob/project/csci5551-s26-team-pointbot/install/pointbot_rviz', 'merge_install': False, 'path': '/home/rob/project/csci5551-s26-team-pointbot/src/pointbot_rviz', 'symlink_install': False, 'test_result_base': None}
+[0.348s] INFO:colcon.colcon_core.executor:Executing jobs using 'parallel' executor
+[0.350s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete
+[0.351s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/home/rob/project/csci5551-s26-team-pointbot/src/xarm_ros2/xarm_description' with build type 'ament_cmake'
+[0.351s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/home/rob/project/csci5551-s26-team-pointbot/src/xarm_ros2/xarm_description'
+[0.354s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_core.shell.bat': Not used on non-Windows systems
+[0.354s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.354s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.359s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/home/rob/project/csci5551-s26-team-pointbot/src/xarm_ros2/xarm_msgs' with build type 'ament_cmake'
+[0.360s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/home/rob/project/csci5551-s26-team-pointbot/src/xarm_ros2/xarm_msgs'
+[0.360s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.360s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.364s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/home/rob/project/csci5551-s26-team-pointbot/src/xarm_ros2/xarm_sdk' with build type 'ament_cmake'
+[0.364s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/home/rob/project/csci5551-s26-team-pointbot/src/xarm_ros2/xarm_sdk'
+[0.365s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.365s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.369s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/home/rob/project/csci5551-s26-team-pointbot/src/point_bot_interfaces' with build type 'ament_cmake'
+[0.369s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/home/rob/project/csci5551-s26-team-pointbot/src/point_bot_interfaces'
+[0.369s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.369s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.373s] INFO:colcon.colcon_ros.task.ament_python.build:Building ROS package in '/home/rob/project/csci5551-s26-team-pointbot/src/xarm_ros2/uf_ros_lib' with build type 'ament_python'
+[0.373s] Level 1:colcon.colcon_core.shell:create_environment_hook('uf_ros_lib', 'ament_prefix_path')
+[0.373s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/rob/project/csci5551-s26-team-pointbot/install/uf_ros_lib/share/uf_ros_lib/hook/ament_prefix_path.ps1'
+[0.374s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/rob/project/csci5551-s26-team-pointbot/install/uf_ros_lib/share/uf_ros_lib/hook/ament_prefix_path.dsv'
+[0.374s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/rob/project/csci5551-s26-team-pointbot/install/uf_ros_lib/share/uf_ros_lib/hook/ament_prefix_path.sh'
+[0.375s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.375s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.378s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/home/rob/project/csci5551-s26-team-pointbot/src/zed-ros2-interfaces' with build type 'ament_cmake'
+[0.379s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/home/rob/project/csci5551-s26-team-pointbot/src/zed-ros2-interfaces'
+[0.379s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.379s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.383s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/home/rob/project/csci5551-s26-team-pointbot/src/behavior_tree/btcpp_ros2_interfaces' with build type 'ament_cmake'
+[0.383s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/home/rob/project/csci5551-s26-team-pointbot/src/behavior_tree/btcpp_ros2_interfaces'
+[0.383s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.383s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.387s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/home/rob/project/csci5551-s26-team-pointbot/src/zed-ros2-description' with build type 'ament_cmake'
+[0.388s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/home/rob/project/csci5551-s26-team-pointbot/src/zed-ros2-description'
+[0.388s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.388s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.398s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/rob/project/csci5551-s26-team-pointbot/build/xarm_description': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/rob/project/csci5551-s26-team-pointbot/install/planning:/home/rob/project/csci5551-s26-team-pointbot/install/perception:/home/rob/project/csci5551-s26-team-pointbot/install/pointbot_rviz:/home/rob/project/csci5551-s26-team-pointbot/install/uf_ros_lib:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/rob/project/csci5551-s26-team-pointbot/build/xarm_description -- -j16 -l16
+[0.402s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/rob/project/csci5551-s26-team-pointbot/build/xarm_msgs': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/rob/project/csci5551-s26-team-pointbot/install/planning:/home/rob/project/csci5551-s26-team-pointbot/install/perception:/home/rob/project/csci5551-s26-team-pointbot/install/pointbot_rviz:/home/rob/project/csci5551-s26-team-pointbot/install/uf_ros_lib:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/rob/project/csci5551-s26-team-pointbot/build/xarm_msgs -- -j16 -l16
+[0.407s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/rob/project/csci5551-s26-team-pointbot/build/xarm_sdk': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/rob/project/csci5551-s26-team-pointbot/install/planning:/home/rob/project/csci5551-s26-team-pointbot/install/perception:/home/rob/project/csci5551-s26-team-pointbot/install/pointbot_rviz:/home/rob/project/csci5551-s26-team-pointbot/install/uf_ros_lib:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/rob/project/csci5551-s26-team-pointbot/build/xarm_sdk -- -j16 -l16
+[0.410s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/rob/project/csci5551-s26-team-pointbot/build/point_bot_interfaces': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/rob/project/csci5551-s26-team-pointbot/install/planning:/home/rob/project/csci5551-s26-team-pointbot/install/perception:/home/rob/project/csci5551-s26-team-pointbot/install/pointbot_rviz:/home/rob/project/csci5551-s26-team-pointbot/install/uf_ros_lib:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/rob/project/csci5551-s26-team-pointbot/build/point_bot_interfaces -- -j16 -l16
+[0.645s] INFO:colcon.colcon_core.task.python.build:Building Python package in '/home/rob/project/csci5551-s26-team-pointbot/src/xarm_ros2/uf_ros_lib'
+[0.646s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.646s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.658s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/rob/project/csci5551-s26-team-pointbot/build/zed_msgs': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/rob/project/csci5551-s26-team-pointbot/install/planning:/home/rob/project/csci5551-s26-team-pointbot/install/perception:/home/rob/project/csci5551-s26-team-pointbot/install/pointbot_rviz:/home/rob/project/csci5551-s26-team-pointbot/install/uf_ros_lib:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/rob/project/csci5551-s26-team-pointbot/build/zed_msgs -- -j16 -l16
+[0.660s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/rob/project/csci5551-s26-team-pointbot/build/btcpp_ros2_interfaces': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/rob/project/csci5551-s26-team-pointbot/install/planning:/home/rob/project/csci5551-s26-team-pointbot/install/perception:/home/rob/project/csci5551-s26-team-pointbot/install/pointbot_rviz:/home/rob/project/csci5551-s26-team-pointbot/install/uf_ros_lib:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/rob/project/csci5551-s26-team-pointbot/build/btcpp_ros2_interfaces -- -j16 -l16
+[0.673s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/rob/project/csci5551-s26-team-pointbot/build/xarm_description' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/rob/project/csci5551-s26-team-pointbot/install/planning:/home/rob/project/csci5551-s26-team-pointbot/install/perception:/home/rob/project/csci5551-s26-team-pointbot/install/pointbot_rviz:/home/rob/project/csci5551-s26-team-pointbot/install/uf_ros_lib:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/rob/project/csci5551-s26-team-pointbot/build/xarm_description -- -j16 -l16
+[0.690s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/rob/project/csci5551-s26-team-pointbot/build/xarm_description': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/rob/project/csci5551-s26-team-pointbot/install/planning:/home/rob/project/csci5551-s26-team-pointbot/install/perception:/home/rob/project/csci5551-s26-team-pointbot/install/pointbot_rviz:/home/rob/project/csci5551-s26-team-pointbot/install/uf_ros_lib:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --install /home/rob/project/csci5551-s26-team-pointbot/build/xarm_description
+[0.691s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/rob/project/csci5551-s26-team-pointbot/build/xarm_sdk' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/rob/project/csci5551-s26-team-pointbot/install/planning:/home/rob/project/csci5551-s26-team-pointbot/install/perception:/home/rob/project/csci5551-s26-team-pointbot/install/pointbot_rviz:/home/rob/project/csci5551-s26-team-pointbot/install/uf_ros_lib:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/rob/project/csci5551-s26-team-pointbot/build/xarm_sdk -- -j16 -l16
+[0.692s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/rob/project/csci5551-s26-team-pointbot/build/xarm_sdk': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/rob/project/csci5551-s26-team-pointbot/install/planning:/home/rob/project/csci5551-s26-team-pointbot/install/perception:/home/rob/project/csci5551-s26-team-pointbot/install/pointbot_rviz:/home/rob/project/csci5551-s26-team-pointbot/install/uf_ros_lib:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --install /home/rob/project/csci5551-s26-team-pointbot/build/xarm_sdk
+[0.700s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/rob/project/csci5551-s26-team-pointbot/build/zed_description': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/rob/project/csci5551-s26-team-pointbot/install/planning:/home/rob/project/csci5551-s26-team-pointbot/install/perception:/home/rob/project/csci5551-s26-team-pointbot/install/pointbot_rviz:/home/rob/project/csci5551-s26-team-pointbot/install/uf_ros_lib:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/rob/project/csci5551-s26-team-pointbot/build/zed_description -- -j16 -l16
+[0.724s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(xarm_sdk)
+[0.732s] Level 1:colcon.colcon_core.environment:checking '/home/rob/project/csci5551-s26-team-pointbot/install/xarm_sdk' for CMake module files
+[0.732s] Level 1:colcon.colcon_core.environment:checking '/home/rob/project/csci5551-s26-team-pointbot/install/xarm_sdk' for CMake config files
+[0.735s] Level 1:colcon.colcon_core.shell:create_environment_hook('xarm_sdk', 'cmake_prefix_path')
+[0.735s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/rob/project/csci5551-s26-team-pointbot/install/xarm_sdk/share/xarm_sdk/hook/cmake_prefix_path.ps1'
+[0.736s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/rob/project/csci5551-s26-team-pointbot/install/xarm_sdk/share/xarm_sdk/hook/cmake_prefix_path.dsv'
+[0.738s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/rob/project/csci5551-s26-team-pointbot/install/xarm_sdk/share/xarm_sdk/hook/cmake_prefix_path.sh'
+[0.741s] Level 1:colcon.colcon_core.environment:checking '/home/rob/project/csci5551-s26-team-pointbot/install/xarm_sdk/lib'
+[0.741s] Level 1:colcon.colcon_core.shell:create_environment_hook('xarm_sdk', 'ld_library_path_lib')
+[0.741s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/rob/project/csci5551-s26-team-pointbot/install/xarm_sdk/share/xarm_sdk/hook/ld_library_path_lib.ps1'
+[0.742s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/rob/project/csci5551-s26-team-pointbot/install/xarm_sdk/share/xarm_sdk/hook/ld_library_path_lib.dsv'
+[0.742s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/rob/project/csci5551-s26-team-pointbot/install/xarm_sdk/share/xarm_sdk/hook/ld_library_path_lib.sh'
+[0.742s] Level 1:colcon.colcon_core.environment:checking '/home/rob/project/csci5551-s26-team-pointbot/install/xarm_sdk/bin'
+[0.743s] Level 1:colcon.colcon_core.environment:checking '/home/rob/project/csci5551-s26-team-pointbot/install/xarm_sdk/lib/pkgconfig/xarm_sdk.pc'
+[0.743s] Level 1:colcon.colcon_core.environment:checking '/home/rob/project/csci5551-s26-team-pointbot/install/xarm_sdk/lib/python3.12/site-packages'
+[0.743s] Level 1:colcon.colcon_core.environment:checking '/home/rob/project/csci5551-s26-team-pointbot/install/xarm_sdk/bin'
+[0.743s] INFO:colcon.colcon_core.shell:Creating package script '/home/rob/project/csci5551-s26-team-pointbot/install/xarm_sdk/share/xarm_sdk/package.ps1'
+[0.756s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/rob/project/csci5551-s26-team-pointbot/install/xarm_sdk/share/xarm_sdk/package.dsv'
+[0.757s] INFO:colcon.colcon_core.shell:Creating package script '/home/rob/project/csci5551-s26-team-pointbot/install/xarm_sdk/share/xarm_sdk/package.sh'
+[0.757s] INFO:colcon.colcon_core.shell:Creating package script '/home/rob/project/csci5551-s26-team-pointbot/install/xarm_sdk/share/xarm_sdk/package.bash'
+[0.758s] INFO:colcon.colcon_core.shell:Creating package script '/home/rob/project/csci5551-s26-team-pointbot/install/xarm_sdk/share/xarm_sdk/package.zsh'
+[0.759s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/rob/project/csci5551-s26-team-pointbot/install/xarm_sdk/share/colcon-core/packages/xarm_sdk)
+[0.759s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(xarm_sdk)
+[0.759s] Level 1:colcon.colcon_core.environment:checking '/home/rob/project/csci5551-s26-team-pointbot/install/xarm_sdk' for CMake module files
+[0.764s] Level 1:colcon.colcon_core.environment:checking '/home/rob/project/csci5551-s26-team-pointbot/install/xarm_sdk' for CMake config files
+[0.772s] Level 1:colcon.colcon_core.shell:create_environment_hook('xarm_sdk', 'cmake_prefix_path')
+[0.772s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/rob/project/csci5551-s26-team-pointbot/install/xarm_sdk/share/xarm_sdk/hook/cmake_prefix_path.ps1'
+[0.778s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/rob/project/csci5551-s26-team-pointbot/install/xarm_sdk/share/xarm_sdk/hook/cmake_prefix_path.dsv'
+[0.778s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/rob/project/csci5551-s26-team-pointbot/install/xarm_sdk/share/xarm_sdk/hook/cmake_prefix_path.sh'
+[0.779s] Level 1:colcon.colcon_core.environment:checking '/home/rob/project/csci5551-s26-team-pointbot/install/xarm_sdk/lib'
+[0.780s] Level 1:colcon.colcon_core.shell:create_environment_hook('xarm_sdk', 'ld_library_path_lib')
+[0.780s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/rob/project/csci5551-s26-team-pointbot/install/xarm_sdk/share/xarm_sdk/hook/ld_library_path_lib.ps1'
+[0.784s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/rob/project/csci5551-s26-team-pointbot/install/xarm_sdk/share/xarm_sdk/hook/ld_library_path_lib.dsv'
+[0.785s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/rob/project/csci5551-s26-team-pointbot/install/xarm_sdk/share/xarm_sdk/hook/ld_library_path_lib.sh'
+[0.790s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/rob/project/csci5551-s26-team-pointbot/build/xarm_sdk' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/rob/project/csci5551-s26-team-pointbot/install/planning:/home/rob/project/csci5551-s26-team-pointbot/install/perception:/home/rob/project/csci5551-s26-team-pointbot/install/pointbot_rviz:/home/rob/project/csci5551-s26-team-pointbot/install/uf_ros_lib:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --install /home/rob/project/csci5551-s26-team-pointbot/build/xarm_sdk
+[0.792s] Level 1:colcon.colcon_core.environment:checking '/home/rob/project/csci5551-s26-team-pointbot/install/xarm_sdk/bin'
+[0.792s] Level 1:colcon.colcon_core.environment:checking '/home/rob/project/csci5551-s26-team-pointbot/install/xarm_sdk/lib/pkgconfig/xarm_sdk.pc'
+[0.792s] Level 1:colcon.colcon_core.environment:checking '/home/rob/project/csci5551-s26-team-pointbot/install/xarm_sdk/lib/python3.12/site-packages'
+[0.793s] Level 1:colcon.colcon_core.environment:checking '/home/rob/project/csci5551-s26-team-pointbot/install/xarm_sdk/bin'
+[0.793s] INFO:colcon.colcon_core.shell:Creating package script '/home/rob/project/csci5551-s26-team-pointbot/install/xarm_sdk/share/xarm_sdk/package.ps1'
+[0.794s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/rob/project/csci5551-s26-team-pointbot/install/xarm_sdk/share/xarm_sdk/package.dsv'
+[0.796s] INFO:colcon.colcon_core.shell:Creating package script '/home/rob/project/csci5551-s26-team-pointbot/install/xarm_sdk/share/xarm_sdk/package.sh'
+[0.796s] INFO:colcon.colcon_core.shell:Creating package script '/home/rob/project/csci5551-s26-team-pointbot/install/xarm_sdk/share/xarm_sdk/package.bash'
+[0.797s] INFO:colcon.colcon_core.shell:Creating package script '/home/rob/project/csci5551-s26-team-pointbot/install/xarm_sdk/share/xarm_sdk/package.zsh'
+[0.797s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/rob/project/csci5551-s26-team-pointbot/install/xarm_sdk/share/colcon-core/packages/xarm_sdk)
+[0.799s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(xarm_description)
+[0.800s] Level 1:colcon.colcon_core.environment:checking '/home/rob/project/csci5551-s26-team-pointbot/install/xarm_description' for CMake module files
+[0.801s] Level 1:colcon.colcon_core.environment:checking '/home/rob/project/csci5551-s26-team-pointbot/install/xarm_description' for CMake config files
+[0.801s] Level 1:colcon.colcon_core.shell:create_environment_hook('xarm_description', 'cmake_prefix_path')
+[0.802s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/rob/project/csci5551-s26-team-pointbot/install/xarm_description/share/xarm_description/hook/cmake_prefix_path.ps1'
+[0.800s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/rob/project/csci5551-s26-team-pointbot/build/xarm_description' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/rob/project/csci5551-s26-team-pointbot/install/planning:/home/rob/project/csci5551-s26-team-pointbot/install/perception:/home/rob/project/csci5551-s26-team-pointbot/install/pointbot_rviz:/home/rob/project/csci5551-s26-team-pointbot/install/uf_ros_lib:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --install /home/rob/project/csci5551-s26-team-pointbot/build/xarm_description
+[0.803s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/rob/project/csci5551-s26-team-pointbot/install/xarm_description/share/xarm_description/hook/cmake_prefix_path.dsv'
+[0.803s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/rob/project/csci5551-s26-team-pointbot/install/xarm_description/share/xarm_description/hook/cmake_prefix_path.sh'
+[0.808s] Level 1:colcon.colcon_core.environment:checking '/home/rob/project/csci5551-s26-team-pointbot/install/xarm_description/bin'
+[0.808s] Level 1:colcon.colcon_core.environment:checking '/home/rob/project/csci5551-s26-team-pointbot/install/xarm_description/lib/pkgconfig/xarm_description.pc'
+[0.809s] Level 1:colcon.colcon_core.environment:checking '/home/rob/project/csci5551-s26-team-pointbot/install/xarm_description/lib/python3.12/site-packages'
+[0.809s] Level 1:colcon.colcon_core.environment:checking '/home/rob/project/csci5551-s26-team-pointbot/install/xarm_description/bin'
+[0.809s] INFO:colcon.colcon_core.shell:Creating package script '/home/rob/project/csci5551-s26-team-pointbot/install/xarm_description/share/xarm_description/package.ps1'
+[0.818s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/rob/project/csci5551-s26-team-pointbot/install/xarm_description/share/xarm_description/package.dsv'
+[0.819s] INFO:colcon.colcon_core.shell:Creating package script '/home/rob/project/csci5551-s26-team-pointbot/install/xarm_description/share/xarm_description/package.sh'
+[0.819s] INFO:colcon.colcon_core.shell:Creating package script '/home/rob/project/csci5551-s26-team-pointbot/install/xarm_description/share/xarm_description/package.bash'
+[0.820s] INFO:colcon.colcon_core.shell:Creating package script '/home/rob/project/csci5551-s26-team-pointbot/install/xarm_description/share/xarm_description/package.zsh'
+[0.820s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/rob/project/csci5551-s26-team-pointbot/install/xarm_description/share/colcon-core/packages/xarm_description)
+[0.822s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(xarm_description)
+[0.822s] Level 1:colcon.colcon_core.environment:checking '/home/rob/project/csci5551-s26-team-pointbot/install/xarm_description' for CMake module files
+[0.823s] Level 1:colcon.colcon_core.environment:checking '/home/rob/project/csci5551-s26-team-pointbot/install/xarm_description' for CMake config files
+[0.824s] Level 1:colcon.colcon_core.shell:create_environment_hook('xarm_description', 'cmake_prefix_path')
+[0.825s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/rob/project/csci5551-s26-team-pointbot/install/xarm_description/share/xarm_description/hook/cmake_prefix_path.ps1'
+[0.826s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/rob/project/csci5551-s26-team-pointbot/install/xarm_description/share/xarm_description/hook/cmake_prefix_path.dsv'
+[0.826s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/rob/project/csci5551-s26-team-pointbot/install/xarm_description/share/xarm_description/hook/cmake_prefix_path.sh'
+[0.827s] Level 1:colcon.colcon_core.environment:checking '/home/rob/project/csci5551-s26-team-pointbot/install/xarm_description/bin'
+[0.827s] Level 1:colcon.colcon_core.environment:checking '/home/rob/project/csci5551-s26-team-pointbot/install/xarm_description/lib/pkgconfig/xarm_description.pc'
+[0.828s] Level 1:colcon.colcon_core.environment:checking '/home/rob/project/csci5551-s26-team-pointbot/install/xarm_description/lib/python3.12/site-packages'
+[0.828s] Level 1:colcon.colcon_core.environment:checking '/home/rob/project/csci5551-s26-team-pointbot/install/xarm_description/bin'
+[0.828s] INFO:colcon.colcon_core.shell:Creating package script '/home/rob/project/csci5551-s26-team-pointbot/install/xarm_description/share/xarm_description/package.ps1'
+[0.829s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/rob/project/csci5551-s26-team-pointbot/install/xarm_description/share/xarm_description/package.dsv'
+[0.830s] INFO:colcon.colcon_core.shell:Creating package script '/home/rob/project/csci5551-s26-team-pointbot/install/xarm_description/share/xarm_description/package.sh'
+[0.832s] INFO:colcon.colcon_core.shell:Creating package script '/home/rob/project/csci5551-s26-team-pointbot/install/xarm_description/share/xarm_description/package.bash'
+[0.832s] INFO:colcon.colcon_core.shell:Creating package script '/home/rob/project/csci5551-s26-team-pointbot/install/xarm_description/share/xarm_description/package.zsh'
+[0.833s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/rob/project/csci5551-s26-team-pointbot/install/xarm_description/share/colcon-core/packages/xarm_description)
+[0.837s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/rob/project/csci5551-s26-team-pointbot/build/zed_description' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/rob/project/csci5551-s26-team-pointbot/install/planning:/home/rob/project/csci5551-s26-team-pointbot/install/perception:/home/rob/project/csci5551-s26-team-pointbot/install/pointbot_rviz:/home/rob/project/csci5551-s26-team-pointbot/install/uf_ros_lib:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/rob/project/csci5551-s26-team-pointbot/build/zed_description -- -j16 -l16
+[0.839s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/rob/project/csci5551-s26-team-pointbot/build/zed_description': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/rob/project/csci5551-s26-team-pointbot/install/planning:/home/rob/project/csci5551-s26-team-pointbot/install/perception:/home/rob/project/csci5551-s26-team-pointbot/install/pointbot_rviz:/home/rob/project/csci5551-s26-team-pointbot/install/uf_ros_lib:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --install /home/rob/project/csci5551-s26-team-pointbot/build/zed_description
+[0.858s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(zed_description)
+[0.858s] Level 1:colcon.colcon_core.environment:checking '/home/rob/project/csci5551-s26-team-pointbot/install/zed_description' for CMake module files
+[0.859s] Level 1:colcon.colcon_core.environment:checking '/home/rob/project/csci5551-s26-team-pointbot/install/zed_description' for CMake config files
+[0.859s] Level 1:colcon.colcon_core.shell:create_environment_hook('zed_description', 'cmake_prefix_path')
+[0.859s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/rob/project/csci5551-s26-team-pointbot/install/zed_description/share/zed_description/hook/cmake_prefix_path.ps1'
+[0.860s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/rob/project/csci5551-s26-team-pointbot/install/zed_description/share/zed_description/hook/cmake_prefix_path.dsv'
+[0.860s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/rob/project/csci5551-s26-team-pointbot/build/zed_description' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/rob/project/csci5551-s26-team-pointbot/install/planning:/home/rob/project/csci5551-s26-team-pointbot/install/perception:/home/rob/project/csci5551-s26-team-pointbot/install/pointbot_rviz:/home/rob/project/csci5551-s26-team-pointbot/install/uf_ros_lib:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --install /home/rob/project/csci5551-s26-team-pointbot/build/zed_description
+[0.861s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/rob/project/csci5551-s26-team-pointbot/install/zed_description/share/zed_description/hook/cmake_prefix_path.sh'
+[0.863s] Level 1:colcon.colcon_core.environment:checking '/home/rob/project/csci5551-s26-team-pointbot/install/zed_description/bin'
+[0.863s] Level 1:colcon.colcon_core.environment:checking '/home/rob/project/csci5551-s26-team-pointbot/install/zed_description/lib/pkgconfig/zed_description.pc'
+[0.863s] Level 1:colcon.colcon_core.environment:checking '/home/rob/project/csci5551-s26-team-pointbot/install/zed_description/lib/python3.12/site-packages'
+[0.863s] Level 1:colcon.colcon_core.environment:checking '/home/rob/project/csci5551-s26-team-pointbot/install/zed_description/bin'
+[0.864s] INFO:colcon.colcon_core.shell:Creating package script '/home/rob/project/csci5551-s26-team-pointbot/install/zed_description/share/zed_description/package.ps1'
+[0.864s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/rob/project/csci5551-s26-team-pointbot/install/zed_description/share/zed_description/package.dsv'
+[0.866s] INFO:colcon.colcon_core.shell:Creating package script '/home/rob/project/csci5551-s26-team-pointbot/install/zed_description/share/zed_description/package.sh'
+[0.866s] INFO:colcon.colcon_core.shell:Creating package script '/home/rob/project/csci5551-s26-team-pointbot/install/zed_description/share/zed_description/package.bash'
+[0.866s] INFO:colcon.colcon_core.shell:Creating package script '/home/rob/project/csci5551-s26-team-pointbot/install/zed_description/share/zed_description/package.zsh'
+[0.869s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/rob/project/csci5551-s26-team-pointbot/install/zed_description/share/colcon-core/packages/zed_description)
+[0.870s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(zed_description)
+[0.870s] Level 1:colcon.colcon_core.environment:checking '/home/rob/project/csci5551-s26-team-pointbot/install/zed_description' for CMake module files
+[0.872s] Level 1:colcon.colcon_core.environment:checking '/home/rob/project/csci5551-s26-team-pointbot/install/zed_description' for CMake config files
+[0.872s] Level 1:colcon.colcon_core.shell:create_environment_hook('zed_description', 'cmake_prefix_path')
+[0.872s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/rob/project/csci5551-s26-team-pointbot/install/zed_description/share/zed_description/hook/cmake_prefix_path.ps1'
+[0.874s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/rob/project/csci5551-s26-team-pointbot/install/zed_description/share/zed_description/hook/cmake_prefix_path.dsv'
+[0.877s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/rob/project/csci5551-s26-team-pointbot/install/zed_description/share/zed_description/hook/cmake_prefix_path.sh'
+[0.881s] Level 1:colcon.colcon_core.environment:checking '/home/rob/project/csci5551-s26-team-pointbot/install/zed_description/bin'
+[0.882s] Level 1:colcon.colcon_core.environment:checking '/home/rob/project/csci5551-s26-team-pointbot/install/zed_description/lib/pkgconfig/zed_description.pc'
+[0.882s] Level 1:colcon.colcon_core.environment:checking '/home/rob/project/csci5551-s26-team-pointbot/install/zed_description/lib/python3.12/site-packages'
+[0.882s] Level 1:colcon.colcon_core.environment:checking '/home/rob/project/csci5551-s26-team-pointbot/install/zed_description/bin'
+[0.883s] INFO:colcon.colcon_core.shell:Creating package script '/home/rob/project/csci5551-s26-team-pointbot/install/zed_description/share/zed_description/package.ps1'
+[0.890s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/rob/project/csci5551-s26-team-pointbot/install/zed_description/share/zed_description/package.dsv'
+[0.890s] INFO:colcon.colcon_core.shell:Creating package script '/home/rob/project/csci5551-s26-team-pointbot/install/zed_description/share/zed_description/package.sh'
+[0.891s] INFO:colcon.colcon_core.shell:Creating package script '/home/rob/project/csci5551-s26-team-pointbot/install/zed_description/share/zed_description/package.bash'
+[0.891s] INFO:colcon.colcon_core.shell:Creating package script '/home/rob/project/csci5551-s26-team-pointbot/install/zed_description/share/zed_description/package.zsh'
+[0.892s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/rob/project/csci5551-s26-team-pointbot/install/zed_description/share/colcon-core/packages/zed_description)
+[0.958s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/rob/project/csci5551-s26-team-pointbot/build/point_bot_interfaces' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/rob/project/csci5551-s26-team-pointbot/install/planning:/home/rob/project/csci5551-s26-team-pointbot/install/perception:/home/rob/project/csci5551-s26-team-pointbot/install/pointbot_rviz:/home/rob/project/csci5551-s26-team-pointbot/install/uf_ros_lib:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/rob/project/csci5551-s26-team-pointbot/build/point_bot_interfaces -- -j16 -l16
+[0.961s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/rob/project/csci5551-s26-team-pointbot/build/point_bot_interfaces': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/rob/project/csci5551-s26-team-pointbot/install/planning:/home/rob/project/csci5551-s26-team-pointbot/install/perception:/home/rob/project/csci5551-s26-team-pointbot/install/pointbot_rviz:/home/rob/project/csci5551-s26-team-pointbot/install/uf_ros_lib:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --install /home/rob/project/csci5551-s26-team-pointbot/build/point_bot_interfaces
+[1.053s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(point_bot_interfaces)
+[1.054s] Level 1:colcon.colcon_core.environment:checking '/home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces' for CMake module files
+[1.055s] Level 1:colcon.colcon_core.environment:checking '/home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces' for CMake config files
+[1.055s] Level 1:colcon.colcon_core.shell:create_environment_hook('point_bot_interfaces', 'cmake_prefix_path')
+[1.056s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/share/point_bot_interfaces/hook/cmake_prefix_path.ps1'
+[1.053s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/rob/project/csci5551-s26-team-pointbot/build/point_bot_interfaces' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/rob/project/csci5551-s26-team-pointbot/install/planning:/home/rob/project/csci5551-s26-team-pointbot/install/perception:/home/rob/project/csci5551-s26-team-pointbot/install/pointbot_rviz:/home/rob/project/csci5551-s26-team-pointbot/install/uf_ros_lib:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --install /home/rob/project/csci5551-s26-team-pointbot/build/point_bot_interfaces
+[1.057s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/share/point_bot_interfaces/hook/cmake_prefix_path.dsv'
+[1.058s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/share/point_bot_interfaces/hook/cmake_prefix_path.sh'
+[1.059s] Level 1:colcon.colcon_core.environment:checking '/home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/lib'
+[1.059s] Level 1:colcon.colcon_core.shell:create_environment_hook('point_bot_interfaces', 'ld_library_path_lib')
+[1.060s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/share/point_bot_interfaces/hook/ld_library_path_lib.ps1'
+[1.060s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/share/point_bot_interfaces/hook/ld_library_path_lib.dsv'
+[1.061s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/share/point_bot_interfaces/hook/ld_library_path_lib.sh'
+[1.061s] Level 1:colcon.colcon_core.environment:checking '/home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/bin'
+[1.061s] Level 1:colcon.colcon_core.environment:checking '/home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/lib/pkgconfig/point_bot_interfaces.pc'
+[1.062s] Level 1:colcon.colcon_core.environment:checking '/home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/lib/python3.12/site-packages'
+[1.062s] Level 1:colcon.colcon_core.shell:create_environment_hook('point_bot_interfaces', 'pythonpath')
+[1.062s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/share/point_bot_interfaces/hook/pythonpath.ps1'
+[1.063s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/share/point_bot_interfaces/hook/pythonpath.dsv'
+[1.063s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/share/point_bot_interfaces/hook/pythonpath.sh'
+[1.064s] Level 1:colcon.colcon_core.environment:checking '/home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/bin'
+[1.065s] INFO:colcon.colcon_core.shell:Creating package script '/home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/share/point_bot_interfaces/package.ps1'
+[1.066s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/share/point_bot_interfaces/package.dsv'
+[1.066s] INFO:colcon.colcon_core.shell:Creating package script '/home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/share/point_bot_interfaces/package.sh'
+[1.067s] INFO:colcon.colcon_core.shell:Creating package script '/home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/share/point_bot_interfaces/package.bash'
+[1.067s] INFO:colcon.colcon_core.shell:Creating package script '/home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/share/point_bot_interfaces/package.zsh'
+[1.068s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/share/colcon-core/packages/point_bot_interfaces)
+[1.069s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(point_bot_interfaces)
+[1.069s] Level 1:colcon.colcon_core.environment:checking '/home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces' for CMake module files
+[1.070s] Level 1:colcon.colcon_core.environment:checking '/home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces' for CMake config files
+[1.070s] Level 1:colcon.colcon_core.shell:create_environment_hook('point_bot_interfaces', 'cmake_prefix_path')
+[1.071s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/share/point_bot_interfaces/hook/cmake_prefix_path.ps1'
+[1.071s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/share/point_bot_interfaces/hook/cmake_prefix_path.dsv'
+[1.072s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/share/point_bot_interfaces/hook/cmake_prefix_path.sh'
+[1.072s] Level 1:colcon.colcon_core.environment:checking '/home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/lib'
+[1.073s] Level 1:colcon.colcon_core.shell:create_environment_hook('point_bot_interfaces', 'ld_library_path_lib')
+[1.073s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/share/point_bot_interfaces/hook/ld_library_path_lib.ps1'
+[1.073s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/share/point_bot_interfaces/hook/ld_library_path_lib.dsv'
+[1.074s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/share/point_bot_interfaces/hook/ld_library_path_lib.sh'
+[1.074s] Level 1:colcon.colcon_core.environment:checking '/home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/bin'
+[1.074s] Level 1:colcon.colcon_core.environment:checking '/home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/lib/pkgconfig/point_bot_interfaces.pc'
+[1.075s] Level 1:colcon.colcon_core.environment:checking '/home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/lib/python3.12/site-packages'
+[1.075s] Level 1:colcon.colcon_core.shell:create_environment_hook('point_bot_interfaces', 'pythonpath')
+[1.075s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/share/point_bot_interfaces/hook/pythonpath.ps1'
+[1.076s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/share/point_bot_interfaces/hook/pythonpath.dsv'
+[1.076s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/share/point_bot_interfaces/hook/pythonpath.sh'
+[1.078s] Level 1:colcon.colcon_core.environment:checking '/home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/bin'
+[1.078s] INFO:colcon.colcon_core.shell:Creating package script '/home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/share/point_bot_interfaces/package.ps1'
+[1.079s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/share/point_bot_interfaces/package.dsv'
+[1.080s] INFO:colcon.colcon_core.shell:Creating package script '/home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/share/point_bot_interfaces/package.sh'
+[1.081s] INFO:colcon.colcon_core.shell:Creating package script '/home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/share/point_bot_interfaces/package.bash'
+[1.081s] INFO:colcon.colcon_core.shell:Creating package script '/home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/share/point_bot_interfaces/package.zsh'
+[1.082s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/share/colcon-core/packages/point_bot_interfaces)
+[1.083s] INFO:colcon.colcon_ros.task.ament_python.build:Building ROS package in '/home/rob/project/csci5551-s26-team-pointbot/src/perception' with build type 'ament_python'
+[1.083s] Level 1:colcon.colcon_core.shell:create_environment_hook('perception', 'ament_prefix_path')
+[1.083s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/rob/project/csci5551-s26-team-pointbot/install/perception/share/perception/hook/ament_prefix_path.ps1'
+[1.085s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/rob/project/csci5551-s26-team-pointbot/install/perception/share/perception/hook/ament_prefix_path.dsv'
+[1.086s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/rob/project/csci5551-s26-team-pointbot/install/perception/share/perception/hook/ament_prefix_path.sh'
+[1.088s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[1.089s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[1.097s] INFO:colcon.colcon_ros.task.ament_python.build:Building ROS package in '/home/rob/project/csci5551-s26-team-pointbot/src/planning' with build type 'ament_python'
+[1.098s] Level 1:colcon.colcon_core.shell:create_environment_hook('planning', 'ament_prefix_path')
+[1.098s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/rob/project/csci5551-s26-team-pointbot/install/planning/share/planning/hook/ament_prefix_path.ps1'
+[1.099s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/rob/project/csci5551-s26-team-pointbot/install/planning/share/planning/hook/ament_prefix_path.dsv'
+[1.099s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/rob/project/csci5551-s26-team-pointbot/install/planning/share/planning/hook/ament_prefix_path.sh'
+[1.101s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[1.101s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[1.473s] INFO:colcon.colcon_core.task.python.build:Building Python package in '/home/rob/project/csci5551-s26-team-pointbot/src/perception'
+[1.473s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[1.473s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[1.747s] INFO:colcon.colcon_core.task.python.build:Building Python package in '/home/rob/project/csci5551-s26-team-pointbot/src/planning'
+[1.747s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[1.747s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[1.758s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/rob/project/csci5551-s26-team-pointbot/build/xarm_msgs' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/rob/project/csci5551-s26-team-pointbot/install/planning:/home/rob/project/csci5551-s26-team-pointbot/install/perception:/home/rob/project/csci5551-s26-team-pointbot/install/pointbot_rviz:/home/rob/project/csci5551-s26-team-pointbot/install/uf_ros_lib:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/rob/project/csci5551-s26-team-pointbot/build/xarm_msgs -- -j16 -l16
+[1.761s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/rob/project/csci5551-s26-team-pointbot/build/xarm_msgs': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/rob/project/csci5551-s26-team-pointbot/install/planning:/home/rob/project/csci5551-s26-team-pointbot/install/perception:/home/rob/project/csci5551-s26-team-pointbot/install/pointbot_rviz:/home/rob/project/csci5551-s26-team-pointbot/install/uf_ros_lib:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --install /home/rob/project/csci5551-s26-team-pointbot/build/xarm_msgs
+[1.763s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/rob/project/csci5551-s26-team-pointbot/build/btcpp_ros2_interfaces' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/rob/project/csci5551-s26-team-pointbot/install/planning:/home/rob/project/csci5551-s26-team-pointbot/install/perception:/home/rob/project/csci5551-s26-team-pointbot/install/pointbot_rviz:/home/rob/project/csci5551-s26-team-pointbot/install/uf_ros_lib:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/rob/project/csci5551-s26-team-pointbot/build/btcpp_ros2_interfaces -- -j16 -l16
+[1.766s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/rob/project/csci5551-s26-team-pointbot/build/btcpp_ros2_interfaces': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/rob/project/csci5551-s26-team-pointbot/install/planning:/home/rob/project/csci5551-s26-team-pointbot/install/perception:/home/rob/project/csci5551-s26-team-pointbot/install/pointbot_rviz:/home/rob/project/csci5551-s26-team-pointbot/install/uf_ros_lib:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --install /home/rob/project/csci5551-s26-team-pointbot/build/btcpp_ros2_interfaces
+[1.768s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/rob/project/csci5551-s26-team-pointbot/build/zed_msgs' returned '2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/rob/project/csci5551-s26-team-pointbot/install/planning:/home/rob/project/csci5551-s26-team-pointbot/install/perception:/home/rob/project/csci5551-s26-team-pointbot/install/pointbot_rviz:/home/rob/project/csci5551-s26-team-pointbot/install/uf_ros_lib:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/rob/project/csci5551-s26-team-pointbot/build/zed_msgs -- -j16 -l16
+[1.769s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(zed_msgs)
+[1.770s] Level 1:colcon.colcon_core.environment:checking '/home/rob/project/csci5551-s26-team-pointbot/install/zed_msgs' for CMake module files
+[1.772s] Level 1:colcon.colcon_core.environment:checking '/home/rob/project/csci5551-s26-team-pointbot/install/zed_msgs' for CMake config files
+[1.773s] Level 1:colcon.colcon_core.shell:create_environment_hook('zed_msgs', 'cmake_prefix_path')
+[1.774s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/rob/project/csci5551-s26-team-pointbot/install/zed_msgs/share/zed_msgs/hook/cmake_prefix_path.ps1'
+[1.777s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/rob/project/csci5551-s26-team-pointbot/install/zed_msgs/share/zed_msgs/hook/cmake_prefix_path.dsv'
+[1.778s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/rob/project/csci5551-s26-team-pointbot/install/zed_msgs/share/zed_msgs/hook/cmake_prefix_path.sh'
+[1.781s] Level 1:colcon.colcon_core.environment:checking '/home/rob/project/csci5551-s26-team-pointbot/install/zed_msgs/lib'
+[1.781s] Level 1:colcon.colcon_core.shell:create_environment_hook('zed_msgs', 'ld_library_path_lib')
+[1.782s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/rob/project/csci5551-s26-team-pointbot/install/zed_msgs/share/zed_msgs/hook/ld_library_path_lib.ps1'
+[1.784s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/rob/project/csci5551-s26-team-pointbot/install/zed_msgs/share/zed_msgs/hook/ld_library_path_lib.dsv'
+[1.786s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/rob/project/csci5551-s26-team-pointbot/install/zed_msgs/share/zed_msgs/hook/ld_library_path_lib.sh'
+[1.788s] Level 1:colcon.colcon_core.environment:checking '/home/rob/project/csci5551-s26-team-pointbot/install/zed_msgs/bin'
+[1.788s] Level 1:colcon.colcon_core.environment:checking '/home/rob/project/csci5551-s26-team-pointbot/install/zed_msgs/lib/pkgconfig/zed_msgs.pc'
+[1.789s] Level 1:colcon.colcon_core.environment:checking '/home/rob/project/csci5551-s26-team-pointbot/install/zed_msgs/lib/python3.12/site-packages'
+[1.790s] Level 1:colcon.colcon_core.shell:create_environment_hook('zed_msgs', 'pythonpath')
+[1.790s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/rob/project/csci5551-s26-team-pointbot/install/zed_msgs/share/zed_msgs/hook/pythonpath.ps1'
+[1.792s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/rob/project/csci5551-s26-team-pointbot/install/zed_msgs/share/zed_msgs/hook/pythonpath.dsv'
+[1.794s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/rob/project/csci5551-s26-team-pointbot/install/zed_msgs/share/zed_msgs/hook/pythonpath.sh'
+[1.796s] Level 1:colcon.colcon_core.environment:checking '/home/rob/project/csci5551-s26-team-pointbot/install/zed_msgs/bin'
+[1.797s] INFO:colcon.colcon_core.shell:Creating package script '/home/rob/project/csci5551-s26-team-pointbot/install/zed_msgs/share/zed_msgs/package.ps1'
+[1.800s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/rob/project/csci5551-s26-team-pointbot/install/zed_msgs/share/zed_msgs/package.dsv'
+[1.803s] INFO:colcon.colcon_core.shell:Creating package script '/home/rob/project/csci5551-s26-team-pointbot/install/zed_msgs/share/zed_msgs/package.sh'
+[1.806s] INFO:colcon.colcon_core.shell:Creating package script '/home/rob/project/csci5551-s26-team-pointbot/install/zed_msgs/share/zed_msgs/package.bash'
+[1.808s] INFO:colcon.colcon_core.shell:Creating package script '/home/rob/project/csci5551-s26-team-pointbot/install/zed_msgs/share/zed_msgs/package.zsh'
+[1.809s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/rob/project/csci5551-s26-team-pointbot/install/zed_msgs/share/colcon-core/packages/zed_msgs)
+[2.070s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:closing loop
+[2.070s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:loop closed
+[2.070s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete finished with '2'
+[2.071s] DEBUG:colcon.colcon_core.event_reactor:joining thread
+[2.089s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.terminal_notifier': Not used on non-Darwin systems
+[2.089s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.win32': Not used on non-Windows systems
+[2.089s] INFO:colcon.colcon_notification.desktop_notification:Sending desktop notification using 'notify2'
+[2.122s] DEBUG:colcon.colcon_core.event_reactor:joined thread
+[2.122s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/rob/project/csci5551-s26-team-pointbot/install/local_setup.ps1'
+[2.124s] INFO:colcon.colcon_core.shell:Creating prefix util module '/home/rob/project/csci5551-s26-team-pointbot/install/_local_setup_util_ps1.py'
+[2.125s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/rob/project/csci5551-s26-team-pointbot/install/setup.ps1'
+[2.127s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/rob/project/csci5551-s26-team-pointbot/install/local_setup.sh'
+[2.128s] INFO:colcon.colcon_core.shell:Creating prefix util module '/home/rob/project/csci5551-s26-team-pointbot/install/_local_setup_util_sh.py'
+[2.129s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/rob/project/csci5551-s26-team-pointbot/install/setup.sh'
+[2.131s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/rob/project/csci5551-s26-team-pointbot/install/local_setup.bash'
+[2.131s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/rob/project/csci5551-s26-team-pointbot/install/setup.bash'
+[2.133s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/rob/project/csci5551-s26-team-pointbot/install/local_setup.zsh'
+[2.133s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/rob/project/csci5551-s26-team-pointbot/install/setup.zsh'

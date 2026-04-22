@@ -1,0 +1,46 @@
+[0.048s] Invoking command in '/home/rob/project/csci5551-s26-team-pointbot/build/point_bot_interfaces': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/rob/project/csci5551-s26-team-pointbot/install/planning:/home/rob/project/csci5551-s26-team-pointbot/install/perception:/home/rob/project/csci5551-s26-team-pointbot/install/pointbot_rviz:/home/rob/project/csci5551-s26-team-pointbot/install/uf_ros_lib:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/rob/project/csci5551-s26-team-pointbot/build/point_bot_interfaces -- -j16 -l16
+[0.299s] -- Found ament_cmake: 2.5.6 (/opt/ros/jazzy/share/ament_cmake/cmake)
+[0.306s] -- Found geometry_msgs: 5.3.7 (/opt/ros/jazzy/share/geometry_msgs/cmake)
+[0.399s] -- Found rosidl_generator_c: 4.6.7 (/opt/ros/jazzy/share/rosidl_generator_c/cmake)
+[0.409s] -- Found rosidl_generator_cpp: 4.6.7 (/opt/ros/jazzy/share/rosidl_generator_cpp/cmake)
+[0.412s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[0.434s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[0.534s] -- Found sensor_msgs: 5.3.7 (/opt/ros/jazzy/share/sensor_msgs/cmake)
+[0.616s] -- Found rosidl_default_generators: 1.6.0 (/opt/ros/jazzy/share/rosidl_default_generators/cmake)
+[0.639s] -- Found rosidl_adapter: 4.6.7 (/opt/ros/jazzy/share/rosidl_adapter/cmake)
+[1.454s] -- Found ament_cmake_ros: 0.12.0 (/opt/ros/jazzy/share/ament_cmake_ros/cmake)
+[2.126s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[2.377s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[2.381s] -- Found python_cmake_module: 0.11.1 (/opt/ros/jazzy/share/python_cmake_module/cmake)
+[2.877s] -- Found Python3: /usr/bin/python3 (found version "3.12.3") found components: Interpreter Development NumPy Development.Module Development.Embed 
+[3.093s] -- Found Python3: /usr/bin/python3 (found version "3.12.3") found components: Interpreter 
+[3.098s] -- Found ament_lint_auto: 0.17.5 (/opt/ros/jazzy/share/ament_lint_auto/cmake)
+[3.122s] -- Added test 'lint_cmake' to check CMake code style
+[3.124s] -- Added test 'xmllint' to check XML markup files
+[3.127s] -- Configuring done (3.0s)
+[3.208s] -- Generating done (0.1s)
+[3.231s] -- Build files have been written to: /home/rob/project/csci5551-s26-team-pointbot/build/point_bot_interfaces
+[3.310s] [  2%] Built target point_bot_interfaces__rosidl_generator_type_description
+[3.316s] [  4%] Built target point_bot_interfaces__rs
+[3.330s] [  4%] Built target ament_cmake_python_copy_point_bot_interfaces
+[3.357s] [ 11%] Built target point_bot_interfaces__cpp
+[3.357s] [ 24%] Built target point_bot_interfaces__rosidl_generator_c
+[3.403s] [ 42%] Built target point_bot_interfaces__rosidl_typesupport_c
+[3.403s] [ 42%] Built target point_bot_interfaces__rosidl_typesupport_introspection_c
+[3.404s] [ 64%] Built target point_bot_interfaces__rosidl_typesupport_fastrtps_c
+[3.404s] [ 64%] Built target point_bot_interfaces__rosidl_typesupport_cpp
+[3.405s] [ 68%] Built target point_bot_interfaces__rosidl_typesupport_introspection_cpp
+[3.423s] [ 77%] Built target point_bot_interfaces__rosidl_typesupport_fastrtps_cpp
+[3.466s] [ 77%] Built target point_bot_interfaces
+[3.513s] [ 80%] Built target point_bot_interfaces__py
+[3.576s] [ 86%] Built target point_bot_interfaces__rosidl_generator_py
+[3.633s] running egg_info
+[3.644s] [ 91%] Built target point_bot_interfaces_s__rosidl_typesupport_fastrtps_c
+[3.646s] [ 95%] Built target point_bot_interfaces_s__rosidl_typesupport_c
+[3.649s] [100%] Built target point_bot_interfaces_s__rosidl_typesupport_introspection_c
+[3.657s] writing point_bot_interfaces.egg-info/PKG-INFO
+[3.657s] writing dependency_links to point_bot_interfaces.egg-info/dependency_links.txt
+[3.657s] writing top-level names to point_bot_interfaces.egg-info/top_level.txt
+[3.713s] reading manifest file 'point_bot_interfaces.egg-info/SOURCES.txt'
+[3.713s] writing manifest file 'point_bot_interfaces.egg-info/SOURCES.txt'
+[3.755s] [100%] Built target ament_cmake_python_build_point_bot_interfaces_egg

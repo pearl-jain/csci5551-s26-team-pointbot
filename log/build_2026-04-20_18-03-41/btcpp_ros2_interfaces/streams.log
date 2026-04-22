@@ -1,0 +1,264 @@
+[0.343s] Invoking command in '/home/rob/project/csci5551-s26-team-pointbot/build/btcpp_ros2_interfaces': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/rob/project/csci5551-s26-team-pointbot/install/pointbot_rviz:/home/rob/project/csci5551-s26-team-pointbot/install/uf_ros_lib:/home/rob/project/csci5551-s26-team-pointbot/install/planning:/home/rob/project/csci5551-s26-team-pointbot/install/perception:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/rob/project/csci5551-s26-team-pointbot/build/btcpp_ros2_interfaces -- -j16 -l16
+[0.475s] [  1%] Built target btcpp_ros2_interfaces__rs
+[0.569s] [  3%] Built target btcpp_ros2_interfaces__rosidl_generator_type_description
+[0.570s] [  3%] Built target ament_cmake_python_copy_btcpp_ros2_interfaces
+[0.570s] [  4%] Built target btcpp_ros2_interfaces__cpp
+[0.570s] [ 26%] Built target btcpp_ros2_interfaces__rosidl_generator_c
+[0.578s] [ 35%] Built target btcpp_ros2_interfaces__rosidl_typesupport_introspection_cpp
+[0.594s] [ 44%] Built target btcpp_ros2_interfaces__rosidl_typesupport_fastrtps_c
+[0.595s] [ 53%] Built target btcpp_ros2_interfaces__rosidl_typesupport_introspection_c
+[0.596s] [ 63%] Built target btcpp_ros2_interfaces__rosidl_typesupport_fastrtps_cpp
+[0.609s] [ 72%] Built target btcpp_ros2_interfaces__rosidl_typesupport_c
+[0.609s] [ 81%] Built target btcpp_ros2_interfaces__rosidl_typesupport_cpp
+[0.671s] [ 81%] Built target btcpp_ros2_interfaces
+[0.705s] [ 83%] Built target btcpp_ros2_interfaces__py
+[0.760s] [ 90%] Built target btcpp_ros2_interfaces__rosidl_generator_py
+[0.804s] [ 96%] Built target btcpp_ros2_interfaces_s__rosidl_typesupport_fastrtps_c
+[0.805s] [ 96%] Built target btcpp_ros2_interfaces_s__rosidl_typesupport_introspection_c
+[0.807s] [100%] Built target btcpp_ros2_interfaces_s__rosidl_typesupport_c
+[0.932s] running egg_info
+[0.960s] writing btcpp_ros2_interfaces.egg-info/PKG-INFO
+[0.961s] writing dependency_links to btcpp_ros2_interfaces.egg-info/dependency_links.txt
+[0.961s] writing top-level names to btcpp_ros2_interfaces.egg-info/top_level.txt
+[1.050s] reading manifest file 'btcpp_ros2_interfaces.egg-info/SOURCES.txt'
+[1.050s] writing manifest file 'btcpp_ros2_interfaces.egg-info/SOURCES.txt'
+[1.093s] [100%] Built target ament_cmake_python_build_btcpp_ros2_interfaces_egg
+[1.542s] Invoked command in '/home/rob/project/csci5551-s26-team-pointbot/build/btcpp_ros2_interfaces' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/rob/project/csci5551-s26-team-pointbot/install/pointbot_rviz:/home/rob/project/csci5551-s26-team-pointbot/install/uf_ros_lib:/home/rob/project/csci5551-s26-team-pointbot/install/planning:/home/rob/project/csci5551-s26-team-pointbot/install/perception:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/rob/project/csci5551-s26-team-pointbot/build/btcpp_ros2_interfaces -- -j16 -l16
+[1.544s] Invoking command in '/home/rob/project/csci5551-s26-team-pointbot/build/btcpp_ros2_interfaces': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/rob/project/csci5551-s26-team-pointbot/install/pointbot_rviz:/home/rob/project/csci5551-s26-team-pointbot/install/uf_ros_lib:/home/rob/project/csci5551-s26-team-pointbot/install/planning:/home/rob/project/csci5551-s26-team-pointbot/install/perception:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --install /home/rob/project/csci5551-s26-team-pointbot/build/btcpp_ros2_interfaces
+[1.602s] -- Install configuration: ""
+[1.603s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/share/ament_index/resource_index/rosidl_interfaces/btcpp_ros2_interfaces
+[1.603s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/share/btcpp_ros2_interfaces/msg/NodeStatus.json
+[1.604s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/share/btcpp_ros2_interfaces/srv/GetTrees.json
+[1.604s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/share/btcpp_ros2_interfaces/action/ExecuteTree.json
+[1.604s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/share/btcpp_ros2_interfaces/action/Sleep.json
+[1.604s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/include/btcpp_ros2_interfaces/btcpp_ros2_interfaces
+[1.604s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/include/btcpp_ros2_interfaces/btcpp_ros2_interfaces/action
+[1.604s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/include/btcpp_ros2_interfaces/btcpp_ros2_interfaces/action/execute_tree.h
+[1.604s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/include/btcpp_ros2_interfaces/btcpp_ros2_interfaces/action/sleep.h
+[1.604s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/include/btcpp_ros2_interfaces/btcpp_ros2_interfaces/action/detail
+[1.605s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/include/btcpp_ros2_interfaces/btcpp_ros2_interfaces/action/detail/execute_tree__description.c
+[1.605s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/include/btcpp_ros2_interfaces/btcpp_ros2_interfaces/action/detail/sleep__description.c
+[1.605s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/include/btcpp_ros2_interfaces/btcpp_ros2_interfaces/action/detail/sleep__type_support.c
+[1.605s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/include/btcpp_ros2_interfaces/btcpp_ros2_interfaces/action/detail/execute_tree__functions.h
+[1.605s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/include/btcpp_ros2_interfaces/btcpp_ros2_interfaces/action/detail/execute_tree__type_support.c
+[1.605s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/include/btcpp_ros2_interfaces/btcpp_ros2_interfaces/action/detail/execute_tree__functions.c
+[1.605s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/include/btcpp_ros2_interfaces/btcpp_ros2_interfaces/action/detail/sleep__type_support.h
+[1.606s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/include/btcpp_ros2_interfaces/btcpp_ros2_interfaces/action/detail/sleep__struct.h
+[1.606s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/include/btcpp_ros2_interfaces/btcpp_ros2_interfaces/action/detail/execute_tree__struct.h
+[1.606s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/include/btcpp_ros2_interfaces/btcpp_ros2_interfaces/action/detail/execute_tree__type_support.h
+[1.606s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/include/btcpp_ros2_interfaces/btcpp_ros2_interfaces/action/detail/sleep__functions.h
+[1.606s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/include/btcpp_ros2_interfaces/btcpp_ros2_interfaces/action/detail/sleep__functions.c
+[1.606s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/include/btcpp_ros2_interfaces/btcpp_ros2_interfaces/msg
+[1.607s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/include/btcpp_ros2_interfaces/btcpp_ros2_interfaces/msg/rosidl_generator_c__visibility_control.h
+[1.607s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/include/btcpp_ros2_interfaces/btcpp_ros2_interfaces/msg/detail
+[1.608s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/include/btcpp_ros2_interfaces/btcpp_ros2_interfaces/msg/detail/node_status__type_support.h
+[1.608s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/include/btcpp_ros2_interfaces/btcpp_ros2_interfaces/msg/detail/node_status__struct.h
+[1.608s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/include/btcpp_ros2_interfaces/btcpp_ros2_interfaces/msg/detail/node_status__functions.c
+[1.608s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/include/btcpp_ros2_interfaces/btcpp_ros2_interfaces/msg/detail/node_status__description.c
+[1.608s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/include/btcpp_ros2_interfaces/btcpp_ros2_interfaces/msg/detail/node_status__functions.h
+[1.608s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/include/btcpp_ros2_interfaces/btcpp_ros2_interfaces/msg/detail/node_status__type_support.c
+[1.608s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/include/btcpp_ros2_interfaces/btcpp_ros2_interfaces/msg/node_status.h
+[1.609s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/include/btcpp_ros2_interfaces/btcpp_ros2_interfaces/srv
+[1.609s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/include/btcpp_ros2_interfaces/btcpp_ros2_interfaces/srv/get_trees.h
+[1.609s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/include/btcpp_ros2_interfaces/btcpp_ros2_interfaces/srv/detail
+[1.609s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/include/btcpp_ros2_interfaces/btcpp_ros2_interfaces/srv/detail/get_trees__functions.h
+[1.609s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/include/btcpp_ros2_interfaces/btcpp_ros2_interfaces/srv/detail/get_trees__type_support.c
+[1.609s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/include/btcpp_ros2_interfaces/btcpp_ros2_interfaces/srv/detail/get_trees__type_support.h
+[1.609s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/include/btcpp_ros2_interfaces/btcpp_ros2_interfaces/srv/detail/get_trees__description.c
+[1.610s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/include/btcpp_ros2_interfaces/btcpp_ros2_interfaces/srv/detail/get_trees__struct.h
+[1.610s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/include/btcpp_ros2_interfaces/btcpp_ros2_interfaces/srv/detail/get_trees__functions.c
+[1.610s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/share/btcpp_ros2_interfaces/environment/library_path.sh
+[1.610s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/share/btcpp_ros2_interfaces/environment/library_path.dsv
+[1.610s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/lib/libbtcpp_ros2_interfaces__rosidl_generator_c.so
+[1.610s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/include/btcpp_ros2_interfaces/btcpp_ros2_interfaces
+[1.610s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/include/btcpp_ros2_interfaces/btcpp_ros2_interfaces/action
+[1.610s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/include/btcpp_ros2_interfaces/btcpp_ros2_interfaces/action/detail
+[1.611s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/include/btcpp_ros2_interfaces/btcpp_ros2_interfaces/action/detail/execute_tree__rosidl_typesupport_fastrtps_c.h
+[1.611s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/include/btcpp_ros2_interfaces/btcpp_ros2_interfaces/action/detail/sleep__rosidl_typesupport_fastrtps_c.h
+[1.611s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/include/btcpp_ros2_interfaces/btcpp_ros2_interfaces/msg
+[1.612s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/include/btcpp_ros2_interfaces/btcpp_ros2_interfaces/msg/rosidl_typesupport_fastrtps_c__visibility_control.h
+[1.612s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/include/btcpp_ros2_interfaces/btcpp_ros2_interfaces/msg/detail
+[1.613s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/include/btcpp_ros2_interfaces/btcpp_ros2_interfaces/msg/detail/node_status__rosidl_typesupport_fastrtps_c.h
+[1.613s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/include/btcpp_ros2_interfaces/btcpp_ros2_interfaces/srv
+[1.623s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/include/btcpp_ros2_interfaces/btcpp_ros2_interfaces/srv/detail
+[1.623s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/include/btcpp_ros2_interfaces/btcpp_ros2_interfaces/srv/detail/get_trees__rosidl_typesupport_fastrtps_c.h
+[1.623s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/lib/libbtcpp_ros2_interfaces__rosidl_typesupport_fastrtps_c.so
+[1.624s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/include/btcpp_ros2_interfaces/btcpp_ros2_interfaces
+[1.624s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/include/btcpp_ros2_interfaces/btcpp_ros2_interfaces/action
+[1.624s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/include/btcpp_ros2_interfaces/btcpp_ros2_interfaces/action/detail
+[1.624s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/include/btcpp_ros2_interfaces/btcpp_ros2_interfaces/action/detail/sleep__type_support.c
+[1.624s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/include/btcpp_ros2_interfaces/btcpp_ros2_interfaces/action/detail/execute_tree__type_support.c
+[1.624s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/include/btcpp_ros2_interfaces/btcpp_ros2_interfaces/action/detail/sleep__rosidl_typesupport_introspection_c.h
+[1.625s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/include/btcpp_ros2_interfaces/btcpp_ros2_interfaces/action/detail/execute_tree__rosidl_typesupport_introspection_c.h
+[1.625s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/include/btcpp_ros2_interfaces/btcpp_ros2_interfaces/msg
+[1.625s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/include/btcpp_ros2_interfaces/btcpp_ros2_interfaces/msg/rosidl_typesupport_introspection_c__visibility_control.h
+[1.625s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/include/btcpp_ros2_interfaces/btcpp_ros2_interfaces/msg/detail
+[1.625s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/include/btcpp_ros2_interfaces/btcpp_ros2_interfaces/msg/detail/node_status__type_support.c
+[1.625s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/include/btcpp_ros2_interfaces/btcpp_ros2_interfaces/msg/detail/node_status__rosidl_typesupport_introspection_c.h
+[1.626s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/include/btcpp_ros2_interfaces/btcpp_ros2_interfaces/srv
+[1.626s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/include/btcpp_ros2_interfaces/btcpp_ros2_interfaces/srv/detail
+[1.626s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/include/btcpp_ros2_interfaces/btcpp_ros2_interfaces/srv/detail/get_trees__type_support.c
+[1.626s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/include/btcpp_ros2_interfaces/btcpp_ros2_interfaces/srv/detail/get_trees__rosidl_typesupport_introspection_c.h
+[1.626s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/lib/libbtcpp_ros2_interfaces__rosidl_typesupport_introspection_c.so
+[1.627s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/lib/libbtcpp_ros2_interfaces__rosidl_typesupport_c.so
+[1.627s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/include/btcpp_ros2_interfaces/btcpp_ros2_interfaces
+[1.627s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/include/btcpp_ros2_interfaces/btcpp_ros2_interfaces/action
+[1.627s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/include/btcpp_ros2_interfaces/btcpp_ros2_interfaces/action/execute_tree.hpp
+[1.627s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/include/btcpp_ros2_interfaces/btcpp_ros2_interfaces/action/sleep.hpp
+[1.628s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/include/btcpp_ros2_interfaces/btcpp_ros2_interfaces/action/detail
+[1.628s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/include/btcpp_ros2_interfaces/btcpp_ros2_interfaces/action/detail/sleep__builder.hpp
+[1.628s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/include/btcpp_ros2_interfaces/btcpp_ros2_interfaces/action/detail/execute_tree__traits.hpp
+[1.628s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/include/btcpp_ros2_interfaces/btcpp_ros2_interfaces/action/detail/execute_tree__struct.hpp
+[1.636s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/include/btcpp_ros2_interfaces/btcpp_ros2_interfaces/action/detail/sleep__struct.hpp
+[1.637s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/include/btcpp_ros2_interfaces/btcpp_ros2_interfaces/action/detail/sleep__type_support.hpp
+[1.637s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/include/btcpp_ros2_interfaces/btcpp_ros2_interfaces/action/detail/execute_tree__type_support.hpp
+[1.637s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/include/btcpp_ros2_interfaces/btcpp_ros2_interfaces/action/detail/execute_tree__builder.hpp
+[1.637s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/include/btcpp_ros2_interfaces/btcpp_ros2_interfaces/action/detail/sleep__traits.hpp
+[1.637s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/include/btcpp_ros2_interfaces/btcpp_ros2_interfaces/msg
+[1.637s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/include/btcpp_ros2_interfaces/btcpp_ros2_interfaces/msg/node_status.hpp
+[1.637s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/include/btcpp_ros2_interfaces/btcpp_ros2_interfaces/msg/rosidl_generator_cpp__visibility_control.hpp
+[1.637s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/include/btcpp_ros2_interfaces/btcpp_ros2_interfaces/msg/detail
+[1.638s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/include/btcpp_ros2_interfaces/btcpp_ros2_interfaces/msg/detail/node_status__builder.hpp
+[1.638s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/include/btcpp_ros2_interfaces/btcpp_ros2_interfaces/msg/detail/node_status__struct.hpp
+[1.638s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/include/btcpp_ros2_interfaces/btcpp_ros2_interfaces/msg/detail/node_status__traits.hpp
+[1.638s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/include/btcpp_ros2_interfaces/btcpp_ros2_interfaces/msg/detail/node_status__type_support.hpp
+[1.638s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/include/btcpp_ros2_interfaces/btcpp_ros2_interfaces/srv
+[1.638s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/include/btcpp_ros2_interfaces/btcpp_ros2_interfaces/srv/get_trees.hpp
+[1.639s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/include/btcpp_ros2_interfaces/btcpp_ros2_interfaces/srv/detail
+[1.641s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/include/btcpp_ros2_interfaces/btcpp_ros2_interfaces/srv/detail/get_trees__struct.hpp
+[1.641s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/include/btcpp_ros2_interfaces/btcpp_ros2_interfaces/srv/detail/get_trees__type_support.hpp
+[1.641s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/include/btcpp_ros2_interfaces/btcpp_ros2_interfaces/srv/detail/get_trees__builder.hpp
+[1.641s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/include/btcpp_ros2_interfaces/btcpp_ros2_interfaces/srv/detail/get_trees__traits.hpp
+[1.641s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/include/btcpp_ros2_interfaces/btcpp_ros2_interfaces
+[1.641s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/include/btcpp_ros2_interfaces/btcpp_ros2_interfaces/action
+[1.642s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/include/btcpp_ros2_interfaces/btcpp_ros2_interfaces/action/detail
+[1.642s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/include/btcpp_ros2_interfaces/btcpp_ros2_interfaces/action/detail/dds_fastrtps
+[1.642s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/include/btcpp_ros2_interfaces/btcpp_ros2_interfaces/action/detail/execute_tree__rosidl_typesupport_fastrtps_cpp.hpp
+[1.642s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/include/btcpp_ros2_interfaces/btcpp_ros2_interfaces/action/detail/sleep__rosidl_typesupport_fastrtps_cpp.hpp
+[1.644s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/include/btcpp_ros2_interfaces/btcpp_ros2_interfaces/msg
+[1.644s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/include/btcpp_ros2_interfaces/btcpp_ros2_interfaces/msg/rosidl_typesupport_fastrtps_cpp__visibility_control.h
+[1.644s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/include/btcpp_ros2_interfaces/btcpp_ros2_interfaces/msg/detail
+[1.644s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/include/btcpp_ros2_interfaces/btcpp_ros2_interfaces/msg/detail/dds_fastrtps
+[1.644s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/include/btcpp_ros2_interfaces/btcpp_ros2_interfaces/msg/detail/node_status__rosidl_typesupport_fastrtps_cpp.hpp
+[1.644s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/include/btcpp_ros2_interfaces/btcpp_ros2_interfaces/srv
+[1.644s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/include/btcpp_ros2_interfaces/btcpp_ros2_interfaces/srv/detail
+[1.646s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/include/btcpp_ros2_interfaces/btcpp_ros2_interfaces/srv/detail/dds_fastrtps
+[1.646s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/include/btcpp_ros2_interfaces/btcpp_ros2_interfaces/srv/detail/get_trees__rosidl_typesupport_fastrtps_cpp.hpp
+[1.646s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/lib/libbtcpp_ros2_interfaces__rosidl_typesupport_fastrtps_cpp.so
+[1.646s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/include/btcpp_ros2_interfaces/btcpp_ros2_interfaces
+[1.646s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/include/btcpp_ros2_interfaces/btcpp_ros2_interfaces/action
+[1.647s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/include/btcpp_ros2_interfaces/btcpp_ros2_interfaces/action/detail
+[1.647s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/include/btcpp_ros2_interfaces/btcpp_ros2_interfaces/action/detail/execute_tree__rosidl_typesupport_introspection_cpp.hpp
+[1.647s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/include/btcpp_ros2_interfaces/btcpp_ros2_interfaces/action/detail/execute_tree__type_support.cpp
+[1.647s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/include/btcpp_ros2_interfaces/btcpp_ros2_interfaces/action/detail/sleep__type_support.cpp
+[1.647s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/include/btcpp_ros2_interfaces/btcpp_ros2_interfaces/action/detail/sleep__rosidl_typesupport_introspection_cpp.hpp
+[1.647s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/include/btcpp_ros2_interfaces/btcpp_ros2_interfaces/msg
+[1.647s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/include/btcpp_ros2_interfaces/btcpp_ros2_interfaces/msg/detail
+[1.648s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/include/btcpp_ros2_interfaces/btcpp_ros2_interfaces/msg/detail/node_status__type_support.cpp
+[1.648s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/include/btcpp_ros2_interfaces/btcpp_ros2_interfaces/msg/detail/node_status__rosidl_typesupport_introspection_cpp.hpp
+[1.648s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/include/btcpp_ros2_interfaces/btcpp_ros2_interfaces/srv
+[1.648s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/include/btcpp_ros2_interfaces/btcpp_ros2_interfaces/srv/detail
+[1.648s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/include/btcpp_ros2_interfaces/btcpp_ros2_interfaces/srv/detail/get_trees__type_support.cpp
+[1.648s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/include/btcpp_ros2_interfaces/btcpp_ros2_interfaces/srv/detail/get_trees__rosidl_typesupport_introspection_cpp.hpp
+[1.648s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/lib/libbtcpp_ros2_interfaces__rosidl_typesupport_introspection_cpp.so
+[1.648s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/lib/libbtcpp_ros2_interfaces__rosidl_typesupport_cpp.so
+[1.649s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/share/btcpp_ros2_interfaces/environment/pythonpath.sh
+[1.649s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/share/btcpp_ros2_interfaces/environment/pythonpath.dsv
+[1.649s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/lib/python3.12/site-packages/btcpp_ros2_interfaces-0.3.0-py3.12.egg-info
+[1.649s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/lib/python3.12/site-packages/btcpp_ros2_interfaces-0.3.0-py3.12.egg-info/PKG-INFO
+[1.652s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/lib/python3.12/site-packages/btcpp_ros2_interfaces-0.3.0-py3.12.egg-info/dependency_links.txt
+[1.653s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/lib/python3.12/site-packages/btcpp_ros2_interfaces-0.3.0-py3.12.egg-info/SOURCES.txt
+[1.653s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/lib/python3.12/site-packages/btcpp_ros2_interfaces-0.3.0-py3.12.egg-info/top_level.txt
+[1.653s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/lib/python3.12/site-packages/btcpp_ros2_interfaces
+[1.653s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/lib/python3.12/site-packages/btcpp_ros2_interfaces/btcpp_ros2_interfaces_s__rosidl_typesupport_fastrtps_c.so
+[1.653s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/lib/python3.12/site-packages/btcpp_ros2_interfaces/_btcpp_ros2_interfaces_s.ep.rosidl_typesupport_fastrtps_c.c
+[1.653s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/lib/python3.12/site-packages/btcpp_ros2_interfaces/btcpp_ros2_interfaces_s__rosidl_typesupport_introspection_c.so
+[1.653s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/lib/python3.12/site-packages/btcpp_ros2_interfaces/btcpp_ros2_interfaces_s__rosidl_typesupport_c.so
+[1.653s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/lib/python3.12/site-packages/btcpp_ros2_interfaces/__init__.py
+[1.653s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/lib/python3.12/site-packages/btcpp_ros2_interfaces/action
+[1.657s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/lib/python3.12/site-packages/btcpp_ros2_interfaces/action/_sleep_s.c
+[1.657s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/lib/python3.12/site-packages/btcpp_ros2_interfaces/action/__init__.py
+[1.657s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/lib/python3.12/site-packages/btcpp_ros2_interfaces/action/_sleep.py
+[1.657s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/lib/python3.12/site-packages/btcpp_ros2_interfaces/action/_execute_tree_s.c
+[1.657s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/lib/python3.12/site-packages/btcpp_ros2_interfaces/action/_execute_tree.py
+[1.657s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/lib/python3.12/site-packages/btcpp_ros2_interfaces/msg
+[1.657s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/lib/python3.12/site-packages/btcpp_ros2_interfaces/msg/_node_status.py
+[1.657s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/lib/python3.12/site-packages/btcpp_ros2_interfaces/msg/__init__.py
+[1.663s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/lib/python3.12/site-packages/btcpp_ros2_interfaces/msg/_node_status_s.c
+[1.663s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/lib/python3.12/site-packages/btcpp_ros2_interfaces/_btcpp_ros2_interfaces_s.ep.rosidl_typesupport_c.c
+[1.663s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/lib/python3.12/site-packages/btcpp_ros2_interfaces/_btcpp_ros2_interfaces_s.ep.rosidl_typesupport_introspection_c.c
+[1.663s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/lib/python3.12/site-packages/btcpp_ros2_interfaces/srv
+[1.663s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/lib/python3.12/site-packages/btcpp_ros2_interfaces/srv/__init__.py
+[1.663s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/lib/python3.12/site-packages/btcpp_ros2_interfaces/srv/_get_trees_s.c
+[1.663s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/lib/python3.12/site-packages/btcpp_ros2_interfaces/srv/_get_trees.py
+[2.107s] Listing '/home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/lib/python3.12/site-packages/btcpp_ros2_interfaces'...
+[2.107s] Listing '/home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/lib/python3.12/site-packages/btcpp_ros2_interfaces/action'...
+[2.107s] Listing '/home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/lib/python3.12/site-packages/btcpp_ros2_interfaces/msg'...
+[2.108s] Listing '/home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/lib/python3.12/site-packages/btcpp_ros2_interfaces/srv'...
+[2.114s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/lib/python3.12/site-packages/btcpp_ros2_interfaces/btcpp_ros2_interfaces_s__rosidl_typesupport_fastrtps_c.so
+[2.118s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/lib/python3.12/site-packages/btcpp_ros2_interfaces/btcpp_ros2_interfaces_s__rosidl_typesupport_introspection_c.so
+[2.118s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/lib/python3.12/site-packages/btcpp_ros2_interfaces/btcpp_ros2_interfaces_s__rosidl_typesupport_c.so
+[2.118s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/lib/libbtcpp_ros2_interfaces__rosidl_generator_py.so
+[2.118s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/share/ament_index/resource_index/rust_packages/btcpp_ros2_interfaces
+[2.119s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/share/btcpp_ros2_interfaces/rust
+[2.119s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/share/btcpp_ros2_interfaces/rust/Cargo.toml
+[2.119s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/share/btcpp_ros2_interfaces/rust/src
+[2.119s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/share/btcpp_ros2_interfaces/rust/src/lib.rs
+[2.119s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/share/btcpp_ros2_interfaces/rust/src/msg.rs
+[2.122s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/share/btcpp_ros2_interfaces/rust/src/srv.rs
+[2.122s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/share/btcpp_ros2_interfaces/rust/src/action
+[2.123s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/share/btcpp_ros2_interfaces/rust/src/action/rmw.rs
+[2.123s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/share/btcpp_ros2_interfaces/rust/src/action.rs
+[2.123s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/share/btcpp_ros2_interfaces/rust/src/msg
+[2.123s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/share/btcpp_ros2_interfaces/rust/src/msg/rmw.rs
+[2.124s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/share/btcpp_ros2_interfaces/rust/src/srv
+[2.125s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/share/btcpp_ros2_interfaces/rust/src/srv/rmw.rs
+[2.125s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/share/btcpp_ros2_interfaces/rust/build.rs
+[2.140s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/share/btcpp_ros2_interfaces/msg/NodeStatus.idl
+[2.140s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/share/btcpp_ros2_interfaces/srv/GetTrees.idl
+[2.140s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/share/btcpp_ros2_interfaces/action/ExecuteTree.idl
+[2.140s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/share/btcpp_ros2_interfaces/action/Sleep.idl
+[2.141s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/share/btcpp_ros2_interfaces/msg/NodeStatus.msg
+[2.141s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/share/btcpp_ros2_interfaces/srv/GetTrees.srv
+[2.141s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/share/btcpp_ros2_interfaces/action/ExecuteTree.action
+[2.141s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/share/btcpp_ros2_interfaces/action/Sleep.action
+[2.141s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/share/ament_index/resource_index/package_run_dependencies/btcpp_ros2_interfaces
+[2.141s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/share/ament_index/resource_index/parent_prefix_path/btcpp_ros2_interfaces
+[2.142s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/share/btcpp_ros2_interfaces/environment/ament_prefix_path.sh
+[2.142s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/share/btcpp_ros2_interfaces/environment/ament_prefix_path.dsv
+[2.142s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/share/btcpp_ros2_interfaces/environment/path.sh
+[2.143s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/share/btcpp_ros2_interfaces/environment/path.dsv
+[2.143s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/share/btcpp_ros2_interfaces/local_setup.bash
+[2.144s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/share/btcpp_ros2_interfaces/local_setup.sh
+[2.145s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/share/btcpp_ros2_interfaces/local_setup.zsh
+[2.145s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/share/btcpp_ros2_interfaces/local_setup.dsv
+[2.145s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/share/btcpp_ros2_interfaces/package.dsv
+[2.145s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/share/ament_index/resource_index/packages/btcpp_ros2_interfaces
+[2.145s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/share/btcpp_ros2_interfaces/cmake/export_btcpp_ros2_interfaces__rosidl_generator_cExport.cmake
+[2.146s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/share/btcpp_ros2_interfaces/cmake/export_btcpp_ros2_interfaces__rosidl_generator_cExport-noconfig.cmake
+[2.146s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/share/btcpp_ros2_interfaces/cmake/export_btcpp_ros2_interfaces__rosidl_typesupport_fastrtps_cExport.cmake
+[2.146s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/share/btcpp_ros2_interfaces/cmake/export_btcpp_ros2_interfaces__rosidl_typesupport_fastrtps_cExport-noconfig.cmake
+[2.146s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/share/btcpp_ros2_interfaces/cmake/btcpp_ros2_interfaces__rosidl_typesupport_introspection_cExport.cmake
+[2.147s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/share/btcpp_ros2_interfaces/cmake/btcpp_ros2_interfaces__rosidl_typesupport_introspection_cExport-noconfig.cmake
+[2.147s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/share/btcpp_ros2_interfaces/cmake/btcpp_ros2_interfaces__rosidl_typesupport_cExport.cmake
+[2.148s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/share/btcpp_ros2_interfaces/cmake/btcpp_ros2_interfaces__rosidl_typesupport_cExport-noconfig.cmake
+[2.149s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/share/btcpp_ros2_interfaces/cmake/export_btcpp_ros2_interfaces__rosidl_generator_cppExport.cmake
+[2.151s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/share/btcpp_ros2_interfaces/cmake/export_btcpp_ros2_interfaces__rosidl_typesupport_fastrtps_cppExport.cmake
+[2.151s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/share/btcpp_ros2_interfaces/cmake/export_btcpp_ros2_interfaces__rosidl_typesupport_fastrtps_cppExport-noconfig.cmake
+[2.152s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/share/btcpp_ros2_interfaces/cmake/btcpp_ros2_interfaces__rosidl_typesupport_introspection_cppExport.cmake
+[2.153s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/share/btcpp_ros2_interfaces/cmake/btcpp_ros2_interfaces__rosidl_typesupport_introspection_cppExport-noconfig.cmake
+[2.154s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/share/btcpp_ros2_interfaces/cmake/btcpp_ros2_interfaces__rosidl_typesupport_cppExport.cmake
+[2.154s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/share/btcpp_ros2_interfaces/cmake/btcpp_ros2_interfaces__rosidl_typesupport_cppExport-noconfig.cmake
+[2.155s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/share/btcpp_ros2_interfaces/cmake/export_btcpp_ros2_interfaces__rosidl_generator_pyExport.cmake
+[2.155s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/share/btcpp_ros2_interfaces/cmake/export_btcpp_ros2_interfaces__rosidl_generator_pyExport-noconfig.cmake
+[2.156s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/share/btcpp_ros2_interfaces/cmake/rosidl_cmake-extras.cmake
+[2.160s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/share/btcpp_ros2_interfaces/cmake/ament_cmake_export_dependencies-extras.cmake
+[2.161s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/share/btcpp_ros2_interfaces/cmake/ament_cmake_export_include_directories-extras.cmake
+[2.161s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/share/btcpp_ros2_interfaces/cmake/ament_cmake_export_libraries-extras.cmake
+[2.161s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/share/btcpp_ros2_interfaces/cmake/ament_cmake_export_targets-extras.cmake
+[2.161s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/share/btcpp_ros2_interfaces/cmake/rosidl_cmake_export_typesupport_targets-extras.cmake
+[2.161s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/share/btcpp_ros2_interfaces/cmake/rosidl_cmake_export_typesupport_libraries-extras.cmake
+[2.162s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/share/btcpp_ros2_interfaces/cmake/btcpp_ros2_interfacesConfig.cmake
+[2.162s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/share/btcpp_ros2_interfaces/cmake/btcpp_ros2_interfacesConfig-version.cmake
+[2.162s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/btcpp_ros2_interfaces/share/btcpp_ros2_interfaces/package.xml
+[2.165s] Invoked command in '/home/rob/project/csci5551-s26-team-pointbot/build/btcpp_ros2_interfaces' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/rob/project/csci5551-s26-team-pointbot/install/pointbot_rviz:/home/rob/project/csci5551-s26-team-pointbot/install/uf_ros_lib:/home/rob/project/csci5551-s26-team-pointbot/install/planning:/home/rob/project/csci5551-s26-team-pointbot/install/perception:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --install /home/rob/project/csci5551-s26-team-pointbot/build/btcpp_ros2_interfaces

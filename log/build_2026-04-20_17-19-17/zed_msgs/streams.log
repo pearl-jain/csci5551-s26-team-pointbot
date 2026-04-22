@@ -1,0 +1,115 @@
+[0.277s] Invoking command in '/home/rob/project/csci5551-s26-team-pointbot/build/zed_msgs': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/rob/project/csci5551-s26-team-pointbot/install/planning:/home/rob/project/csci5551-s26-team-pointbot/install/perception:/home/rob/project/csci5551-s26-team-pointbot/install/pointbot_rviz:/home/rob/project/csci5551-s26-team-pointbot/install/uf_ros_lib:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/rob/project/csci5551-s26-team-pointbot/build/zed_msgs -- -j16 -l16
+[0.399s] [  0%] Built target zed_msgs__rs
+[0.433s] [  0%] Built target zed_msgs__rosidl_generator_type_description
+[0.470s] [  0%] Built target zed_msgs__cpp
+[0.478s] [  0%] Built target ament_cmake_python_copy_zed_msgs
+[0.502s] [ 28%] Built target zed_msgs__rosidl_generator_c
+[0.555s] [ 38%] Built target zed_msgs__rosidl_typesupport_c
+[0.566s] [ 48%] Built target zed_msgs__rosidl_typesupport_introspection_c
+[0.574s] [ 57%] Built target zed_msgs__rosidl_typesupport_fastrtps_c
+[0.574s] [ 67%] Built target zed_msgs__rosidl_typesupport_fastrtps_cpp
+[0.585s] [ 77%] Built target zed_msgs__rosidl_typesupport_introspection_cpp
+[0.589s] [ 87%] Built target zed_msgs__rosidl_typesupport_cpp
+[0.626s] [ 87%] Built target zed_msgs
+[0.666s] [ 87%] Built target zed_msgs__py
+[0.727s] [ 88%] [32mBuilding C object CMakeFiles/zed_msgs__rosidl_generator_py.dir/rosidl_generator_py/zed_msgs/msg/_object_s.c.o[0m
+[0.728s] [ 88%] [32mBuilding C object CMakeFiles/zed_msgs__rosidl_generator_py.dir/rosidl_generator_py/zed_msgs/msg/_keypoint2_di_s.c.o[0m
+[0.729s] [ 88%] [32mBuilding C object CMakeFiles/zed_msgs__rosidl_generator_py.dir/rosidl_generator_py/zed_msgs/msg/_objects_stamped_s.c.o[0m
+[0.730s] [ 88%] [32mBuilding C object CMakeFiles/zed_msgs__rosidl_generator_py.dir/rosidl_generator_py/zed_msgs/msg/_keypoint3_d_s.c.o[0m
+[0.730s] [ 88%] [32mBuilding C object CMakeFiles/zed_msgs__rosidl_generator_py.dir/rosidl_generator_py/zed_msgs/msg/_bounding_box2_di_s.c.o[0m
+[0.731s] [ 89%] [32mBuilding C object CMakeFiles/zed_msgs__rosidl_generator_py.dir/rosidl_generator_py/zed_msgs/msg/_keypoint2_df_s.c.o[0m
+[0.733s] [ 90%] [32mBuilding C object CMakeFiles/zed_msgs__rosidl_generator_py.dir/rosidl_generator_py/zed_msgs/msg/_skeleton2_d_s.c.o[0m
+[0.738s] [ 90%] [32mBuilding C object CMakeFiles/zed_msgs__rosidl_generator_py.dir/rosidl_generator_py/zed_msgs/msg/_skeleton3_d_s.c.o[0m
+[0.742s] [ 90%] [32mBuilding C object CMakeFiles/zed_msgs__rosidl_generator_py.dir/rosidl_generator_py/zed_msgs/msg/_depth_info_stamped_s.c.o[0m
+[0.745s] [ 90%] [32mBuilding C object CMakeFiles/zed_msgs__rosidl_generator_py.dir/rosidl_generator_py/zed_msgs/msg/_bounding_box3_d_s.c.o[0m
+[0.746s] [ 91%] [32mBuilding C object CMakeFiles/zed_msgs__rosidl_generator_py.dir/rosidl_generator_py/zed_msgs/msg/_bounding_box2_df_s.c.o[0m
+[0.747s] [ 92%] [32mBuilding C object CMakeFiles/zed_msgs__rosidl_generator_py.dir/rosidl_generator_py/zed_msgs/msg/_pos_track_status_s.c.o[0m
+[0.747s] [ 92%] [32mBuilding C object CMakeFiles/zed_msgs__rosidl_generator_py.dir/rosidl_generator_py/zed_msgs/msg/_gnss_fusion_status_s.c.o[0m
+[0.754s] [ 93%] [32mBuilding C object CMakeFiles/zed_msgs__rosidl_generator_py.dir/rosidl_generator_py/zed_msgs/msg/_plane_stamped_s.c.o[0m
+[0.777s] [ 93%] [32mBuilding C object CMakeFiles/zed_msgs__rosidl_generator_py.dir/rosidl_generator_py/zed_msgs/msg/_heartbeat_s.c.o[0m
+[0.777s] running egg_info
+[0.806s] writing zed_msgs.egg-info/PKG-INFO
+[0.811s] writing dependency_links to zed_msgs.egg-info/dependency_links.txt
+[0.811s] writing top-level names to zed_msgs.egg-info/top_level.txt
+[0.912s] [01m[K/home/rob/project/csci5551-s26-team-pointbot/build/zed_msgs/rosidl_generator_py/zed_msgs/msg/_bounding_box3_d_s.c:11:10:[m[K [01;31m[Kfatal error: [m[Knumpy/ndarrayobject.h: No such file or directory
+[0.912s]    11 | #include [01;31m[K"numpy/ndarrayobject.h"[m[K
+[0.912s]       |          [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~[m[K
+[0.912s] compilation terminated.
+[0.912s] reading manifest file 'zed_msgs.egg-info/SOURCES.txt'
+[0.913s] writing manifest file 'zed_msgs.egg-info/SOURCES.txt'
+[0.913s] [01m[K/home/rob/project/csci5551-s26-team-pointbot/build/zed_msgs/rosidl_generator_py/zed_msgs/msg/_bounding_box2_df_s.c:11:10:[m[K [01;31m[Kfatal error: [m[Knumpy/ndarrayobject.h: No such file or directory
+[0.913s]    11 | #include [01;31m[K"numpy/ndarrayobject.h"[m[K
+[0.913s]       |          [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~[m[K
+[0.913s] compilation terminated.
+[0.914s] gmake[2]: *** [CMakeFiles/zed_msgs__rosidl_generator_py.dir/build.make:174: CMakeFiles/zed_msgs__rosidl_generator_py.dir/rosidl_generator_py/zed_msgs/msg/_bounding_box3_d_s.c.o] Error 1
+[0.914s] gmake[2]: *** Waiting for unfinished jobs....
+[0.914s] gmake[2]: *** [CMakeFiles/zed_msgs__rosidl_generator_py.dir/build.make:160: CMakeFiles/zed_msgs__rosidl_generator_py.dir/rosidl_generator_py/zed_msgs/msg/_bounding_box2_df_s.c.o] Error 1
+[0.921s] [01m[K/home/rob/project/csci5551-s26-team-pointbot/build/zed_msgs/rosidl_generator_py/zed_msgs/msg/_depth_info_stamped_s.c:11:10:[m[K [01;31m[Kfatal error: [m[Knumpy/ndarrayobject.h: No such file or directory
+[0.922s]    11 | #include [01;31m[K"numpy/ndarrayobject.h"[m[K
+[0.922s]       |          [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~[m[K
+[0.922s] compilation terminated.
+[0.925s] gmake[2]: *** [CMakeFiles/zed_msgs__rosidl_generator_py.dir/build.make:216: CMakeFiles/zed_msgs__rosidl_generator_py.dir/rosidl_generator_py/zed_msgs/msg/_depth_info_stamped_s.c.o] Error 1
+[0.930s] [01m[K/home/rob/project/csci5551-s26-team-pointbot/build/zed_msgs/rosidl_generator_py/zed_msgs/msg/_bounding_box2_di_s.c:11:10:[m[K [01;31m[Kfatal error: [m[Knumpy/ndarrayobject.h: No such file or directory
+[0.930s]    11 | #include [01;31m[K"numpy/ndarrayobject.h"[m[K
+[0.930s]       |          [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~[m[K
+[0.930s] compilation terminated.
+[0.940s] gmake[2]: *** [CMakeFiles/zed_msgs__rosidl_generator_py.dir/build.make:146: CMakeFiles/zed_msgs__rosidl_generator_py.dir/rosidl_generator_py/zed_msgs/msg/_bounding_box2_di_s.c.o] Error 1
+[0.947s] [01m[K/home/rob/project/csci5551-s26-team-pointbot/build/zed_msgs/rosidl_generator_py/zed_msgs/msg/_skeleton3_d_s.c:11:10:[m[K [01;31m[Kfatal error: [m[Knumpy/ndarrayobject.h: No such file or directory
+[0.947s]    11 | #include [01;31m[K"numpy/ndarrayobject.h"[m[K
+[0.947s]       |          [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~[m[K
+[0.947s] compilation terminated.
+[0.947s] gmake[2]: *** [CMakeFiles/zed_msgs__rosidl_generator_py.dir/build.make:202: CMakeFiles/zed_msgs__rosidl_generator_py.dir/rosidl_generator_py/zed_msgs/msg/_skeleton3_d_s.c.o] Error 1
+[0.948s] [01m[K/home/rob/project/csci5551-s26-team-pointbot/build/zed_msgs/rosidl_generator_py/zed_msgs/msg/_objects_stamped_s.c:11:10:[m[K [01;31m[Kfatal error: [m[Knumpy/ndarrayobject.h: No such file or directory
+[0.948s]    11 | #include [01;31m[K"numpy/ndarrayobject.h"[m[K
+[0.949s]       |          [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~[m[K
+[0.949s] compilation terminated.
+[0.949s] [01m[K/home/rob/project/csci5551-s26-team-pointbot/build/zed_msgs/rosidl_generator_py/zed_msgs/msg/_keypoint2_di_s.c:11:10:[m[K [01;31m[Kfatal error: [m[Knumpy/ndarrayobject.h: No such file or directory
+[0.949s]    11 | #include [01;31m[K"numpy/ndarrayobject.h"[m[K
+[0.949s]       |          [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~[m[K
+[0.949s] compilation terminated.
+[0.949s] [ 93%] Built target ament_cmake_python_build_zed_msgs_egg
+[0.949s] [01m[K/home/rob/project/csci5551-s26-team-pointbot/build/zed_msgs/rosidl_generator_py/zed_msgs/msg/_skeleton2_d_s.c:11:10:[m[K [01;31m[Kfatal error: [m[Knumpy/ndarrayobject.h: No such file or directory
+[0.949s]    11 | #include [01;31m[K"numpy/ndarrayobject.h"[m[K
+[0.949s]       |          [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~[m[K
+[0.949s] compilation terminated.
+[0.949s] gmake[2]: *** [CMakeFiles/zed_msgs__rosidl_generator_py.dir/build.make:104: CMakeFiles/zed_msgs__rosidl_generator_py.dir/rosidl_generator_py/zed_msgs/msg/_keypoint2_di_s.c.o] Error 1
+[0.949s] gmake[2]: *** [CMakeFiles/zed_msgs__rosidl_generator_py.dir/build.make:90: CMakeFiles/zed_msgs__rosidl_generator_py.dir/rosidl_generator_py/zed_msgs/msg/_objects_stamped_s.c.o] Error 1
+[0.949s] [01m[K/home/rob/project/csci5551-s26-team-pointbot/build/zed_msgs/rosidl_generator_py/zed_msgs/msg/_object_s.c:11:10:[m[K [01;31m[Kfatal error: [m[Knumpy/ndarrayobject.h: No such file or directory
+[0.950s]    11 | #include [01;31m[K"numpy/ndarrayobject.h"[m[K
+[0.950s]       |          [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~[m[K
+[0.950s] compilation terminated.
+[0.950s] gmake[2]: *** [CMakeFiles/zed_msgs__rosidl_generator_py.dir/build.make:188: CMakeFiles/zed_msgs__rosidl_generator_py.dir/rosidl_generator_py/zed_msgs/msg/_skeleton2_d_s.c.o] Error 1
+[0.950s] [01m[K/home/rob/project/csci5551-s26-team-pointbot/build/zed_msgs/rosidl_generator_py/zed_msgs/msg/_gnss_fusion_status_s.c:11:10:[m[K [01;31m[Kfatal error: [m[Knumpy/ndarrayobject.h: No such file or directory
+[0.950s]    11 | #include [01;31m[K"numpy/ndarrayobject.h"[m[K
+[0.950s]       |          [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~[m[K
+[0.950s] compilation terminated.
+[0.950s] gmake[2]: *** [CMakeFiles/zed_msgs__rosidl_generator_py.dir/build.make:76: CMakeFiles/zed_msgs__rosidl_generator_py.dir/rosidl_generator_py/zed_msgs/msg/_object_s.c.o] Error 1
+[0.950s] gmake[2]: *** [CMakeFiles/zed_msgs__rosidl_generator_py.dir/build.make:258: CMakeFiles/zed_msgs__rosidl_generator_py.dir/rosidl_generator_py/zed_msgs/msg/_gnss_fusion_status_s.c.o] Error 1
+[0.960s] [01m[K/home/rob/project/csci5551-s26-team-pointbot/build/zed_msgs/rosidl_generator_py/zed_msgs/msg/_keypoint2_df_s.c:11:10:[m[K [01;31m[Kfatal error: [m[Knumpy/ndarrayobject.h: No such file or directory
+[0.960s]    11 | #include [01;31m[K"numpy/ndarrayobject.h"[m[K
+[0.960s]       |          [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~[m[K
+[0.960s] compilation terminated.
+[0.960s] [01m[K/home/rob/project/csci5551-s26-team-pointbot/build/zed_msgs/rosidl_generator_py/zed_msgs/msg/_plane_stamped_s.c:11:10:[m[K [01;31m[Kfatal error: [m[Knumpy/ndarrayobject.h: No such file or directory
+[0.960s]    11 | #include [01;31m[K"numpy/ndarrayobject.h"[m[K
+[0.960s]       |          [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~[m[K
+[0.960s] compilation terminated.
+[0.960s] gmake[2]: *** [CMakeFiles/zed_msgs__rosidl_generator_py.dir/build.make:118: CMakeFiles/zed_msgs__rosidl_generator_py.dir/rosidl_generator_py/zed_msgs/msg/_keypoint2_df_s.c.o] Error 1
+[0.960s] gmake[2]: *** [CMakeFiles/zed_msgs__rosidl_generator_py.dir/build.make:230: CMakeFiles/zed_msgs__rosidl_generator_py.dir/rosidl_generator_py/zed_msgs/msg/_plane_stamped_s.c.o] Error 1
+[0.960s] [01m[K/home/rob/project/csci5551-s26-team-pointbot/build/zed_msgs/rosidl_generator_py/zed_msgs/msg/_keypoint3_d_s.c:11:10:[m[K [01;31m[Kfatal error: [m[Knumpy/ndarrayobject.h: No such file or directory
+[0.960s]    11 | #include [01;31m[K"numpy/ndarrayobject.h"[m[K
+[0.960s]       |          [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~[m[K
+[0.961s] compilation terminated.
+[0.963s] gmake[2]: *** [CMakeFiles/zed_msgs__rosidl_generator_py.dir/build.make:132: CMakeFiles/zed_msgs__rosidl_generator_py.dir/rosidl_generator_py/zed_msgs/msg/_keypoint3_d_s.c.o] Error 1
+[0.973s] [01m[K/home/rob/project/csci5551-s26-team-pointbot/build/zed_msgs/rosidl_generator_py/zed_msgs/msg/_pos_track_status_s.c:11:10:[m[K [01;31m[Kfatal error: [m[Knumpy/ndarrayobject.h: No such file or directory
+[0.973s]    11 | #include [01;31m[K"numpy/ndarrayobject.h"[m[K
+[0.973s]       |          [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~[m[K
+[0.973s] compilation terminated.
+[0.975s] gmake[2]: *** [CMakeFiles/zed_msgs__rosidl_generator_py.dir/build.make:244: CMakeFiles/zed_msgs__rosidl_generator_py.dir/rosidl_generator_py/zed_msgs/msg/_pos_track_status_s.c.o] Error 1
+[1.000s] [01m[K/home/rob/project/csci5551-s26-team-pointbot/build/zed_msgs/rosidl_generator_py/zed_msgs/msg/_heartbeat_s.c:11:10:[m[K [01;31m[Kfatal error: [m[Knumpy/ndarrayobject.h: No such file or directory
+[1.000s]    11 | #include [01;31m[K"numpy/ndarrayobject.h"[m[K
+[1.000s]       |          [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~[m[K
+[1.000s] compilation terminated.
+[1.004s] gmake[2]: *** [CMakeFiles/zed_msgs__rosidl_generator_py.dir/build.make:272: CMakeFiles/zed_msgs__rosidl_generator_py.dir/rosidl_generator_py/zed_msgs/msg/_heartbeat_s.c.o] Error 1
+[1.004s] gmake[1]: *** [CMakeFiles/Makefile2:552: CMakeFiles/zed_msgs__rosidl_generator_py.dir/all] Error 2
+[1.005s] gmake: *** [Makefile:146: all] Error 2
+[1.012s] Invoked command in '/home/rob/project/csci5551-s26-team-pointbot/build/zed_msgs' returned '2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/rob/project/csci5551-s26-team-pointbot/install/planning:/home/rob/project/csci5551-s26-team-pointbot/install/perception:/home/rob/project/csci5551-s26-team-pointbot/install/pointbot_rviz:/home/rob/project/csci5551-s26-team-pointbot/install/uf_ros_lib:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/rob/project/csci5551-s26-team-pointbot/build/zed_msgs -- -j16 -l16

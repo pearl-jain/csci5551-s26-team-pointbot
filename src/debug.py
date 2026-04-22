@@ -80,6 +80,8 @@ def detect_cubes_from_pcd(pcd, plane_thresh=0.01, cluster_eps=0.02, min_points=1
     plane_model, inliers = pcd.segment_plane(distance_threshold=plane_thresh,ransac_n=3, num_iterations=1000)
     objects = pcd.select_by_index(inliers, invert=True)
 
+    o3d.visualization.draw_geometries([objects])
+
     labels = np.array(objects.cluster_dbscan(eps=cluster_eps, min_points=min_points, print_progress=False))
 
     max_label = labels.max()
@@ -137,5 +139,6 @@ def cube_test():
 
 
 if __name__ == "__main__":
-    # cube_test()
-    mediapipe_visualization()
+    cube_test()
+    # mediapipe_visualization()
+

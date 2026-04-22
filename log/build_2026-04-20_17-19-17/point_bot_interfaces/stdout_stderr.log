@@ -1,0 +1,45 @@
+-- Found ament_cmake: 2.5.6 (/opt/ros/jazzy/share/ament_cmake/cmake)
+-- Found geometry_msgs: 5.3.7 (/opt/ros/jazzy/share/geometry_msgs/cmake)
+-- Found rosidl_generator_c: 4.6.7 (/opt/ros/jazzy/share/rosidl_generator_c/cmake)
+-- Found rosidl_generator_cpp: 4.6.7 (/opt/ros/jazzy/share/rosidl_generator_cpp/cmake)
+-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+-- Found sensor_msgs: 5.3.7 (/opt/ros/jazzy/share/sensor_msgs/cmake)
+-- Found rosidl_default_generators: 1.6.0 (/opt/ros/jazzy/share/rosidl_default_generators/cmake)
+-- Found rosidl_adapter: 4.6.7 (/opt/ros/jazzy/share/rosidl_adapter/cmake)
+-- Found ament_cmake_ros: 0.12.0 (/opt/ros/jazzy/share/ament_cmake_ros/cmake)
+-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+-- Found python_cmake_module: 0.11.1 (/opt/ros/jazzy/share/python_cmake_module/cmake)
+-- Found Python3: /usr/bin/python3 (found version "3.12.3") found components: Interpreter Development NumPy Development.Module Development.Embed 
+-- Found Python3: /usr/bin/python3 (found version "3.12.3") found components: Interpreter 
+-- Found ament_lint_auto: 0.17.5 (/opt/ros/jazzy/share/ament_lint_auto/cmake)
+-- Added test 'lint_cmake' to check CMake code style
+-- Added test 'xmllint' to check XML markup files
+-- Configuring done (3.0s)
+-- Generating done (0.1s)
+-- Build files have been written to: /home/rob/project/csci5551-s26-team-pointbot/build/point_bot_interfaces
+[  2%] Built target point_bot_interfaces__rosidl_generator_type_description
+[  4%] Built target point_bot_interfaces__rs
+[  4%] Built target ament_cmake_python_copy_point_bot_interfaces
+[ 11%] Built target point_bot_interfaces__cpp
+[ 24%] Built target point_bot_interfaces__rosidl_generator_c
+[ 42%] Built target point_bot_interfaces__rosidl_typesupport_c
+[ 42%] Built target point_bot_interfaces__rosidl_typesupport_introspection_c
+[ 64%] Built target point_bot_interfaces__rosidl_typesupport_fastrtps_c
+[ 64%] Built target point_bot_interfaces__rosidl_typesupport_cpp
+[ 68%] Built target point_bot_interfaces__rosidl_typesupport_introspection_cpp
+[ 77%] Built target point_bot_interfaces__rosidl_typesupport_fastrtps_cpp
+[ 77%] Built target point_bot_interfaces
+[ 80%] Built target point_bot_interfaces__py
+[ 86%] Built target point_bot_interfaces__rosidl_generator_py
+running egg_info
+[ 91%] Built target point_bot_interfaces_s__rosidl_typesupport_fastrtps_c
+[ 95%] Built target point_bot_interfaces_s__rosidl_typesupport_c
+[100%] Built target point_bot_interfaces_s__rosidl_typesupport_introspection_c
+writing point_bot_interfaces.egg-info/PKG-INFO
+writing dependency_links to point_bot_interfaces.egg-info/dependency_links.txt
+writing top-level names to point_bot_interfaces.egg-info/top_level.txt
+reading manifest file 'point_bot_interfaces.egg-info/SOURCES.txt'
+writing manifest file 'point_bot_interfaces.egg-info/SOURCES.txt'
+[100%] Built target ament_cmake_python_build_point_bot_interfaces_egg

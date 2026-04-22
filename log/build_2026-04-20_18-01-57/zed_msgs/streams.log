@@ -1,0 +1,26 @@
+[0.347s] Invoking command in '/home/rob/project/csci5551-s26-team-pointbot/build/zed_msgs': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/rob/project/csci5551-s26-team-pointbot/install/pointbot_rviz:/home/rob/project/csci5551-s26-team-pointbot/install/uf_ros_lib:/home/rob/project/csci5551-s26-team-pointbot/install/planning:/home/rob/project/csci5551-s26-team-pointbot/install/perception:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/rob/project/csci5551-s26-team-pointbot/build/zed_msgs -- -j16 -l16
+[0.510s] [  0%] Built target zed_msgs__rs
+[0.510s] [  0%] Built target zed_msgs__rosidl_generator_type_description
+[0.510s] [  0%] Built target ament_cmake_python_copy_zed_msgs
+[0.531s] [  0%] Built target zed_msgs__cpp
+[0.579s] [ 28%] Built target zed_msgs__rosidl_generator_c
+[0.703s] [ 38%] Built target zed_msgs__rosidl_typesupport_c
+[0.707s] [ 48%] Built target zed_msgs__rosidl_typesupport_introspection_cpp
+[0.711s] [ 57%] Built target zed_msgs__rosidl_typesupport_fastrtps_c
+[0.713s] [ 67%] Built target zed_msgs__rosidl_typesupport_introspection_c
+[0.721s] [ 77%] Built target zed_msgs__rosidl_typesupport_fastrtps_cpp
+[0.724s] [ 87%] Built target zed_msgs__rosidl_typesupport_cpp
+[0.778s] [ 87%] Built target zed_msgs
+[0.834s] [ 87%] Built target zed_msgs__py
+[0.883s] running egg_info
+[0.911s] [ 97%] Built target zed_msgs__rosidl_generator_py
+[0.915s] writing zed_msgs.egg-info/PKG-INFO
+[0.916s] writing dependency_links to zed_msgs.egg-info/dependency_links.txt
+[0.916s] writing top-level names to zed_msgs.egg-info/top_level.txt
+[0.980s] [ 98%] Built target zed_msgs_s__rosidl_typesupport_fastrtps_c
+[0.986s] interrupted
+[0.986s] gmake[1]: *** [CMakeFiles/Makefile2:641: CMakeFiles/zed_msgs_s__rosidl_typesupport_c.dir/all] Interrupt
+[0.988s] gmake[1]: *** [CMakeFiles/Makefile2:613: CMakeFiles/zed_msgs_s__rosidl_typesupport_introspection_c.dir/all] Interrupt
+[1.021s] gmake[2]: *** [CMakeFiles/ament_cmake_python_build_zed_msgs_egg.dir/build.make:70: CMakeFiles/ament_cmake_python_build_zed_msgs_egg] Interrupt
+[1.024s] gmake[1]: *** [CMakeFiles/Makefile2:524: CMakeFiles/ament_cmake_python_build_zed_msgs_egg.dir/all] Interrupt
+[1.024s] gmake: *** [Makefile:146: all] Interrupt

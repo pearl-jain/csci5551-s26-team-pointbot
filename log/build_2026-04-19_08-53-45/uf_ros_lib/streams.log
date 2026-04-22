@@ -1,0 +1,19 @@
+[1.029s] Invoking command in '/home/rob/project/csci5551-s26-team-pointbot/src/xarm_ros2/uf_ros_lib': DEBUGINFOD_URLS=https://debuginfod.ubuntu.com PYTHONPATH=/home/rob/project/csci5551-s26-team-pointbot/build/uf_ros_lib/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/rob/project/csci5551-s26-team-pointbot/install/uf_ros_lib/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../../build/uf_ros_lib build --build-base /home/rob/project/csci5551-s26-team-pointbot/build/uf_ros_lib/build install --record /home/rob/project/csci5551-s26-team-pointbot/build/uf_ros_lib/install.log --single-version-externally-managed install_data
+[1.269s] running egg_info
+[1.281s] writing ../../../build/uf_ros_lib/uf_ros_lib.egg-info/PKG-INFO
+[1.281s] writing dependency_links to ../../../build/uf_ros_lib/uf_ros_lib.egg-info/dependency_links.txt
+[1.282s] writing requirements to ../../../build/uf_ros_lib/uf_ros_lib.egg-info/requires.txt
+[1.282s] writing top-level names to ../../../build/uf_ros_lib/uf_ros_lib.egg-info/top_level.txt
+[1.307s] reading manifest file '../../../build/uf_ros_lib/uf_ros_lib.egg-info/SOURCES.txt'
+[1.307s] writing manifest file '../../../build/uf_ros_lib/uf_ros_lib.egg-info/SOURCES.txt'
+[1.307s] running build
+[1.308s] running build_py
+[1.308s] running install
+[1.312s] running install_lib
+[1.324s] running install_data
+[1.324s] running install_egg_info
+[1.340s] removing '/home/rob/project/csci5551-s26-team-pointbot/install/uf_ros_lib/lib/python3.12/site-packages/uf_ros_lib-0.0.0-py3.12.egg-info' (and everything under it)
+[1.340s] Copying ../../../build/uf_ros_lib/uf_ros_lib.egg-info to /home/rob/project/csci5551-s26-team-pointbot/install/uf_ros_lib/lib/python3.12/site-packages/uf_ros_lib-0.0.0-py3.12.egg-info
+[1.340s] running install_scripts
+[1.439s] writing list of installed files to '/home/rob/project/csci5551-s26-team-pointbot/build/uf_ros_lib/install.log'
+[1.464s] Invoked command in '/home/rob/project/csci5551-s26-team-pointbot/src/xarm_ros2/uf_ros_lib' returned '0': DEBUGINFOD_URLS=https://debuginfod.ubuntu.com PYTHONPATH=/home/rob/project/csci5551-s26-team-pointbot/build/uf_ros_lib/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/rob/project/csci5551-s26-team-pointbot/install/uf_ros_lib/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../../build/uf_ros_lib build --build-base /home/rob/project/csci5551-s26-team-pointbot/build/uf_ros_lib/build install --record /home/rob/project/csci5551-s26-team-pointbot/build/uf_ros_lib/install.log --single-version-externally-managed install_data
