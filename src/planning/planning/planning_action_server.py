@@ -3,7 +3,6 @@ from rclpy.action import ActionServer
 from rclpy.node import Node
 
 from point_bot_interfaces.action import MoveObject
-from xarm_msgs.srv import Call
 from xarm.wrapper import XArmAPI # Might need to 'pip install xarm-python-sdk'
 
 import time
