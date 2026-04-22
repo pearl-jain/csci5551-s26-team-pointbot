@@ -2,6 +2,8 @@ from geometry_msgs.msg import PoseStamped
 import open3d as o3d
 import numpy as np
 import cv2
+# from perception.zed_camera import get_zed_camera
+
 from pupil_apriltags import Detector
 
 CUBE_TAG_FAMILY = 'tag36h11'
@@ -9,17 +11,45 @@ CUBE_TAG_ID = 4
 CUBE_TAG_SIZE = 0.02045
 CUBE_SIZE = 0.025
 
-class ObjectPoseDetector():
+class ObjectDectector():
     def __init__(self, camera_intrinsic):
-        self.camera_intrinsic = camera_intrinsic
+        self.intrinsic = camera_intrinsic
 
-        self.detector = Detector(families=CUBE_TAG_FAMILY)
+        self.april_detector = Detector(families=CUBE_TAG_FAMILY)
 
         size = CUBE_TAG_SIZE / 2
         self.square_3d = np.array([
             [-size, -size, 0], [size, -size, 0], [size, size, 0], [-size, size, 0]
         ], dtype=np.float32)
-    
+
+    def detect_april_tag_poses(self, observation, camera_pose):
+        # Detect AprilTag Points
+        if len(observation.shape) > 2:
+            observation = cv2.cvtColor(observation, cv2.COLOR_BGRA2GRAY)
+
+        params = [self.camera_intrinsic[0][0], self.camera_intrinsic[1][1], self.camera_intrinsic[0][2], self.camera_intrinsic[1][2]]
+        tags = self.april_detector.detect(observation, estimate_tag_pose=True, camera_params=params, tag_size=CUBE_TAG_SIZE)
+
+        if not tags:
+            print('No tags detected.')
+            return None
+
+        cubes = []
+        for tag in tags:
+            if tag.tag_id != CUBE_TAG_ID:
+                continue
+
+            t_cam_cube = np.eye(4)
+            t_cam_cube[:3, :3] = tag.pose_R
+            t_cam_cube[:3, 3] = tag.pose_t.flatten()
+
+            t_robot_cube = np.linalg.inv(camera_pose) @ t_cam_cube
+            t_robot_cube[2, 3] = t_robot_cube[2, 3] - CUBE_SIZE / 2
+
+            cubes.append(t_robot_cube)
+
+        return cubes
+
     def detect_cube_contours(self, image):
         blurred = cv2.bilateralFilter(image, 9, 75, 75)
 
@@ -103,35 +133,7 @@ class ObjectPoseDetector():
         )
 
         return reg_p2p.transformation
-
-    def detect_april_tag_poses(self, observation, camera_pose):
-        # Detect AprilTag Points
-        if len(observation.shape) > 2:
-            observation = cv2.cvtColor(observation, cv2.COLOR_BGRA2GRAY)
-
-        params = [self.camera_intrinsic[0][0], self.camera_intrinsic[1][1], self.camera_intrinsic[0][2], self.camera_intrinsic[1][2]]
-        tags = self.detector.detect(observation, estimate_tag_pose=True, camera_params=params, tag_size=CUBE_TAG_SIZE)
-
-        if not tags:
-            print('No tags detected.')
-            return None
-
-        cubes = []
-        for tag in tags:
-            if tag.tag_id != CUBE_TAG_ID:
-                continue
-
-            t_cam_cube = np.eye(4)
-            t_cam_cube[:3, :3] = tag.pose_R
-            t_cam_cube[:3, 3] = tag.pose_t.flatten()
-
-            t_robot_cube = np.linalg.inv(camera_pose) @ t_cam_cube
-            t_robot_cube[2, 3] = t_robot_cube[2, 3] - CUBE_SIZE / 2
-
-            cubes.append(t_robot_cube)
-
-        return cubes
-
+    
     def detect_individual_cube_pose(self, observation, point_cloud):
         cube_data = self.detect_cube_contours(observation)     
 
@@ -148,43 +150,105 @@ class ObjectPoseDetector():
         object_pose = PoseStamped()
 
         return object_pose
+
+class ObjectPoseDetector():
+    def __init__(self, camera_intrinsic):
+        self.camera_intrinsic = camera_intrinsic
+
+        self.object_detector = ObjectDectector(camera_intrinsic)
     
-    def closest_cube(self, cubes, pose):
-        if not cubes:
-            return None, None
+    def line_plane_intersect(self, line_point, line_direction, plane_point, plane_normal):
+        dot_line_plane = np.dot(line_direction, plane_normal)
 
-        ref_position = pose[:3, 3]
+        if (abs(dot_line_plane) < 1e-6):
+            return None
         
-        closest_dist = float('inf')
-        closest_idx = -1
+        scalar = np.dot((plane_point - line_point), plane_normal) / dot_line_plane
+        return line_point + scalar * line_direction
 
-        for i, cube_pose in enumerate(cubes):
-            cube_position = cube_pose[:3, 3]
-            
-            dist = np.linalg.norm(ref_position - cube_position)
-            
-            if dist < closest_dist:
-                closest_dist = dist
-                closest_idx = i
+    def gaussian(self, x, x0, sigma_x, amplitude=1.0):
+        exponent = -((x-x0)**2 / (2 * sigma_x**2))
+        return amplitude * np.exp(exponent)
 
-        # Return the pose of the closest cube and its distance
-        return cubes[closest_idx], closest_dist
+    def gaussian_2d(self, x, y, x0, y0, sigma_x, sigma_y, amplitude=1.0):
+        exponent = -((x - x0)**2 / (2 * sigma_x**2) + (y - y0)**2 / (2 * sigma_y**2))
+        return amplitude * np.exp(exponent)
 
+    def pointing_object_space_scores(self, object_points, pointing_position, pointing_direction):
+        if (len(object_points) == 0):
+            return None
+        
+        pointing_vector = pointing_direction / np.linalg.norm(pointing_direction)
+
+        distance_uncertainty_base = 0.02
+        distance_uncertainty_growth = 0.05
+
+        scores = []
+        for point in object_points:
+            relative_position = point - pointing_position
+            distance = np.dot(relative_position, pointing_vector)
+            if distance < 0:
+                scores.append(0.0)
+                continue
+
+            perpendicular_distance = np.linalg.norm(relative_position - distance * pointing_vector)
+
+            attention_score = self.gaussian(perpendicular_distance, 0, distance_uncertainty_base + distance * distance_uncertainty_growth)
+            scores.append(attention_score)
+
+        return scores
+
+
+    def pointing_object_surface_scores(self, object_points, pointing_position, pointing_direction):
+        intersection_point = self.line_plane_intersect(pointing_position, pointing_direction, np.array([0, 0, 0]), np.array([0, 0, 1]))
+
+        if (len(object_points) == 0) or (intersection_point is None):
+            return None
+        
+        pointing_vector_2d = pointing_direction[:2] / np.linalg.norm(pointing_direction[:2])
+
+        rotation_matrix = np.array([
+            [pointing_vector_2d[0], pointing_vector_2d[1]],
+            [-pointing_vector_2d[1], pointing_vector_2d[0]]
+        ])
+
+        direction_uncertanty = 100.0
+        perpendicular_uncertainty = 12.0
+
+        scores = []
+        for point in object_points:
+            relative_position = point[:2] - intersection_point[:2]
+            aligned_position = rotation_matrix @ relative_position
+
+            attention_score = self.gaussian_2d(aligned_position[0], aligned_position[1], 0, 0, direction_uncertanty, perpendicular_uncertainty)
+            scores.append(attention_score)
+
+        return scores
+    
+    def select_cube(self, cubes, attention_scores):
+        if len(cubes) == 0 or len(attention_scores) == 0:
+            return None
+        
+        # TODO: Make this interact with the user
+
+        return cubes[np.argmax(attention_scores)]
 
 if __name__ == "__main__":
-    fovX = 2.1
-    w = 1980
-    h = 1080
-    focal_length = (w / 2) / np.tan(np.deg2rad(fovX / 2))
-    K = np.array([
-        [focal_length, 0, w / 2],
-        [0, focal_length, h / 2],
-        [0, 0, 1]
-    ])
+    # zed = get_zed_camera()
 
-    detector = ObjectPoseDetector(K)
+    detector = ObjectPoseDetector(np.array([]))
 
-    image = cv2.imread("image.png")
+    cubes = [[-25, -32, 1], [30, -30, 1], [30, -20, 1]]
 
-    detector.detect_individual_cube_pose(image, "")
-    print(detector.detect_april_tag_poses(image, [[1, 0, 0, 0], [0, 1, 0, 0], [0, 0, 1, 1]]))
+    attention_scores = detector.pointing_object_space_scores([[-25, -32, 1], [30, -30, 1], [30, -20, 1]], np.array([10, 10, 10]), np.array([0.2, -0.5, -0.1]))
+
+    print(cubes)
+    print(detector.pointing_object_surface_scores(cubes, np.array([10, 10, 10]), np.array([0.2, -0.5, -0.1])))
+    print(detector.pointing_object_space_scores(cubes, np.array([10, 10, 10]), np.array([0.2, -0.5, -0.1])))
+
+    print(detector.select_cube(cubes, attention_scores))
+
+    # image = cv2.imread("image.png")
+
+    # detector.detect_individual_cube_pose(image, "")
+    # print(detector.detect_april_tag_poses(image, [[1, 0, 0, 0], [0, 1, 0, 0], [0, 0, 1, 1]]))
