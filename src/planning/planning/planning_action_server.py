@@ -46,6 +46,8 @@ class PlanningActionServer(Node):
         t_robot_goal = self.pose_stamped_to_matrix(target_goal)
         self.grasp_cube(self.arm, t_robot_object)
         self.place_cube(self.arm, t_robot_goal)
+        self.arm.move_gohome(wait=True)
+        time.sleep(0.5)
         result.success = True
         return result
     
