@@ -31,18 +31,30 @@ class PerceptionActionServer(Node):
         self.get_logger().info(f"Peforming perception task {task}")
         goal_handle.succeed() # Tell the client that the goal was handled successfully
 
+        pointer_position = []
+        pointer_direction = []
+
         # TODO: Properly implement perception!
         if random.random() > 0.5:
             task = "weeee!"
         
         time.sleep(5)
         
+        # Define the result message and populate it with the perception results
         result = Perception.Result()
         result.image = Image()
+        result.image.header.frame_id = "zed_camera_frame"
+        result.image.data = self.zed.image
 
         result.pose = PoseStamped()
         match task:
             case "detect_object":
+                object_points = []
+
+                attention_scores = self.pose_detector.pointing_object_surface_scores(object_points, pointer_position, pointer_direction)
+
+                selected = self.pose_detector.select_cube(object_points, attention_scores)
+
                 result.pose.header.frame_id = "panda_link0"
                 result.pose.pose.orientation.w = 1.0
                 result.pose.pose.position.x = 0.28

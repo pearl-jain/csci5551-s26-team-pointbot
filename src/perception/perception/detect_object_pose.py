@@ -134,11 +134,12 @@ class ObjectDectector():
 
         return reg_p2p.transformation
     
-    def detect_individual_cube_pose(self, observation, point_cloud):
+    def detect_cube_poses(self, observation, point_cloud):
         cube_data = self.detect_cube_contours(observation)     
 
         print(f"Detected {len(cube_data)} cubes.")
-
+        
+        cubes = []
         for cube in cube_data:
             self.show_cube_countour(cube, observation)
             # points = cube["contour"].astype(np.float32)
@@ -149,7 +150,7 @@ class ObjectDectector():
 
         object_pose = PoseStamped()
 
-        return object_pose
+        return cubes
 
 class ObjectPoseDetector():
     def __init__(self, camera_intrinsic):
