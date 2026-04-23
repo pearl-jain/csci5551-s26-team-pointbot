@@ -11,14 +11,28 @@ from pupil_apriltags import Detector
 from utils.zed_camera import ZedCamera
 from pointing_system import PointBot
 import numpy as np
+from utils.vis_utils import draw_pose_axes
 
 def main():
     zed = ZedCamera()
     # Real
     t_cam_robot = get_transform_camera_robot(zed.image, zed.camera_intrinsic)
     # Debug without the system
-    t_cam_robot = np.eye(4)
+    # t_cam_robot = np.eye(4)
     cam = PointBot(zed, t_cam_robot)
 
+    # p_tip_cam, ray_cam, intersect, intersection_cam = cam.solve()
+
+    # cam.visualize(p_tip_cam, ray_cam, intersect, intersection_cam)
+
+    # Returned in robot frame
     pickup_loc, interaction_type = cam.run()
+
+    print(f"Pickup Location in Robot Frame: {pickup_loc}, Interaction Type: {interaction_type}")
+
+    #cue logic with apriltags for now, will replace with object detection later
+    # draw_pose_axes(zed.image, zed.camera_intrinsic, pickup_loc)
     zed.close()
+
+if __name__ == "__main__":
+    main()
