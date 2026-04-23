@@ -21,24 +21,78 @@ class PointBot:
         self.frame_buffer = []   
         self.tags = None    
         self.t_cam_robot = t_cam
+        self.h, self.w, self.image, self.depth = None, None, None, None
 
-    def detect_hand_pose(lm):
-        # angle between pointer and middle finger 
-        m1 = (lm.landmark[7].x - lm.landmark[8].x ) / (lm.landmark[7].y - lm.landmark[8].y)
-        m2 = (lm.landmark[11].x - lm.landmark[12].x ) / (lm.landmark[11].y - lm.landmark[12].y)
+        self.finger_gesture_table = [
+            [0, 1, 0, 0, 0], # Pick From Table
+            [1, 1, 1, 1, 1], # Pick From Table
+        ]
 
-        angle = math.acrtan((m1-m2)/(1 + m1 * m2))
+    # 1. Update thresholds to be realistic for 3D Straightness (Ratio of ~1.0)
+        self.finger_props = [
+            (2, 3, 4, 0, 0.85),  # Thumb (MCP=2, PIP=3, Tip=4)
+            (5, 6, 8, 0, 0.90),  # Index
+            (9, 10, 12, 0, 0.90), # Middle
+            (13, 14, 16, 0, 0.90),# Ring
+            (17, 18, 20, 0, 0.90) # Pinky
+        ]
 
-        if angle > math.pi:
-            print("Pick from hand")
-        else:
-            print("Pick from table")
-        return 
+    # 2. 3D Projection  
+    def proj_2d_3d(self, p):
+        if self.h is None or self.depth is None: return None
+        tx, ty = int(p.x * self.w), int(p.y * self.h)
+        if not (0 <= tx < self.w and 0 <= ty < self.h):
+            return None
+        
+        p_3d = self.depth[ty, tx][:3]
+        if not np.isfinite(p_3d).all() or np.linalg.norm(p_3d) < 1e-3:
+            return None 
+        return p_3d
+
+    def detect_gesture(self, landmark_results):
+        multi_hand_landmarks = landmark_results.multi_hand_landmarks
+        if not multi_hand_landmarks: return [-1]
+        
+        gestures = []
+        for hand_landmarks in multi_hand_landmarks:
+            extended = []
+            for points in self.finger_props:
+                mcp_idx, pip_idx, tip_idx, _, threshold = points
+                
+                m_3d = self.proj_2d_3d(hand_landmarks.landmark[mcp_idx])
+                p_3d = self.proj_2d_3d(hand_landmarks.landmark[pip_idx])
+                t_3d = self.proj_2d_3d(hand_landmarks.landmark[tip_idx])
+                
+                if m_3d is None or p_3d is None or t_3d is None:
+                    # If 3D fails, assume the finger isn't extended 
+                    extended.append(0)
+                    continue
+                    
+                # Calculate if finger is straight
+                finger_len = np.linalg.norm(t_3d - m_3d)
+                max_len = np.linalg.norm(p_3d - m_3d) + np.linalg.norm(t_3d - p_3d)
+                is_straight = int((finger_len / max_len) > threshold)
+                extended.append(is_straight)
+            
+            print(f"States: {extended}") 
+            
+            # Match against table
+            match_found = False
+            for i, target in enumerate(self.finger_gesture_table):
+                if extended == target:
+                    gestures.append(i)
+                    match_found = True
+                    break
+            
+            if not match_found:
+                gestures.append(0) # Default to pointing
+                
+        return gestures
 
 
     # Detect MP hands and ray from current 
     def sample_frame(self, color, depth, lm):
-        h, w = color.shape[:2]
+        h, w = self.h, self.w
         tip = lm.landmark[8]
         knuckle = lm.landmark[7]
 
@@ -116,13 +170,13 @@ class PointBot:
 
     # Project 3D into 2D
     def proj_3d_2d(self, p):
-            fx, fy = self.K[0,0], self.K[1,1]
-            cx, cy = self.K[0,2], self.K[1,2]
-            if p[2] <= 0:
-                return None
-            x = int((p[0]*fx/p[2]) + cx)
-            y = int((p[1]*fy/p[2]) + cy)
-            return (x, y)
+        fx, fy = self.K[0,0], self.K[1,1]
+        cx, cy = self.K[0,2], self.K[1,2]
+        if p[2] <= 0:
+            return None
+        x = int((p[0]*fx/p[2]) + cx)
+        y = int((p[1]*fy/p[2]) + cy)
+        return (x, y)
     
     def valid_pixel(self, p):
         return p is not None and 0 <= p[0] < self.w and 0 <= p[1] < self.h
@@ -175,25 +229,29 @@ class PointBot:
         plane_set.lines = o3d.utility.Vector2iVector(plane_lines)
         plane_set.paint_uniform_color([1, 0, 0]) # Red boundary
 
-        interesct_marker = o3d.geometry.TriangleMesh.create_sphere(radius=2.0)
-        interesct_marker.translate(intersection_cam)
-        interesct_marker.paint_uniform_color([0, 0, 1]) # Blue dot
+        intersect_point = o3d.geometry.TriangleMesh.create_sphere(radius=2.0)
+        intersect_point.translate(intersection_cam)
+        intersect_point.paint_uniform_color([0, 0, 1]) # Blue dot
 
         # Coordinate Frame to see the Origin
         coord_frame = o3d.geometry.TriangleMesh.create_coordinate_frame(size=20, origin=[0, 0, 0])
 
         # Launch Viewer
-        o3d.visualization.draw_geometries([frame_pcd, line_set, plane_set, interesct_marker, coord_frame])
+        o3d.visualization.draw_geometries([frame_pcd, line_set, plane_set, intersect_point, coord_frame])
         return frame
     
     def run(self):
         cv2.namedWindow("debug", cv2.WINDOW_NORMAL)
+
+        check_pose = True
         while True:
             color = self.zed.image
             depth = self.zed.point_cloud
 
             if color is None:
                 continue
+            if self.h is None or self.w is None:
+                self.h, self.w = color.shape[:2]
 
             frame = cv2.cvtColor(color, cv2.COLOR_BGRA2BGR)
             rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
@@ -201,22 +259,36 @@ class PointBot:
 
             if results.multi_hand_landmarks:
                 lm = results.multi_hand_landmarks[0]
+                
+
                 sample = self.sample_frame(frame, depth, lm)
 
                 if len(self.frame_buffer) > TARGET_FRAMES:
                     self.image = color
                     self.depth = depth
-                    self.h, self.w, _ = frame.shape
-                    # First version usage
-                    # tip_cam, ray_cam, tip_rob, ray_rob, inter, inter_cam = self.solve(t_cam_robot)
-                    # Second version usage
-                    tip_cam, ray_cam, inter_rob, inter_cam = self.solve()
-                    frame = self.visualize(frame, tip_cam, ray_cam, inter_cam)
-                    cv2.imshow("debug", frame)
-                    cv2.waitKey(0)
-                    self.frame_buffer.clear()
+                
+                    if self.detect_gesture(results)[0] == 1:
+                        print("Gesture Detected: Pick from Hand")
+                        wrist_cam = self.proj_2d_3d(lm.landmark[0])
+                        wrist_rob = (self.t_cam_robot @ np.append(wrist_cam, 1))[:3]
+                        # Returns 0 when picking from hand, 1 when pointing to table
+                        self.frame_buffer.clear()
+                        frame = self.visualize(frame, wrist_cam, wrist_cam, wrist_cam)
+                        cv2.imshow("debug", frame)
+                        cv2.waitKey(0)
+                        return wrist_rob, 0
+                    else:
+                        print("Gesture Detected: Pointing")
 
-                    return inter_rob
+                        # First version usage
+                        # tip_cam, ray_cam, tip_rob, ray_rob, inter, inter_cam = self.solve(t_cam_robot)
+                        # Second version usage
+                        tip_cam, ray_cam, inter_rob, inter_cam = self.solve()
+                        frame = self.visualize(frame, tip_cam, ray_cam, inter_cam)
+                        cv2.imshow("debug", frame)
+                        cv2.waitKey(0)
+                        self.frame_buffer.clear()
+                        return inter_rob, 1
 
             cv2.imshow("debug", frame)
             if cv2.waitKey(1) & 0xFF == ord('q'):
@@ -227,8 +299,9 @@ def main():
     # t_cam_robot = get_transform_camera_robot(zed.image, zed.camera_intrinsic)
     t_cam_robot = np.eye(4)
     cam = PointBot(zed, t_cam_robot)
-    result = cam.run()
+    result, interaction_type = cam.run()
     print("Final intersection:", result)
+    print("Interaction type:", interaction_type)
 
 
     zed.close()

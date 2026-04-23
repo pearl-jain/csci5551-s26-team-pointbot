@@ -19,6 +19,6 @@ def main():
     # Debug without the system
     t_cam_robot = np.eye(4)
     cam = PointBot(zed, t_cam_robot)
-    
-    plane_intersection = cam.run()
+
+    pickup_loc, interaction_type = cam.run()
     zed.close()
