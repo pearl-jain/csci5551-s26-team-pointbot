@@ -18,6 +18,7 @@ class PointBot:
         self.frame_buffer = []   
         self.tags = None    
         self.t_cam_robot = t_cam
+        self.t_cam_robot[:3, 3] *= 1000.0 # Convert from m to mm for consistency with depth units
         self.h, self.w, self.image, self.depth = None, None, None, None
 
         self.finger_gesture_table = [
@@ -136,13 +137,12 @@ class PointBot:
     def solve(self):
         t_robot_cam = np.linalg.inv(self.t_cam_robot)
 
-        print(f"Robot thinks camera is at: {self.t_robot_cam[:3, 3]}")
+        print(f"Robot thinks camera is at: {t_robot_cam[:3, 3]}")
 
         #t_robot_cam should be camera frame -> robot frame
         p_tips = np.array([f[0] for f in self.frame_buffer])
         rays = np.array([f[1] for f in self.frame_buffer])
         p_tip_cam = np.mean(p_tips, axis=0)
-        p_tip_cam /= 1000.0 # Convert from mm to m
         ray_cam = np.mean(rays, axis=0)
         ray_cam /= np.linalg.norm(ray_cam)
 

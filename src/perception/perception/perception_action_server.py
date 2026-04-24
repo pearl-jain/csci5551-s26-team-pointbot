@@ -11,6 +11,9 @@ from perception.zed_camera import ZedCamera
 from perception.zed_transform import get_transform_camera_robot
 from perception.pointing_system import PointBot, CUBE_SIZE
 
+from cv_bridge import CvBridge
+import cv2
+
 import tf_transformations
 
 class PerceptionActionServer(Node):
@@ -30,6 +33,8 @@ class PerceptionActionServer(Node):
 
         self.pointing_system = PointBot(self.zed, self.t_cube_robot)
 
+        self.bridge = CvBridge()
+
     def execute_callback(self, goal_handle):
         task = goal_handle.request.task
 
@@ -41,10 +46,12 @@ class PerceptionActionServer(Node):
         print(f"Attention Pose: {attention_pose}\nInteraction Type: {interaction_type}\nPointer Position: {pointer_position}\nPointer Direction: {pointer_direction}")
         
         # Define the result message and populate it with the perception results
+        raw_image = self.zed.image.copy()
+        if raw_image.shape[2] == 4:
+            raw_image = cv2.cvtColor(raw_image, cv2.COLOR_BGRA2BGR)
+
         result = Perception.Result()
-        result.image = Image()
-        result.image.header.frame_id = "zed_camera_frame"
-        result.image.data = self.zed.image
+        result.image = self.bridge.cv2_to_imgmsg(raw_image, encoding="bgr8")
 
         result.pose = PoseStamped()
         match task:
@@ -59,7 +66,7 @@ class PerceptionActionServer(Node):
                 selected = self.pose_detector.select_cube(objects, attention_scores)
 
                 result.pose.header.frame_id = "panda_link0"
-                result.pose.pose.orientation = tf.quaternion_from_matrix(selected)
+                result.pose.pose.orientation = tf_transformations.quaternion_from_matrix(selected)
                 result.pose.pose.position.x = selected[0, 3]
                 result.pose.pose.position.y = selected[1, 3]
                 result.pose.pose.position.z = selected[2, 3]

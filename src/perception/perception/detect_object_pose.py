@@ -6,8 +6,6 @@ from perception.zed_camera import ZedCamera
 
 from pupil_apriltags import Detector
 
-import math
-
 CUBE_TAG_FAMILY = 'tag36h11'
 CUBE_TAG_ID = 4
 CUBE_TAG_SIZE = 0.02045
@@ -162,7 +160,7 @@ class ObjectPoseDetector():
             return None
         
         scalar = np.dot((plane_point - line_point), plane_normal) / dot_line_plane
-        return line_point + scalar * line_direction
+        return line_point + scalar * np.array(line_direction)
 
     def gaussian(self, x, x0, sigma_x, amplitude=1.0):
         exponent = -((x-x0)**2 / (2 * sigma_x**2))
