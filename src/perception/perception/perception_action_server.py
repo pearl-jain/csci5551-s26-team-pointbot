@@ -43,7 +43,7 @@ class PerceptionActionServer(Node):
 
         attention_pose, interaction_type, pointer_position, pointer_direction = self.pointing_system.run()
 
-        print(f"Attention Pose: {attention_pose}\nInteraction Type: {interaction_type}\nPointer Position: {pointer_position}\nPointer Direction: {pointer_direction}")
+        self.get_logger().info(f"Attention Pose: {attention_pose}\nInteraction Type: {interaction_type}\nPointer Position: {pointer_position}\nPointer Direction: {pointer_direction}")
         
         # Define the result message and populate it with the perception results
         raw_image = self.zed.image.copy()
@@ -57,16 +57,24 @@ class PerceptionActionServer(Node):
         match task:
             case "detect_object":
                 objects = self.pose_detector.detect_cubes(self.zed.image, self.t_cube_robot)
-                object_poses = objects[:, :3, 3]
 
-                print(f"Detected object poses:\n{object_poses}")
+                self.get_logger().info(f"Detected object poses:\n{objects}")
+                
+                object_poses = [obj[:3, 3] for obj in objects]
 
                 attention_scores = self.pose_detector.pointing_object_surface_scores(object_poses, pointer_position, pointer_direction, 0.1, 0.05)
 
                 selected = self.pose_detector.select_cube(objects, attention_scores)
 
+                self.get_logger().info(f"Selected value: {selected} Type: {type(selected)}")
+
+                q = tf_transformations.quaternion_from_matrix(selected)
+
                 result.pose.header.frame_id = "panda_link0"
-                result.pose.pose.orientation = tf_transformations.quaternion_from_matrix(selected)
+                result.pose.pose.orientation.w = q[0]
+                result.pose.pose.orientation.x = q[1]
+                result.pose.pose.orientation.y = q[2]
+                result.pose.pose.orientation.z = q[3]
                 result.pose.pose.position.x = selected[0, 3]
                 result.pose.pose.position.y = selected[1, 3]
                 result.pose.pose.position.z = selected[2, 3]

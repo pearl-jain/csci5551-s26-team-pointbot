@@ -250,7 +250,7 @@ class PointBot:
         cv2.namedWindow("debug", cv2.WINDOW_NORMAL)
 
         check_pose = True
-        while True:
+        while check_pose:
             color = self.zed.image
             depth = self.zed.point_cloud
 
@@ -281,6 +281,7 @@ class PointBot:
                         frame = self.visualize(frame, wrist_cam, wrist_cam, wrist_cam)
                         cv2.imshow("debug", frame)
                         cv2.waitKey(0)
+                        check_pose = False
                         return wrist_rob, 0, None, None
                     else:
                         print("Gesture Detected: Pointing")
@@ -293,6 +294,7 @@ class PointBot:
                         cv2.imshow("debug", frame)
                         cv2.waitKey(0)
                         self.frame_buffer.clear()
+                        check_pose = False
                         return inter_rob, 1, tip_rob, ray_rob
 
             cv2.imshow("debug", frame)

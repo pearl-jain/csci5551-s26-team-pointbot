@@ -10,7 +10,7 @@ import numpy
 import tf_transformations
 
 GRIPPER_LENGTH = 0.067 * 1000
-SPEED = 500 # Values 0-1000
+SPEED = 100 # Values 0-1000
 ACCELERATION = 1000 # Values 0-50000
 ROBOT_IP = '192.168.1.xxx' # Hard coded ip, change this based on arm
 robot_ip = ROBOT_IP

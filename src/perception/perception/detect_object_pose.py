@@ -27,7 +27,7 @@ class ObjectDectector():
         if len(observation.shape) > 2:
             observation = cv2.cvtColor(observation, cv2.COLOR_BGRA2GRAY)
 
-        params = [self.camera_intrinsic[0][0], self.camera_intrinsic[1][1], self.camera_intrinsic[0][2], self.camera_intrinsic[1][2]]
+        params = [self.intrinsic[0][0], self.intrinsic[1][1], self.intrinsic[0][2], self.intrinsic[1][2]]
         tags = self.april_detector.detect(observation, estimate_tag_pose=True, camera_params=params, tag_size=CUBE_TAG_SIZE)
 
         if not tags:
