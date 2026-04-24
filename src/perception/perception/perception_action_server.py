@@ -8,6 +8,9 @@ from geometry_msgs.msg import PoseStamped
 
 from perception.detect_object_pose import ObjectPoseDetector
 from perception.zed_camera import get_zed_camera
+from perception.zed_transform import get_transform_camera_robot
+
+import tf_transformations as tf
 
 import time
 import random
@@ -21,9 +24,9 @@ class PerceptionActionServer(Node):
             'perception',
             self.execute_callback)        
 
-        zed = get_zed_camera()
-
-        self.pose_detector = ObjectPoseDetector(zed.camera_intrinsic)
+        self.zed = get_zed_camera()
+        
+        self.pose_detector = ObjectPoseDetector(self.zed.camera_intrinsic)
 
     def execute_callback(self, goal_handle):
         task = goal_handle.request.task
@@ -49,22 +52,23 @@ class PerceptionActionServer(Node):
         result.pose = PoseStamped()
         match task:
             case "detect_object":
-                object_points = []
+                objects = self.pose_detector.detect_cubes(self.zed.image, get_transform_camera_robot(self.zed.image, self.zed.camera_intrinsic))
+                object_poses = objects
 
-                attention_scores = self.pose_detector.pointing_object_surface_scores(object_points, pointer_position, pointer_direction)
+                attention_scores = self.pose_detector.pointing_object_surface_scores(object_poses, pointer_position, pointer_direction)
 
-                selected = self.pose_detector.select_cube(object_points, attention_scores)
+                selected = self.pose_detector.select_cube(objects, attention_scores)
 
                 result.pose.header.frame_id = "panda_link0"
-                result.pose.pose.orientation.w = 1.0
-                result.pose.pose.position.x = 0.28
-                result.pose.pose.position.y = -0.2
-                result.pose.pose.position.z = 0.5
+                result.pose.pose.orientation = tf.quaternion_from_matrix(selected[:3, :3])
+                result.pose.pose.position.x = selected[0, 3]
+                result.pose.pose.position.y = selected[1, 3]
+                result.pose.pose.position.z = selected[2, 3]
                 result.success = True
 
             case "detect_goal":
                 result.pose.header.frame_id = "panda_link0"
-                result.pose.pose.orientation.w = 0.5
+                result.pose.pose.orientation.w = 0
                 result.pose.pose.position.x = 1.0
                 result.pose.pose.position.y = -0.2
                 result.pose.pose.position.z = 0.1

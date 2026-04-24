@@ -46,7 +46,6 @@ class ObjectDectector():
             t_cam_cube[:3, 3] = tag.pose_t.flatten()
 
             t_robot_cube = np.linalg.inv(camera_pose) @ t_cam_cube
-            t_robot_cube[2, 3] = t_robot_cube[2, 3] - CUBE_SIZE / 2
 
             cubes.append(t_robot_cube)
 
@@ -221,6 +220,11 @@ class ObjectPoseDetector():
             scores.append(attention_score)
 
         return scores
+
+    def detect_cubes(self, observation, camera_pose):
+        cube_poses = self.object_detector.detect_april_tag_poses(observation, camera_pose)
+
+        return cube_poses
     
     def select_cube(self, cubes, attention_scores):
         if len(cubes) == 0 or len(attention_scores) == 0:
