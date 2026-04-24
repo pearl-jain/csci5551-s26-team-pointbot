@@ -6,9 +6,11 @@ import math
 from checkpoint0 import get_transform_camera_robot
 from debug import zed_to_pcd
 import open3d as o3d
+from utils.vis_utils import draw_pose_axes
 
 CUBE_TAG_SIZE = 0.02045
 TARGET_FRAMES = 5
+CUBE_SIZE = 0.025
 
 class PointBot:
     def __init__(self, zed, t_cam):
@@ -21,6 +23,8 @@ class PointBot:
         self.frame_buffer = []   
         self.tags = None    
         self.t_cam_robot = t_cam
+        self.t_cam_robot[:3, 3] *= 1000.0
+        self.t_cam_robot = np.linalg.inv(self.t_cam_robot)
         self.h, self.w, self.image, self.depth = None, None, None, None
 
         self.finger_gesture_table = [
@@ -37,7 +41,7 @@ class PointBot:
             (17, 18, 20, 0, 0.90) # Pinky
         ]
 
-    # 2. 3D Projection  
+    # 2D_3D Projection  
     def proj_2d_3d(self, p):
         if self.h is None or self.depth is None: return None
         tx, ty = int(p.x * self.w), int(p.y * self.h)
@@ -48,6 +52,7 @@ class PointBot:
         if not np.isfinite(p_3d).all() or np.linalg.norm(p_3d) < 1e-3:
             return None 
         return p_3d
+    
 
     def detect_gesture(self, landmark_results):
         multi_hand_landmarks = landmark_results.multi_hand_landmarks
@@ -122,6 +127,7 @@ class PointBot:
         return p_tip, ray
 
     def solve(self):
+        print(f"Robot thinks camera is at: {self.t_cam_robot[:3, 3]}")
 
         #t_cam_robot should be camera frame -> robot frame
         p_tips = np.array([f[0] for f in self.frame_buffer])
@@ -133,6 +139,23 @@ class PointBot:
         ## WORKING LOGIC but transforms back and forth alot Comment ot
 
         # Extend from the tip of the pointer to the table
+        # pointer_rob = (self.t_cam_robot @ np.append(p_tip_cam, 1))[:3]
+        # ray_rob = (self.t_cam_robot[:3, :3] @ ray_cam)
+        # ray_rob /= np.linalg.norm(ray_rob)
+        # print("p_tip_z:", pointer_rob[2])
+        # print("dir_z:", ray_rob[2])
+
+        # if abs(ray_rob[2]) < 1e-6:
+        #     return None
+
+        # plane_normal = np.array([0, -1, 0])
+        # plane_point = np.array([0, 100, 0])
+        # dot_line_plane = np.dot(ray_rob, plane_normal)
+        # scalar = np.dot((plane_point - pointer_rob), plane_normal) / dot_line_plane
+        # intersect = pointer_rob + scalar * ray_rob
+        # intersection_cam = (np.linalg.inv(self.t_cam_robot) @ np.append(intersect, 1))[:3]
+        # return p_tip_cam, ray_cam, intersect, intersection_cam
+
         pointer_rob = (self.t_cam_robot @ np.append(p_tip_cam, 1))[:3]
         ray_rob = (self.t_cam_robot[:3, :3] @ ray_cam)
         ray_rob /= np.linalg.norm(ray_rob)
@@ -142,31 +165,21 @@ class PointBot:
         if abs(ray_rob[2]) < 1e-6:
             return None
 
-        plane_normal = np.array([0, -1, 0])
-        plane_point = np.array([0, 100, 0])
-        dot_line_plane = np.dot(ray_rob, plane_normal)
-        scalar = np.dot((plane_point - pointer_rob), plane_normal) / dot_line_plane
-        intersect = pointer_rob + scalar * ray_rob
-        intersection_cam = (np.linalg.inv(self.t_cam_robot) @ np.append(intersect, 1))[:3]
-        return p_tip_cam, ray_cam, intersect, intersection_cam
-    
-    # TRY UNCOMMENTING AND USING THIS WHEN WE HAVE THE SET UP!!
+        plane_normal_rob = np.array([0, 0, 1])
+        plane_point_rob = np.array([0, 0, 0])
 
-        # # t_robot_cam should be robot frame -> camera frame
-        # t_robot_cam = np.linalg.inv(t_cam_robot)
-        # plane_point_cam = t_robot_cam[:3, 3] 
-        # plane_normal_cam = t_robot_cam[:3, :3] @ np.array([0, 0, 1])
-
-        # dot= np.dot(ray_cam, plane_normal_cam)
-        
-        # if abs(dot) < 1e-6:
-        #     return None # Ray is parallel to the table
+        dot_line_plane = np.dot(ray_rob, plane_normal_rob)
+        if dot_line_plane >= 0:
+            print("Warning: Pointing away from table")
+            return None
             
-        # scalar = np.dot((plane_point_cam - p_tip_cam), plane_normal_cam) / dot
-        # intersection_cam = p_tip_cam + scalar * ray_cam
-        # intersection_robot = (self.t_cam_robot @ np.append(intersection_cam, 1))[:3]
+        scalar = np.dot((plane_point_rob - pointer_rob), plane_normal_rob) / dot_line_plane
+        
+        intersect_rob = pointer_rob + scalar * ray_rob
 
-        # return p_tip_cam, ray_cam, intersection_robot, intersection_cam
+        intersection_cam = (np.linalg.inv(self.t_cam_robot) @ np.append(intersect_rob, 1))[:3]
+
+        return p_tip_cam, ray_cam, intersect_rob, intersection_cam
 
     # Project 3D into 2D
     def proj_3d_2d(self, p):
@@ -293,19 +306,3 @@ class PointBot:
             cv2.imshow("debug", frame)
             if cv2.waitKey(1) & 0xFF == ord('q'):
                 break
-
-def main():
-    zed = ZedCamera()
-    # t_cam_robot = get_transform_camera_robot(zed.image, zed.camera_intrinsic)
-    t_cam_robot = np.eye(4)
-    cam = PointBot(zed, t_cam_robot)
-    result, interaction_type = cam.run()
-    print("Final intersection:", result)
-    print("Interaction type:", interaction_type)
-
-
-    zed.close()
-
-
-if __name__ == "__main__":
-    main()
