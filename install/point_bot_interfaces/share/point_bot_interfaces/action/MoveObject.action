@@ -1,8 +1,0 @@
-# Request
-geometry_msgs/PoseStamped object
-geometry_msgs/PoseStamped goal
----
-# Result
-bool success
----
-# Feedback
