@@ -273,7 +273,6 @@ class PointBot:
             if results.multi_hand_landmarks:
                 lm = results.multi_hand_landmarks[0]
                 
-
                 sample = self.sample_frame(frame, depth, lm)
 
                 if len(self.frame_buffer) > TARGET_FRAMES:
@@ -289,7 +288,7 @@ class PointBot:
                         frame = self.visualize(frame, wrist_cam, wrist_cam, wrist_cam)
                         cv2.imshow("debug", frame)
                         cv2.waitKey(0)
-                        return wrist_rob, 0
+                        return wrist_rob, 0, None, None
                     else:
                         print("Gesture Detected: Pointing")
 
@@ -301,7 +300,7 @@ class PointBot:
                         cv2.imshow("debug", frame)
                         cv2.waitKey(0)
                         self.frame_buffer.clear()
-                        return inter_rob, 1
+                        return inter_rob, 1, self.t_cam_robot @ np.append(tip_cam, 1)[:3], self.t_cam_robot @ np.append(ray_cam, 1)[:3]
 
             cv2.imshow("debug", frame)
             if cv2.waitKey(1) & 0xFF == ord('q'):

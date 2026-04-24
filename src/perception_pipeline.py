@@ -9,7 +9,7 @@
 from checkpoint0 import get_transform_camera_robot
 from pupil_apriltags import Detector
 from utils.zed_camera import ZedCamera
-from pointing_system import PointBot
+from perception.perception.pointing_system import PointBot
 import numpy as np
 from utils.vis_utils import draw_pose_axes
 

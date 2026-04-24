@@ -14,7 +14,8 @@ setup(
     py_modules=[
         'perception.detect_object_pose',
         'perception.zed_camera',
-        'perception.zed_transform'
+        'perception.zed_transform',
+        'perception.pointing_system',
     ],
     install_requires=['setuptools'],
     zip_safe=True,

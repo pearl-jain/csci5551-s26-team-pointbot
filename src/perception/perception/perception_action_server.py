@@ -9,11 +9,9 @@ from geometry_msgs.msg import PoseStamped
 from perception.detect_object_pose import ObjectPoseDetector
 from perception.zed_camera import get_zed_camera
 from perception.zed_transform import get_transform_camera_robot
+from perception.pointing_system import PointBot
 
 import tf_transformations as tf
-
-import time
-import random
 
 class PerceptionActionServer(Node):
     def __init__(self):
@@ -24,9 +22,14 @@ class PerceptionActionServer(Node):
             'perception',
             self.execute_callback)        
 
+
         self.zed = get_zed_camera()
         
         self.pose_detector = ObjectPoseDetector(self.zed.camera_intrinsic)
+
+        self.t_cube_robot = get_transform_camera_robot(self.zed.image, self.zed.camera_intrinsic)
+
+        self.pointing_system = PointBot(self.zed, self.t_cube_robot)
 
     def execute_callback(self, goal_handle):
         task = goal_handle.request.task
@@ -34,14 +37,7 @@ class PerceptionActionServer(Node):
         self.get_logger().info(f"Peforming perception task {task}")
         goal_handle.succeed() # Tell the client that the goal was handled successfully
 
-        pointer_position = []
-        pointer_direction = []
-
-        # TODO: Properly implement perception!
-        if random.random() > 0.5:
-            task = "weeee!"
-        
-        time.sleep(5)
+        intersection, interaction_type, pointer_position, pointer_direction = self.pointing_system.run()
         
         # Define the result message and populate it with the perception results
         result = Perception.Result()
@@ -52,7 +48,7 @@ class PerceptionActionServer(Node):
         result.pose = PoseStamped()
         match task:
             case "detect_object":
-                objects = self.pose_detector.detect_cubes(self.zed.image, get_transform_camera_robot(self.zed.image, self.zed.camera_intrinsic))
+                objects = self.pose_detector.detect_cubes(self.zed.image, self.t_cube_robot)
                 object_poses = objects
 
                 attention_scores = self.pose_detector.pointing_object_surface_scores(object_poses, pointer_position, pointer_direction)
@@ -69,9 +65,9 @@ class PerceptionActionServer(Node):
             case "detect_goal":
                 result.pose.header.frame_id = "panda_link0"
                 result.pose.pose.orientation.w = 0
-                result.pose.pose.position.x = 1.0
-                result.pose.pose.position.y = -0.2
-                result.pose.pose.position.z = 0.1
+                result.pose.pose.position.x = intersection[0]
+                result.pose.pose.position.y = intersection[1]
+                result.pose.pose.position.z = intersection[2]
                 result.success = True
 
             case _:
