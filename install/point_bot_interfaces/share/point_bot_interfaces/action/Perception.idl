@@ -1,0 +1,30 @@
+// generated from rosidl_adapter/resource/action.idl.em
+// with input from point_bot_interfaces/action/Perception.action
+// generated code does not contain a copyright notice
+
+#include "geometry_msgs/msg/PoseStamped.idl"
+#include "sensor_msgs/msg/Image.idl"
+
+module point_bot_interfaces {
+  module action {
+    @verbatim (language="comment", text=
+      "Request")
+    struct Perception_Goal {
+      string task;
+    };
+    @verbatim (language="comment", text=
+      "Result")
+    struct Perception_Result {
+      boolean success;
+
+      sensor_msgs::msg::Image image;
+
+      geometry_msgs::msg::PoseStamped pose;
+    };
+    @verbatim (language="comment", text=
+      "Feedback")
+    struct Perception_Feedback {
+      uint8 structure_needs_at_least_one_member;
+    };
+  };
+};

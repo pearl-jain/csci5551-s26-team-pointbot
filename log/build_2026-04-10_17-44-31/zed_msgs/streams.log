@@ -1,0 +1,996 @@
+[0.174s] Invoking command in '/home/rob/project/csci5551-s26-team-pointbot/build/zed_msgs': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy CONDA_PROMPT_MODIFIER=(base) DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake /home/rob/project/csci5551-s26-team-pointbot/src/zed-ros2-interfaces -DCMAKE_INSTALL_PREFIX=/home/rob/project/csci5551-s26-team-pointbot/install
+[0.219s] -- The C compiler identification is GNU 13.3.0
+[0.271s] -- The CXX compiler identification is GNU 13.3.0
+[0.290s] -- Detecting C compiler ABI info
+[0.370s] -- Detecting C compiler ABI info - done
+[0.380s] -- Check for working C compiler: /usr/bin/cc - skipped
+[0.380s] -- Detecting C compile features
+[0.381s] -- Detecting C compile features - done
+[0.388s] -- Detecting CXX compiler ABI info
+[0.473s] -- Detecting CXX compiler ABI info - done
+[0.482s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[0.482s] -- Detecting CXX compile features
+[0.482s] -- Detecting CXX compile features - done
+[0.485s] -- Found ament_cmake_auto: 2.5.5 (/opt/ros/jazzy/share/ament_cmake_auto/cmake)
+[0.588s] -- Found Python3: /home/rob/miniforge3/bin/python3 (found version "3.13.12") found components: Interpreter 
+[0.803s] -- Found rosidl_generator_c: 4.6.7 (/opt/ros/jazzy/share/rosidl_generator_c/cmake)
+[0.810s] -- Found rosidl_generator_cpp: 4.6.7 (/opt/ros/jazzy/share/rosidl_generator_cpp/cmake)
+[0.825s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[0.841s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[0.925s] -- Found rosidl_adapter: 4.6.7 (/opt/ros/jazzy/share/rosidl_adapter/cmake)
+[0.932s] -- Found ament_lint_auto: 0.17.4 (/opt/ros/jazzy/share/ament_lint_auto/cmake)
+[2.745s] -- Found ament_cmake_ros: 0.12.0 (/opt/ros/jazzy/share/ament_cmake_ros/cmake)
+[3.656s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[4.019s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[4.027s] -- Found python_cmake_module: 0.11.1 (/opt/ros/jazzy/share/python_cmake_module/cmake)
+[4.133s] -- Found PythonExtra: /home/rob/miniforge3/bin/python3  
+[4.634s] -- Found Python3: /home/rob/miniforge3/bin/python3 (found version "3.13.12") found components: Interpreter Development NumPy Development.Module Development.Embed 
+[4.696s] -- Added test 'copyright' to check source files copyright and LICENSE
+[4.703s] -- Added test 'lint_cmake' to check CMake code style
+[4.708s] -- Added test 'xmllint' to check XML markup files
+[4.715s] -- Configuring done (4.5s)
+[4.827s] -- Generating done (0.1s)
+[4.837s] -- Build files have been written to: /home/rob/project/csci5551-s26-team-pointbot/build/zed_msgs
+[4.853s] Invoked command in '/home/rob/project/csci5551-s26-team-pointbot/build/zed_msgs' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy CONDA_PROMPT_MODIFIER=(base) DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake /home/rob/project/csci5551-s26-team-pointbot/src/zed-ros2-interfaces -DCMAKE_INSTALL_PREFIX=/home/rob/project/csci5551-s26-team-pointbot/install
+[4.856s] Invoking command in '/home/rob/project/csci5551-s26-team-pointbot/build/zed_msgs': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy CONDA_PROMPT_MODIFIER=(base) DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/rob/project/csci5551-s26-team-pointbot/build/zed_msgs -- -j16 -l16
+[4.945s] [  0%] [34m[1mGenerating type hashes for ROS interfaces[0m
+[4.974s] [  0%] Built target ament_cmake_python_copy_zed_msgs
+[5.132s] running egg_info
+[5.138s] creating zed_msgs.egg-info
+[5.138s] writing zed_msgs.egg-info/PKG-INFO
+[5.139s] writing dependency_links to zed_msgs.egg-info/dependency_links.txt
+[5.139s] writing top-level names to zed_msgs.egg-info/top_level.txt
+[5.139s] writing manifest file 'zed_msgs.egg-info/SOURCES.txt'
+[5.158s] reading manifest file 'zed_msgs.egg-info/SOURCES.txt'
+[5.158s] writing manifest file 'zed_msgs.egg-info/SOURCES.txt'
+[5.188s] [  0%] Built target ament_cmake_python_build_zed_msgs_egg
+[5.792s] [  0%] Built target zed_msgs__rosidl_generator_type_description
+[5.811s] [  1%] [34m[1mGenerating C code for ROS interfaces[0m
+[5.835s] [  1%] [34m[1mGenerating C++ code for ROS interfaces[0m
+[8.436s] [  1%] Built target zed_msgs__cpp
+[8.975s] [  1%] [32mBuilding C object CMakeFiles/zed_msgs__rosidl_generator_c.dir/rosidl_generator_c/zed_msgs/msg/detail/object__functions.c.o[0m
+[8.976s] [  1%] [32mBuilding C object CMakeFiles/zed_msgs__rosidl_generator_c.dir/rosidl_generator_c/zed_msgs/msg/detail/objects_stamped__description.c.o[0m
+[8.976s] [  2%] [32mBuilding C object CMakeFiles/zed_msgs__rosidl_generator_c.dir/rosidl_generator_c/zed_msgs/msg/detail/objects_stamped__functions.c.o[0m
+[8.977s] [  3%] [32mBuilding C object CMakeFiles/zed_msgs__rosidl_generator_c.dir/rosidl_generator_c/zed_msgs/msg/detail/keypoint2_di__description.c.o[0m
+[8.977s] [  3%] [32mBuilding C object CMakeFiles/zed_msgs__rosidl_generator_c.dir/rosidl_generator_c/zed_msgs/msg/detail/object__description.c.o[0m
+[8.977s] [  4%] [32mBuilding C object CMakeFiles/zed_msgs__rosidl_generator_c.dir/rosidl_generator_c/zed_msgs/msg/detail/keypoint2_di__functions.c.o[0m
+[8.977s] [  3%] [32mBuilding C object CMakeFiles/zed_msgs__rosidl_generator_c.dir/rosidl_generator_c/zed_msgs/msg/detail/object__type_support.c.o[0m
+[8.977s] [  4%] [32mBuilding C object CMakeFiles/zed_msgs__rosidl_generator_c.dir/rosidl_generator_c/zed_msgs/msg/detail/keypoint2_df__functions.c.o[0m
+[8.977s] [  3%] [32mBuilding C object CMakeFiles/zed_msgs__rosidl_generator_c.dir/rosidl_generator_c/zed_msgs/msg/detail/objects_stamped__type_support.c.o[0m
+[8.978s] [  4%] [32mBuilding C object CMakeFiles/zed_msgs__rosidl_generator_c.dir/rosidl_generator_c/zed_msgs/msg/detail/keypoint2_di__type_support.c.o[0m
+[8.979s] [  5%] [32mBuilding C object CMakeFiles/zed_msgs__rosidl_generator_c.dir/rosidl_generator_c/zed_msgs/msg/detail/keypoint2_df__description.c.o[0m
+[8.993s] [  5%] [32mBuilding C object CMakeFiles/zed_msgs__rosidl_generator_c.dir/rosidl_generator_c/zed_msgs/msg/detail/bounding_box2_di__description.c.o[0m
+[8.993s] [  5%] [32mBuilding C object CMakeFiles/zed_msgs__rosidl_generator_c.dir/rosidl_generator_c/zed_msgs/msg/detail/keypoint3_d__functions.c.o[0m
+[8.993s] [  6%] [32mBuilding C object CMakeFiles/zed_msgs__rosidl_generator_c.dir/rosidl_generator_c/zed_msgs/msg/detail/keypoint3_d__description.c.o[0m
+[8.993s] [  6%] [32mBuilding C object CMakeFiles/zed_msgs__rosidl_generator_c.dir/rosidl_generator_c/zed_msgs/msg/detail/keypoint2_df__type_support.c.o[0m
+[8.993s] [  7%] [32mBuilding C object CMakeFiles/zed_msgs__rosidl_generator_c.dir/rosidl_generator_c/zed_msgs/msg/detail/keypoint3_d__type_support.c.o[0m
+[9.026s] [  8%] [32mBuilding C object CMakeFiles/zed_msgs__rosidl_generator_c.dir/rosidl_generator_c/zed_msgs/msg/detail/bounding_box2_di__type_support.c.o[0m
+[9.030s] [  8%] [32mBuilding C object CMakeFiles/zed_msgs__rosidl_generator_c.dir/rosidl_generator_c/zed_msgs/msg/detail/bounding_box2_di__functions.c.o[0m
+[9.034s] [  9%] [32mBuilding C object CMakeFiles/zed_msgs__rosidl_generator_c.dir/rosidl_generator_c/zed_msgs/msg/detail/bounding_box2_df__functions.c.o[0m
+[9.034s] [  9%] [32mBuilding C object CMakeFiles/zed_msgs__rosidl_generator_c.dir/rosidl_generator_c/zed_msgs/msg/detail/bounding_box2_df__description.c.o[0m
+[9.048s] [  9%] [32mBuilding C object CMakeFiles/zed_msgs__rosidl_generator_c.dir/rosidl_generator_c/zed_msgs/msg/detail/bounding_box3_d__description.c.o[0m
+[9.049s] [ 10%] [32mBuilding C object CMakeFiles/zed_msgs__rosidl_generator_c.dir/rosidl_generator_c/zed_msgs/msg/detail/bounding_box3_d__functions.c.o[0m
+[9.050s] [ 11%] [32mBuilding C object CMakeFiles/zed_msgs__rosidl_generator_c.dir/rosidl_generator_c/zed_msgs/msg/detail/skeleton2_d__description.c.o[0m
+[9.051s] [ 11%] [32mBuilding C object CMakeFiles/zed_msgs__rosidl_generator_c.dir/rosidl_generator_c/zed_msgs/msg/detail/bounding_box2_df__type_support.c.o[0m
+[9.054s] [ 11%] [32mBuilding C object CMakeFiles/zed_msgs__rosidl_generator_c.dir/rosidl_generator_c/zed_msgs/msg/detail/bounding_box3_d__type_support.c.o[0m
+[9.057s] [ 11%] [32mBuilding C object CMakeFiles/zed_msgs__rosidl_generator_c.dir/rosidl_generator_c/zed_msgs/msg/detail/skeleton2_d__functions.c.o[0m
+[9.064s] [ 12%] [32mBuilding C object CMakeFiles/zed_msgs__rosidl_generator_c.dir/rosidl_generator_c/zed_msgs/msg/detail/skeleton3_d__description.c.o[0m
+[9.064s] [ 12%] [32mBuilding C object CMakeFiles/zed_msgs__rosidl_generator_c.dir/rosidl_generator_c/zed_msgs/msg/detail/skeleton2_d__type_support.c.o[0m
+[9.067s] [ 12%] [32mBuilding C object CMakeFiles/zed_msgs__rosidl_generator_c.dir/rosidl_generator_c/zed_msgs/msg/detail/skeleton3_d__functions.c.o[0m
+[9.069s] [ 12%] [32mBuilding C object CMakeFiles/zed_msgs__rosidl_generator_c.dir/rosidl_generator_c/zed_msgs/msg/detail/skeleton3_d__type_support.c.o[0m
+[9.078s] [ 13%] [32mBuilding C object CMakeFiles/zed_msgs__rosidl_generator_c.dir/rosidl_generator_c/zed_msgs/msg/detail/depth_info_stamped__description.c.o[0m
+[9.087s] [ 13%] [32mBuilding C object CMakeFiles/zed_msgs__rosidl_generator_c.dir/rosidl_generator_c/zed_msgs/msg/detail/plane_stamped__functions.c.o[0m
+[9.087s] [ 13%] [32mBuilding C object CMakeFiles/zed_msgs__rosidl_generator_c.dir/rosidl_generator_c/zed_msgs/msg/detail/plane_stamped__description.c.o[0m
+[9.087s] [ 13%] [32mBuilding C object CMakeFiles/zed_msgs__rosidl_generator_c.dir/rosidl_generator_c/zed_msgs/msg/detail/depth_info_stamped__functions.c.o[0m
+[9.090s] [ 14%] [32mBuilding C object CMakeFiles/zed_msgs__rosidl_generator_c.dir/rosidl_generator_c/zed_msgs/msg/detail/depth_info_stamped__type_support.c.o[0m
+[9.110s] [ 14%] [32mBuilding C object CMakeFiles/zed_msgs__rosidl_generator_c.dir/rosidl_generator_c/zed_msgs/msg/detail/pos_track_status__description.c.o[0m
+[9.111s] [ 15%] [32mBuilding C object CMakeFiles/zed_msgs__rosidl_generator_c.dir/rosidl_generator_c/zed_msgs/msg/detail/plane_stamped__type_support.c.o[0m
+[9.111s] [ 15%] [32mBuilding C object CMakeFiles/zed_msgs__rosidl_generator_c.dir/rosidl_generator_c/zed_msgs/msg/detail/pos_track_status__type_support.c.o[0m
+[9.113s] [ 16%] [32mBuilding C object CMakeFiles/zed_msgs__rosidl_generator_c.dir/rosidl_generator_c/zed_msgs/msg/detail/pos_track_status__functions.c.o[0m
+[9.117s] [ 17%] [32mBuilding C object CMakeFiles/zed_msgs__rosidl_generator_c.dir/rosidl_generator_c/zed_msgs/msg/detail/gnss_fusion_status__description.c.o[0m
+[9.120s] [ 17%] [32mBuilding C object CMakeFiles/zed_msgs__rosidl_generator_c.dir/rosidl_generator_c/zed_msgs/msg/detail/gnss_fusion_status__functions.c.o[0m
+[9.127s] [ 18%] [32mBuilding C object CMakeFiles/zed_msgs__rosidl_generator_c.dir/rosidl_generator_c/zed_msgs/msg/detail/heartbeat__description.c.o[0m
+[9.131s] [ 18%] [32mBuilding C object CMakeFiles/zed_msgs__rosidl_generator_c.dir/rosidl_generator_c/zed_msgs/msg/detail/heartbeat__functions.c.o[0m
+[9.137s] [ 18%] [32mBuilding C object CMakeFiles/zed_msgs__rosidl_generator_c.dir/rosidl_generator_c/zed_msgs/msg/detail/gnss_fusion_status__type_support.c.o[0m
+[9.141s] [ 19%] [32mBuilding C object CMakeFiles/zed_msgs__rosidl_generator_c.dir/rosidl_generator_c/zed_msgs/msg/detail/mag_heading_status__description.c.o[0m
+[9.147s] [ 19%] [32mBuilding C object CMakeFiles/zed_msgs__rosidl_generator_c.dir/rosidl_generator_c/zed_msgs/msg/detail/heartbeat__type_support.c.o[0m
+[9.151s] [ 20%] [32mBuilding C object CMakeFiles/zed_msgs__rosidl_generator_c.dir/rosidl_generator_c/zed_msgs/msg/detail/mag_heading_status__type_support.c.o[0m
+[9.154s] [ 20%] [32mBuilding C object CMakeFiles/zed_msgs__rosidl_generator_c.dir/rosidl_generator_c/zed_msgs/msg/detail/mag_heading_status__functions.c.o[0m
+[9.156s] [ 20%] [32mBuilding C object CMakeFiles/zed_msgs__rosidl_generator_c.dir/rosidl_generator_c/zed_msgs/msg/detail/svo_status__description.c.o[0m
+[9.164s] [ 20%] [32mBuilding C object CMakeFiles/zed_msgs__rosidl_generator_c.dir/rosidl_generator_c/zed_msgs/msg/detail/svo_status__functions.c.o[0m
+[9.171s] [ 21%] [32mBuilding C object CMakeFiles/zed_msgs__rosidl_generator_c.dir/rosidl_generator_c/zed_msgs/msg/detail/svo_status__type_support.c.o[0m
+[9.184s] [ 21%] [32mBuilding C object CMakeFiles/zed_msgs__rosidl_generator_c.dir/rosidl_generator_c/zed_msgs/srv/detail/set_pose__description.c.o[0m
+[9.184s] [ 21%] [32mBuilding C object CMakeFiles/zed_msgs__rosidl_generator_c.dir/rosidl_generator_c/zed_msgs/srv/detail/set_pose__type_support.c.o[0m
+[9.185s] [ 23%] [32mBuilding C object CMakeFiles/zed_msgs__rosidl_generator_c.dir/rosidl_generator_c/zed_msgs/msg/detail/health_status_stamped__functions.c.o[0m
+[9.185s] [ 23%] [32mBuilding C object CMakeFiles/zed_msgs__rosidl_generator_c.dir/rosidl_generator_c/zed_msgs/srv/detail/set_pose__functions.c.o[0m
+[9.186s] [ 23%] [32mBuilding C object CMakeFiles/zed_msgs__rosidl_generator_c.dir/rosidl_generator_c/zed_msgs/msg/detail/health_status_stamped__description.c.o[0m
+[9.187s] [ 23%] [32mBuilding C object CMakeFiles/zed_msgs__rosidl_generator_c.dir/rosidl_generator_c/zed_msgs/msg/detail/health_status_stamped__type_support.c.o[0m
+[9.194s] [ 24%] [32mBuilding C object CMakeFiles/zed_msgs__rosidl_generator_c.dir/rosidl_generator_c/zed_msgs/srv/detail/start_svo_rec__description.c.o[0m
+[9.200s] [ 24%] [32mBuilding C object CMakeFiles/zed_msgs__rosidl_generator_c.dir/rosidl_generator_c/zed_msgs/srv/detail/start_svo_rec__functions.c.o[0m
+[9.206s] [ 25%] [32mBuilding C object CMakeFiles/zed_msgs__rosidl_generator_c.dir/rosidl_generator_c/zed_msgs/srv/detail/set_roi__description.c.o[0m
+[9.211s] [ 25%] [32mBuilding C object CMakeFiles/zed_msgs__rosidl_generator_c.dir/rosidl_generator_c/zed_msgs/srv/detail/set_roi__functions.c.o[0m
+[9.215s] [ 25%] [32mBuilding C object CMakeFiles/zed_msgs__rosidl_generator_c.dir/rosidl_generator_c/zed_msgs/srv/detail/start_svo_rec__type_support.c.o[0m
+[9.230s] [ 26%] [32mBuilding C object CMakeFiles/zed_msgs__rosidl_generator_c.dir/rosidl_generator_c/zed_msgs/srv/detail/set_svo_frame__type_support.c.o[0m
+[9.230s] [ 26%] [32mBuilding C object CMakeFiles/zed_msgs__rosidl_generator_c.dir/rosidl_generator_c/zed_msgs/srv/detail/set_roi__type_support.c.o[0m
+[9.233s] [ 27%] [32mBuilding C object CMakeFiles/zed_msgs__rosidl_generator_c.dir/rosidl_generator_c/zed_msgs/srv/detail/set_svo_frame__description.c.o[0m
+[9.237s] [ 27%] [32mBuilding C object CMakeFiles/zed_msgs__rosidl_generator_c.dir/rosidl_generator_c/zed_msgs/srv/detail/set_svo_frame__functions.c.o[0m
+[9.246s] [ 27%] [32mBuilding C object CMakeFiles/zed_msgs__rosidl_generator_c.dir/rosidl_generator_c/zed_msgs/srv/detail/save_area_memory__description.c.o[0m
+[9.249s] [ 27%] [32mBuilding C object CMakeFiles/zed_msgs__rosidl_generator_c.dir/rosidl_generator_c/zed_msgs/srv/detail/save_area_memory__functions.c.o[0m
+[9.256s] [ 28%] [32mBuilding C object CMakeFiles/zed_msgs__rosidl_generator_c.dir/rosidl_generator_c/zed_msgs/srv/detail/save_area_memory__type_support.c.o[0m
+[9.355s] [ 28%] [32m[1mLinking C shared library libzed_msgs__rosidl_generator_c.so[0m
+[9.434s] [ 28%] Built target zed_msgs__rosidl_generator_c
+[9.452s] [ 29%] [34m[1mGenerating C type support for eProsima Fast-RTPS[0m
+[9.452s] [ 29%] [34m[1mGenerating C++ type support for eProsima Fast-RTPS[0m
+[9.452s] [ 29%] [34m[1mGenerating C++ introspection for ROS interfaces[0m
+[9.453s] [ 29%] [34m[1mGenerating C++ type support dispatch for ROS interfaces[0m
+[9.454s] [ 30%] [34m[1mGenerating C type support dispatch for ROS interfaces[0m
+[9.454s] [ 30%] [34m[1mGenerating C introspection for ROS interfaces[0m
+[11.215s] [ 31%] [32mBuilding CXX object CMakeFiles/zed_msgs__rosidl_typesupport_c.dir/rosidl_typesupport_c/zed_msgs/msg/objects_stamped__type_support.cpp.o[0m
+[11.215s] [ 31%] [32mBuilding CXX object CMakeFiles/zed_msgs__rosidl_typesupport_c.dir/rosidl_typesupport_c/zed_msgs/msg/keypoint2_di__type_support.cpp.o[0m
+[11.215s] [ 32%] [32mBuilding CXX object CMakeFiles/zed_msgs__rosidl_typesupport_c.dir/rosidl_typesupport_c/zed_msgs/msg/bounding_box2_di__type_support.cpp.o[0m
+[11.215s] [ 32%] [32mBuilding CXX object CMakeFiles/zed_msgs__rosidl_typesupport_c.dir/rosidl_typesupport_c/zed_msgs/msg/keypoint3_d__type_support.cpp.o[0m
+[11.216s] [ 32%] [32mBuilding CXX object CMakeFiles/zed_msgs__rosidl_typesupport_c.dir/rosidl_typesupport_c/zed_msgs/msg/bounding_box2_df__type_support.cpp.o[0m
+[11.216s] [ 32%] [32mBuilding CXX object CMakeFiles/zed_msgs__rosidl_typesupport_c.dir/rosidl_typesupport_c/zed_msgs/msg/keypoint2_df__type_support.cpp.o[0m
+[11.220s] [ 33%] [32mBuilding CXX object CMakeFiles/zed_msgs__rosidl_typesupport_c.dir/rosidl_typesupport_c/zed_msgs/msg/object__type_support.cpp.o[0m
+[11.225s] [ 34%] [32mBuilding CXX object CMakeFiles/zed_msgs__rosidl_typesupport_c.dir/rosidl_typesupport_c/zed_msgs/msg/bounding_box3_d__type_support.cpp.o[0m
+[11.234s] [ 35%] [32mBuilding CXX object CMakeFiles/zed_msgs__rosidl_typesupport_c.dir/rosidl_typesupport_c/zed_msgs/msg/depth_info_stamped__type_support.cpp.o[0m
+[11.234s] [ 35%] [32mBuilding CXX object CMakeFiles/zed_msgs__rosidl_typesupport_c.dir/rosidl_typesupport_c/zed_msgs/msg/skeleton3_d__type_support.cpp.o[0m
+[11.234s] [ 35%] [32mBuilding CXX object CMakeFiles/zed_msgs__rosidl_typesupport_c.dir/rosidl_typesupport_c/zed_msgs/msg/skeleton2_d__type_support.cpp.o[0m
+[11.292s] [ 35%] [32mBuilding CXX object CMakeFiles/zed_msgs__rosidl_typesupport_c.dir/rosidl_typesupport_c/zed_msgs/msg/plane_stamped__type_support.cpp.o[0m
+[11.292s] [ 35%] [32mBuilding CXX object CMakeFiles/zed_msgs__rosidl_typesupport_c.dir/rosidl_typesupport_c/zed_msgs/msg/heartbeat__type_support.cpp.o[0m
+[11.293s] [ 35%] [32mBuilding CXX object CMakeFiles/zed_msgs__rosidl_typesupport_c.dir/rosidl_typesupport_c/zed_msgs/msg/gnss_fusion_status__type_support.cpp.o[0m
+[11.299s] [ 36%] [32mBuilding CXX object CMakeFiles/zed_msgs__rosidl_typesupport_c.dir/rosidl_typesupport_c/zed_msgs/msg/pos_track_status__type_support.cpp.o[0m
+[11.306s] [ 37%] [32mBuilding CXX object CMakeFiles/zed_msgs__rosidl_typesupport_c.dir/rosidl_typesupport_c/zed_msgs/msg/mag_heading_status__type_support.cpp.o[0m
+[11.306s] [ 37%] [32mBuilding CXX object CMakeFiles/zed_msgs__rosidl_typesupport_c.dir/rosidl_typesupport_c/zed_msgs/msg/svo_status__type_support.cpp.o[0m
+[11.329s] [ 37%] [32mBuilding CXX object CMakeFiles/zed_msgs__rosidl_typesupport_c.dir/rosidl_typesupport_c/zed_msgs/srv/set_pose__type_support.cpp.o[0m
+[11.337s] [ 38%] [32mBuilding CXX object CMakeFiles/zed_msgs__rosidl_typesupport_c.dir/rosidl_typesupport_c/zed_msgs/msg/health_status_stamped__type_support.cpp.o[0m
+[11.342s] [ 38%] [32mBuilding CXX object CMakeFiles/zed_msgs__rosidl_typesupport_c.dir/rosidl_typesupport_c/zed_msgs/srv/start_svo_rec__type_support.cpp.o[0m
+[11.356s] [ 39%] [32mBuilding CXX object CMakeFiles/zed_msgs__rosidl_typesupport_c.dir/rosidl_typesupport_c/zed_msgs/srv/set_roi__type_support.cpp.o[0m
+[11.377s] [ 40%] [32mBuilding CXX object CMakeFiles/zed_msgs__rosidl_typesupport_c.dir/rosidl_typesupport_c/zed_msgs/srv/save_area_memory__type_support.cpp.o[0m
+[11.377s] [ 40%] [32mBuilding CXX object CMakeFiles/zed_msgs__rosidl_typesupport_c.dir/rosidl_typesupport_c/zed_msgs/srv/set_svo_frame__type_support.cpp.o[0m
+[11.528s] [ 40%] [32m[1mLinking CXX shared library libzed_msgs__rosidl_typesupport_c.so[0m
+[11.590s] [ 40%] [32mBuilding CXX object CMakeFiles/zed_msgs__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/zed_msgs/msg/detail/objects_stamped__type_support.cpp.o[0m
+[11.600s] [ 41%] [32mBuilding CXX object CMakeFiles/zed_msgs__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/zed_msgs/msg/detail/keypoint2_di__type_support.cpp.o[0m
+[11.609s] [ 41%] [32mBuilding CXX object CMakeFiles/zed_msgs__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/zed_msgs/msg/detail/object__type_support.cpp.o[0m
+[11.612s] [ 42%] [32mBuilding CXX object CMakeFiles/zed_msgs__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/zed_msgs/msg/detail/keypoint3_d__type_support.cpp.o[0m
+[11.613s] [ 42%] [32mBuilding CXX object CMakeFiles/zed_msgs__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/zed_msgs/msg/detail/bounding_box2_di__type_support.cpp.o[0m
+[11.616s] [ 42%] Built target zed_msgs__rosidl_typesupport_c
+[11.622s] [ 42%] [32mBuilding CXX object CMakeFiles/zed_msgs__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/zed_msgs/msg/detail/keypoint2_df__type_support.cpp.o[0m
+[11.627s] [ 42%] [32mBuilding CXX object CMakeFiles/zed_msgs__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/zed_msgs/msg/detail/skeleton2_d__type_support.cpp.o[0m
+[11.630s] [ 42%] [32mBuilding CXX object CMakeFiles/zed_msgs__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/zed_msgs/msg/detail/bounding_box2_df__type_support.cpp.o[0m
+[11.632s] [ 43%] [32mBuilding CXX object CMakeFiles/zed_msgs__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/zed_msgs/msg/detail/bounding_box3_d__type_support.cpp.o[0m
+[11.634s] [ 43%] [32mBuilding CXX object CMakeFiles/zed_msgs__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/zed_msgs/msg/detail/depth_info_stamped__type_support.cpp.o[0m
+[11.635s] [ 44%] [32mBuilding CXX object CMakeFiles/zed_msgs__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/zed_msgs/msg/detail/skeleton3_d__type_support.cpp.o[0m
+[11.635s] [ 43%] [32mBuilding CXX object CMakeFiles/zed_msgs__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/zed_msgs/msg/detail/plane_stamped__type_support.cpp.o[0m
+[11.652s] [ 44%] [32mBuilding C object CMakeFiles/zed_msgs__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/zed_msgs/msg/detail/object__type_support.c.o[0m
+[11.737s] [ 45%] [32mBuilding C object CMakeFiles/zed_msgs__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/zed_msgs/msg/detail/objects_stamped__type_support.c.o[0m
+[11.812s] [ 45%] [32mBuilding C object CMakeFiles/zed_msgs__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/zed_msgs/msg/detail/keypoint2_di__type_support.c.o[0m
+[11.950s] [ 45%] [32mBuilding C object CMakeFiles/zed_msgs__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/zed_msgs/msg/detail/keypoint2_df__type_support.c.o[0m
+[11.957s] [ 46%] [32mBuilding C object CMakeFiles/zed_msgs__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/zed_msgs/msg/detail/keypoint3_d__type_support.c.o[0m
+[12.025s] [ 46%] [32mBuilding C object CMakeFiles/zed_msgs__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/zed_msgs/msg/detail/bounding_box2_di__type_support.c.o[0m
+[12.124s] [ 47%] [32mBuilding CXX object CMakeFiles/zed_msgs__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/zed_msgs/msg/detail/pos_track_status__type_support.cpp.o[0m
+[12.134s] [ 48%] [32mBuilding C object CMakeFiles/zed_msgs__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/zed_msgs/msg/detail/bounding_box2_df__type_support.c.o[0m
+[12.148s] [ 49%] [32mBuilding CXX object CMakeFiles/zed_msgs__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/zed_msgs/msg/detail/heartbeat__type_support.cpp.o[0m
+[12.166s] [ 49%] [32mBuilding C object CMakeFiles/zed_msgs__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/zed_msgs/msg/detail/bounding_box3_d__type_support.c.o[0m
+[12.175s] [ 49%] [32mBuilding CXX object CMakeFiles/zed_msgs__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/zed_msgs/msg/detail/gnss_fusion_status__type_support.cpp.o[0m
+[12.202s] [ 49%] [32mBuilding C object CMakeFiles/zed_msgs__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/zed_msgs/msg/detail/skeleton2_d__type_support.c.o[0m
+[12.207s] [ 50%] [32mBuilding C object CMakeFiles/zed_msgs__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/zed_msgs/msg/detail/plane_stamped__type_support.c.o[0m
+[12.207s] [ 51%] [32mBuilding C object CMakeFiles/zed_msgs__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/zed_msgs/msg/detail/skeleton3_d__type_support.c.o[0m
+[12.223s] [ 51%] [32mBuilding C object CMakeFiles/zed_msgs__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/zed_msgs/msg/detail/depth_info_stamped__type_support.c.o[0m
+[12.251s] [ 52%] [32mBuilding CXX object CMakeFiles/zed_msgs__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/zed_msgs/msg/object__type_support.cpp.o[0m
+[12.271s] [ 52%] [32mBuilding CXX object CMakeFiles/zed_msgs__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/zed_msgs/msg/detail/mag_heading_status__type_support.cpp.o[0m
+[12.279s] [ 52%] [32mBuilding CXX object CMakeFiles/zed_msgs__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/zed_msgs/msg/objects_stamped__type_support.cpp.o[0m
+[12.279s] [ 52%] [32mBuilding C object CMakeFiles/zed_msgs__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/zed_msgs/msg/detail/pos_track_status__type_support.c.o[0m
+[12.282s] [ 53%] [32mBuilding CXX object CMakeFiles/zed_msgs__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/zed_msgs/msg/keypoint2_di__type_support.cpp.o[0m
+[12.285s] [ 53%] [32mBuilding CXX object CMakeFiles/zed_msgs__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/zed_msgs/msg/keypoint2_df__type_support.cpp.o[0m
+[12.290s] [ 53%] [32mBuilding CXX object CMakeFiles/zed_msgs__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/zed_msgs/msg/detail/svo_status__type_support.cpp.o[0m
+[12.310s] [ 53%] [32mBuilding C object CMakeFiles/zed_msgs__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/zed_msgs/msg/detail/gnss_fusion_status__type_support.c.o[0m
+[12.319s] [ 54%] [32mBuilding CXX object CMakeFiles/zed_msgs__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/zed_msgs/msg/detail/health_status_stamped__type_support.cpp.o[0m
+[12.395s] [ 54%] [32mBuilding CXX object CMakeFiles/zed_msgs__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/zed_msgs/srv/detail/set_pose__type_support.cpp.o[0m
+[12.395s] [ 55%] [32mBuilding C object CMakeFiles/zed_msgs__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/zed_msgs/msg/detail/heartbeat__type_support.c.o[0m
+[12.398s] [ 55%] [32mBuilding CXX object CMakeFiles/zed_msgs__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/zed_msgs/msg/keypoint3_d__type_support.cpp.o[0m
+[12.403s] [ 56%] [32mBuilding CXX object CMakeFiles/zed_msgs__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/zed_msgs/msg/bounding_box2_di__type_support.cpp.o[0m
+[12.471s] [ 56%] [32mBuilding CXX object CMakeFiles/zed_msgs__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/zed_msgs/msg/bounding_box2_df__type_support.cpp.o[0m
+[12.501s] [ 56%] [32mBuilding C object CMakeFiles/zed_msgs__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/zed_msgs/msg/detail/mag_heading_status__type_support.c.o[0m
+[12.605s] [ 56%] [32mBuilding CXX object CMakeFiles/zed_msgs__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/zed_msgs/msg/bounding_box3_d__type_support.cpp.o[0m
+[12.610s] [ 57%] [32mBuilding C object CMakeFiles/zed_msgs__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/zed_msgs/msg/detail/svo_status__type_support.c.o[0m
+[12.676s] [ 58%] [32mBuilding CXX object CMakeFiles/zed_msgs__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/zed_msgs/msg/skeleton2_d__type_support.cpp.o[0m
+[12.694s] [ 58%] [32mBuilding C object CMakeFiles/zed_msgs__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/zed_msgs/msg/detail/health_status_stamped__type_support.c.o[0m
+[12.718s] [ 59%] [32mBuilding CXX object CMakeFiles/zed_msgs__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/zed_msgs/srv/detail/start_svo_rec__type_support.cpp.o[0m
+[12.799s] [ 59%] [32mBuilding C object CMakeFiles/zed_msgs__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/zed_msgs/srv/detail/set_pose__type_support.c.o[0m
+[12.800s] [ 60%] [32mBuilding C object CMakeFiles/zed_msgs__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/zed_msgs/srv/detail/start_svo_rec__type_support.c.o[0m
+[12.826s] [ 60%] [32mBuilding CXX object CMakeFiles/zed_msgs__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/zed_msgs/srv/detail/set_roi__type_support.cpp.o[0m
+[12.826s] [ 60%] [32mBuilding CXX object CMakeFiles/zed_msgs__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/zed_msgs/msg/skeleton3_d__type_support.cpp.o[0m
+[12.858s] [ 60%] [32mBuilding C object CMakeFiles/zed_msgs__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/zed_msgs/srv/detail/set_roi__type_support.c.o[0m
+[12.867s] [ 60%] [32mBuilding CXX object CMakeFiles/zed_msgs__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/zed_msgs/srv/detail/set_svo_frame__type_support.cpp.o[0m
+[12.881s] [ 61%] [32mBuilding C object CMakeFiles/zed_msgs__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/zed_msgs/srv/detail/set_svo_frame__type_support.c.o[0m
+[12.906s] [ 61%] [32mBuilding C object CMakeFiles/zed_msgs__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/zed_msgs/srv/detail/save_area_memory__type_support.c.o[0m
+[12.925s] [ 62%] [32mBuilding CXX object CMakeFiles/zed_msgs__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/zed_msgs/srv/detail/save_area_memory__type_support.cpp.o[0m
+[12.931s] [ 63%] [32mBuilding CXX object CMakeFiles/zed_msgs__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/zed_msgs/msg/depth_info_stamped__type_support.cpp.o[0m
+[12.971s] [ 63%] [32mBuilding CXX object CMakeFiles/zed_msgs__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/zed_msgs/msg/plane_stamped__type_support.cpp.o[0m
+[12.974s] [ 63%] [32mBuilding CXX object CMakeFiles/zed_msgs__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/zed_msgs/msg/pos_track_status__type_support.cpp.o[0m
+[12.988s] [ 63%] [32mBuilding CXX object CMakeFiles/zed_msgs__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/zed_msgs/msg/heartbeat__type_support.cpp.o[0m
+[12.996s] [ 64%] [32mBuilding CXX object CMakeFiles/zed_msgs__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/zed_msgs/msg/gnss_fusion_status__type_support.cpp.o[0m
+[13.029s] [ 64%] [32m[1mLinking C shared library libzed_msgs__rosidl_typesupport_introspection_c.so[0m
+[13.045s] [ 65%] [32mBuilding CXX object CMakeFiles/zed_msgs__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/zed_msgs/msg/mag_heading_status__type_support.cpp.o[0m
+[13.096s] [ 65%] Built target zed_msgs__rosidl_typesupport_introspection_c
+[13.099s] [ 65%] [32mBuilding CXX object CMakeFiles/zed_msgs__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/zed_msgs/msg/svo_status__type_support.cpp.o[0m
+[13.113s] [ 65%] [32mBuilding CXX object CMakeFiles/zed_msgs__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/zed_msgs/msg/health_status_stamped__type_support.cpp.o[0m
+[13.267s] [ 66%] [32mBuilding CXX object CMakeFiles/zed_msgs__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/zed_msgs/srv/set_pose__type_support.cpp.o[0m
+[13.359s] [ 66%] [32mBuilding CXX object CMakeFiles/zed_msgs__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/zed_msgs/srv/start_svo_rec__type_support.cpp.o[0m
+[13.402s] [ 67%] [32mBuilding CXX object CMakeFiles/zed_msgs__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/zed_msgs/msg/detail/object__type_support_c.cpp.o[0m
+[13.408s] [ 68%] [32mBuilding CXX object CMakeFiles/zed_msgs__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/zed_msgs/srv/set_roi__type_support.cpp.o[0m
+[13.412s] [ 68%] [32mBuilding CXX object CMakeFiles/zed_msgs__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/zed_msgs/srv/set_svo_frame__type_support.cpp.o[0m
+[13.485s] [ 68%] [32mBuilding CXX object CMakeFiles/zed_msgs__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/zed_msgs/msg/detail/keypoint2_di__type_support_c.cpp.o[0m
+[13.487s] [ 68%] [32mBuilding CXX object CMakeFiles/zed_msgs__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/zed_msgs/msg/detail/objects_stamped__type_support_c.cpp.o[0m
+[13.491s] [ 68%] [32mBuilding CXX object CMakeFiles/zed_msgs__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/zed_msgs/srv/save_area_memory__type_support.cpp.o[0m
+[13.507s] [ 69%] [32mBuilding CXX object CMakeFiles/zed_msgs__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/zed_msgs/msg/detail/keypoint2_df__type_support_c.cpp.o[0m
+[13.524s] [ 69%] [32mBuilding CXX object CMakeFiles/zed_msgs__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/zed_msgs/msg/detail/keypoint3_d__type_support_c.cpp.o[0m
+[13.548s] [ 70%] [32mBuilding CXX object CMakeFiles/zed_msgs__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/zed_msgs/msg/detail/bounding_box2_di__type_support_c.cpp.o[0m
+[13.550s] [ 70%] [32mBuilding CXX object CMakeFiles/zed_msgs__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/zed_msgs/msg/detail/dds_fastrtps/object__type_support.cpp.o[0m
+[13.620s] [ 70%] [32mBuilding CXX object CMakeFiles/zed_msgs__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/zed_msgs/msg/detail/bounding_box2_df__type_support_c.cpp.o[0m
+[13.645s] [ 70%] [32mBuilding CXX object CMakeFiles/zed_msgs__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/zed_msgs/msg/detail/dds_fastrtps/keypoint2_di__type_support.cpp.o[0m
+[13.645s] [ 71%] [32mBuilding CXX object CMakeFiles/zed_msgs__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/zed_msgs/msg/detail/dds_fastrtps/objects_stamped__type_support.cpp.o[0m
+[13.656s] [ 71%] [32m[1mLinking CXX shared library libzed_msgs__rosidl_typesupport_introspection_cpp.so[0m
+[13.874s] [ 71%] [32mBuilding CXX object CMakeFiles/zed_msgs__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/zed_msgs/msg/detail/bounding_box3_d__type_support_c.cpp.o[0m
+[13.991s] [ 72%] [32mBuilding CXX object CMakeFiles/zed_msgs__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/zed_msgs/msg/detail/skeleton2_d__type_support_c.cpp.o[0m
+[14.033s] [ 73%] [32mBuilding CXX object CMakeFiles/zed_msgs__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/zed_msgs/msg/detail/dds_fastrtps/keypoint2_df__type_support.cpp.o[0m
+[14.041s] [ 73%] [32mBuilding CXX object CMakeFiles/zed_msgs__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/zed_msgs/msg/detail/skeleton3_d__type_support_c.cpp.o[0m
+[14.141s] [ 73%] [32mBuilding CXX object CMakeFiles/zed_msgs__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/zed_msgs/msg/detail/depth_info_stamped__type_support_c.cpp.o[0m
+[14.189s] [ 74%] [32mBuilding CXX object CMakeFiles/zed_msgs__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/zed_msgs/msg/detail/plane_stamped__type_support_c.cpp.o[0m
+[14.191s] [ 74%] [32mBuilding CXX object CMakeFiles/zed_msgs__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/zed_msgs/msg/detail/dds_fastrtps/keypoint3_d__type_support.cpp.o[0m
+[14.197s] [ 74%] Built target zed_msgs__rosidl_typesupport_introspection_cpp
+[14.238s] [ 75%] [32mBuilding CXX object CMakeFiles/zed_msgs__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/zed_msgs/msg/detail/gnss_fusion_status__type_support_c.cpp.o[0m
+[14.259s] [ 75%] [32mBuilding CXX object CMakeFiles/zed_msgs__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/zed_msgs/msg/detail/pos_track_status__type_support_c.cpp.o[0m
+[14.363s] [ 75%] [32mBuilding CXX object CMakeFiles/zed_msgs__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/zed_msgs/msg/detail/dds_fastrtps/bounding_box2_di__type_support.cpp.o[0m
+[14.369s] [ 76%] [32mBuilding CXX object CMakeFiles/zed_msgs__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/zed_msgs/msg/detail/dds_fastrtps/bounding_box2_df__type_support.cpp.o[0m
+[14.401s] [ 76%] [32mBuilding CXX object CMakeFiles/zed_msgs__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/zed_msgs/msg/detail/dds_fastrtps/bounding_box3_d__type_support.cpp.o[0m
+[14.448s] [ 76%] [32mBuilding CXX object CMakeFiles/zed_msgs__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/zed_msgs/msg/detail/heartbeat__type_support_c.cpp.o[0m
+[14.486s] [ 77%] [32mBuilding CXX object CMakeFiles/zed_msgs__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/zed_msgs/msg/detail/dds_fastrtps/skeleton2_d__type_support.cpp.o[0m
+[14.562s] [ 77%] [32mBuilding CXX object CMakeFiles/zed_msgs__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/zed_msgs/msg/detail/mag_heading_status__type_support_c.cpp.o[0m
+[14.667s] [ 78%] [32m[1mLinking CXX shared library libzed_msgs__rosidl_typesupport_cpp.so[0m
+[14.717s] [ 79%] [32mBuilding CXX object CMakeFiles/zed_msgs__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/zed_msgs/msg/detail/svo_status__type_support_c.cpp.o[0m
+[14.743s] [ 79%] [32mBuilding CXX object CMakeFiles/zed_msgs__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/zed_msgs/msg/detail/dds_fastrtps/skeleton3_d__type_support.cpp.o[0m
+[14.791s] [ 79%] [32mBuilding CXX object CMakeFiles/zed_msgs__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/zed_msgs/msg/detail/health_status_stamped__type_support_c.cpp.o[0m
+[14.837s] [ 79%] [32mBuilding CXX object CMakeFiles/zed_msgs__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/zed_msgs/msg/detail/dds_fastrtps/depth_info_stamped__type_support.cpp.o[0m
+[14.842s] [ 80%] [32mBuilding CXX object CMakeFiles/zed_msgs__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/zed_msgs/msg/detail/dds_fastrtps/plane_stamped__type_support.cpp.o[0m
+[14.902s] [ 80%] Built target zed_msgs__rosidl_typesupport_cpp
+[14.930s] [ 81%] [32mBuilding CXX object CMakeFiles/zed_msgs__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/zed_msgs/srv/detail/set_pose__type_support_c.cpp.o[0m
+[14.938s] [ 81%] [32mBuilding CXX object CMakeFiles/zed_msgs__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/zed_msgs/srv/detail/start_svo_rec__type_support_c.cpp.o[0m
+[15.036s] [ 81%] [32mBuilding CXX object CMakeFiles/zed_msgs__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/zed_msgs/srv/detail/set_roi__type_support_c.cpp.o[0m
+[15.185s] [ 81%] [32mBuilding CXX object CMakeFiles/zed_msgs__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/zed_msgs/msg/detail/dds_fastrtps/pos_track_status__type_support.cpp.o[0m
+[15.206s] [ 82%] [32mBuilding CXX object CMakeFiles/zed_msgs__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/zed_msgs/msg/detail/dds_fastrtps/gnss_fusion_status__type_support.cpp.o[0m
+[15.212s] [ 82%] [32mBuilding CXX object CMakeFiles/zed_msgs__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/zed_msgs/msg/detail/dds_fastrtps/heartbeat__type_support.cpp.o[0m
+[15.351s] [ 82%] [32mBuilding CXX object CMakeFiles/zed_msgs__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/zed_msgs/msg/detail/dds_fastrtps/mag_heading_status__type_support.cpp.o[0m
+[15.356s] [ 83%] [32mBuilding CXX object CMakeFiles/zed_msgs__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/zed_msgs/srv/detail/set_svo_frame__type_support_c.cpp.o[0m
+[15.356s] [ 84%] [32mBuilding CXX object CMakeFiles/zed_msgs__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/zed_msgs/msg/detail/dds_fastrtps/svo_status__type_support.cpp.o[0m
+[15.397s] [ 84%] [32mBuilding CXX object CMakeFiles/zed_msgs__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/zed_msgs/srv/detail/save_area_memory__type_support_c.cpp.o[0m
+[15.443s] [ 84%] [32mBuilding CXX object CMakeFiles/zed_msgs__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/zed_msgs/msg/detail/dds_fastrtps/health_status_stamped__type_support.cpp.o[0m
+[15.646s] [ 84%] [32mBuilding CXX object CMakeFiles/zed_msgs__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/zed_msgs/srv/detail/dds_fastrtps/set_pose__type_support.cpp.o[0m
+[15.767s] [ 85%] [32mBuilding CXX object CMakeFiles/zed_msgs__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/zed_msgs/srv/detail/dds_fastrtps/start_svo_rec__type_support.cpp.o[0m
+[15.807s] [ 85%] [32mBuilding CXX object CMakeFiles/zed_msgs__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/zed_msgs/srv/detail/dds_fastrtps/set_roi__type_support.cpp.o[0m
+[15.851s] [ 86%] [32mBuilding CXX object CMakeFiles/zed_msgs__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/zed_msgs/srv/detail/dds_fastrtps/set_svo_frame__type_support.cpp.o[0m
+[15.880s] [ 86%] [32mBuilding CXX object CMakeFiles/zed_msgs__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/zed_msgs/srv/detail/dds_fastrtps/save_area_memory__type_support.cpp.o[0m
+[16.312s] [ 87%] [32m[1mLinking CXX shared library libzed_msgs__rosidl_typesupport_fastrtps_c.so[0m
+[16.472s] [ 87%] Built target zed_msgs__rosidl_typesupport_fastrtps_c
+[16.634s] [ 87%] [32m[1mLinking CXX shared library libzed_msgs__rosidl_typesupport_fastrtps_cpp.so[0m
+[16.802s] [ 87%] Built target zed_msgs__rosidl_typesupport_fastrtps_cpp
+[16.842s] [ 87%] Built target zed_msgs
+[16.882s] [ 87%] [34m[1mGenerating Python code for ROS interfaces[0m
+[21.045s] [ 87%] Built target zed_msgs__py
+[21.090s] [ 88%] [32mBuilding C object CMakeFiles/zed_msgs__rosidl_generator_py.dir/rosidl_generator_py/zed_msgs/msg/_skeleton2_d_s.c.o[0m
+[21.090s] [ 89%] [32mBuilding C object CMakeFiles/zed_msgs__rosidl_generator_py.dir/rosidl_generator_py/zed_msgs/msg/_bounding_box2_di_s.c.o[0m
+[21.090s] [ 89%] [32mBuilding C object CMakeFiles/zed_msgs__rosidl_generator_py.dir/rosidl_generator_py/zed_msgs/msg/_keypoint2_di_s.c.o[0m
+[21.090s] [ 88%] [32mBuilding C object CMakeFiles/zed_msgs__rosidl_generator_py.dir/rosidl_generator_py/zed_msgs/msg/_bounding_box2_df_s.c.o[0m
+[21.090s] [ 88%] [32mBuilding C object CMakeFiles/zed_msgs__rosidl_generator_py.dir/rosidl_generator_py/zed_msgs/msg/_bounding_box3_d_s.c.o[0m
+[21.090s] [ 89%] [32mBuilding C object CMakeFiles/zed_msgs__rosidl_generator_py.dir/rosidl_generator_py/zed_msgs/msg/_keypoint3_d_s.c.o[0m
+[21.090s] [ 89%] [32mBuilding C object CMakeFiles/zed_msgs__rosidl_generator_py.dir/rosidl_generator_py/zed_msgs/msg/_objects_stamped_s.c.o[0m
+[21.091s] [ 90%] [32mBuilding C object CMakeFiles/zed_msgs__rosidl_generator_py.dir/rosidl_generator_py/zed_msgs/msg/_object_s.c.o[0m
+[21.094s] [ 90%] [32mBuilding C object CMakeFiles/zed_msgs__rosidl_generator_py.dir/rosidl_generator_py/zed_msgs/msg/_skeleton3_d_s.c.o[0m
+[21.095s] [ 91%] [32mBuilding C object CMakeFiles/zed_msgs__rosidl_generator_py.dir/rosidl_generator_py/zed_msgs/msg/_keypoint2_df_s.c.o[0m
+[21.096s] [ 91%] [32mBuilding C object CMakeFiles/zed_msgs__rosidl_generator_py.dir/rosidl_generator_py/zed_msgs/msg/_plane_stamped_s.c.o[0m
+[21.100s] [ 92%] [32mBuilding C object CMakeFiles/zed_msgs__rosidl_generator_py.dir/rosidl_generator_py/zed_msgs/msg/_gnss_fusion_status_s.c.o[0m
+[21.102s] [ 93%] [32mBuilding C object CMakeFiles/zed_msgs__rosidl_generator_py.dir/rosidl_generator_py/zed_msgs/msg/_heartbeat_s.c.o[0m
+[21.102s] [ 93%] [32mBuilding C object CMakeFiles/zed_msgs__rosidl_generator_py.dir/rosidl_generator_py/zed_msgs/msg/_mag_heading_status_s.c.o[0m
+[21.104s] [ 94%] [32mBuilding C object CMakeFiles/zed_msgs__rosidl_generator_py.dir/rosidl_generator_py/zed_msgs/msg/_depth_info_stamped_s.c.o[0m
+[21.107s] [ 94%] [32mBuilding C object CMakeFiles/zed_msgs__rosidl_generator_py.dir/rosidl_generator_py/zed_msgs/msg/_pos_track_status_s.c.o[0m
+[21.222s] [ 94%] [32mBuilding C object CMakeFiles/zed_msgs__rosidl_generator_py.dir/rosidl_generator_py/zed_msgs/msg/_health_status_stamped_s.c.o[0m
+[21.223s] [ 95%] [32mBuilding C object CMakeFiles/zed_msgs__rosidl_generator_py.dir/rosidl_generator_py/zed_msgs/srv/_set_pose_s.c.o[0m
+[21.230s] [ 95%] [32mBuilding C object CMakeFiles/zed_msgs__rosidl_generator_py.dir/rosidl_generator_py/zed_msgs/msg/_svo_status_s.c.o[0m
+[21.296s] [ 95%] [32mBuilding C object CMakeFiles/zed_msgs__rosidl_generator_py.dir/rosidl_generator_py/zed_msgs/srv/_start_svo_rec_s.c.o[0m
+[21.302s] [ 96%] [32mBuilding C object CMakeFiles/zed_msgs__rosidl_generator_py.dir/rosidl_generator_py/zed_msgs/srv/_set_roi_s.c.o[0m
+[21.333s] [ 96%] [32mBuilding C object CMakeFiles/zed_msgs__rosidl_generator_py.dir/rosidl_generator_py/zed_msgs/srv/_set_svo_frame_s.c.o[0m
+[21.353s] [ 96%] [32mBuilding C object CMakeFiles/zed_msgs__rosidl_generator_py.dir/rosidl_generator_py/zed_msgs/srv/_save_area_memory_s.c.o[0m
+[21.620s] [ 97%] [32m[1mLinking C shared library libzed_msgs__rosidl_generator_py.so[0m
+[21.718s] [ 97%] Built target zed_msgs__rosidl_generator_py
+[21.768s] [ 97%] [32mBuilding C object CMakeFiles/zed_msgs_s__rosidl_typesupport_fastrtps_c.dir/rosidl_generator_py/zed_msgs/_zed_msgs_s.ep.rosidl_typesupport_fastrtps_c.c.o[0m
+[21.768s] [ 97%] [32mBuilding C object CMakeFiles/zed_msgs_s__rosidl_typesupport_introspection_c.dir/rosidl_generator_py/zed_msgs/_zed_msgs_s.ep.rosidl_typesupport_introspection_c.c.o[0m
+[21.769s] [ 98%] [32mBuilding C object CMakeFiles/zed_msgs_s__rosidl_typesupport_c.dir/rosidl_generator_py/zed_msgs/_zed_msgs_s.ep.rosidl_typesupport_c.c.o[0m
+[22.093s] [ 99%] [32m[1mLinking C shared module rosidl_generator_py/zed_msgs/zed_msgs_s__rosidl_typesupport_c.so[0m
+[22.093s] [ 99%] [32m[1mLinking C shared module rosidl_generator_py/zed_msgs/zed_msgs_s__rosidl_typesupport_introspection_c.so[0m
+[22.106s] [100%] [32m[1mLinking C shared module rosidl_generator_py/zed_msgs/zed_msgs_s__rosidl_typesupport_fastrtps_c.so[0m
+[22.150s] [100%] Built target zed_msgs_s__rosidl_typesupport_c
+[22.150s] [100%] Built target zed_msgs_s__rosidl_typesupport_introspection_c
+[22.167s] [100%] Built target zed_msgs_s__rosidl_typesupport_fastrtps_c
+[22.189s] Invoked command in '/home/rob/project/csci5551-s26-team-pointbot/build/zed_msgs' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy CONDA_PROMPT_MODIFIER=(base) DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/rob/project/csci5551-s26-team-pointbot/build/zed_msgs -- -j16 -l16
+[22.191s] Invoking command in '/home/rob/project/csci5551-s26-team-pointbot/build/zed_msgs': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy CONDA_PROMPT_MODIFIER=(base) DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --install /home/rob/project/csci5551-s26-team-pointbot/build/zed_msgs
+[22.206s] -- Install configuration: ""
+[22.206s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/share/ament_index/resource_index/rosidl_interfaces/zed_msgs
+[22.206s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/share/zed_msgs/msg/Object.json
+[22.207s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/share/zed_msgs/msg/ObjectsStamped.json
+[22.207s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/share/zed_msgs/msg/Keypoint2Di.json
+[22.207s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/share/zed_msgs/msg/Keypoint2Df.json
+[22.207s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/share/zed_msgs/msg/Keypoint3D.json
+[22.207s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/share/zed_msgs/msg/BoundingBox2Di.json
+[22.207s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/share/zed_msgs/msg/BoundingBox2Df.json
+[22.207s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/share/zed_msgs/msg/BoundingBox3D.json
+[22.208s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/share/zed_msgs/msg/Skeleton2D.json
+[22.208s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/share/zed_msgs/msg/Skeleton3D.json
+[22.208s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/share/zed_msgs/msg/DepthInfoStamped.json
+[22.208s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/share/zed_msgs/msg/PlaneStamped.json
+[22.208s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/share/zed_msgs/msg/PosTrackStatus.json
+[22.208s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/share/zed_msgs/msg/GnssFusionStatus.json
+[22.208s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/share/zed_msgs/msg/Heartbeat.json
+[22.209s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/share/zed_msgs/msg/MagHeadingStatus.json
+[22.209s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/share/zed_msgs/msg/SvoStatus.json
+[22.209s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/share/zed_msgs/msg/HealthStatusStamped.json
+[22.209s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/share/zed_msgs/srv/SetPose.json
+[22.209s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/share/zed_msgs/srv/StartSvoRec.json
+[22.209s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/share/zed_msgs/srv/SetROI.json
+[22.209s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/share/zed_msgs/srv/SetSvoFrame.json
+[22.209s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/share/zed_msgs/srv/SaveAreaMemory.json
+[22.209s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs
+[22.210s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg
+[22.210s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/skeleton3_d.h
+[22.210s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/keypoint3_d.h
+[22.210s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/svo_status.h
+[22.210s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/keypoint2_df.h
+[22.210s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/gnss_fusion_status.h
+[22.210s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/bounding_box2_df.h
+[22.210s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/skeleton2_d.h
+[22.211s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/keypoint2_di.h
+[22.211s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/pos_track_status.h
+[22.211s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/bounding_box2_di.h
+[22.211s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/heartbeat.h
+[22.211s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/rosidl_generator_c__visibility_control.h
+[22.211s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/health_status_stamped.h
+[22.211s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/objects_stamped.h
+[22.211s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/bounding_box3_d.h
+[22.212s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/plane_stamped.h
+[22.212s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail
+[22.212s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/depth_info_stamped__functions.h
+[22.212s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/plane_stamped__type_support.h
+[22.212s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/keypoint2_di__functions.c
+[22.212s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/objects_stamped__description.c
+[22.212s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/gnss_fusion_status__description.c
+[22.212s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/depth_info_stamped__type_support.h
+[22.213s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/keypoint2_df__type_support.h
+[22.213s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/health_status_stamped__functions.c
+[22.213s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/object__type_support.h
+[22.213s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/plane_stamped__functions.h
+[22.213s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/plane_stamped__functions.c
+[22.213s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/object__functions.c
+[22.213s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/object__functions.h
+[22.214s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/objects_stamped__functions.h
+[22.214s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/skeleton3_d__struct.h
+[22.214s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/bounding_box2_di__functions.c
+[22.214s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/heartbeat__type_support.h
+[22.214s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/mag_heading_status__type_support.c
+[22.214s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/pos_track_status__struct.h
+[22.214s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/plane_stamped__struct.h
+[22.214s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/bounding_box3_d__type_support.h
+[22.215s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/plane_stamped__type_support.c
+[22.215s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/svo_status__description.c
+[22.215s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/mag_heading_status__description.c
+[22.215s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/bounding_box2_df__description.c
+[22.215s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/mag_heading_status__functions.h
+[22.215s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/skeleton3_d__type_support.h
+[22.215s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/gnss_fusion_status__type_support.c
+[22.215s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/depth_info_stamped__description.c
+[22.215s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/skeleton2_d__functions.h
+[22.216s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/bounding_box3_d__functions.c
+[22.216s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/bounding_box2_di__type_support.h
+[22.216s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/health_status_stamped__description.c
+[22.216s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/keypoint2_df__type_support.c
+[22.216s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/heartbeat__description.c
+[22.216s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/heartbeat__type_support.c
+[22.216s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/bounding_box2_di__functions.h
+[22.216s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/bounding_box3_d__type_support.c
+[22.217s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/keypoint2_di__description.c
+[22.217s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/bounding_box2_df__functions.c
+[22.217s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/keypoint3_d__struct.h
+[22.217s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/bounding_box2_df__functions.h
+[22.217s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/heartbeat__struct.h
+[22.217s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/keypoint3_d__type_support.c
+[22.217s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/keypoint3_d__description.c
+[22.218s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/gnss_fusion_status__type_support.h
+[22.218s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/skeleton3_d__functions.c
+[22.218s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/heartbeat__functions.c
+[22.218s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/bounding_box3_d__description.c
+[22.218s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/bounding_box2_df__type_support.c
+[22.218s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/skeleton2_d__type_support.h
+[22.218s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/skeleton2_d__struct.h
+[22.218s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/objects_stamped__functions.c
+[22.218s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/keypoint2_df__struct.h
+[22.219s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/depth_info_stamped__struct.h
+[22.219s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/skeleton2_d__type_support.c
+[22.219s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/mag_heading_status__functions.c
+[22.219s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/bounding_box2_di__type_support.c
+[22.219s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/keypoint2_di__type_support.h
+[22.219s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/skeleton2_d__description.c
+[22.219s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/keypoint2_df__description.c
+[22.219s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/keypoint2_df__functions.h
+[22.220s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/svo_status__struct.h
+[22.220s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/gnss_fusion_status__functions.c
+[22.220s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/svo_status__functions.h
+[22.220s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/bounding_box2_di__struct.h
+[22.220s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/skeleton3_d__functions.h
+[22.220s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/keypoint3_d__type_support.h
+[22.221s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/objects_stamped__type_support.c
+[22.221s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/keypoint2_di__functions.h
+[22.221s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/mag_heading_status__struct.h
+[22.221s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/svo_status__functions.c
+[22.221s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/pos_track_status__functions.h
+[22.221s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/skeleton3_d__description.c
+[22.221s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/plane_stamped__description.c
+[22.221s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/health_status_stamped__struct.h
+[22.221s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/gnss_fusion_status__functions.h
+[22.221s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/keypoint3_d__functions.c
+[22.222s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/keypoint2_df__functions.c
+[22.222s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/health_status_stamped__functions.h
+[22.222s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/health_status_stamped__type_support.c
+[22.222s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/skeleton2_d__functions.c
+[22.222s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/objects_stamped__type_support.h
+[22.222s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/heartbeat__functions.h
+[22.222s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/bounding_box3_d__struct.h
+[22.222s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/svo_status__type_support.h
+[22.222s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/keypoint2_di__type_support.c
+[22.222s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/object__struct.h
+[22.222s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/pos_track_status__functions.c
+[22.223s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/skeleton3_d__type_support.c
+[22.223s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/bounding_box2_di__description.c
+[22.223s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/object__description.c
+[22.223s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/mag_heading_status__type_support.h
+[22.223s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/object__type_support.c
+[22.223s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/depth_info_stamped__type_support.c
+[22.223s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/bounding_box2_df__type_support.h
+[22.223s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/pos_track_status__type_support.h
+[22.223s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/pos_track_status__description.c
+[22.223s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/keypoint3_d__functions.h
+[22.224s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/bounding_box2_df__struct.h
+[22.224s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/objects_stamped__struct.h
+[22.224s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/keypoint2_di__struct.h
+[22.224s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/pos_track_status__type_support.c
+[22.224s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/bounding_box3_d__functions.h
+[22.224s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/health_status_stamped__type_support.h
+[22.224s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/svo_status__type_support.c
+[22.224s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/depth_info_stamped__functions.c
+[22.224s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/gnss_fusion_status__struct.h
+[22.224s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/object.h
+[22.225s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/mag_heading_status.h
+[22.225s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/depth_info_stamped.h
+[22.225s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/srv
+[22.225s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/srv/set_svo_frame.h
+[22.225s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/srv/save_area_memory.h
+[22.225s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/srv/start_svo_rec.h
+[22.225s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/srv/set_pose.h
+[22.225s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/srv/set_roi.h
+[22.225s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/srv/detail
+[22.226s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/srv/detail/start_svo_rec__type_support.c
+[22.226s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/srv/detail/set_roi__struct.h
+[22.226s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/srv/detail/save_area_memory__struct.h
+[22.226s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/srv/detail/set_pose__functions.h
+[22.227s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/srv/detail/set_pose__description.c
+[22.227s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/srv/detail/save_area_memory__type_support.c
+[22.227s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/srv/detail/save_area_memory__type_support.h
+[22.227s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/srv/detail/save_area_memory__functions.c
+[22.227s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/srv/detail/set_roi__description.c
+[22.227s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/srv/detail/set_svo_frame__functions.h
+[22.227s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/srv/detail/start_svo_rec__functions.c
+[22.228s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/srv/detail/set_pose__type_support.h
+[22.228s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/srv/detail/save_area_memory__description.c
+[22.228s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/srv/detail/start_svo_rec__description.c
+[22.228s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/srv/detail/set_pose__struct.h
+[22.229s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/srv/detail/set_roi__type_support.h
+[22.229s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/srv/detail/set_roi__functions.h
+[22.229s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/srv/detail/set_svo_frame__type_support.c
+[22.229s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/srv/detail/set_roi__type_support.c
+[22.229s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/srv/detail/set_svo_frame__struct.h
+[22.229s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/srv/detail/set_svo_frame__type_support.h
+[22.230s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/srv/detail/set_svo_frame__functions.c
+[22.230s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/srv/detail/save_area_memory__functions.h
+[22.230s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/srv/detail/start_svo_rec__struct.h
+[22.230s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/srv/detail/set_roi__functions.c
+[22.230s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/srv/detail/set_pose__type_support.c
+[22.230s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/srv/detail/set_svo_frame__description.c
+[22.230s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/srv/detail/set_pose__functions.c
+[22.230s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/srv/detail/start_svo_rec__type_support.h
+[22.230s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/srv/detail/start_svo_rec__functions.h
+[22.230s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/share/zed_msgs/environment/library_path.sh
+[22.231s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/share/zed_msgs/environment/library_path.dsv
+[22.231s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/lib/libzed_msgs__rosidl_generator_c.so
+[22.231s] -- Set non-toolchain portion of runtime path of "/home/rob/project/csci5551-s26-team-pointbot/install/lib/libzed_msgs__rosidl_generator_c.so" to ""
+[22.231s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs
+[22.231s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg
+[22.231s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/rosidl_typesupport_fastrtps_c__visibility_control.h
+[22.231s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail
+[22.231s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/keypoint2_di__rosidl_typesupport_fastrtps_c.h
+[22.231s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/heartbeat__rosidl_typesupport_fastrtps_c.h
+[22.231s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/plane_stamped__rosidl_typesupport_fastrtps_c.h
+[22.232s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/skeleton3_d__rosidl_typesupport_fastrtps_c.h
+[22.232s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/bounding_box2_df__rosidl_typesupport_fastrtps_c.h
+[22.232s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/depth_info_stamped__rosidl_typesupport_fastrtps_c.h
+[22.232s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/objects_stamped__rosidl_typesupport_fastrtps_c.h
+[22.232s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/object__rosidl_typesupport_fastrtps_c.h
+[22.232s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/bounding_box2_di__rosidl_typesupport_fastrtps_c.h
+[22.232s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/mag_heading_status__rosidl_typesupport_fastrtps_c.h
+[22.232s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/keypoint2_df__rosidl_typesupport_fastrtps_c.h
+[22.232s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/gnss_fusion_status__rosidl_typesupport_fastrtps_c.h
+[22.233s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/keypoint3_d__rosidl_typesupport_fastrtps_c.h
+[22.233s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/health_status_stamped__rosidl_typesupport_fastrtps_c.h
+[22.233s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/skeleton2_d__rosidl_typesupport_fastrtps_c.h
+[22.233s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/pos_track_status__rosidl_typesupport_fastrtps_c.h
+[22.233s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/svo_status__rosidl_typesupport_fastrtps_c.h
+[22.233s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/bounding_box3_d__rosidl_typesupport_fastrtps_c.h
+[22.233s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/srv
+[22.233s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/srv/detail
+[22.233s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/srv/detail/set_pose__rosidl_typesupport_fastrtps_c.h
+[22.233s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/srv/detail/start_svo_rec__rosidl_typesupport_fastrtps_c.h
+[22.234s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/srv/detail/set_roi__rosidl_typesupport_fastrtps_c.h
+[22.234s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/srv/detail/save_area_memory__rosidl_typesupport_fastrtps_c.h
+[22.234s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/srv/detail/set_svo_frame__rosidl_typesupport_fastrtps_c.h
+[22.234s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/lib/libzed_msgs__rosidl_typesupport_fastrtps_c.so
+[22.235s] -- Set non-toolchain portion of runtime path of "/home/rob/project/csci5551-s26-team-pointbot/install/lib/libzed_msgs__rosidl_typesupport_fastrtps_c.so" to ""
+[22.235s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs
+[22.235s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg
+[22.235s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/bounding_box2_df.hpp
+[22.235s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/health_status_stamped.hpp
+[22.236s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/bounding_box3_d.hpp
+[22.236s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/gnss_fusion_status.hpp
+[22.236s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/skeleton3_d.hpp
+[22.236s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/keypoint2_df.hpp
+[22.236s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/heartbeat.hpp
+[22.236s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/plane_stamped.hpp
+[22.236s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/objects_stamped.hpp
+[22.236s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/depth_info_stamped.hpp
+[22.236s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/pos_track_status.hpp
+[22.237s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/bounding_box2_di.hpp
+[22.237s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/svo_status.hpp
+[22.237s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/rosidl_generator_cpp__visibility_control.hpp
+[22.237s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/keypoint3_d.hpp
+[22.237s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/object.hpp
+[22.237s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail
+[22.237s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/gnss_fusion_status__traits.hpp
+[22.238s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/svo_status__builder.hpp
+[22.238s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/keypoint2_df__builder.hpp
+[22.238s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/svo_status__struct.hpp
+[22.238s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/pos_track_status__type_support.hpp
+[22.238s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/skeleton2_d__builder.hpp
+[22.238s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/bounding_box2_di__type_support.hpp
+[22.238s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/keypoint3_d__type_support.hpp
+[22.238s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/object__type_support.hpp
+[22.238s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/gnss_fusion_status__struct.hpp
+[22.238s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/bounding_box2_df__struct.hpp
+[22.239s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/keypoint3_d__traits.hpp
+[22.239s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/skeleton3_d__struct.hpp
+[22.239s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/plane_stamped__struct.hpp
+[22.239s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/mag_heading_status__struct.hpp
+[22.239s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/plane_stamped__traits.hpp
+[22.239s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/pos_track_status__struct.hpp
+[22.239s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/keypoint3_d__builder.hpp
+[22.239s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/bounding_box3_d__builder.hpp
+[22.240s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/plane_stamped__type_support.hpp
+[22.240s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/depth_info_stamped__type_support.hpp
+[22.240s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/depth_info_stamped__traits.hpp
+[22.240s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/mag_heading_status__builder.hpp
+[22.240s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/bounding_box3_d__traits.hpp
+[22.240s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/keypoint2_di__builder.hpp
+[22.240s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/object__builder.hpp
+[22.240s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/bounding_box2_df__traits.hpp
+[22.240s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/mag_heading_status__type_support.hpp
+[22.240s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/bounding_box3_d__struct.hpp
+[22.241s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/objects_stamped__traits.hpp
+[22.241s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/bounding_box2_df__builder.hpp
+[22.241s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/keypoint2_df__type_support.hpp
+[22.241s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/heartbeat__traits.hpp
+[22.241s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/bounding_box2_df__type_support.hpp
+[22.241s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/skeleton2_d__traits.hpp
+[22.241s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/object__struct.hpp
+[22.241s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/keypoint3_d__struct.hpp
+[22.241s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/object__traits.hpp
+[22.241s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/skeleton3_d__type_support.hpp
+[22.242s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/bounding_box2_di__builder.hpp
+[22.242s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/heartbeat__builder.hpp
+[22.242s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/bounding_box2_di__traits.hpp
+[22.242s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/skeleton2_d__struct.hpp
+[22.242s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/pos_track_status__builder.hpp
+[22.242s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/svo_status__traits.hpp
+[22.242s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/gnss_fusion_status__builder.hpp
+[22.243s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/bounding_box2_di__struct.hpp
+[22.243s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/health_status_stamped__struct.hpp
+[22.243s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/keypoint2_df__traits.hpp
+[22.243s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/depth_info_stamped__builder.hpp
+[22.243s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/skeleton3_d__builder.hpp
+[22.243s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/svo_status__type_support.hpp
+[22.243s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/keypoint2_di__type_support.hpp
+[22.244s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/pos_track_status__traits.hpp
+[22.244s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/health_status_stamped__type_support.hpp
+[22.244s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/health_status_stamped__builder.hpp
+[22.244s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/keypoint2_di__struct.hpp
+[22.244s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/bounding_box3_d__type_support.hpp
+[22.244s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/heartbeat__struct.hpp
+[22.244s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/heartbeat__type_support.hpp
+[22.244s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/objects_stamped__type_support.hpp
+[22.245s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/plane_stamped__builder.hpp
+[22.245s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/keypoint2_df__struct.hpp
+[22.245s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/gnss_fusion_status__type_support.hpp
+[22.245s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/skeleton3_d__traits.hpp
+[22.245s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/skeleton2_d__type_support.hpp
+[22.245s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/health_status_stamped__traits.hpp
+[22.245s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/keypoint2_di__traits.hpp
+[22.246s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/mag_heading_status__traits.hpp
+[22.246s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/objects_stamped__builder.hpp
+[22.246s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/objects_stamped__struct.hpp
+[22.246s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/depth_info_stamped__struct.hpp
+[22.246s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/skeleton2_d.hpp
+[22.246s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/mag_heading_status.hpp
+[22.246s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/keypoint2_di.hpp
+[22.246s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/srv
+[22.247s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/srv/set_pose.hpp
+[22.247s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/srv/detail
+[22.247s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/srv/detail/save_area_memory__type_support.hpp
+[22.247s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/srv/detail/start_svo_rec__traits.hpp
+[22.247s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/srv/detail/set_svo_frame__builder.hpp
+[22.247s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/srv/detail/set_pose__struct.hpp
+[22.247s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/srv/detail/save_area_memory__traits.hpp
+[22.248s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/srv/detail/save_area_memory__builder.hpp
+[22.248s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/srv/detail/set_roi__struct.hpp
+[22.248s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/srv/detail/save_area_memory__struct.hpp
+[22.248s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/srv/detail/set_roi__builder.hpp
+[22.248s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/srv/detail/set_svo_frame__struct.hpp
+[22.248s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/srv/detail/set_pose__builder.hpp
+[22.248s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/srv/detail/set_pose__type_support.hpp
+[22.248s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/srv/detail/start_svo_rec__struct.hpp
+[22.249s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/srv/detail/set_pose__traits.hpp
+[22.249s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/srv/detail/start_svo_rec__type_support.hpp
+[22.249s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/srv/detail/set_roi__traits.hpp
+[22.249s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/srv/detail/set_roi__type_support.hpp
+[22.249s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/srv/detail/set_svo_frame__traits.hpp
+[22.249s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/srv/detail/set_svo_frame__type_support.hpp
+[22.249s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/srv/detail/start_svo_rec__builder.hpp
+[22.249s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/srv/set_roi.hpp
+[22.249s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/srv/set_svo_frame.hpp
+[22.250s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/srv/save_area_memory.hpp
+[22.250s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/srv/start_svo_rec.hpp
+[22.250s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs
+[22.250s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg
+[22.250s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/rosidl_typesupport_fastrtps_cpp__visibility_control.h
+[22.250s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail
+[22.250s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/gnss_fusion_status__rosidl_typesupport_fastrtps_cpp.hpp
+[22.250s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/keypoint3_d__rosidl_typesupport_fastrtps_cpp.hpp
+[22.250s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/dds_fastrtps
+[22.251s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/heartbeat__rosidl_typesupport_fastrtps_cpp.hpp
+[22.251s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/skeleton3_d__rosidl_typesupport_fastrtps_cpp.hpp
+[22.251s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/pos_track_status__rosidl_typesupport_fastrtps_cpp.hpp
+[22.251s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/bounding_box2_df__rosidl_typesupport_fastrtps_cpp.hpp
+[22.251s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/plane_stamped__rosidl_typesupport_fastrtps_cpp.hpp
+[22.251s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/mag_heading_status__rosidl_typesupport_fastrtps_cpp.hpp
+[22.251s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/bounding_box2_di__rosidl_typesupport_fastrtps_cpp.hpp
+[22.251s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/bounding_box3_d__rosidl_typesupport_fastrtps_cpp.hpp
+[22.251s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/keypoint2_df__rosidl_typesupport_fastrtps_cpp.hpp
+[22.252s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/depth_info_stamped__rosidl_typesupport_fastrtps_cpp.hpp
+[22.252s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/objects_stamped__rosidl_typesupport_fastrtps_cpp.hpp
+[22.252s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/skeleton2_d__rosidl_typesupport_fastrtps_cpp.hpp
+[22.252s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/svo_status__rosidl_typesupport_fastrtps_cpp.hpp
+[22.252s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/object__rosidl_typesupport_fastrtps_cpp.hpp
+[22.252s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/health_status_stamped__rosidl_typesupport_fastrtps_cpp.hpp
+[22.252s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/keypoint2_di__rosidl_typesupport_fastrtps_cpp.hpp
+[22.252s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/srv
+[22.252s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/srv/detail
+[22.252s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/srv/detail/save_area_memory__rosidl_typesupport_fastrtps_cpp.hpp
+[22.253s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/srv/detail/dds_fastrtps
+[22.253s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/srv/detail/set_pose__rosidl_typesupport_fastrtps_cpp.hpp
+[22.253s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/srv/detail/start_svo_rec__rosidl_typesupport_fastrtps_cpp.hpp
+[22.253s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/srv/detail/set_roi__rosidl_typesupport_fastrtps_cpp.hpp
+[22.253s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/srv/detail/set_svo_frame__rosidl_typesupport_fastrtps_cpp.hpp
+[22.253s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/lib/libzed_msgs__rosidl_typesupport_fastrtps_cpp.so
+[22.254s] -- Set non-toolchain portion of runtime path of "/home/rob/project/csci5551-s26-team-pointbot/install/lib/libzed_msgs__rosidl_typesupport_fastrtps_cpp.so" to ""
+[22.255s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs
+[22.255s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg
+[22.255s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/rosidl_typesupport_introspection_c__visibility_control.h
+[22.255s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail
+[22.255s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/gnss_fusion_status__rosidl_typesupport_introspection_c.h
+[22.255s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/keypoint2_df__rosidl_typesupport_introspection_c.h
+[22.255s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/skeleton3_d__rosidl_typesupport_introspection_c.h
+[22.256s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/objects_stamped__rosidl_typesupport_introspection_c.h
+[22.256s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/depth_info_stamped__rosidl_typesupport_introspection_c.h
+[22.256s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/mag_heading_status__type_support.c
+[22.256s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/object__rosidl_typesupport_introspection_c.h
+[22.256s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/skeleton2_d__rosidl_typesupport_introspection_c.h
+[22.256s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/plane_stamped__type_support.c
+[22.256s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/gnss_fusion_status__type_support.c
+[22.256s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/health_status_stamped__rosidl_typesupport_introspection_c.h
+[22.256s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/keypoint2_df__type_support.c
+[22.257s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/heartbeat__type_support.c
+[22.257s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/pos_track_status__rosidl_typesupport_introspection_c.h
+[22.257s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/bounding_box3_d__type_support.c
+[22.257s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/keypoint3_d__rosidl_typesupport_introspection_c.h
+[22.257s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/keypoint3_d__type_support.c
+[22.257s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/bounding_box2_df__type_support.c
+[22.257s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/plane_stamped__rosidl_typesupport_introspection_c.h
+[22.257s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/bounding_box2_di__rosidl_typesupport_introspection_c.h
+[22.257s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/skeleton2_d__type_support.c
+[22.258s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/bounding_box2_di__type_support.c
+[22.258s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/bounding_box2_df__rosidl_typesupport_introspection_c.h
+[22.258s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/mag_heading_status__rosidl_typesupport_introspection_c.h
+[22.258s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/bounding_box3_d__rosidl_typesupport_introspection_c.h
+[22.258s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/objects_stamped__type_support.c
+[22.258s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/keypoint2_di__rosidl_typesupport_introspection_c.h
+[22.258s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/svo_status__rosidl_typesupport_introspection_c.h
+[22.258s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/health_status_stamped__type_support.c
+[22.258s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/keypoint2_di__type_support.c
+[22.259s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/skeleton3_d__type_support.c
+[22.259s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/object__type_support.c
+[22.259s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/depth_info_stamped__type_support.c
+[22.259s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/pos_track_status__type_support.c
+[22.259s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/heartbeat__rosidl_typesupport_introspection_c.h
+[22.259s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/svo_status__type_support.c
+[22.259s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/srv
+[22.259s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/srv/detail
+[22.260s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/srv/detail/start_svo_rec__type_support.c
+[22.260s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/srv/detail/start_svo_rec__rosidl_typesupport_introspection_c.h
+[22.260s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/srv/detail/set_roi__rosidl_typesupport_introspection_c.h
+[22.260s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/srv/detail/save_area_memory__type_support.c
+[22.260s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/srv/detail/set_svo_frame__rosidl_typesupport_introspection_c.h
+[22.260s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/srv/detail/set_svo_frame__type_support.c
+[22.260s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/srv/detail/set_roi__type_support.c
+[22.260s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/srv/detail/set_pose__rosidl_typesupport_introspection_c.h
+[22.260s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/srv/detail/save_area_memory__rosidl_typesupport_introspection_c.h
+[22.261s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/srv/detail/set_pose__type_support.c
+[22.261s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/lib/libzed_msgs__rosidl_typesupport_introspection_c.so
+[22.262s] -- Set non-toolchain portion of runtime path of "/home/rob/project/csci5551-s26-team-pointbot/install/lib/libzed_msgs__rosidl_typesupport_introspection_c.so" to ""
+[22.262s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/lib/libzed_msgs__rosidl_typesupport_c.so
+[22.262s] -- Set non-toolchain portion of runtime path of "/home/rob/project/csci5551-s26-team-pointbot/install/lib/libzed_msgs__rosidl_typesupport_c.so" to ""
+[22.262s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs
+[22.263s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg
+[22.263s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail
+[22.263s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/bounding_box3_d__rosidl_typesupport_introspection_cpp.hpp
+[22.263s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/keypoint2_df__type_support.cpp
+[22.263s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/keypoint3_d__rosidl_typesupport_introspection_cpp.hpp
+[22.264s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/depth_info_stamped__rosidl_typesupport_introspection_cpp.hpp
+[22.264s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/objects_stamped__type_support.cpp
+[22.264s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/object__type_support.cpp
+[22.264s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/health_status_stamped__type_support.cpp
+[22.264s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/object__rosidl_typesupport_introspection_cpp.hpp
+[22.264s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/gnss_fusion_status__rosidl_typesupport_introspection_cpp.hpp
+[22.264s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/bounding_box2_df__rosidl_typesupport_introspection_cpp.hpp
+[22.264s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/skeleton3_d__rosidl_typesupport_introspection_cpp.hpp
+[22.265s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/bounding_box2_di__type_support.cpp
+[22.265s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/health_status_stamped__rosidl_typesupport_introspection_cpp.hpp
+[22.265s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/pos_track_status__type_support.cpp
+[22.265s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/plane_stamped__rosidl_typesupport_introspection_cpp.hpp
+[22.265s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/heartbeat__rosidl_typesupport_introspection_cpp.hpp
+[22.265s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/keypoint2_di__type_support.cpp
+[22.265s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/mag_heading_status__rosidl_typesupport_introspection_cpp.hpp
+[22.265s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/bounding_box2_di__rosidl_typesupport_introspection_cpp.hpp
+[22.266s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/skeleton2_d__type_support.cpp
+[22.266s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/depth_info_stamped__type_support.cpp
+[22.266s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/heartbeat__type_support.cpp
+[22.266s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/bounding_box3_d__type_support.cpp
+[22.266s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/bounding_box2_df__type_support.cpp
+[22.266s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/keypoint2_df__rosidl_typesupport_introspection_cpp.hpp
+[22.266s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/keypoint2_di__rosidl_typesupport_introspection_cpp.hpp
+[22.266s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/svo_status__rosidl_typesupport_introspection_cpp.hpp
+[22.267s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/mag_heading_status__type_support.cpp
+[22.267s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/keypoint3_d__type_support.cpp
+[22.267s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/skeleton3_d__type_support.cpp
+[22.267s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/pos_track_status__rosidl_typesupport_introspection_cpp.hpp
+[22.267s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/skeleton2_d__rosidl_typesupport_introspection_cpp.hpp
+[22.267s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/gnss_fusion_status__type_support.cpp
+[22.267s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/objects_stamped__rosidl_typesupport_introspection_cpp.hpp
+[22.268s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/plane_stamped__type_support.cpp
+[22.268s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/msg/detail/svo_status__type_support.cpp
+[22.268s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/srv
+[22.268s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/srv/detail
+[22.268s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/srv/detail/set_pose__rosidl_typesupport_introspection_cpp.hpp
+[22.268s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/srv/detail/set_svo_frame__type_support.cpp
+[22.268s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/srv/detail/start_svo_rec__rosidl_typesupport_introspection_cpp.hpp
+[22.268s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/srv/detail/set_pose__type_support.cpp
+[22.268s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/srv/detail/set_roi__rosidl_typesupport_introspection_cpp.hpp
+[22.269s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/srv/detail/save_area_memory__type_support.cpp
+[22.269s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/srv/detail/set_svo_frame__rosidl_typesupport_introspection_cpp.hpp
+[22.269s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/srv/detail/start_svo_rec__type_support.cpp
+[22.269s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/srv/detail/save_area_memory__rosidl_typesupport_introspection_cpp.hpp
+[22.269s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_msgs/zed_msgs/srv/detail/set_roi__type_support.cpp
+[22.269s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/lib/libzed_msgs__rosidl_typesupport_introspection_cpp.so
+[22.270s] -- Set non-toolchain portion of runtime path of "/home/rob/project/csci5551-s26-team-pointbot/install/lib/libzed_msgs__rosidl_typesupport_introspection_cpp.so" to ""
+[22.270s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/lib/libzed_msgs__rosidl_typesupport_cpp.so
+[22.270s] -- Set non-toolchain portion of runtime path of "/home/rob/project/csci5551-s26-team-pointbot/install/lib/libzed_msgs__rosidl_typesupport_cpp.so" to ""
+[22.271s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/share/zed_msgs/environment/pythonpath.sh
+[22.271s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/share/zed_msgs/environment/pythonpath.dsv
+[22.271s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/lib/python3.13/site-packages/zed_msgs-5.2.1-py3.13.egg-info
+[22.272s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/lib/python3.13/site-packages/zed_msgs-5.2.1-py3.13.egg-info/PKG-INFO
+[22.272s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/lib/python3.13/site-packages/zed_msgs-5.2.1-py3.13.egg-info/dependency_links.txt
+[22.272s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/lib/python3.13/site-packages/zed_msgs-5.2.1-py3.13.egg-info/SOURCES.txt
+[22.272s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/lib/python3.13/site-packages/zed_msgs-5.2.1-py3.13.egg-info/top_level.txt
+[22.272s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/lib/python3.13/site-packages/zed_msgs
+[22.272s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/lib/python3.13/site-packages/zed_msgs/zed_msgs_s__rosidl_typesupport_introspection_c.so
+[22.272s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/lib/python3.13/site-packages/zed_msgs/_zed_msgs_s.ep.rosidl_typesupport_c.c
+[22.272s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/lib/python3.13/site-packages/zed_msgs/_zed_msgs_s.ep.rosidl_typesupport_fastrtps_c.c
+[22.273s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/lib/python3.13/site-packages/zed_msgs/__init__.py
+[22.273s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/lib/python3.13/site-packages/zed_msgs/_zed_msgs_s.ep.rosidl_typesupport_introspection_c.c
+[22.273s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/lib/python3.13/site-packages/zed_msgs/zed_msgs_s__rosidl_typesupport_fastrtps_c.so
+[22.273s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/lib/python3.13/site-packages/zed_msgs/msg
+[22.273s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/lib/python3.13/site-packages/zed_msgs/msg/_keypoint2_di.py
+[22.274s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/lib/python3.13/site-packages/zed_msgs/msg/_svo_status_s.c
+[22.274s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/lib/python3.13/site-packages/zed_msgs/msg/_svo_status.py
+[22.274s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/lib/python3.13/site-packages/zed_msgs/msg/_keypoint2_df_s.c
+[22.274s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/lib/python3.13/site-packages/zed_msgs/msg/_bounding_box3_d.py
+[22.274s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/lib/python3.13/site-packages/zed_msgs/msg/_bounding_box2_di_s.c
+[22.274s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/lib/python3.13/site-packages/zed_msgs/msg/_bounding_box2_df_s.c
+[22.274s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/lib/python3.13/site-packages/zed_msgs/msg/_bounding_box2_df.py
+[22.275s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/lib/python3.13/site-packages/zed_msgs/msg/_mag_heading_status.py
+[22.275s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/lib/python3.13/site-packages/zed_msgs/msg/_skeleton3_d_s.c
+[22.275s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/lib/python3.13/site-packages/zed_msgs/msg/_health_status_stamped_s.c
+[22.275s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/lib/python3.13/site-packages/zed_msgs/msg/_heartbeat_s.c
+[22.275s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/lib/python3.13/site-packages/zed_msgs/msg/_object.py
+[22.275s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/lib/python3.13/site-packages/zed_msgs/msg/_gnss_fusion_status_s.c
+[22.275s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/lib/python3.13/site-packages/zed_msgs/msg/_skeleton2_d.py
+[22.275s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/lib/python3.13/site-packages/zed_msgs/msg/_pos_track_status_s.c
+[22.275s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/lib/python3.13/site-packages/zed_msgs/msg/_mag_heading_status_s.c
+[22.275s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/lib/python3.13/site-packages/zed_msgs/msg/_objects_stamped.py
+[22.275s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/lib/python3.13/site-packages/zed_msgs/msg/__init__.py
+[22.275s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/lib/python3.13/site-packages/zed_msgs/msg/_object_s.c
+[22.275s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/lib/python3.13/site-packages/zed_msgs/msg/_keypoint2_df.py
+[22.275s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/lib/python3.13/site-packages/zed_msgs/msg/_objects_stamped_s.c
+[22.275s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/lib/python3.13/site-packages/zed_msgs/msg/_keypoint3_d_s.c
+[22.275s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/lib/python3.13/site-packages/zed_msgs/msg/_keypoint2_di_s.c
+[22.275s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/lib/python3.13/site-packages/zed_msgs/msg/_skeleton3_d.py
+[22.276s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/lib/python3.13/site-packages/zed_msgs/msg/_bounding_box2_di.py
+[22.276s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/lib/python3.13/site-packages/zed_msgs/msg/_pos_track_status.py
+[22.276s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/lib/python3.13/site-packages/zed_msgs/msg/_heartbeat.py
+[22.276s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/lib/python3.13/site-packages/zed_msgs/msg/_health_status_stamped.py
+[22.276s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/lib/python3.13/site-packages/zed_msgs/msg/_keypoint3_d.py
+[22.276s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/lib/python3.13/site-packages/zed_msgs/msg/_gnss_fusion_status.py
+[22.276s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/lib/python3.13/site-packages/zed_msgs/msg/_depth_info_stamped_s.c
+[22.276s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/lib/python3.13/site-packages/zed_msgs/msg/_bounding_box3_d_s.c
+[22.276s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/lib/python3.13/site-packages/zed_msgs/msg/_skeleton2_d_s.c
+[22.276s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/lib/python3.13/site-packages/zed_msgs/msg/_plane_stamped_s.c
+[22.276s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/lib/python3.13/site-packages/zed_msgs/msg/_plane_stamped.py
+[22.276s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/lib/python3.13/site-packages/zed_msgs/msg/_depth_info_stamped.py
+[22.276s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/lib/python3.13/site-packages/zed_msgs/zed_msgs_s__rosidl_typesupport_c.so
+[22.276s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/lib/python3.13/site-packages/zed_msgs/srv
+[22.276s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/lib/python3.13/site-packages/zed_msgs/srv/_set_roi.py
+[22.276s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/lib/python3.13/site-packages/zed_msgs/srv/_save_area_memory.py
+[22.276s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/lib/python3.13/site-packages/zed_msgs/srv/_set_roi_s.c
+[22.276s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/lib/python3.13/site-packages/zed_msgs/srv/_start_svo_rec_s.c
+[22.276s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/lib/python3.13/site-packages/zed_msgs/srv/_set_svo_frame.py
+[22.276s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/lib/python3.13/site-packages/zed_msgs/srv/_set_pose.py
+[22.276s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/lib/python3.13/site-packages/zed_msgs/srv/__init__.py
+[22.276s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/lib/python3.13/site-packages/zed_msgs/srv/_set_pose_s.c
+[22.276s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/lib/python3.13/site-packages/zed_msgs/srv/_set_svo_frame_s.c
+[22.276s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/lib/python3.13/site-packages/zed_msgs/srv/_save_area_memory_s.c
+[22.277s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/lib/python3.13/site-packages/zed_msgs/srv/_start_svo_rec.py
+[22.345s] Listing '/home/rob/project/csci5551-s26-team-pointbot/install/lib/python3.13/site-packages/zed_msgs'...
+[22.345s] Compiling '/home/rob/project/csci5551-s26-team-pointbot/install/lib/python3.13/site-packages/zed_msgs/__init__.py'...
+[22.345s] Listing '/home/rob/project/csci5551-s26-team-pointbot/install/lib/python3.13/site-packages/zed_msgs/msg'...
+[22.345s] Compiling '/home/rob/project/csci5551-s26-team-pointbot/install/lib/python3.13/site-packages/zed_msgs/msg/__init__.py'...
+[22.345s] Compiling '/home/rob/project/csci5551-s26-team-pointbot/install/lib/python3.13/site-packages/zed_msgs/msg/_bounding_box2_df.py'...
+[22.345s] Compiling '/home/rob/project/csci5551-s26-team-pointbot/install/lib/python3.13/site-packages/zed_msgs/msg/_bounding_box2_di.py'...
+[22.345s] Compiling '/home/rob/project/csci5551-s26-team-pointbot/install/lib/python3.13/site-packages/zed_msgs/msg/_bounding_box3_d.py'...
+[22.345s] Compiling '/home/rob/project/csci5551-s26-team-pointbot/install/lib/python3.13/site-packages/zed_msgs/msg/_depth_info_stamped.py'...
+[22.345s] Compiling '/home/rob/project/csci5551-s26-team-pointbot/install/lib/python3.13/site-packages/zed_msgs/msg/_gnss_fusion_status.py'...
+[22.345s] Compiling '/home/rob/project/csci5551-s26-team-pointbot/install/lib/python3.13/site-packages/zed_msgs/msg/_health_status_stamped.py'...
+[22.345s] Compiling '/home/rob/project/csci5551-s26-team-pointbot/install/lib/python3.13/site-packages/zed_msgs/msg/_heartbeat.py'...
+[22.345s] Compiling '/home/rob/project/csci5551-s26-team-pointbot/install/lib/python3.13/site-packages/zed_msgs/msg/_keypoint2_df.py'...
+[22.345s] Compiling '/home/rob/project/csci5551-s26-team-pointbot/install/lib/python3.13/site-packages/zed_msgs/msg/_keypoint2_di.py'...
+[22.345s] Compiling '/home/rob/project/csci5551-s26-team-pointbot/install/lib/python3.13/site-packages/zed_msgs/msg/_keypoint3_d.py'...
+[22.345s] Compiling '/home/rob/project/csci5551-s26-team-pointbot/install/lib/python3.13/site-packages/zed_msgs/msg/_mag_heading_status.py'...
+[22.345s] Compiling '/home/rob/project/csci5551-s26-team-pointbot/install/lib/python3.13/site-packages/zed_msgs/msg/_object.py'...
+[22.345s] Compiling '/home/rob/project/csci5551-s26-team-pointbot/install/lib/python3.13/site-packages/zed_msgs/msg/_objects_stamped.py'...
+[22.345s] Compiling '/home/rob/project/csci5551-s26-team-pointbot/install/lib/python3.13/site-packages/zed_msgs/msg/_plane_stamped.py'...
+[22.345s] Compiling '/home/rob/project/csci5551-s26-team-pointbot/install/lib/python3.13/site-packages/zed_msgs/msg/_pos_track_status.py'...
+[22.345s] Compiling '/home/rob/project/csci5551-s26-team-pointbot/install/lib/python3.13/site-packages/zed_msgs/msg/_skeleton2_d.py'...
+[22.346s] Compiling '/home/rob/project/csci5551-s26-team-pointbot/install/lib/python3.13/site-packages/zed_msgs/msg/_skeleton3_d.py'...
+[22.346s] Compiling '/home/rob/project/csci5551-s26-team-pointbot/install/lib/python3.13/site-packages/zed_msgs/msg/_svo_status.py'...
+[22.346s] Listing '/home/rob/project/csci5551-s26-team-pointbot/install/lib/python3.13/site-packages/zed_msgs/srv'...
+[22.346s] Compiling '/home/rob/project/csci5551-s26-team-pointbot/install/lib/python3.13/site-packages/zed_msgs/srv/__init__.py'...
+[22.346s] Compiling '/home/rob/project/csci5551-s26-team-pointbot/install/lib/python3.13/site-packages/zed_msgs/srv/_save_area_memory.py'...
+[22.346s] Compiling '/home/rob/project/csci5551-s26-team-pointbot/install/lib/python3.13/site-packages/zed_msgs/srv/_set_pose.py'...
+[22.346s] Compiling '/home/rob/project/csci5551-s26-team-pointbot/install/lib/python3.13/site-packages/zed_msgs/srv/_set_roi.py'...
+[22.346s] Compiling '/home/rob/project/csci5551-s26-team-pointbot/install/lib/python3.13/site-packages/zed_msgs/srv/_set_svo_frame.py'...
+[22.346s] Compiling '/home/rob/project/csci5551-s26-team-pointbot/install/lib/python3.13/site-packages/zed_msgs/srv/_start_svo_rec.py'...
+[22.351s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/lib/python3.13/site-packages/zed_msgs/zed_msgs_s__rosidl_typesupport_fastrtps_c.so
+[22.351s] -- Set non-toolchain portion of runtime path of "/home/rob/project/csci5551-s26-team-pointbot/install/lib/python3.13/site-packages/zed_msgs/zed_msgs_s__rosidl_typesupport_fastrtps_c.so" to ""
+[22.351s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/lib/python3.13/site-packages/zed_msgs/zed_msgs_s__rosidl_typesupport_introspection_c.so
+[22.351s] -- Set non-toolchain portion of runtime path of "/home/rob/project/csci5551-s26-team-pointbot/install/lib/python3.13/site-packages/zed_msgs/zed_msgs_s__rosidl_typesupport_introspection_c.so" to ""
+[22.351s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/lib/python3.13/site-packages/zed_msgs/zed_msgs_s__rosidl_typesupport_c.so
+[22.351s] -- Set non-toolchain portion of runtime path of "/home/rob/project/csci5551-s26-team-pointbot/install/lib/python3.13/site-packages/zed_msgs/zed_msgs_s__rosidl_typesupport_c.so" to ""
+[22.351s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/lib/libzed_msgs__rosidl_generator_py.so
+[22.352s] -- Set non-toolchain portion of runtime path of "/home/rob/project/csci5551-s26-team-pointbot/install/lib/libzed_msgs__rosidl_generator_py.so" to ""
+[22.352s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/share/zed_msgs/msg/Object.idl
+[22.352s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/share/zed_msgs/msg/ObjectsStamped.idl
+[22.352s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/share/zed_msgs/msg/Keypoint2Di.idl
+[22.353s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/share/zed_msgs/msg/Keypoint2Df.idl
+[22.353s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/share/zed_msgs/msg/Keypoint3D.idl
+[22.353s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/share/zed_msgs/msg/BoundingBox2Di.idl
+[22.353s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/share/zed_msgs/msg/BoundingBox2Df.idl
+[22.354s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/share/zed_msgs/msg/BoundingBox3D.idl
+[22.354s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/share/zed_msgs/msg/Skeleton2D.idl
+[22.354s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/share/zed_msgs/msg/Skeleton3D.idl
+[22.354s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/share/zed_msgs/msg/DepthInfoStamped.idl
+[22.354s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/share/zed_msgs/msg/PlaneStamped.idl
+[22.354s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/share/zed_msgs/msg/PosTrackStatus.idl
+[22.354s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/share/zed_msgs/msg/GnssFusionStatus.idl
+[22.354s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/share/zed_msgs/msg/Heartbeat.idl
+[22.354s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/share/zed_msgs/msg/MagHeadingStatus.idl
+[22.354s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/share/zed_msgs/msg/SvoStatus.idl
+[22.354s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/share/zed_msgs/msg/HealthStatusStamped.idl
+[22.354s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/share/zed_msgs/srv/SetPose.idl
+[22.354s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/share/zed_msgs/srv/StartSvoRec.idl
+[22.354s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/share/zed_msgs/srv/SetROI.idl
+[22.354s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/share/zed_msgs/srv/SetSvoFrame.idl
+[22.356s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/share/zed_msgs/srv/SaveAreaMemory.idl
+[22.356s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/share/zed_msgs/msg/Object.msg
+[22.356s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/share/zed_msgs/msg/ObjectsStamped.msg
+[22.356s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/share/zed_msgs/msg/Keypoint2Di.msg
+[22.357s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/share/zed_msgs/msg/Keypoint2Df.msg
+[22.357s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/share/zed_msgs/msg/Keypoint3D.msg
+[22.357s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/share/zed_msgs/msg/BoundingBox2Di.msg
+[22.357s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/share/zed_msgs/msg/BoundingBox2Df.msg
+[22.357s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/share/zed_msgs/msg/BoundingBox3D.msg
+[22.357s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/share/zed_msgs/msg/Skeleton2D.msg
+[22.357s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/share/zed_msgs/msg/Skeleton3D.msg
+[22.357s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/share/zed_msgs/msg/DepthInfoStamped.msg
+[22.357s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/share/zed_msgs/msg/PlaneStamped.msg
+[22.357s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/share/zed_msgs/msg/PosTrackStatus.msg
+[22.357s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/share/zed_msgs/msg/GnssFusionStatus.msg
+[22.357s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/share/zed_msgs/msg/Heartbeat.msg
+[22.357s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/share/zed_msgs/msg/MagHeadingStatus.msg
+[22.357s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/share/zed_msgs/msg/SvoStatus.msg
+[22.357s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/share/zed_msgs/msg/HealthStatusStamped.msg
+[22.357s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/share/zed_msgs/srv/SetPose.srv
+[22.357s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/share/zed_msgs/srv/StartSvoRec.srv
+[22.357s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/share/zed_msgs/srv/SetROI.srv
+[22.358s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/share/zed_msgs/srv/SetSvoFrame.srv
+[22.358s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/share/zed_msgs/srv/SaveAreaMemory.srv
+[22.358s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/share/ament_index/resource_index/package_run_dependencies/zed_msgs
+[22.359s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/share/ament_index/resource_index/parent_prefix_path/zed_msgs
+[22.359s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/share/zed_msgs/environment/ament_prefix_path.sh
+[22.359s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/share/zed_msgs/environment/ament_prefix_path.dsv
+[22.362s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/share/zed_msgs/environment/path.sh
+[22.362s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/share/zed_msgs/environment/path.dsv
+[22.362s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/share/zed_msgs/local_setup.bash
+[22.362s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/share/zed_msgs/local_setup.sh
+[22.362s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/share/zed_msgs/local_setup.zsh
+[22.362s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/share/zed_msgs/local_setup.dsv
+[22.362s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/share/zed_msgs/package.dsv
+[22.362s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/share/ament_index/resource_index/packages/zed_msgs
+[22.362s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/share/zed_msgs/cmake/export_zed_msgs__rosidl_generator_cExport.cmake
+[22.362s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/share/zed_msgs/cmake/export_zed_msgs__rosidl_generator_cExport-noconfig.cmake
+[22.362s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/share/zed_msgs/cmake/export_zed_msgs__rosidl_typesupport_fastrtps_cExport.cmake
+[22.363s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/share/zed_msgs/cmake/export_zed_msgs__rosidl_typesupport_fastrtps_cExport-noconfig.cmake
+[22.363s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/share/zed_msgs/cmake/export_zed_msgs__rosidl_generator_cppExport.cmake
+[22.363s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/share/zed_msgs/cmake/export_zed_msgs__rosidl_typesupport_fastrtps_cppExport.cmake
+[22.364s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/share/zed_msgs/cmake/export_zed_msgs__rosidl_typesupport_fastrtps_cppExport-noconfig.cmake
+[22.365s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/share/zed_msgs/cmake/zed_msgs__rosidl_typesupport_introspection_cExport.cmake
+[22.368s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/share/zed_msgs/cmake/zed_msgs__rosidl_typesupport_introspection_cExport-noconfig.cmake
+[22.368s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/share/zed_msgs/cmake/zed_msgs__rosidl_typesupport_cExport.cmake
+[22.368s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/share/zed_msgs/cmake/zed_msgs__rosidl_typesupport_cExport-noconfig.cmake
+[22.368s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/share/zed_msgs/cmake/zed_msgs__rosidl_typesupport_introspection_cppExport.cmake
+[22.369s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/share/zed_msgs/cmake/zed_msgs__rosidl_typesupport_introspection_cppExport-noconfig.cmake
+[22.369s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/share/zed_msgs/cmake/zed_msgs__rosidl_typesupport_cppExport.cmake
+[22.369s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/share/zed_msgs/cmake/zed_msgs__rosidl_typesupport_cppExport-noconfig.cmake
+[22.369s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/share/zed_msgs/cmake/export_zed_msgs__rosidl_generator_pyExport.cmake
+[22.369s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/share/zed_msgs/cmake/export_zed_msgs__rosidl_generator_pyExport-noconfig.cmake
+[22.369s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/share/zed_msgs/cmake/rosidl_cmake-extras.cmake
+[22.369s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/share/zed_msgs/cmake/ament_cmake_export_dependencies-extras.cmake
+[22.369s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/share/zed_msgs/cmake/ament_cmake_export_include_directories-extras.cmake
+[22.369s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/share/zed_msgs/cmake/ament_cmake_export_libraries-extras.cmake
+[22.369s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/share/zed_msgs/cmake/ament_cmake_export_targets-extras.cmake
+[22.369s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/share/zed_msgs/cmake/rosidl_cmake_export_typesupport_targets-extras.cmake
+[22.369s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/share/zed_msgs/cmake/rosidl_cmake_export_typesupport_libraries-extras.cmake
+[22.369s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/share/zed_msgs/cmake/zed_msgsConfig.cmake
+[22.369s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/share/zed_msgs/cmake/zed_msgsConfig-version.cmake
+[22.369s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/share/zed_msgs/package.xml
+[22.373s] Invoked command in '/home/rob/project/csci5551-s26-team-pointbot/build/zed_msgs' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy CONDA_PROMPT_MODIFIER=(base) DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --install /home/rob/project/csci5551-s26-team-pointbot/build/zed_msgs

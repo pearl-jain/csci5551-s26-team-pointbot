@@ -1,0 +1,38 @@
+[0.056s] Invoking command in '/home/rob/project/csci5551-s26-team-pointbot/build/xarm_msgs': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/rob/project/csci5551-s26-team-pointbot/install/pointbot_rviz:/home/rob/project/csci5551-s26-team-pointbot/install/uf_ros_lib:/home/rob/project/csci5551-s26-team-pointbot/install/planning:/home/rob/project/csci5551-s26-team-pointbot/install/perception:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/rob/project/csci5551-s26-team-pointbot/build/xarm_msgs -- -j16 -l16
+[0.242s] [  0%] Built target xarm_msgs__rosidl_generator_type_description
+[0.244s] [  0%] Built target xarm_msgs__rs
+[0.279s] [  0%] Built target ament_cmake_python_copy_xarm_msgs
+[0.301s] [  0%] Built target xarm_msgs__cpp
+[0.365s] [ 29%] Built target xarm_msgs__rosidl_generator_c
+[0.412s] Traceback (most recent call last):
+[0.412s]   File "/home/rob/project/csci5551-s26-team-pointbot/build/xarm_msgs/ament_cmake_python/xarm_msgs/setup.py", line 1, in <module>
+[0.412s] gmake[1]: *** [CMakeFiles/Makefile2:391: CMakeFiles/xarm_msgs__rosidl_typesupport_c.dir/all] Interrupt
+[0.412s]     from setuptools import find_packages
+[0.412s]   File "/usr/lib/python3/dist-packages/setuptools/__init__.py", line 15, in <module>
+[0.412s]     import setuptools.version
+[0.412s]   File "/usr/lib/python3/dist-packages/setuptools/version.py", line 1, in <module>
+[0.413s]     from ._importlib import metadata
+[0.413s]   File "/usr/lib/python3/dist-packages/setuptools/_importlib.py", line 45, in <module>
+[0.413s] gmake[2]: *** [CMakeFiles/xarm_msgs__rosidl_typesupport_fastrtps_cpp.dir/build.make:1554: CMakeFiles/xarm_msgs__rosidl_typesupport_fastrtps_cpp.dir/depend] Interrupt
+[0.413s] gmake[2]: *** [CMakeFiles/xarm_msgs__rosidl_typesupport_fastrtps_c.dir/build.make:1555: CMakeFiles/xarm_msgs__rosidl_typesupport_fastrtps_c.dir/depend] Interrupt
+[0.413s] gmake[2]: *** [CMakeFiles/xarm_msgs__rosidl_typesupport_cpp.dir/build.make:1330: CMakeFiles/xarm_msgs__rosidl_typesupport_cpp.dir/depend] Interrupt
+[0.413s]     import importlib.metadata as metadata  # noqa: F401
+[0.413s]     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0.413s]   File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+[0.414s]   File "<frozen importlib._bootstrap>", line 1331, in _find_and_load_unlocked
+[0.414s]   File "<frozen importlib._bootstrap>", line 935, in _load_unlocked
+[0.414s] gmake[2]: *** [CMakeFiles/xarm_msgs__rosidl_typesupport_introspection_cpp.dir/build.make:1552: CMakeFiles/xarm_msgs__rosidl_typesupport_introspection_cpp.dir/depend] Interrupt
+[0.414s]   File "<frozen importlib._bootstrap_external>", line 991, in exec_module
+[0.414s]   File "<frozen importlib._bootstrap_external>", line 1124, in get_code
+[0.414s]   File "<frozen importlib._bootstrap_external>", line 753, in _compile_bytecode
+[0.414s] KeyboardInterrupt
+[0.415s] gmake[1]: *** [CMakeFiles/Makefile2:285: CMakeFiles/xarm_msgs__rosidl_typesupport_fastrtps_c.dir/all] Interrupt
+[0.416s] gmake[1]: *** [CMakeFiles/Makefile2:338: CMakeFiles/xarm_msgs__rosidl_typesupport_fastrtps_cpp.dir/all] Interrupt
+[0.416s] gmake[1]: *** [CMakeFiles/Makefile2:444: CMakeFiles/xarm_msgs__rosidl_typesupport_cpp.dir/all] Interrupt
+[0.417s] gmake[1]: *** [CMakeFiles/Makefile2:417: CMakeFiles/xarm_msgs__rosidl_typesupport_introspection_cpp.dir/all] Interrupt
+[0.430s] gmake[2]: *** [CMakeFiles/ament_cmake_python_build_xarm_msgs_egg.dir/build.make:70: CMakeFiles/ament_cmake_python_build_xarm_msgs_egg] Interrupt
+[0.430s] gmake[1]: *** [CMakeFiles/Makefile2:497: CMakeFiles/ament_cmake_python_build_xarm_msgs_egg.dir/all] Interrupt
+[0.431s] gmake[1]: *** wait: No child processes.  Stop.
+[0.431s] gmake[1]: *** Waiting for unfinished jobs....
+[0.431s] gmake[1]: *** wait: No child processes.  Stop.
+[0.431s] gmake: *** [Makefile:146: all] Error 2

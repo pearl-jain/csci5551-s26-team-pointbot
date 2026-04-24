@@ -1,0 +1,27 @@
+// generated from rosidl_adapter/resource/action.idl.em
+// with input from point_bot_interfaces/action/MoveObject.action
+// generated code does not contain a copyright notice
+
+#include "geometry_msgs/msg/PoseStamped.idl"
+
+module point_bot_interfaces {
+  module action {
+    @verbatim (language="comment", text=
+      "Request")
+    struct MoveObject_Goal {
+      geometry_msgs::msg::PoseStamped object;
+
+      geometry_msgs::msg::PoseStamped goal;
+    };
+    @verbatim (language="comment", text=
+      "Result")
+    struct MoveObject_Result {
+      boolean success;
+    };
+    @verbatim (language="comment", text=
+      "Feedback")
+    struct MoveObject_Feedback {
+      uint8 structure_needs_at_least_one_member;
+    };
+  };
+};

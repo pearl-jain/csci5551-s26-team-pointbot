@@ -1,0 +1,58 @@
+[0.716s] Invoking command in '/home/rob/project/csci5551-s26-team-pointbot/src/xarm_ros2/uf_ros_lib': CONDA_PROMPT_MODIFIER=(base) DEBUGINFOD_URLS=https://debuginfod.ubuntu.com PYTHONPATH=/home/rob/project/csci5551-s26-team-pointbot/build/uf_ros_lib/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/rob/project/csci5551-s26-team-pointbot/install/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../../build/uf_ros_lib build --build-base /home/rob/project/csci5551-s26-team-pointbot/build/uf_ros_lib/build install --record /home/rob/project/csci5551-s26-team-pointbot/build/uf_ros_lib/install.log --single-version-externally-managed install_data
+[0.873s] running egg_info
+[0.874s] creating ../../../build/uf_ros_lib/uf_ros_lib.egg-info
+[0.884s] writing ../../../build/uf_ros_lib/uf_ros_lib.egg-info/PKG-INFO
+[0.885s] writing dependency_links to ../../../build/uf_ros_lib/uf_ros_lib.egg-info/dependency_links.txt
+[0.885s] writing requirements to ../../../build/uf_ros_lib/uf_ros_lib.egg-info/requires.txt
+[0.885s] writing top-level names to ../../../build/uf_ros_lib/uf_ros_lib.egg-info/top_level.txt
+[0.885s] writing manifest file '../../../build/uf_ros_lib/uf_ros_lib.egg-info/SOURCES.txt'
+[0.908s] reading manifest file '../../../build/uf_ros_lib/uf_ros_lib.egg-info/SOURCES.txt'
+[0.909s] writing manifest file '../../../build/uf_ros_lib/uf_ros_lib.egg-info/SOURCES.txt'
+[0.909s] running build
+[0.910s] running build_py
+[0.910s] creating /home/rob/project/csci5551-s26-team-pointbot/build/uf_ros_lib/build
+[0.910s] creating /home/rob/project/csci5551-s26-team-pointbot/build/uf_ros_lib/build/lib
+[0.910s] creating /home/rob/project/csci5551-s26-team-pointbot/build/uf_ros_lib/build/lib/uf_ros_lib
+[0.910s] copying uf_ros_lib/uf_robot_utils.py -> /home/rob/project/csci5551-s26-team-pointbot/build/uf_ros_lib/build/lib/uf_ros_lib
+[0.911s] copying uf_ros_lib/__init__.py -> /home/rob/project/csci5551-s26-team-pointbot/build/uf_ros_lib/build/lib/uf_ros_lib
+[0.911s] copying uf_ros_lib/parameter_descriptions.py -> /home/rob/project/csci5551-s26-team-pointbot/build/uf_ros_lib/build/lib/uf_ros_lib
+[0.911s] copying uf_ros_lib/moveit_configs_builder.py -> /home/rob/project/csci5551-s26-team-pointbot/build/uf_ros_lib/build/lib/uf_ros_lib
+[0.911s] creating /home/rob/project/csci5551-s26-team-pointbot/build/uf_ros_lib/build/lib/uf_ros_lib/substitutions
+[0.912s] copying uf_ros_lib/substitutions/__init__.py -> /home/rob/project/csci5551-s26-team-pointbot/build/uf_ros_lib/build/lib/uf_ros_lib/substitutions
+[0.912s] copying uf_ros_lib/substitutions/joint_limits.py -> /home/rob/project/csci5551-s26-team-pointbot/build/uf_ros_lib/build/lib/uf_ros_lib/substitutions
+[0.913s] copying uf_ros_lib/substitutions/planning_pipelines.py -> /home/rob/project/csci5551-s26-team-pointbot/build/uf_ros_lib/build/lib/uf_ros_lib/substitutions
+[0.913s] copying uf_ros_lib/substitutions/common.py -> /home/rob/project/csci5551-s26-team-pointbot/build/uf_ros_lib/build/lib/uf_ros_lib/substitutions
+[0.913s] copying uf_ros_lib/substitutions/controllers.py -> /home/rob/project/csci5551-s26-team-pointbot/build/uf_ros_lib/build/lib/uf_ros_lib/substitutions
+[0.913s] copying uf_ros_lib/substitutions/kinematics.py -> /home/rob/project/csci5551-s26-team-pointbot/build/uf_ros_lib/build/lib/uf_ros_lib/substitutions
+[0.913s] running install
+[0.917s] running install_lib
+[0.930s] creating /home/rob/project/csci5551-s26-team-pointbot/install/lib/python3.12/site-packages/uf_ros_lib
+[0.930s] copying /home/rob/project/csci5551-s26-team-pointbot/build/uf_ros_lib/build/lib/uf_ros_lib/uf_robot_utils.py -> /home/rob/project/csci5551-s26-team-pointbot/install/lib/python3.12/site-packages/uf_ros_lib
+[0.930s] creating /home/rob/project/csci5551-s26-team-pointbot/install/lib/python3.12/site-packages/uf_ros_lib/substitutions
+[0.930s] copying /home/rob/project/csci5551-s26-team-pointbot/build/uf_ros_lib/build/lib/uf_ros_lib/substitutions/__init__.py -> /home/rob/project/csci5551-s26-team-pointbot/install/lib/python3.12/site-packages/uf_ros_lib/substitutions
+[0.931s] copying /home/rob/project/csci5551-s26-team-pointbot/build/uf_ros_lib/build/lib/uf_ros_lib/substitutions/joint_limits.py -> /home/rob/project/csci5551-s26-team-pointbot/install/lib/python3.12/site-packages/uf_ros_lib/substitutions
+[0.931s] copying /home/rob/project/csci5551-s26-team-pointbot/build/uf_ros_lib/build/lib/uf_ros_lib/substitutions/planning_pipelines.py -> /home/rob/project/csci5551-s26-team-pointbot/install/lib/python3.12/site-packages/uf_ros_lib/substitutions
+[0.932s] copying /home/rob/project/csci5551-s26-team-pointbot/build/uf_ros_lib/build/lib/uf_ros_lib/substitutions/common.py -> /home/rob/project/csci5551-s26-team-pointbot/install/lib/python3.12/site-packages/uf_ros_lib/substitutions
+[0.934s] copying /home/rob/project/csci5551-s26-team-pointbot/build/uf_ros_lib/build/lib/uf_ros_lib/substitutions/controllers.py -> /home/rob/project/csci5551-s26-team-pointbot/install/lib/python3.12/site-packages/uf_ros_lib/substitutions
+[0.934s] copying /home/rob/project/csci5551-s26-team-pointbot/build/uf_ros_lib/build/lib/uf_ros_lib/substitutions/kinematics.py -> /home/rob/project/csci5551-s26-team-pointbot/install/lib/python3.12/site-packages/uf_ros_lib/substitutions
+[0.934s] copying /home/rob/project/csci5551-s26-team-pointbot/build/uf_ros_lib/build/lib/uf_ros_lib/__init__.py -> /home/rob/project/csci5551-s26-team-pointbot/install/lib/python3.12/site-packages/uf_ros_lib
+[0.934s] copying /home/rob/project/csci5551-s26-team-pointbot/build/uf_ros_lib/build/lib/uf_ros_lib/parameter_descriptions.py -> /home/rob/project/csci5551-s26-team-pointbot/install/lib/python3.12/site-packages/uf_ros_lib
+[0.934s] copying /home/rob/project/csci5551-s26-team-pointbot/build/uf_ros_lib/build/lib/uf_ros_lib/moveit_configs_builder.py -> /home/rob/project/csci5551-s26-team-pointbot/install/lib/python3.12/site-packages/uf_ros_lib
+[0.934s] byte-compiling /home/rob/project/csci5551-s26-team-pointbot/install/lib/python3.12/site-packages/uf_ros_lib/uf_robot_utils.py to uf_robot_utils.cpython-312.pyc
+[0.936s] byte-compiling /home/rob/project/csci5551-s26-team-pointbot/install/lib/python3.12/site-packages/uf_ros_lib/substitutions/__init__.py to __init__.cpython-312.pyc
+[0.936s] byte-compiling /home/rob/project/csci5551-s26-team-pointbot/install/lib/python3.12/site-packages/uf_ros_lib/substitutions/joint_limits.py to joint_limits.cpython-312.pyc
+[0.937s] byte-compiling /home/rob/project/csci5551-s26-team-pointbot/install/lib/python3.12/site-packages/uf_ros_lib/substitutions/planning_pipelines.py to planning_pipelines.cpython-312.pyc
+[0.939s] byte-compiling /home/rob/project/csci5551-s26-team-pointbot/install/lib/python3.12/site-packages/uf_ros_lib/substitutions/common.py to common.cpython-312.pyc
+[0.940s] byte-compiling /home/rob/project/csci5551-s26-team-pointbot/install/lib/python3.12/site-packages/uf_ros_lib/substitutions/controllers.py to controllers.cpython-312.pyc
+[0.942s] byte-compiling /home/rob/project/csci5551-s26-team-pointbot/install/lib/python3.12/site-packages/uf_ros_lib/substitutions/kinematics.py to kinematics.cpython-312.pyc
+[0.943s] byte-compiling /home/rob/project/csci5551-s26-team-pointbot/install/lib/python3.12/site-packages/uf_ros_lib/__init__.py to __init__.cpython-312.pyc
+[0.943s] byte-compiling /home/rob/project/csci5551-s26-team-pointbot/install/lib/python3.12/site-packages/uf_ros_lib/parameter_descriptions.py to parameter_descriptions.cpython-312.pyc
+[0.947s] byte-compiling /home/rob/project/csci5551-s26-team-pointbot/install/lib/python3.12/site-packages/uf_ros_lib/moveit_configs_builder.py to moveit_configs_builder.cpython-312.pyc
+[0.953s] running install_data
+[0.953s] copying resource/uf_ros_lib -> /home/rob/project/csci5551-s26-team-pointbot/install/share/ament_index/resource_index/packages
+[0.953s] copying package.xml -> /home/rob/project/csci5551-s26-team-pointbot/install/share/uf_ros_lib
+[0.954s] running install_egg_info
+[0.966s] Copying ../../../build/uf_ros_lib/uf_ros_lib.egg-info to /home/rob/project/csci5551-s26-team-pointbot/install/lib/python3.12/site-packages/uf_ros_lib-0.0.0-py3.12.egg-info
+[0.969s] running install_scripts
+[1.227s] writing list of installed files to '/home/rob/project/csci5551-s26-team-pointbot/build/uf_ros_lib/install.log'
+[1.356s] Invoked command in '/home/rob/project/csci5551-s26-team-pointbot/src/xarm_ros2/uf_ros_lib' returned '0': CONDA_PROMPT_MODIFIER=(base) DEBUGINFOD_URLS=https://debuginfod.ubuntu.com PYTHONPATH=/home/rob/project/csci5551-s26-team-pointbot/build/uf_ros_lib/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/rob/project/csci5551-s26-team-pointbot/install/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../../build/uf_ros_lib build --build-base /home/rob/project/csci5551-s26-team-pointbot/build/uf_ros_lib/build install --record /home/rob/project/csci5551-s26-team-pointbot/build/uf_ros_lib/install.log --single-version-externally-managed install_data

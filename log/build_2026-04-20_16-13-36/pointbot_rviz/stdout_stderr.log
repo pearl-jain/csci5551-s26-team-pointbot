@@ -1,0 +1,20 @@
+running egg_info
+writing ../../build/pointbot_rviz/pointbot_rviz.egg-info/PKG-INFO
+writing dependency_links to ../../build/pointbot_rviz/pointbot_rviz.egg-info/dependency_links.txt
+writing entry points to ../../build/pointbot_rviz/pointbot_rviz.egg-info/entry_points.txt
+writing requirements to ../../build/pointbot_rviz/pointbot_rviz.egg-info/requires.txt
+writing top-level names to ../../build/pointbot_rviz/pointbot_rviz.egg-info/top_level.txt
+reading manifest file '../../build/pointbot_rviz/pointbot_rviz.egg-info/SOURCES.txt'
+writing manifest file '../../build/pointbot_rviz/pointbot_rviz.egg-info/SOURCES.txt'
+running build
+running build_py
+running install
+running install_lib
+running install_data
+copying rviz/pointbot.rviz -> /home/rob/project/csci5551-s26-team-pointbot/install/pointbot_rviz/share/pointbot_rviz/rviz
+running install_egg_info
+removing '/home/rob/project/csci5551-s26-team-pointbot/install/pointbot_rviz/lib/python3.12/site-packages/pointbot_rviz-0.0.0-py3.12.egg-info' (and everything under it)
+Copying ../../build/pointbot_rviz/pointbot_rviz.egg-info to /home/rob/project/csci5551-s26-team-pointbot/install/pointbot_rviz/lib/python3.12/site-packages/pointbot_rviz-0.0.0-py3.12.egg-info
+running install_scripts
+Installing test_visualizer script to /home/rob/project/csci5551-s26-team-pointbot/install/pointbot_rviz/lib/pointbot_rviz
+writing list of installed files to '/home/rob/project/csci5551-s26-team-pointbot/build/pointbot_rviz/install.log'

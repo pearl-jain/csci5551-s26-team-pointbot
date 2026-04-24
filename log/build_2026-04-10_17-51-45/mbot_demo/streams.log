@@ -1,0 +1,46 @@
+[0.008s] Invoking command in '/home/rob/project/csci5551-s26-team-pointbot/build/mbot_demo': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy CONDA_PROMPT_MODIFIER=(base) DEBUGINFOD_URLS=https://debuginfod.ubuntu.com LD_LIBRARY_PATH=/home/rob/project/csci5551-s26-team-pointbot/install/lib:/opt/ros/jazzy/opt/sdformat_vendor/lib:/opt/ros/jazzy/opt/rviz_ogre_vendor/lib:/opt/ros/jazzy/lib/x86_64-linux-gnu:/opt/ros/jazzy/opt/gz_math_vendor/lib:/opt/ros/jazzy/opt/gz_utils_vendor/lib:/opt/ros/jazzy/opt/gz_tools_vendor/lib:/opt/ros/jazzy/opt/gz_cmake_vendor/lib:/opt/ros/jazzy/lib:/usr/local/cuda-12.8/lib64’ PYTHONPATH=/home/rob/project/csci5551-s26-team-pointbot/install/lib/python3.12/site-packages:/home/rob/project/csci5551-s26-team-pointbot/install/lib/python3.13/site-packages:/opt/ros/jazzy/lib/python3.12/site-packages:/home/rob/robotics5551:/home/rob/robotics5551 /usr/bin/cmake --build /home/rob/project/csci5551-s26-team-pointbot/build/mbot_demo -- -j16 -l16
+[0.053s] Invoked command in '/home/rob/project/csci5551-s26-team-pointbot/build/mbot_demo' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy CONDA_PROMPT_MODIFIER=(base) DEBUGINFOD_URLS=https://debuginfod.ubuntu.com LD_LIBRARY_PATH=/home/rob/project/csci5551-s26-team-pointbot/install/lib:/opt/ros/jazzy/opt/sdformat_vendor/lib:/opt/ros/jazzy/opt/rviz_ogre_vendor/lib:/opt/ros/jazzy/lib/x86_64-linux-gnu:/opt/ros/jazzy/opt/gz_math_vendor/lib:/opt/ros/jazzy/opt/gz_utils_vendor/lib:/opt/ros/jazzy/opt/gz_tools_vendor/lib:/opt/ros/jazzy/opt/gz_cmake_vendor/lib:/opt/ros/jazzy/lib:/usr/local/cuda-12.8/lib64’ PYTHONPATH=/home/rob/project/csci5551-s26-team-pointbot/install/lib/python3.12/site-packages:/home/rob/project/csci5551-s26-team-pointbot/install/lib/python3.13/site-packages:/opt/ros/jazzy/lib/python3.12/site-packages:/home/rob/robotics5551:/home/rob/robotics5551 /usr/bin/cmake --build /home/rob/project/csci5551-s26-team-pointbot/build/mbot_demo -- -j16 -l16
+[0.056s] Invoking command in '/home/rob/project/csci5551-s26-team-pointbot/build/mbot_demo': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy CONDA_PROMPT_MODIFIER=(base) DEBUGINFOD_URLS=https://debuginfod.ubuntu.com LD_LIBRARY_PATH=/home/rob/project/csci5551-s26-team-pointbot/install/lib:/opt/ros/jazzy/opt/sdformat_vendor/lib:/opt/ros/jazzy/opt/rviz_ogre_vendor/lib:/opt/ros/jazzy/lib/x86_64-linux-gnu:/opt/ros/jazzy/opt/gz_math_vendor/lib:/opt/ros/jazzy/opt/gz_utils_vendor/lib:/opt/ros/jazzy/opt/gz_tools_vendor/lib:/opt/ros/jazzy/opt/gz_cmake_vendor/lib:/opt/ros/jazzy/lib:/usr/local/cuda-12.8/lib64’ PYTHONPATH=/home/rob/project/csci5551-s26-team-pointbot/install/lib/python3.12/site-packages:/home/rob/project/csci5551-s26-team-pointbot/install/lib/python3.13/site-packages:/opt/ros/jazzy/lib/python3.12/site-packages:/home/rob/robotics5551:/home/rob/robotics5551 /usr/bin/cmake --install /home/rob/project/csci5551-s26-team-pointbot/build/mbot_demo
+[0.065s] -- Install configuration: ""
+[0.065s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/share/mbot_demo//rviz
+[0.065s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/share/mbot_demo//rviz/moveit.rviz
+[0.065s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/share/mbot_demo//urdf
+[0.065s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/share/mbot_demo//urdf/mbot_macro.xacro
+[0.065s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/share/mbot_demo//urdf/mbot.transmission.xacro
+[0.065s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/share/mbot_demo//urdf/mbot.ros2_control.xacro
+[0.065s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/share/mbot_demo//urdf/mbot.urdf.xacro
+[0.065s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/share/mbot_demo//urdf/mbot_with_xarm.urdf.xacro
+[0.066s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/share/mbot_demo//urdf/mbot.gazebo.xacro
+[0.066s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/share/mbot_demo//srdf
+[0.066s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/share/mbot_demo//srdf/mbot_macro.srdf.xacro
+[0.066s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/share/mbot_demo//srdf/mbot_with_xarm.srdf.xacro
+[0.066s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/share/mbot_demo//config
+[0.066s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/share/mbot_demo//config/kinematics.yaml
+[0.066s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/share/mbot_demo//config/joint_limits.yaml
+[0.066s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/share/mbot_demo//config/controllers.yaml
+[0.066s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/share/mbot_demo//config/ros2_controllers.yaml
+[0.066s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/share/mbot_demo//config/ompl_planning.yaml
+[0.066s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/share/mbot_demo//worlds
+[0.066s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/share/mbot_demo//worlds/empty.world
+[0.066s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/share/mbot_demo//launch
+[0.066s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/share/mbot_demo//launch/mbot_moveit_realmove.launch.py
+[0.067s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/share/mbot_demo//launch/mbot_moveit_gazebo.launch.py
+[0.067s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/share/mbot_demo//launch/mbot_moveit_fake.launch.py
+[0.067s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/share/mbot_demo//launch/_robot_on_mbot_gazebo.launch.py
+[0.067s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/share/mbot_demo//launch/_robot_on_mbot_gz.launch.py
+[0.067s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/share/ament_index/resource_index/package_run_dependencies/mbot_demo
+[0.067s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/share/ament_index/resource_index/parent_prefix_path/mbot_demo
+[0.067s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/share/mbot_demo/environment/ament_prefix_path.sh
+[0.067s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/share/mbot_demo/environment/ament_prefix_path.dsv
+[0.067s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/share/mbot_demo/environment/path.sh
+[0.067s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/share/mbot_demo/environment/path.dsv
+[0.067s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/share/mbot_demo/local_setup.bash
+[0.067s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/share/mbot_demo/local_setup.sh
+[0.067s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/share/mbot_demo/local_setup.zsh
+[0.067s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/share/mbot_demo/local_setup.dsv
+[0.067s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/share/mbot_demo/package.dsv
+[0.068s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/share/ament_index/resource_index/packages/mbot_demo
+[0.068s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/share/mbot_demo/cmake/mbot_demoConfig.cmake
+[0.068s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/share/mbot_demo/cmake/mbot_demoConfig-version.cmake
+[0.068s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/share/mbot_demo/package.xml
+[0.069s] Invoked command in '/home/rob/project/csci5551-s26-team-pointbot/build/mbot_demo' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy CONDA_PROMPT_MODIFIER=(base) DEBUGINFOD_URLS=https://debuginfod.ubuntu.com LD_LIBRARY_PATH=/home/rob/project/csci5551-s26-team-pointbot/install/lib:/opt/ros/jazzy/opt/sdformat_vendor/lib:/opt/ros/jazzy/opt/rviz_ogre_vendor/lib:/opt/ros/jazzy/lib/x86_64-linux-gnu:/opt/ros/jazzy/opt/gz_math_vendor/lib:/opt/ros/jazzy/opt/gz_utils_vendor/lib:/opt/ros/jazzy/opt/gz_tools_vendor/lib:/opt/ros/jazzy/opt/gz_cmake_vendor/lib:/opt/ros/jazzy/lib:/usr/local/cuda-12.8/lib64’ PYTHONPATH=/home/rob/project/csci5551-s26-team-pointbot/install/lib/python3.12/site-packages:/home/rob/project/csci5551-s26-team-pointbot/install/lib/python3.13/site-packages:/opt/ros/jazzy/lib/python3.12/site-packages:/home/rob/robotics5551:/home/rob/robotics5551 /usr/bin/cmake --install /home/rob/project/csci5551-s26-team-pointbot/build/mbot_demo

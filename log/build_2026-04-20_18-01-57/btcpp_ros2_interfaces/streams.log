@@ -1,0 +1,28 @@
+[0.348s] Invoking command in '/home/rob/project/csci5551-s26-team-pointbot/build/btcpp_ros2_interfaces': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/rob/project/csci5551-s26-team-pointbot/install/pointbot_rviz:/home/rob/project/csci5551-s26-team-pointbot/install/uf_ros_lib:/home/rob/project/csci5551-s26-team-pointbot/install/planning:/home/rob/project/csci5551-s26-team-pointbot/install/perception:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/rob/project/csci5551-s26-team-pointbot/build/btcpp_ros2_interfaces -- -j16 -l16
+[0.506s] [  1%] Built target btcpp_ros2_interfaces__rs
+[0.506s] [  3%] Built target btcpp_ros2_interfaces__rosidl_generator_type_description
+[0.526s] [  3%] Built target ament_cmake_python_copy_btcpp_ros2_interfaces
+[0.562s] [  4%] Built target btcpp_ros2_interfaces__cpp
+[0.574s] [ 26%] Built target btcpp_ros2_interfaces__rosidl_generator_c
+[0.654s] [ 35%] Built target btcpp_ros2_interfaces__rosidl_typesupport_introspection_c
+[0.657s] [ 44%] Built target btcpp_ros2_interfaces__rosidl_typesupport_c
+[0.674s] [ 53%] Built target btcpp_ros2_interfaces__rosidl_typesupport_fastrtps_cpp
+[0.683s] [ 63%] Built target btcpp_ros2_interfaces__rosidl_typesupport_cpp
+[0.696s] [ 72%] Built target btcpp_ros2_interfaces__rosidl_typesupport_fastrtps_c
+[0.715s] [ 81%] Built target btcpp_ros2_interfaces__rosidl_typesupport_introspection_cpp
+[0.791s] [ 81%] Built target btcpp_ros2_interfaces
+[0.845s] [ 83%] Built target btcpp_ros2_interfaces__py
+[0.906s] [ 90%] Built target btcpp_ros2_interfaces__rosidl_generator_py
+[0.907s] running egg_info
+[0.936s] writing btcpp_ros2_interfaces.egg-info/PKG-INFO
+[0.938s] writing dependency_links to btcpp_ros2_interfaces.egg-info/dependency_links.txt
+[0.940s] writing top-level names to btcpp_ros2_interfaces.egg-info/top_level.txt
+[0.975s] [ 93%] Built target btcpp_ros2_interfaces_s__rosidl_typesupport_c
+[0.982s] interrupted
+[0.982s] gmake[1]: *** [CMakeFiles/Makefile2:556: CMakeFiles/btcpp_ros2_interfaces_s__rosidl_typesupport_fastrtps_c.dir/all] Interrupt
+[1.015s] gmake[2]: *** [CMakeFiles/ament_cmake_python_build_btcpp_ros2_interfaces_egg.dir/build.make:70: CMakeFiles/ament_cmake_python_build_btcpp_ros2_interfaces_egg] Interrupt
+[1.015s] gmake[1]: *** [CMakeFiles/Makefile2:497: CMakeFiles/ament_cmake_python_build_btcpp_ros2_interfaces_egg.dir/all] Interrupt
+[1.015s] gmake[1]: *** wait: No child processes.  Stop.
+[1.015s] gmake[1]: *** Waiting for unfinished jobs....
+[1.016s] gmake[1]: *** wait: No child processes.  Stop.
+[1.016s] gmake: *** [Makefile:146: all] Error 2

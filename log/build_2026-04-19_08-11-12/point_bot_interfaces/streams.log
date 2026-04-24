@@ -1,0 +1,284 @@
+[0.015s] Invoking command in '/home/rob/project/csci5551-s26-team-pointbot/build/point_bot_interfaces': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/rob/project/csci5551-s26-team-pointbot/install/pointbot_rviz:/home/rob/project/csci5551-s26-team-pointbot/install/uf_ros_lib:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake /home/rob/project/csci5551-s26-team-pointbot/src/point_bot_interfaces -DCMAKE_INSTALL_PREFIX=/home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces
+[0.093s] -- The C compiler identification is GNU 13.3.0
+[0.187s] -- The CXX compiler identification is GNU 13.3.0
+[0.219s] -- Detecting C compiler ABI info
+[0.368s] -- Detecting C compiler ABI info - done
+[0.386s] -- Check for working C compiler: /usr/bin/cc - skipped
+[0.386s] -- Detecting C compile features
+[0.387s] -- Detecting C compile features - done
+[0.404s] -- Detecting CXX compiler ABI info
+[0.553s] -- Detecting CXX compiler ABI info - done
+[0.561s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[0.562s] -- Detecting CXX compile features
+[0.562s] -- Detecting CXX compile features - done
+[0.566s] -- Found ament_cmake: 2.5.6 (/opt/ros/jazzy/share/ament_cmake/cmake)
+[0.720s] -- Found Python3: /usr/bin/python3 (found version "3.12.3") found components: Interpreter 
+[0.870s] -- Found geometry_msgs: 5.3.7 (/opt/ros/jazzy/share/geometry_msgs/cmake)
+[0.936s] -- Found rosidl_generator_c: 4.6.7 (/opt/ros/jazzy/share/rosidl_generator_c/cmake)
+[0.963s] -- Found rosidl_generator_cpp: 4.6.7 (/opt/ros/jazzy/share/rosidl_generator_cpp/cmake)
+[0.991s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[1.016s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[1.074s] -- Found sensor_msgs: 5.3.7 (/opt/ros/jazzy/share/sensor_msgs/cmake)
+[1.118s] -- Found rosidl_default_generators: 1.6.0 (/opt/ros/jazzy/share/rosidl_default_generators/cmake)
+[1.146s] -- Found rosidl_adapter: 4.6.7 (/opt/ros/jazzy/share/rosidl_adapter/cmake)
+[2.428s] -- Found ament_cmake_ros: 0.12.0 (/opt/ros/jazzy/share/ament_cmake_ros/cmake)
+[4.128s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[4.797s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[4.807s] -- Found python_cmake_module: 0.11.1 (/opt/ros/jazzy/share/python_cmake_module/cmake)
+[5.054s] -- Found PythonExtra: /usr/bin/python3  
+[5.872s] -- Found Python3: /usr/bin/python3 (found version "3.12.3") found components: Interpreter Development NumPy Development.Module Development.Embed 
+[6.120s] -- Found Python3: /usr/bin/python3 (found version "3.12.3") found components: Interpreter 
+[6.131s] -- Found ament_lint_auto: 0.17.5 (/opt/ros/jazzy/share/ament_lint_auto/cmake)
+[6.194s] -- Added test 'lint_cmake' to check CMake code style
+[6.196s] -- Added test 'xmllint' to check XML markup files
+[6.201s] -- Configuring done (6.2s)
+[6.271s] -- Generating done (0.1s)
+[6.291s] -- Build files have been written to: /home/rob/project/csci5551-s26-team-pointbot/build/point_bot_interfaces
+[6.311s] Invoked command in '/home/rob/project/csci5551-s26-team-pointbot/build/point_bot_interfaces' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/rob/project/csci5551-s26-team-pointbot/install/pointbot_rviz:/home/rob/project/csci5551-s26-team-pointbot/install/uf_ros_lib:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake /home/rob/project/csci5551-s26-team-pointbot/src/point_bot_interfaces -DCMAKE_INSTALL_PREFIX=/home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces
+[6.312s] Invoking command in '/home/rob/project/csci5551-s26-team-pointbot/build/point_bot_interfaces': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/rob/project/csci5551-s26-team-pointbot/install/pointbot_rviz:/home/rob/project/csci5551-s26-team-pointbot/install/uf_ros_lib:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/rob/project/csci5551-s26-team-pointbot/build/point_bot_interfaces -- -j16 -l16
+[6.426s] [  2%] [34m[1mGenerating type hashes for ROS interfaces[0m
+[6.428s] [  4%] [34m[1mGenerating Rust code for ROS interfaces[0m
+[6.447s] [  4%] Built target ament_cmake_python_copy_point_bot_interfaces
+[6.650s] running egg_info
+[6.650s] creating point_bot_interfaces.egg-info
+[6.663s] writing point_bot_interfaces.egg-info/PKG-INFO
+[6.663s] writing dependency_links to point_bot_interfaces.egg-info/dependency_links.txt
+[6.664s] writing top-level names to point_bot_interfaces.egg-info/top_level.txt
+[6.664s] writing manifest file 'point_bot_interfaces.egg-info/SOURCES.txt'
+[6.702s] [  4%] Built target point_bot_interfaces__rosidl_generator_type_description
+[6.708s] reading manifest file 'point_bot_interfaces.egg-info/SOURCES.txt'
+[6.708s] writing manifest file 'point_bot_interfaces.egg-info/SOURCES.txt'
+[6.723s] [  6%] [34m[1mGenerating C code for ROS interfaces[0m
+[6.725s] [  6%] Built target point_bot_interfaces__rs
+[6.746s] [  8%] [34m[1mGenerating C++ code for ROS interfaces[0m
+[6.761s] [  8%] Built target ament_cmake_python_build_point_bot_interfaces_egg
+[7.416s] [  8%] Built target point_bot_interfaces__cpp
+[7.481s] [ 15%] [32mBuilding C object CMakeFiles/point_bot_interfaces__rosidl_generator_c.dir/rosidl_generator_c/point_bot_interfaces/action/detail/move_object__description.c.o[0m
+[7.482s] [ 15%] [32mBuilding C object CMakeFiles/point_bot_interfaces__rosidl_generator_c.dir/rosidl_generator_c/point_bot_interfaces/action/detail/move_object__functions.c.o[0m
+[7.482s] [ 15%] [32mBuilding C object CMakeFiles/point_bot_interfaces__rosidl_generator_c.dir/rosidl_generator_c/point_bot_interfaces/action/detail/perception__description.c.o[0m
+[7.484s] [ 17%] [32mBuilding C object CMakeFiles/point_bot_interfaces__rosidl_generator_c.dir/rosidl_generator_c/point_bot_interfaces/action/detail/move_object__type_support.c.o[0m
+[7.492s] [ 20%] [32mBuilding C object CMakeFiles/point_bot_interfaces__rosidl_generator_c.dir/rosidl_generator_c/point_bot_interfaces/action/detail/perception__functions.c.o[0m
+[7.494s] [ 22%] [32mBuilding C object CMakeFiles/point_bot_interfaces__rosidl_generator_c.dir/rosidl_generator_c/point_bot_interfaces/action/detail/perception__type_support.c.o[0m
+[7.757s] [ 24%] [32m[1mLinking C shared library libpoint_bot_interfaces__rosidl_generator_c.so[0m
+[7.835s] [ 24%] Built target point_bot_interfaces__rosidl_generator_c
+[7.856s] [ 26%] [34m[1mGenerating C++ type support dispatch for ROS interfaces[0m
+[7.858s] [ 28%] [34m[1mGenerating C type support for eProsima Fast-RTPS[0m
+[7.868s] [ 33%] [34m[1mGenerating C++ type support for eProsima Fast-RTPS[0m
+[7.868s] [ 33%] [34m[1mGenerating C type support dispatch for ROS interfaces[0m
+[7.869s] [ 35%] [34m[1mGenerating C introspection for ROS interfaces[0m
+[7.878s] [ 37%] [34m[1mGenerating C++ introspection for ROS interfaces[0m
+[8.621s] [ 40%] [32mBuilding CXX object CMakeFiles/point_bot_interfaces__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/point_bot_interfaces/action/perception__type_support.cpp.o[0m
+[8.627s] [ 42%] [32mBuilding CXX object CMakeFiles/point_bot_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/point_bot_interfaces/action/perception__type_support.cpp.o[0m
+[8.637s] [ 44%] [32mBuilding CXX object CMakeFiles/point_bot_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/point_bot_interfaces/action/move_object__type_support.cpp.o[0m
+[8.663s] [ 46%] [32mBuilding CXX object CMakeFiles/point_bot_interfaces__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/point_bot_interfaces/action/move_object__type_support.cpp.o[0m
+[8.837s] [ 48%] [32m[1mLinking CXX shared library libpoint_bot_interfaces__rosidl_typesupport_c.so[0m
+[8.863s] [ 51%] [32mBuilding CXX object CMakeFiles/point_bot_interfaces__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/point_bot_interfaces/action/detail/move_object__type_support.cpp.o[0m
+[8.863s] [ 53%] [32mBuilding CXX object CMakeFiles/point_bot_interfaces__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/point_bot_interfaces/action/detail/perception__type_support.cpp.o[0m
+[9.007s] [ 53%] Built target point_bot_interfaces__rosidl_typesupport_c
+[9.017s] [ 55%] [32mBuilding C object CMakeFiles/point_bot_interfaces__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/point_bot_interfaces/action/detail/perception__type_support.c.o[0m
+[9.037s] [ 57%] [32mBuilding C object CMakeFiles/point_bot_interfaces__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/point_bot_interfaces/action/detail/move_object__type_support.c.o[0m
+[9.234s] [ 60%] [32m[1mLinking C shared library libpoint_bot_interfaces__rosidl_typesupport_introspection_c.so[0m
+[9.238s] [ 62%] [32mBuilding CXX object CMakeFiles/point_bot_interfaces__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/point_bot_interfaces/action/detail/dds_fastrtps/perception__type_support.cpp.o[0m
+[9.244s] [ 64%] [32mBuilding CXX object CMakeFiles/point_bot_interfaces__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/point_bot_interfaces/action/detail/dds_fastrtps/move_object__type_support.cpp.o[0m
+[9.250s] [ 66%] [32mBuilding CXX object CMakeFiles/point_bot_interfaces__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/point_bot_interfaces/action/detail/perception__type_support_c.cpp.o[0m
+[9.264s] [ 68%] [32mBuilding CXX object CMakeFiles/point_bot_interfaces__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/point_bot_interfaces/action/detail/move_object__type_support_c.cpp.o[0m
+[9.330s] [ 68%] Built target point_bot_interfaces__rosidl_typesupport_introspection_c
+[10.038s] [ 71%] [32m[1mLinking CXX shared library libpoint_bot_interfaces__rosidl_typesupport_cpp.so[0m
+[10.054s] [ 73%] [32m[1mLinking CXX shared library libpoint_bot_interfaces__rosidl_typesupport_introspection_cpp.so[0m
+[10.186s] [ 73%] Built target point_bot_interfaces__rosidl_typesupport_cpp
+[10.203s] [ 75%] [32m[1mLinking CXX shared library libpoint_bot_interfaces__rosidl_typesupport_fastrtps_c.so[0m
+[10.213s] [ 75%] Built target point_bot_interfaces__rosidl_typesupport_introspection_cpp
+[10.340s] [ 75%] Built target point_bot_interfaces__rosidl_typesupport_fastrtps_c
+[10.474s] [ 77%] [32m[1mLinking CXX shared library libpoint_bot_interfaces__rosidl_typesupport_fastrtps_cpp.so[0m
+[10.607s] [ 77%] Built target point_bot_interfaces__rosidl_typesupport_fastrtps_cpp
+[10.652s] [ 77%] Built target point_bot_interfaces
+[10.700s] [ 80%] [34m[1mGenerating Python code for ROS interfaces[0m
+[11.806s] [ 80%] Built target point_bot_interfaces__py
+[11.843s] [ 84%] [32mBuilding C object CMakeFiles/point_bot_interfaces__rosidl_generator_py.dir/rosidl_generator_py/point_bot_interfaces/action/_perception_s.c.o[0m
+[11.843s] [ 84%] [32mBuilding C object CMakeFiles/point_bot_interfaces__rosidl_generator_py.dir/rosidl_generator_py/point_bot_interfaces/action/_move_object_s.c.o[0m
+[12.149s] [ 86%] [32m[1mLinking C shared library libpoint_bot_interfaces__rosidl_generator_py.so[0m
+[12.231s] [ 86%] Built target point_bot_interfaces__rosidl_generator_py
+[12.268s] [ 93%] [32mBuilding C object CMakeFiles/point_bot_interfaces_s__rosidl_typesupport_fastrtps_c.dir/rosidl_generator_py/point_bot_interfaces/_point_bot_interfaces_s.ep.rosidl_typesupport_fastrtps_c.c.o[0m
+[12.268s] [ 93%] [32mBuilding C object CMakeFiles/point_bot_interfaces_s__rosidl_typesupport_c.dir/rosidl_generator_py/point_bot_interfaces/_point_bot_interfaces_s.ep.rosidl_typesupport_c.c.o[0m
+[12.268s] [ 93%] [32mBuilding C object CMakeFiles/point_bot_interfaces_s__rosidl_typesupport_introspection_c.dir/rosidl_generator_py/point_bot_interfaces/_point_bot_interfaces_s.ep.rosidl_typesupport_introspection_c.c.o[0m
+[12.403s] [ 95%] [32m[1mLinking C shared module rosidl_generator_py/point_bot_interfaces/point_bot_interfaces_s__rosidl_typesupport_c.so[0m
+[12.413s] [ 97%] [32m[1mLinking C shared module rosidl_generator_py/point_bot_interfaces/point_bot_interfaces_s__rosidl_typesupport_fastrtps_c.so[0m
+[12.414s] [100%] [32m[1mLinking C shared module rosidl_generator_py/point_bot_interfaces/point_bot_interfaces_s__rosidl_typesupport_introspection_c.so[0m
+[12.434s] [100%] Built target point_bot_interfaces_s__rosidl_typesupport_c
+[12.449s] [100%] Built target point_bot_interfaces_s__rosidl_typesupport_introspection_c
+[12.453s] [100%] Built target point_bot_interfaces_s__rosidl_typesupport_fastrtps_c
+[12.467s] Invoked command in '/home/rob/project/csci5551-s26-team-pointbot/build/point_bot_interfaces' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/rob/project/csci5551-s26-team-pointbot/install/pointbot_rviz:/home/rob/project/csci5551-s26-team-pointbot/install/uf_ros_lib:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/rob/project/csci5551-s26-team-pointbot/build/point_bot_interfaces -- -j16 -l16
+[12.470s] Invoking command in '/home/rob/project/csci5551-s26-team-pointbot/build/point_bot_interfaces': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/rob/project/csci5551-s26-team-pointbot/install/pointbot_rviz:/home/rob/project/csci5551-s26-team-pointbot/install/uf_ros_lib:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --install /home/rob/project/csci5551-s26-team-pointbot/build/point_bot_interfaces
+[12.479s] -- Install configuration: ""
+[12.479s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/share/ament_index/resource_index/rosidl_interfaces/point_bot_interfaces
+[12.479s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/share/point_bot_interfaces/action/Perception.json
+[12.479s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/share/point_bot_interfaces/action/MoveObject.json
+[12.479s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/include/point_bot_interfaces/point_bot_interfaces
+[12.479s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/include/point_bot_interfaces/point_bot_interfaces/action
+[12.479s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/include/point_bot_interfaces/point_bot_interfaces/action/perception.h
+[12.480s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/include/point_bot_interfaces/point_bot_interfaces/action/move_object.h
+[12.480s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/include/point_bot_interfaces/point_bot_interfaces/action/detail
+[12.481s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/include/point_bot_interfaces/point_bot_interfaces/action/detail/perception__functions.h
+[12.482s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/include/point_bot_interfaces/point_bot_interfaces/action/detail/move_object__type_support.c
+[12.482s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/include/point_bot_interfaces/point_bot_interfaces/action/detail/move_object__description.c
+[12.482s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/include/point_bot_interfaces/point_bot_interfaces/action/detail/perception__functions.c
+[12.482s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/include/point_bot_interfaces/point_bot_interfaces/action/detail/perception__description.c
+[12.482s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/include/point_bot_interfaces/point_bot_interfaces/action/detail/perception__type_support.h
+[12.482s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/include/point_bot_interfaces/point_bot_interfaces/action/detail/move_object__type_support.h
+[12.483s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/include/point_bot_interfaces/point_bot_interfaces/action/detail/perception__type_support.c
+[12.483s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/include/point_bot_interfaces/point_bot_interfaces/action/detail/move_object__functions.h
+[12.483s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/include/point_bot_interfaces/point_bot_interfaces/action/detail/move_object__functions.c
+[12.483s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/include/point_bot_interfaces/point_bot_interfaces/action/detail/perception__struct.h
+[12.483s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/include/point_bot_interfaces/point_bot_interfaces/action/detail/move_object__struct.h
+[12.483s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/include/point_bot_interfaces/point_bot_interfaces/msg
+[12.483s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/include/point_bot_interfaces/point_bot_interfaces/msg/rosidl_generator_c__visibility_control.h
+[12.483s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/share/point_bot_interfaces/environment/library_path.sh
+[12.483s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/share/point_bot_interfaces/environment/library_path.dsv
+[12.483s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/lib/libpoint_bot_interfaces__rosidl_generator_c.so
+[12.484s] -- Set non-toolchain portion of runtime path of "/home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/lib/libpoint_bot_interfaces__rosidl_generator_c.so" to ""
+[12.484s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/include/point_bot_interfaces/point_bot_interfaces
+[12.485s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/include/point_bot_interfaces/point_bot_interfaces/action
+[12.485s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/include/point_bot_interfaces/point_bot_interfaces/action/detail
+[12.485s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/include/point_bot_interfaces/point_bot_interfaces/action/detail/move_object__rosidl_typesupport_fastrtps_c.h
+[12.485s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/include/point_bot_interfaces/point_bot_interfaces/action/detail/perception__rosidl_typesupport_fastrtps_c.h
+[12.485s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/include/point_bot_interfaces/point_bot_interfaces/msg
+[12.485s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/include/point_bot_interfaces/point_bot_interfaces/msg/rosidl_typesupport_fastrtps_c__visibility_control.h
+[12.488s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/lib/libpoint_bot_interfaces__rosidl_typesupport_fastrtps_c.so
+[12.488s] -- Set non-toolchain portion of runtime path of "/home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/lib/libpoint_bot_interfaces__rosidl_typesupport_fastrtps_c.so" to ""
+[12.488s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/include/point_bot_interfaces/point_bot_interfaces
+[12.488s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/include/point_bot_interfaces/point_bot_interfaces/action
+[12.488s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/include/point_bot_interfaces/point_bot_interfaces/action/perception.hpp
+[12.488s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/include/point_bot_interfaces/point_bot_interfaces/action/move_object.hpp
+[12.488s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/include/point_bot_interfaces/point_bot_interfaces/action/detail
+[12.488s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/include/point_bot_interfaces/point_bot_interfaces/action/detail/move_object__builder.hpp
+[12.489s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/include/point_bot_interfaces/point_bot_interfaces/action/detail/perception__type_support.hpp
+[12.489s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/include/point_bot_interfaces/point_bot_interfaces/action/detail/move_object__type_support.hpp
+[12.489s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/include/point_bot_interfaces/point_bot_interfaces/action/detail/move_object__struct.hpp
+[12.489s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/include/point_bot_interfaces/point_bot_interfaces/action/detail/perception__traits.hpp
+[12.490s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/include/point_bot_interfaces/point_bot_interfaces/action/detail/perception__struct.hpp
+[12.490s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/include/point_bot_interfaces/point_bot_interfaces/action/detail/perception__builder.hpp
+[12.491s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/include/point_bot_interfaces/point_bot_interfaces/action/detail/move_object__traits.hpp
+[12.491s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/include/point_bot_interfaces/point_bot_interfaces/msg
+[12.491s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/include/point_bot_interfaces/point_bot_interfaces/msg/rosidl_generator_cpp__visibility_control.hpp
+[12.491s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/include/point_bot_interfaces/point_bot_interfaces
+[12.491s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/include/point_bot_interfaces/point_bot_interfaces/action
+[12.491s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/include/point_bot_interfaces/point_bot_interfaces/action/detail
+[12.492s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/include/point_bot_interfaces/point_bot_interfaces/action/detail/dds_fastrtps
+[12.492s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/include/point_bot_interfaces/point_bot_interfaces/action/detail/move_object__rosidl_typesupport_fastrtps_cpp.hpp
+[12.492s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/include/point_bot_interfaces/point_bot_interfaces/action/detail/perception__rosidl_typesupport_fastrtps_cpp.hpp
+[12.492s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/include/point_bot_interfaces/point_bot_interfaces/msg
+[12.493s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/include/point_bot_interfaces/point_bot_interfaces/msg/rosidl_typesupport_fastrtps_cpp__visibility_control.h
+[12.493s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/lib/libpoint_bot_interfaces__rosidl_typesupport_fastrtps_cpp.so
+[12.493s] -- Set non-toolchain portion of runtime path of "/home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/lib/libpoint_bot_interfaces__rosidl_typesupport_fastrtps_cpp.so" to ""
+[12.493s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/include/point_bot_interfaces/point_bot_interfaces
+[12.494s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/include/point_bot_interfaces/point_bot_interfaces/action
+[12.494s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/include/point_bot_interfaces/point_bot_interfaces/action/detail
+[12.494s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/include/point_bot_interfaces/point_bot_interfaces/action/detail/move_object__type_support.c
+[12.495s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/include/point_bot_interfaces/point_bot_interfaces/action/detail/move_object__rosidl_typesupport_introspection_c.h
+[12.495s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/include/point_bot_interfaces/point_bot_interfaces/action/detail/perception__type_support.c
+[12.495s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/include/point_bot_interfaces/point_bot_interfaces/action/detail/perception__rosidl_typesupport_introspection_c.h
+[12.496s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/include/point_bot_interfaces/point_bot_interfaces/msg
+[12.496s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/include/point_bot_interfaces/point_bot_interfaces/msg/rosidl_typesupport_introspection_c__visibility_control.h
+[12.496s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/lib/libpoint_bot_interfaces__rosidl_typesupport_introspection_c.so
+[12.496s] -- Set non-toolchain portion of runtime path of "/home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/lib/libpoint_bot_interfaces__rosidl_typesupport_introspection_c.so" to ""
+[12.496s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/lib/libpoint_bot_interfaces__rosidl_typesupport_c.so
+[12.496s] -- Set non-toolchain portion of runtime path of "/home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/lib/libpoint_bot_interfaces__rosidl_typesupport_c.so" to ""
+[12.497s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/include/point_bot_interfaces/point_bot_interfaces
+[12.497s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/include/point_bot_interfaces/point_bot_interfaces/action
+[12.497s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/include/point_bot_interfaces/point_bot_interfaces/action/detail
+[12.497s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/include/point_bot_interfaces/point_bot_interfaces/action/detail/move_object__type_support.cpp
+[12.497s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/include/point_bot_interfaces/point_bot_interfaces/action/detail/move_object__rosidl_typesupport_introspection_cpp.hpp
+[12.497s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/include/point_bot_interfaces/point_bot_interfaces/action/detail/perception__rosidl_typesupport_introspection_cpp.hpp
+[12.497s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/include/point_bot_interfaces/point_bot_interfaces/action/detail/perception__type_support.cpp
+[12.497s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/lib/libpoint_bot_interfaces__rosidl_typesupport_introspection_cpp.so
+[12.498s] -- Set non-toolchain portion of runtime path of "/home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/lib/libpoint_bot_interfaces__rosidl_typesupport_introspection_cpp.so" to ""
+[12.498s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/lib/libpoint_bot_interfaces__rosidl_typesupport_cpp.so
+[12.498s] -- Set non-toolchain portion of runtime path of "/home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/lib/libpoint_bot_interfaces__rosidl_typesupport_cpp.so" to ""
+[12.498s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/share/point_bot_interfaces/environment/pythonpath.sh
+[12.498s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/share/point_bot_interfaces/environment/pythonpath.dsv
+[12.499s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/lib/python3.12/site-packages/point_bot_interfaces-0.0.0-py3.12.egg-info
+[12.499s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/lib/python3.12/site-packages/point_bot_interfaces-0.0.0-py3.12.egg-info/PKG-INFO
+[12.499s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/lib/python3.12/site-packages/point_bot_interfaces-0.0.0-py3.12.egg-info/dependency_links.txt
+[12.499s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/lib/python3.12/site-packages/point_bot_interfaces-0.0.0-py3.12.egg-info/SOURCES.txt
+[12.499s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/lib/python3.12/site-packages/point_bot_interfaces-0.0.0-py3.12.egg-info/top_level.txt
+[12.499s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/lib/python3.12/site-packages/point_bot_interfaces
+[12.499s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/lib/python3.12/site-packages/point_bot_interfaces/point_bot_interfaces_s__rosidl_typesupport_fastrtps_c.so
+[12.500s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/lib/python3.12/site-packages/point_bot_interfaces/_point_bot_interfaces_s.ep.rosidl_typesupport_fastrtps_c.c
+[12.500s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/lib/python3.12/site-packages/point_bot_interfaces/point_bot_interfaces_s__rosidl_typesupport_introspection_c.so
+[12.500s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/lib/python3.12/site-packages/point_bot_interfaces/__init__.py
+[12.500s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/lib/python3.12/site-packages/point_bot_interfaces/_point_bot_interfaces_s.ep.rosidl_typesupport_c.c
+[12.500s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/lib/python3.12/site-packages/point_bot_interfaces/action
+[12.500s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/lib/python3.12/site-packages/point_bot_interfaces/action/_move_object_s.c
+[12.500s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/lib/python3.12/site-packages/point_bot_interfaces/action/__init__.py
+[12.500s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/lib/python3.12/site-packages/point_bot_interfaces/action/_perception.py
+[12.500s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/lib/python3.12/site-packages/point_bot_interfaces/action/_perception_s.c
+[12.500s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/lib/python3.12/site-packages/point_bot_interfaces/action/_move_object.py
+[12.501s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/lib/python3.12/site-packages/point_bot_interfaces/point_bot_interfaces_s__rosidl_typesupport_c.so
+[12.501s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/lib/python3.12/site-packages/point_bot_interfaces/_point_bot_interfaces_s.ep.rosidl_typesupport_introspection_c.c
+[12.555s] Listing '/home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/lib/python3.12/site-packages/point_bot_interfaces'...
+[12.555s] Compiling '/home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/lib/python3.12/site-packages/point_bot_interfaces/__init__.py'...
+[12.555s] Listing '/home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/lib/python3.12/site-packages/point_bot_interfaces/action'...
+[12.555s] Compiling '/home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/lib/python3.12/site-packages/point_bot_interfaces/action/__init__.py'...
+[12.555s] Compiling '/home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/lib/python3.12/site-packages/point_bot_interfaces/action/_move_object.py'...
+[12.555s] Compiling '/home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/lib/python3.12/site-packages/point_bot_interfaces/action/_perception.py'...
+[12.564s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/lib/python3.12/site-packages/point_bot_interfaces/point_bot_interfaces_s__rosidl_typesupport_fastrtps_c.so
+[12.566s] -- Set non-toolchain portion of runtime path of "/home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/lib/python3.12/site-packages/point_bot_interfaces/point_bot_interfaces_s__rosidl_typesupport_fastrtps_c.so" to ""
+[12.566s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/lib/python3.12/site-packages/point_bot_interfaces/point_bot_interfaces_s__rosidl_typesupport_introspection_c.so
+[12.566s] -- Set non-toolchain portion of runtime path of "/home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/lib/python3.12/site-packages/point_bot_interfaces/point_bot_interfaces_s__rosidl_typesupport_introspection_c.so" to ""
+[12.566s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/lib/python3.12/site-packages/point_bot_interfaces/point_bot_interfaces_s__rosidl_typesupport_c.so
+[12.566s] -- Set non-toolchain portion of runtime path of "/home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/lib/python3.12/site-packages/point_bot_interfaces/point_bot_interfaces_s__rosidl_typesupport_c.so" to ""
+[12.566s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/lib/libpoint_bot_interfaces__rosidl_generator_py.so
+[12.566s] -- Set non-toolchain portion of runtime path of "/home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/lib/libpoint_bot_interfaces__rosidl_generator_py.so" to ""
+[12.567s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/share/ament_index/resource_index/rust_packages/point_bot_interfaces
+[12.567s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/share/point_bot_interfaces/rust
+[12.567s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/share/point_bot_interfaces/rust/Cargo.toml
+[12.567s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/share/point_bot_interfaces/rust/src
+[12.567s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/share/point_bot_interfaces/rust/src/lib.rs
+[12.567s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/share/point_bot_interfaces/rust/src/action
+[12.567s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/share/point_bot_interfaces/rust/src/action/rmw.rs
+[12.567s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/share/point_bot_interfaces/rust/src/action.rs
+[12.567s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/share/point_bot_interfaces/rust/build.rs
+[12.569s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/share/point_bot_interfaces/action/Perception.idl
+[12.569s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/share/point_bot_interfaces/action/MoveObject.idl
+[12.569s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/share/point_bot_interfaces/action/Perception.action
+[12.569s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/share/point_bot_interfaces/action/MoveObject.action
+[12.571s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/share/ament_index/resource_index/package_run_dependencies/point_bot_interfaces
+[12.572s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/share/ament_index/resource_index/parent_prefix_path/point_bot_interfaces
+[12.572s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/share/point_bot_interfaces/environment/ament_prefix_path.sh
+[12.572s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/share/point_bot_interfaces/environment/ament_prefix_path.dsv
+[12.572s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/share/point_bot_interfaces/environment/path.sh
+[12.572s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/share/point_bot_interfaces/environment/path.dsv
+[12.572s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/share/point_bot_interfaces/local_setup.bash
+[12.573s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/share/point_bot_interfaces/local_setup.sh
+[12.573s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/share/point_bot_interfaces/local_setup.zsh
+[12.573s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/share/point_bot_interfaces/local_setup.dsv
+[12.573s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/share/point_bot_interfaces/package.dsv
+[12.573s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/share/ament_index/resource_index/packages/point_bot_interfaces
+[12.573s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/share/point_bot_interfaces/cmake/export_point_bot_interfaces__rosidl_generator_cExport.cmake
+[12.573s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/share/point_bot_interfaces/cmake/export_point_bot_interfaces__rosidl_generator_cExport-noconfig.cmake
+[12.573s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/share/point_bot_interfaces/cmake/export_point_bot_interfaces__rosidl_typesupport_fastrtps_cExport.cmake
+[12.573s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/share/point_bot_interfaces/cmake/export_point_bot_interfaces__rosidl_typesupport_fastrtps_cExport-noconfig.cmake
+[12.574s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/share/point_bot_interfaces/cmake/export_point_bot_interfaces__rosidl_generator_cppExport.cmake
+[12.574s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/share/point_bot_interfaces/cmake/export_point_bot_interfaces__rosidl_typesupport_fastrtps_cppExport.cmake
+[12.574s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/share/point_bot_interfaces/cmake/export_point_bot_interfaces__rosidl_typesupport_fastrtps_cppExport-noconfig.cmake
+[12.574s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/share/point_bot_interfaces/cmake/point_bot_interfaces__rosidl_typesupport_introspection_cExport.cmake
+[12.574s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/share/point_bot_interfaces/cmake/point_bot_interfaces__rosidl_typesupport_introspection_cExport-noconfig.cmake
+[12.574s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/share/point_bot_interfaces/cmake/point_bot_interfaces__rosidl_typesupport_cExport.cmake
+[12.575s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/share/point_bot_interfaces/cmake/point_bot_interfaces__rosidl_typesupport_cExport-noconfig.cmake
+[12.575s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/share/point_bot_interfaces/cmake/point_bot_interfaces__rosidl_typesupport_introspection_cppExport.cmake
+[12.575s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/share/point_bot_interfaces/cmake/point_bot_interfaces__rosidl_typesupport_introspection_cppExport-noconfig.cmake
+[12.579s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/share/point_bot_interfaces/cmake/point_bot_interfaces__rosidl_typesupport_cppExport.cmake
+[12.579s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/share/point_bot_interfaces/cmake/point_bot_interfaces__rosidl_typesupport_cppExport-noconfig.cmake
+[12.579s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/share/point_bot_interfaces/cmake/export_point_bot_interfaces__rosidl_generator_pyExport.cmake
+[12.580s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/share/point_bot_interfaces/cmake/export_point_bot_interfaces__rosidl_generator_pyExport-noconfig.cmake
+[12.580s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/share/point_bot_interfaces/cmake/rosidl_cmake-extras.cmake
+[12.580s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/share/point_bot_interfaces/cmake/ament_cmake_export_dependencies-extras.cmake
+[12.580s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/share/point_bot_interfaces/cmake/ament_cmake_export_include_directories-extras.cmake
+[12.580s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/share/point_bot_interfaces/cmake/ament_cmake_export_libraries-extras.cmake
+[12.580s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/share/point_bot_interfaces/cmake/ament_cmake_export_targets-extras.cmake
+[12.580s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/share/point_bot_interfaces/cmake/rosidl_cmake_export_typesupport_targets-extras.cmake
+[12.580s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/share/point_bot_interfaces/cmake/rosidl_cmake_export_typesupport_libraries-extras.cmake
+[12.580s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/share/point_bot_interfaces/cmake/point_bot_interfacesConfig.cmake
+[12.580s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/share/point_bot_interfaces/cmake/point_bot_interfacesConfig-version.cmake
+[12.580s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/point_bot_interfaces/share/point_bot_interfaces/package.xml
+[12.599s] Invoked command in '/home/rob/project/csci5551-s26-team-pointbot/build/point_bot_interfaces' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/rob/project/csci5551-s26-team-pointbot/install/pointbot_rviz:/home/rob/project/csci5551-s26-team-pointbot/install/uf_ros_lib:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --install /home/rob/project/csci5551-s26-team-pointbot/build/point_bot_interfaces

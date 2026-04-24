@@ -1,0 +1,25 @@
+[  0%] Built target zed_msgs__rs
+[  0%] Built target zed_msgs__rosidl_generator_type_description
+[  0%] Built target ament_cmake_python_copy_zed_msgs
+[  0%] Built target zed_msgs__cpp
+[ 28%] Built target zed_msgs__rosidl_generator_c
+[ 38%] Built target zed_msgs__rosidl_typesupport_c
+[ 48%] Built target zed_msgs__rosidl_typesupport_introspection_cpp
+[ 57%] Built target zed_msgs__rosidl_typesupport_fastrtps_c
+[ 67%] Built target zed_msgs__rosidl_typesupport_introspection_c
+[ 77%] Built target zed_msgs__rosidl_typesupport_fastrtps_cpp
+[ 87%] Built target zed_msgs__rosidl_typesupport_cpp
+[ 87%] Built target zed_msgs
+[ 87%] Built target zed_msgs__py
+running egg_info
+[ 97%] Built target zed_msgs__rosidl_generator_py
+writing zed_msgs.egg-info/PKG-INFO
+writing dependency_links to zed_msgs.egg-info/dependency_links.txt
+writing top-level names to zed_msgs.egg-info/top_level.txt
+[ 98%] Built target zed_msgs_s__rosidl_typesupport_fastrtps_c
+interrupted
+gmake[1]: *** [CMakeFiles/Makefile2:641: CMakeFiles/zed_msgs_s__rosidl_typesupport_c.dir/all] Interrupt
+gmake[1]: *** [CMakeFiles/Makefile2:613: CMakeFiles/zed_msgs_s__rosidl_typesupport_introspection_c.dir/all] Interrupt
+gmake[2]: *** [CMakeFiles/ament_cmake_python_build_zed_msgs_egg.dir/build.make:70: CMakeFiles/ament_cmake_python_build_zed_msgs_egg] Interrupt
+gmake[1]: *** [CMakeFiles/Makefile2:524: CMakeFiles/ament_cmake_python_build_zed_msgs_egg.dir/all] Interrupt
+gmake: *** [Makefile:146: all] Interrupt

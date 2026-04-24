@@ -1,0 +1,179 @@
+[0.015s] Invoking command in '/home/rob/project/csci5551-s26-team-pointbot/build/zed_components': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy CONDA_PROMPT_MODIFIER=(base) DEBUGINFOD_URLS=https://debuginfod.ubuntu.com LD_LIBRARY_PATH=/home/rob/project/csci5551-s26-team-pointbot/install/lib:/opt/ros/jazzy/opt/sdformat_vendor/lib:/opt/ros/jazzy/opt/rviz_ogre_vendor/lib:/opt/ros/jazzy/lib/x86_64-linux-gnu:/opt/ros/jazzy/opt/gz_math_vendor/lib:/opt/ros/jazzy/opt/gz_utils_vendor/lib:/opt/ros/jazzy/opt/gz_tools_vendor/lib:/opt/ros/jazzy/opt/gz_cmake_vendor/lib:/opt/ros/jazzy/lib:/usr/local/cuda-12.8/lib64’ PYTHONPATH=/home/rob/project/csci5551-s26-team-pointbot/install/lib/python3.12/site-packages:/home/rob/project/csci5551-s26-team-pointbot/install/lib/python3.13/site-packages:/opt/ros/jazzy/lib/python3.12/site-packages:/home/rob/robotics5551:/home/rob/robotics5551 /usr/bin/cmake /home/rob/project/csci5551-s26-team-pointbot/src/zed-ros2-wrapper/zed_components -DCMAKE_INSTALL_PREFIX=/home/rob/project/csci5551-s26-team-pointbot/install
+[0.072s] -- The C compiler identification is GNU 13.3.0
+[0.135s] -- The CXX compiler identification is GNU 13.3.0
+[0.150s] -- Detecting C compiler ABI info
+[0.261s] -- Detecting C compiler ABI info - done
+[0.285s] -- Check for working C compiler: /usr/bin/cc - skipped
+[0.285s] -- Detecting C compile features
+[0.286s] -- Detecting C compile features - done
+[0.297s] -- Detecting CXX compiler ABI info
+[0.531s] -- Detecting CXX compiler ABI info - done
+[0.570s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[0.570s] -- Detecting CXX compile features
+[0.570s] -- Detecting CXX compile features - done
+[0.589s] -- Found nlohmann_json: /usr/share/cmake/nlohmann_json/nlohmann_jsonConfig.cmake (found version "3.11.3") 
+[0.608s] -- Looking for sgemm_
+[0.911s] -- Looking for sgemm_ - not found
+[0.911s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+[1.180s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+[1.186s] -- Found Threads: TRUE  
+[1.354s] -- Looking for sgemm_
+[1.645s] -- Looking for sgemm_ - found
+[1.649s] -- Found BLAS: /usr/lib/x86_64-linux-gnu/libopenblas.so  
+[1.653s] [33mCMake Warning (dev) at /usr/local/zed/zed-config.cmake:79 (find_package):
+[1.653s]   Policy CMP0146 is not set: The FindCUDA module is removed.  Run "cmake
+[1.654s]   --help-policy CMP0146" for policy details.  Use the cmake_policy command to
+[1.654s]   set the policy and suppress this warning.
+[1.654s] 
+[1.654s] Call Stack (most recent call first):
+[1.654s]   CMakeLists.txt:85 (find_package)
+[1.654s] This warning is for project developers.  Use -Wno-dev to suppress it.
+[1.654s] [0m
+[1.730s] -- Found CUDA: /usr/local/cuda (found suitable version "12.8", minimum required is "12") 
+[1.731s] [33mCMake Warning (dev) at /usr/local/zed/zed-config.cmake:84 (exec_program):
+[1.731s]   Policy CMP0153 is not set: The exec_program command should not be called.
+[1.733s]   Run "cmake --help-policy CMP0153" for policy details.  Use the cmake_policy
+[1.733s]   command to set the policy and suppress this warning.
+[1.733s] 
+[1.733s]   Use execute_process() instead.
+[1.733s] Call Stack (most recent call first):
+[1.734s]   CMakeLists.txt:85 (find_package)
+[1.734s] This warning is for project developers.  Use -Wno-dev to suppress it.
+[1.734s] [0m
+[1.740s] [33mCMake Warning (dev) at /usr/local/zed/zed-config.cmake:85 (exec_program):
+[1.740s]   Policy CMP0153 is not set: The exec_program command should not be called.
+[1.740s]   Run "cmake --help-policy CMP0153" for policy details.  Use the cmake_policy
+[1.741s]   command to set the policy and suppress this warning.
+[1.741s] 
+[1.741s]   Use execute_process() instead.
+[1.741s] Call Stack (most recent call first):
+[1.741s]   CMakeLists.txt:85 (find_package)
+[1.741s] This warning is for project developers.  Use -Wno-dev to suppress it.
+[1.741s] [0m
+[1.748s] [33mCMake Warning (dev) at /usr/local/zed/zed-config.cmake:101 (exec_program):
+[1.748s]   Policy CMP0153 is not set: The exec_program command should not be called.
+[1.748s]   Run "cmake --help-policy CMP0153" for policy details.  Use the cmake_policy
+[1.748s]   command to set the policy and suppress this warning.
+[1.748s] 
+[1.748s]   Use execute_process() instead.
+[1.748s] Call Stack (most recent call first):
+[1.748s]   CMakeLists.txt:85 (find_package)
+[1.748s] This warning is for project developers.  Use -Wno-dev to suppress it.
+[1.748s] [0m
+[1.768s] [33mCMake Warning (dev) at /usr/local/zed/zed-config.cmake:121 (exec_program):
+[1.769s]   Policy CMP0153 is not set: The exec_program command should not be called.
+[1.769s]   Run "cmake --help-policy CMP0153" for policy details.  Use the cmake_policy
+[1.769s]   command to set the policy and suppress this warning.
+[1.769s] 
+[1.769s]   Use execute_process() instead.
+[1.769s] Call Stack (most recent call first):
+[1.770s]   CMakeLists.txt:85 (find_package)
+[1.770s] This warning is for project developers.  Use -Wno-dev to suppress it.
+[1.770s] [0m
+[1.851s] [33mCMake Warning (dev) at CMakeLists.txt:87 (exec_program):
+[1.851s]   Policy CMP0153 is not set: The exec_program command should not be called.
+[1.851s]   Run "cmake --help-policy CMP0153" for policy details.  Use the cmake_policy
+[1.851s]   command to set the policy and suppress this warning.
+[1.851s] 
+[1.851s]   Use execute_process() instead.
+[1.851s] This warning is for project developers.  Use -Wno-dev to suppress it.
+[1.852s] [0m
+[1.869s] [33mCMake Warning (dev) at CMakeLists.txt:92 (find_package):
+[1.869s]   Policy CMP0146 is not set: The FindCUDA module is removed.  Run "cmake
+[1.869s]   --help-policy CMP0146" for policy details.  Use the cmake_policy command to
+[1.869s]   set the policy and suppress this warning.
+[1.869s] 
+[1.870s] This warning is for project developers.  Use -Wno-dev to suppress it.
+[1.870s] [0m
+[1.891s] -- Found CUDA: /usr/local/cuda (found version "12.8") 
+[1.902s] -- Found ament_cmake_auto: 2.5.5 (/opt/ros/jazzy/share/ament_cmake_auto/cmake)
+[2.311s] -- Found Python3: /home/rob/miniforge3/bin/python3 (found version "3.13.12") found components: Interpreter 
+[2.843s] -- Found rosidl_generator_c: 4.6.7 (/opt/ros/jazzy/share/rosidl_generator_c/cmake)
+[2.868s] -- Found rosidl_generator_cpp: 4.6.7 (/opt/ros/jazzy/share/rosidl_generator_cpp/cmake)
+[2.921s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[2.956s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[3.272s] -- Found rmw_implementation_cmake: 7.3.3 (/opt/ros/jazzy/share/rmw_implementation_cmake/cmake)
+[3.280s] -- Found rmw_fastrtps_cpp: 8.4.3 (/opt/ros/jazzy/share/rmw_fastrtps_cpp/cmake)
+[3.519s] -- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "3.0.13")  
+[3.542s] -- Found FastRTPS: /opt/ros/jazzy/include (Required is at least version "2.13") 
+[3.604s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[4.500s] -- Found eigen3_cmake_module: 0.3.0 (/opt/ros/jazzy/share/eigen3_cmake_module/cmake)
+[4.504s] -- Found Eigen3: TRUE (found version "3.4.0") 
+[4.504s] -- Ensuring Eigen3 include directory is part of orocos-kdl CMake target
+[4.852s] [0m * Point Cloud Transport is available[0m
+[4.856s] -- Found ament_lint_auto: 0.17.4 (/opt/ros/jazzy/share/ament_lint_auto/cmake)
+[4.929s] -- Added test 'copyright' to check source files copyright and LICENSE
+[4.934s] -- Added test 'cppcheck' to perform static code analysis on C / C++ code
+[4.936s] -- Configured cppcheck include dirs: /home/rob/project/csci5551-s26-team-pointbot/src/zed-ros2-wrapper/zed_components/src/include;/home/rob/project/csci5551-s26-team-pointbot/src/zed-ros2-wrapper/zed_components/src/zed_camera/include;/home/rob/project/csci5551-s26-team-pointbot/src/zed-ros2-wrapper/zed_components/src/tools/include;/home/rob/project/csci5551-s26-team-pointbot/src/zed-ros2-wrapper/zed_components/src/zed_camera_one/include
+[4.936s] -- Configured cppcheck exclude dirs and/or files: 
+[4.937s] -- Added test 'lint_cmake' to check CMake code style
+[4.941s] -- Added test 'uncrustify' to check C / C++ code style
+[4.941s] -- Configured uncrustify additional arguments: 
+[4.942s] -- Added test 'xmllint' to check XML markup files
+[4.948s] -- Configuring done (4.9s)
+[5.044s] -- Generating done (0.1s)
+[5.064s] -- Build files have been written to: /home/rob/project/csci5551-s26-team-pointbot/build/zed_components
+[5.102s] Invoked command in '/home/rob/project/csci5551-s26-team-pointbot/build/zed_components' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy CONDA_PROMPT_MODIFIER=(base) DEBUGINFOD_URLS=https://debuginfod.ubuntu.com LD_LIBRARY_PATH=/home/rob/project/csci5551-s26-team-pointbot/install/lib:/opt/ros/jazzy/opt/sdformat_vendor/lib:/opt/ros/jazzy/opt/rviz_ogre_vendor/lib:/opt/ros/jazzy/lib/x86_64-linux-gnu:/opt/ros/jazzy/opt/gz_math_vendor/lib:/opt/ros/jazzy/opt/gz_utils_vendor/lib:/opt/ros/jazzy/opt/gz_tools_vendor/lib:/opt/ros/jazzy/opt/gz_cmake_vendor/lib:/opt/ros/jazzy/lib:/usr/local/cuda-12.8/lib64’ PYTHONPATH=/home/rob/project/csci5551-s26-team-pointbot/install/lib/python3.12/site-packages:/home/rob/project/csci5551-s26-team-pointbot/install/lib/python3.13/site-packages:/opt/ros/jazzy/lib/python3.12/site-packages:/home/rob/robotics5551:/home/rob/robotics5551 /usr/bin/cmake /home/rob/project/csci5551-s26-team-pointbot/src/zed-ros2-wrapper/zed_components -DCMAKE_INSTALL_PREFIX=/home/rob/project/csci5551-s26-team-pointbot/install
+[5.102s] Invoking command in '/home/rob/project/csci5551-s26-team-pointbot/build/zed_components': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy CONDA_PROMPT_MODIFIER=(base) DEBUGINFOD_URLS=https://debuginfod.ubuntu.com LD_LIBRARY_PATH=/home/rob/project/csci5551-s26-team-pointbot/install/lib:/opt/ros/jazzy/opt/sdformat_vendor/lib:/opt/ros/jazzy/opt/rviz_ogre_vendor/lib:/opt/ros/jazzy/lib/x86_64-linux-gnu:/opt/ros/jazzy/opt/gz_math_vendor/lib:/opt/ros/jazzy/opt/gz_utils_vendor/lib:/opt/ros/jazzy/opt/gz_tools_vendor/lib:/opt/ros/jazzy/opt/gz_cmake_vendor/lib:/opt/ros/jazzy/lib:/usr/local/cuda-12.8/lib64’ PYTHONPATH=/home/rob/project/csci5551-s26-team-pointbot/install/lib/python3.12/site-packages:/home/rob/project/csci5551-s26-team-pointbot/install/lib/python3.13/site-packages:/opt/ros/jazzy/lib/python3.12/site-packages:/home/rob/robotics5551:/home/rob/robotics5551 /usr/bin/cmake --build /home/rob/project/csci5551-s26-team-pointbot/build/zed_components -- -j16 -l16
+[5.263s] [ 11%] [32mBuilding CXX object CMakeFiles/zed_camera_component.dir/src/tools/src/gnss_replay.cpp.o[0m
+[5.263s] [ 17%] [32mBuilding CXX object CMakeFiles/zed_camera_component.dir/src/zed_camera/src/zed_camera_component_video_depth.cpp.o[0m
+[5.265s] [ 17%] [32mBuilding CXX object CMakeFiles/zed_camera_component.dir/src/zed_camera/src/zed_camera_component_main.cpp.o[0m
+[5.285s] [ 29%] [32mBuilding CXX object CMakeFiles/zed_camera_component.dir/src/tools/src/sl_tools.cpp.o[0m
+[5.286s] [ 29%] [32mBuilding CXX object CMakeFiles/zed_camera_component.dir/src/zed_camera/src/zed_camera_component_bodytrk.cpp.o[0m
+[5.288s] [ 35%] [32mBuilding CXX object CMakeFiles/zed_camera_component.dir/src/zed_camera/src/zed_camera_component_objdet.cpp.o[0m
+[5.289s] [ 41%] [32mBuilding CXX object CMakeFiles/zed_camera_component.dir/src/tools/src/sl_types.cpp.o[0m
+[5.310s] [ 47%] [32mBuilding CXX object CMakeFiles/zed_camera_component.dir/src/tools/src/sl_win_avg.cpp.o[0m
+[5.324s] [ 58%] [32mBuilding CXX object CMakeFiles/zed_camera_one_component.dir/src/zed_camera_one/src/zed_camera_one_component_main.cpp.o[0m
+[5.326s] [ 64%] [32mBuilding CXX object CMakeFiles/zed_camera_one_component.dir/src/zed_camera_one/src/zed_camera_one_component_video.cpp.o[0m
+[5.332s] [ 70%] [32mBuilding CXX object CMakeFiles/zed_camera_one_component.dir/src/tools/src/sl_types.cpp.o[0m
+[5.334s] [ 76%] [32mBuilding CXX object CMakeFiles/zed_camera_one_component.dir/src/tools/src/gnss_replay.cpp.o[0m
+[5.334s] [ 76%] [32mBuilding CXX object CMakeFiles/zed_camera_one_component.dir/src/zed_camera_one/src/zed_camera_one_component_sensors.cpp.o[0m
+[5.345s] [ 82%] [32mBuilding CXX object CMakeFiles/zed_camera_one_component.dir/src/tools/src/sl_tools.cpp.o[0m
+[5.345s] [ 88%] [32mBuilding CXX object CMakeFiles/zed_camera_one_component.dir/src/tools/src/sl_win_avg.cpp.o[0m
+[38.363s] [ 94%] [32m[1mLinking CXX shared library libzed_camera_one_component.so[0m
+[38.957s] [ 94%] Built target zed_camera_one_component
+[85.455s] [100%] [32m[1mLinking CXX shared library libzed_camera_component.so[0m
+[86.289s] [100%] Built target zed_camera_component
+[86.316s] Invoked command in '/home/rob/project/csci5551-s26-team-pointbot/build/zed_components' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy CONDA_PROMPT_MODIFIER=(base) DEBUGINFOD_URLS=https://debuginfod.ubuntu.com LD_LIBRARY_PATH=/home/rob/project/csci5551-s26-team-pointbot/install/lib:/opt/ros/jazzy/opt/sdformat_vendor/lib:/opt/ros/jazzy/opt/rviz_ogre_vendor/lib:/opt/ros/jazzy/lib/x86_64-linux-gnu:/opt/ros/jazzy/opt/gz_math_vendor/lib:/opt/ros/jazzy/opt/gz_utils_vendor/lib:/opt/ros/jazzy/opt/gz_tools_vendor/lib:/opt/ros/jazzy/opt/gz_cmake_vendor/lib:/opt/ros/jazzy/lib:/usr/local/cuda-12.8/lib64’ PYTHONPATH=/home/rob/project/csci5551-s26-team-pointbot/install/lib/python3.12/site-packages:/home/rob/project/csci5551-s26-team-pointbot/install/lib/python3.13/site-packages:/opt/ros/jazzy/lib/python3.12/site-packages:/home/rob/robotics5551:/home/rob/robotics5551 /usr/bin/cmake --build /home/rob/project/csci5551-s26-team-pointbot/build/zed_components -- -j16 -l16
+[86.319s] Invoking command in '/home/rob/project/csci5551-s26-team-pointbot/build/zed_components': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy CONDA_PROMPT_MODIFIER=(base) DEBUGINFOD_URLS=https://debuginfod.ubuntu.com LD_LIBRARY_PATH=/home/rob/project/csci5551-s26-team-pointbot/install/lib:/opt/ros/jazzy/opt/sdformat_vendor/lib:/opt/ros/jazzy/opt/rviz_ogre_vendor/lib:/opt/ros/jazzy/lib/x86_64-linux-gnu:/opt/ros/jazzy/opt/gz_math_vendor/lib:/opt/ros/jazzy/opt/gz_utils_vendor/lib:/opt/ros/jazzy/opt/gz_tools_vendor/lib:/opt/ros/jazzy/opt/gz_cmake_vendor/lib:/opt/ros/jazzy/lib:/usr/local/cuda-12.8/lib64’ PYTHONPATH=/home/rob/project/csci5551-s26-team-pointbot/install/lib/python3.12/site-packages:/home/rob/project/csci5551-s26-team-pointbot/install/lib/python3.13/site-packages:/opt/ros/jazzy/lib/python3.12/site-packages:/home/rob/robotics5551:/home/rob/robotics5551 /usr/bin/cmake --install /home/rob/project/csci5551-s26-team-pointbot/build/zed_components
+[86.337s] -- Install configuration: "Release"
+[86.337s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/lib/libzed_camera_component.so
+[86.348s] -- Set non-toolchain portion of runtime path of "/home/rob/project/csci5551-s26-team-pointbot/install/lib/libzed_camera_component.so" to ""
+[86.348s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/lib/libzed_camera_one_component.so
+[86.350s] -- Set non-toolchain portion of runtime path of "/home/rob/project/csci5551-s26-team-pointbot/install/lib/libzed_camera_one_component.so" to ""
+[86.350s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_components/
+[86.350s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_components//zed_camera_component.hpp
+[86.351s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_components//cost_traversability.hpp
+[86.351s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_components/
+[86.351s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_components//zed_camera_one_component.hpp
+[86.351s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_components/
+[86.351s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_components//sl_logging.hpp
+[86.352s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_components//sl_types.hpp
+[86.352s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_components//sl_win_avg.hpp
+[86.352s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_components//sl_tools.hpp
+[86.352s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_components//gnss_replay.hpp
+[86.352s] -- Up-to-date: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_components/
+[86.353s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_components//visibility_control.hpp
+[86.353s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/include/zed_components//sl_version.hpp
+[86.353s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/share/zed_components/environment/library_path.sh
+[86.353s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/share/zed_components/environment/library_path.dsv
+[86.353s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/share/ament_index/resource_index/package_run_dependencies/zed_components
+[86.353s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/share/ament_index/resource_index/parent_prefix_path/zed_components
+[86.353s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/share/zed_components/environment/ament_prefix_path.sh
+[86.354s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/share/zed_components/environment/ament_prefix_path.dsv
+[86.354s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/share/zed_components/environment/path.sh
+[86.354s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/share/zed_components/environment/path.dsv
+[86.354s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/share/zed_components/local_setup.bash
+[86.354s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/share/zed_components/local_setup.sh
+[86.354s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/share/zed_components/local_setup.zsh
+[86.354s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/share/zed_components/local_setup.dsv
+[86.355s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/share/zed_components/package.dsv
+[86.355s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/share/ament_index/resource_index/packages/zed_components
+[86.355s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/share/ament_index/resource_index/rclcpp_components/zed_components
+[86.355s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/share/zed_components/cmake/ament_cmake_export_include_directories-extras.cmake
+[86.355s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/share/zed_components/cmake/ament_cmake_export_libraries-extras.cmake
+[86.356s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/share/zed_components/cmake/ament_cmake_export_dependencies-extras.cmake
+[86.357s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/share/zed_components/cmake/zed_componentsConfig.cmake
+[86.358s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/share/zed_components/cmake/zed_componentsConfig-version.cmake
+[86.359s] -- Installing: /home/rob/project/csci5551-s26-team-pointbot/install/share/zed_components/package.xml
+[86.359s] Invoked command in '/home/rob/project/csci5551-s26-team-pointbot/build/zed_components' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy CONDA_PROMPT_MODIFIER=(base) DEBUGINFOD_URLS=https://debuginfod.ubuntu.com LD_LIBRARY_PATH=/home/rob/project/csci5551-s26-team-pointbot/install/lib:/opt/ros/jazzy/opt/sdformat_vendor/lib:/opt/ros/jazzy/opt/rviz_ogre_vendor/lib:/opt/ros/jazzy/lib/x86_64-linux-gnu:/opt/ros/jazzy/opt/gz_math_vendor/lib:/opt/ros/jazzy/opt/gz_utils_vendor/lib:/opt/ros/jazzy/opt/gz_tools_vendor/lib:/opt/ros/jazzy/opt/gz_cmake_vendor/lib:/opt/ros/jazzy/lib:/usr/local/cuda-12.8/lib64’ PYTHONPATH=/home/rob/project/csci5551-s26-team-pointbot/install/lib/python3.12/site-packages:/home/rob/project/csci5551-s26-team-pointbot/install/lib/python3.13/site-packages:/opt/ros/jazzy/lib/python3.12/site-packages:/home/rob/robotics5551:/home/rob/robotics5551 /usr/bin/cmake --install /home/rob/project/csci5551-s26-team-pointbot/build/zed_components

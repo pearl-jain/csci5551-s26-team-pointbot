@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root BTCPP_format="4" project_name="Project">
+    <include path="point_bot_tree.xml"/>
+    <!-- Description of Node Models (used by Groot) -->
+    <TreeNodesModel>
+        <Action ID="DetectGoal" editable="true">
+            <output_port name="goal_pose"/>
+        </Action>
+        <Action ID="DetectObject" editable="true">
+            <output_port name="object_pose"/>
+        </Action>
+        <Action ID="LogString" editable="true">
+            <input_port name="message"/>
+        </Action>
+        <Action ID="MoveObject" editable="true">
+            <input_port name="object_pose"/>
+            <input_port name="goal_pose"/>
+        </Action>
+    </TreeNodesModel>
+</root>
