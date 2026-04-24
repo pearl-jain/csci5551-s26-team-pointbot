@@ -1,8 +1,0 @@
-interrupted
-gmake[1]: *** [CMakeFiles/Makefile2:556: CMakeFiles/btcpp_ros2_interfaces_s__rosidl_typesupport_fastrtps_c.dir/all] Interrupt
-gmake[2]: *** [CMakeFiles/ament_cmake_python_build_btcpp_ros2_interfaces_egg.dir/build.make:70: CMakeFiles/ament_cmake_python_build_btcpp_ros2_interfaces_egg] Interrupt
-gmake[1]: *** [CMakeFiles/Makefile2:497: CMakeFiles/ament_cmake_python_build_btcpp_ros2_interfaces_egg.dir/all] Interrupt
-gmake[1]: *** wait: No child processes.  Stop.
-gmake[1]: *** Waiting for unfinished jobs....
-gmake[1]: *** wait: No child processes.  Stop.
-gmake: *** [Makefile:146: all] Error 2
