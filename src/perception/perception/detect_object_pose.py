@@ -172,14 +172,11 @@ class ObjectPoseDetector():
         exponent = -((x - x0)**2 / (2 * sigma_x**2) + (y - y0)**2 / (2 * sigma_y**2))
         return amplitude * np.exp(exponent)
 
-    def pointing_object_space_scores(self, object_points, pointing_position, pointing_direction):
+    def pointing_object_space_scores(self, object_points, pointing_position, pointing_direction, pointing_uncertainty=0.02, uncertainty_growth=0.01):
         if (len(object_points) == 0):
             return None
         
         pointing_vector = pointing_direction / np.linalg.norm(pointing_direction)
-
-        distance_uncertainty_base = 0.02
-        distance_uncertainty_growth = 0.05
 
         scores = []
         for point in object_points:
@@ -191,18 +188,19 @@ class ObjectPoseDetector():
 
             perpendicular_distance = np.linalg.norm(relative_position - distance * pointing_vector)
 
-            attention_score = self.gaussian(perpendicular_distance, 0, distance_uncertainty_base + distance * distance_uncertainty_growth)
+            attention_score = self.gaussian(perpendicular_distance, 0, pointing_uncertainty + distance * uncertainty_growth)
             scores.append(attention_score)
 
         return scores
 
 
-    def pointing_object_surface_scores(self, object_points, pointing_position, pointing_direction, pointing_uncertainty=1):
+    def pointing_object_surface_scores(self, object_points, pointing_position, pointing_direction, pointing_uncertainty=0.1, uncertainty_growth=0.01):
         intersection_point = self.line_plane_intersect(pointing_position, pointing_direction, np.array([0, 0, 0]), np.array([0, 0, 1]))
 
         if (len(object_points) == 0) or (intersection_point is None):
             return None
         
+        normalized_pointing_direction = pointing_direction / np.linalg.norm(pointing_direction)
         pointing_vector_2d = pointing_direction[:2] / np.linalg.norm(pointing_direction[:2])
 
         rotation_matrix = np.array([
@@ -210,14 +208,18 @@ class ObjectPoseDetector():
             [-pointing_vector_2d[1], pointing_vector_2d[0]]
         ])
 
-        direction_uncertanty = math.atan2(pointing_vector_2d[2], np.linalg.norm(pointing_vector_2d[:2])) * 100 + pointing_uncertainty
+        angle_scalar = max(abs(normalized_pointing_direction[2]), 0.0001)
+
+        distance = np.linalg.norm(intersection_point - pointing_position)
+        distance_uncertainty = pointing_uncertainty + distance * uncertainty_growth
+        direction_uncertanty = distance_uncertainty / angle_scalar
 
         scores = []
-        for point in object_points:
-            relative_position = point[:2] - intersection_point[:2]
+        for object_point in object_points:
+            relative_position = object_point[:2] - intersection_point[:2]
             aligned_position = rotation_matrix @ relative_position
 
-            attention_score = self.gaussian_2d(aligned_position[0], aligned_position[1], 0, 0, direction_uncertanty, pointing_uncertainty)
+            attention_score = self.gaussian_2d(aligned_position[0], aligned_position[1], 0, 0, direction_uncertanty, distance_uncertainty)
             scores.append(attention_score)
 
         return scores
@@ -228,7 +230,7 @@ class ObjectPoseDetector():
         return cube_poses
     
     def select_cube(self, cubes, attention_scores):
-        if len(cubes) == 0 or len(attention_scores) == 0:
+        if not cubes or not attention_scores:
             return None
         
         # TODO: Make this interact with the user

@@ -9,7 +9,7 @@ from geometry_msgs.msg import PoseStamped
 from perception.detect_object_pose import ObjectPoseDetector
 from perception.zed_camera import ZedCamera
 from perception.zed_transform import get_transform_camera_robot
-from perception.pointing_system import PointBot
+from perception.pointing_system import PointBot, CUBE_SIZE
 
 import tf_transformations
 
@@ -50,14 +50,16 @@ class PerceptionActionServer(Node):
         match task:
             case "detect_object":
                 objects = self.pose_detector.detect_cubes(self.zed.image, self.t_cube_robot)
-                object_poses = objects
+                object_poses = objects[:, :3, 3]
 
-                attention_scores = self.pose_detector.pointing_object_surface_scores(object_poses, pointer_position, pointer_direction)
+                print(f"Detected object poses:\n{object_poses}")
+
+                attention_scores = self.pose_detector.pointing_object_surface_scores(object_poses, pointer_position, pointer_direction, 0.1, 0.05)
 
                 selected = self.pose_detector.select_cube(objects, attention_scores)
 
                 result.pose.header.frame_id = "panda_link0"
-                result.pose.pose.orientation = tf_transformations.quaternion_from_matrix(selected[:3, :3])
+                result.pose.pose.orientation = tf.quaternion_from_matrix(selected)
                 result.pose.pose.position.x = selected[0, 3]
                 result.pose.pose.position.y = selected[1, 3]
                 result.pose.pose.position.z = selected[2, 3]
@@ -65,10 +67,10 @@ class PerceptionActionServer(Node):
 
             case "detect_goal":
                 result.pose.header.frame_id = "panda_link0"
-                result.pose.pose.orientation.w = 0
+                result.pose.pose.orientation.w = 1.0
                 result.pose.pose.position.x = attention_pose[0]
                 result.pose.pose.position.y = attention_pose[1]
-                result.pose.pose.position.z = attention_pose[2]
+                result.pose.pose.position.z = attention_pose[2] + CUBE_SIZE / 2.0
                 result.success = True
 
             case _:
