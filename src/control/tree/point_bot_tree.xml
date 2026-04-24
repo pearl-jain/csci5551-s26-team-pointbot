@@ -21,9 +21,8 @@
             <RetryUntilSuccessful num_attempts="-1">
               <DetectGoal goal_pose="{goal_pose}"/>
             </RetryUntilSuccessful>
-            <SubTree ID="ActionTree"
-                     goal_pose="{goal_pose}"
-                     object_pose="{object_pose}"/>
+            <MoveObject object_pose="{object_pose}"
+                        goal_pose="{goal_pose}"/>
           </Sequence>
         </KeepRunningUntilFailure>
       </Inverter>
