@@ -6,6 +6,8 @@ import cv2
 
 from pupil_apriltags import Detector
 
+import math
+
 CUBE_TAG_FAMILY = 'tag36h11'
 CUBE_TAG_ID = 4
 CUBE_TAG_SIZE = 0.02045
@@ -136,19 +138,14 @@ class ObjectDectector():
     
     def detect_cube_poses(self, observation, point_cloud):
         cube_data = self.detect_cube_contours(observation)     
-
-        print(f"Detected {len(cube_data)} cubes.")
-        
+    
         cubes = []
         for cube in cube_data:
-            self.show_cube_countour(cube, observation)
-            # points = cube["contour"].astype(np.float32)
-
-            # success, rvec, tvec, inliers = cv2.solvePnPRansac(self.square_3d, points, self.camera_intrinsic, None)
-
-            # print(success, rvec, tvec, inliers)
-
-        object_pose = PoseStamped()
+            cube_point_cloud = self.get_masked_pc(point_cloud, cube['contour'])
+            
+            t_matrix = self.object_detector.cube_icp_alignment(cube_point_cloud)
+            
+            cubes.append(t_matrix)
 
         return cubes
 
@@ -200,7 +197,7 @@ class ObjectPoseDetector():
         return scores
 
 
-    def pointing_object_surface_scores(self, object_points, pointing_position, pointing_direction):
+    def pointing_object_surface_scores(self, object_points, pointing_position, pointing_direction, pointing_uncertainty=1):
         intersection_point = self.line_plane_intersect(pointing_position, pointing_direction, np.array([0, 0, 0]), np.array([0, 0, 1]))
 
         if (len(object_points) == 0) or (intersection_point is None):
@@ -213,15 +210,14 @@ class ObjectPoseDetector():
             [-pointing_vector_2d[1], pointing_vector_2d[0]]
         ])
 
-        direction_uncertanty = 100.0
-        perpendicular_uncertainty = 12.0
+        direction_uncertanty = math.atan2(pointing_vector_2d[2], np.linalg.norm(pointing_vector_2d[:2])) * 100 + pointing_uncertainty
 
         scores = []
         for point in object_points:
             relative_position = point[:2] - intersection_point[:2]
             aligned_position = rotation_matrix @ relative_position
 
-            attention_score = self.gaussian_2d(aligned_position[0], aligned_position[1], 0, 0, direction_uncertanty, perpendicular_uncertainty)
+            attention_score = self.gaussian_2d(aligned_position[0], aligned_position[1], 0, 0, direction_uncertanty, pointing_uncertainty)
             scores.append(attention_score)
 
         return scores

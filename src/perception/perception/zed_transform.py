@@ -10,7 +10,7 @@ TAG_CENTER_COORDINATES = [[0.38, 0.4],
                          [0.0, 0.4],
                          [0.0, -0.4]]
 
-def get_pnp_pairs(tags):
+def get_pnp_pairs(tags): 
     """
     Extract corresponding 3D world coordinates and 2D image coordinates for 
     the corners of detected AprilTags.
