@@ -1,3 +1,4 @@
+import numpy as np
 from launch import LaunchDescription
 from launch.actions import IncludeLaunchDescription
 from launch.launch_description_sources import PythonLaunchDescriptionSource
@@ -5,11 +6,7 @@ from launch.substitutions import LaunchConfiguration, PathJoinSubstitution
 from launch_ros.substitutions import FindPackageShare
 from launch_ros.actions import Node
 from perception.zed_transform import get_transform
-
-import numpy as np
 from scipy.spatial.transform import Rotation as R
-
-import math
 
 def generate_launch_description():
 	robot_ip = LaunchConfiguration('robot_ip', default='192.168.1.155')
@@ -30,42 +27,23 @@ def generate_launch_description():
 		PythonLaunchDescriptionSource(PathJoinSubstitution([FindPackageShare('zed_wrapper'), 'launch', 'zed_camera.launch.py'])),
 		launch_arguments={
 			'camera_model': 'zed2i',
-			'publish_tf': 'false',           # Stop ZED from publishing odom -> base
-			'publish_map_tf': 'false',       # Stop ZED from publishing map -> odom
-			'base_frame': 'zed_camera_center' # Ensure the ZED knows its root
+			'publish_tf': 'false',
+			'publish_map_tf': 'false',
+			'base_frame': 'zed_camera_center'
 		}.items(),
 	)
 
-	transform = get_transform()
-
-	x = transform[0][3]
-	y = transform[1][3]
-	z = transform[2][3]
-	# roll = 0
-	# pitch = 0
-	# yaw = 0
-
-	# if (transform[2][0] != -1 and transform[2][0] != 1):   
-	# 	roll = -math.asin(transform[2][0])
-	# 	cos_roll = math.cos(roll)
-	# 	pitch = math.atan2(transform[2][1] / cos_roll, transform[2][2] / cos_roll)
-	# 	yaw = math.atan2(transform[1][0] / cos_roll, transform[0][0] / cos_roll)
-	# else:
-	# 	if (transform[2][0] == -1):
-	# 		roll = math.pi / 2
-	# 		yaw = math.atan2(transform[0][1], transform[0][2])
-	# 	else:
-	# 		roll = -math.pi / 2
-	# 		yaw = math.atan2(-transform[0][1], -transform[0][2])
-
-	r = R.from_matrix(transform[:3, :3])
-
+	transform_camera_world = get_transform()
+	transform_world_camera = np.linalg.inv(transform_camera_world)
+	x = transform_world_camera[0][3]
+	y = transform_world_camera[1][3]
+	z = transform_world_camera[2][3]
+	r = R.from_matrix(transform_world_camera[:3, :3])
 	quat = r.as_quat()
 
 	return LaunchDescription([
 		realmove,
 		zed_cam,
-		# static_tf,
 		Node(
 			package='tf2_ros',
 			executable='static_transform_publisher',
@@ -75,10 +53,5 @@ def generate_launch_description():
 			package='tf2_ros',
 			executable='static_transform_publisher',
 			arguments=[str(x), str(y), str(z), str(quat[0]), str(quat[1]), str(quat[2]), str(quat[3]), 'world', 'zed_camera_link']
-		),
-		# Node(
-		# 	package='tf2_ros',
-		# 	executable='static_transform_publisher',
-		# 	arguments=[str(x), str(y), str(z), str(roll), str(pitch), str(yaw), 'world', 'zed_camera_link']
-		# )
+		)
 	])
