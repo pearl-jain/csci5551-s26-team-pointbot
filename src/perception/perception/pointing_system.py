@@ -18,7 +18,6 @@ class PointBot:
         self.frame_buffer = []   
         self.tags = None    
         self.t_cam_robot = t_cam
-        self.t_cam_robot[:3, 3] *= 1000.0 # Convert from m to mm for consistency with depth units
         self.h, self.w, self.image, self.depth = None, None, None, None
 
         self.finger_gesture_table = [
@@ -35,9 +34,9 @@ class PointBot:
             (17, 18, 20, 0, 0.90) # Pinky
         ]
 
-    def zed_to_pcd(self, pcd, img):
+    def zed_to_pcd(self, pcd, img, scale):
         rgb = img[:, :, :3][..., ::-1].reshape(-1, 3) / 255.0
-        xyz = pcd[:, :, :3].reshape(-1, 3)
+        xyz = pcd[:, :, :3].reshape(-1, 3) * scale
 
         mask = ~np.isnan(xyz).any(axis=1)
         xyz_clean = xyz[mask]
@@ -187,6 +186,9 @@ class PointBot:
     def visualize(self, frame, p_tip_cam, ray_cam, intersection_cam):
         h, w = frame.shape[:2]
 
+        p_tip_cam *= 1000.0
+        intersection_cam *= 1000.0
+
         # Project points
         p0 = self.proj_3d_2d(p_tip_cam)
         # Can draw to p1 which is a point in the direction where the person is pointing
@@ -206,7 +208,8 @@ class PointBot:
         print(p0, p_int)
 
         # 3D Visualization
-        frame_pcd = self.zed_to_pcd(self.depth, self.image)
+        frame_pcd = self.zed_to_pcd(self.depth, self.image, 1000.0)
+
         points = np.array([p_tip_cam, intersection_cam])
         lines = [[0,1]]
         line_set = o3d.geometry.LineSet()
