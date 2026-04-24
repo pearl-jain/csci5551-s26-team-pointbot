@@ -22,7 +22,6 @@ class PerceptionActionServer(Node):
             'perception',
             self.execute_callback)        
 
-
         self.zed = get_zed_camera()
         
         self.pose_detector = ObjectPoseDetector(self.zed.camera_intrinsic)
@@ -37,7 +36,9 @@ class PerceptionActionServer(Node):
         self.get_logger().info(f"Peforming perception task {task}")
         goal_handle.succeed() # Tell the client that the goal was handled successfully
 
-        intersection, interaction_type, pointer_position, pointer_direction = self.pointing_system.run()
+        attention_pose, interaction_type, pointer_position, pointer_direction = self.pointing_system.run()
+
+        print(f"Attention Pose: {attention_pose}\nInteraction Type: {interaction_type}\nPointer Position: {pointer_position}\nPointer Direction: {pointer_direction}")
         
         # Define the result message and populate it with the perception results
         result = Perception.Result()
@@ -65,9 +66,9 @@ class PerceptionActionServer(Node):
             case "detect_goal":
                 result.pose.header.frame_id = "panda_link0"
                 result.pose.pose.orientation.w = 0
-                result.pose.pose.position.x = intersection[0]
-                result.pose.pose.position.y = intersection[1]
-                result.pose.pose.position.z = intersection[2]
+                result.pose.pose.position.x = attention_pose[0]
+                result.pose.pose.position.y = attention_pose[1]
+                result.pose.pose.position.z = attention_pose[2]
                 result.success = True
 
             case _:
