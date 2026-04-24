@@ -41,7 +41,7 @@ class PlanningActionServer(Node):
         goal_handle.succeed() # Tell the client that the goal was handled successfully
         result = MoveObject.Result()
 
-        # TODO: Properly implement planning!
+        # Pick and place sequence
         t_robot_object = self.pose_stamped_to_matrix(object_pose)
         t_robot_goal = self.pose_stamped_to_matrix(target_goal)
         self.grasp_cube(self.arm, t_robot_object)
@@ -66,7 +66,7 @@ class PlanningActionServer(Node):
         x = cube_pose[0][3].astype(numpy.float32) * 1000
         y = cube_pose[1][3].astype(numpy.float32) * 1000
         z = cube_pose[2][3].astype(numpy.float32) * 1000
-        z_higher = z + 50
+        z_higher = z + 150 # 15cm higher
 
         #Find rpy
         R = self.matrix_to_rpy(cube_pose)
@@ -108,7 +108,7 @@ class PlanningActionServer(Node):
         x = cube_pose[0][3].astype(numpy.float32) * 1000
         y = cube_pose[1][3].astype(numpy.float32) * 1000
         z = cube_pose[2][3].astype(numpy.float32) * 1000
-        z_higher = z + 50 #5 cm above cause matrix units in meters coverted to mm
+        z_higher = z + 150 # 15cm higher
 
         R = self.matrix_to_rpy(cube_pose)
         roll = R[0]
