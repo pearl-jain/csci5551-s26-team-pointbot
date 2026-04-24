@@ -7,7 +7,7 @@ from xarm.wrapper import XArmAPI # Might need to 'pip install xarm-python-sdk'
 
 import time
 import numpy
-import tf_transformations as tf
+import tf_transformations
 
 GRIPPER_LENGTH = 0.067 * 1000
 SPEED = 500 # Values 0-1000
@@ -128,7 +128,7 @@ class PlanningActionServer(Node):
 
     #3x3 rotation matrix to roll pitch yaw
     def matrix_to_rpy(self, matrix):
-        r, p, y = tf.euler_from_matrix(matrix)
+        r, p, y = tf_transformations.euler_from_matrix(matrix)
         return [r, p, y]
     
     def pose_stamped_to_matrix(self, pose_stamped):
@@ -138,7 +138,7 @@ class PlanningActionServer(Node):
         translation = [pos.x, pos.y, pos.z]
         quaternion = [ori.x, ori.y, ori.z, ori.w]
 
-        T = tf.quaternion_matrix(quaternion)
+        T = tf_transformations.quaternion_matrix(quaternion)
         T[0:3, 3] = translation
 
         return T

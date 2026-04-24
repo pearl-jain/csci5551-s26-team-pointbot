@@ -1,7 +1,6 @@
 import cv2, numpy
 from pupil_apriltags import Detector
-from perception.zed_camera import get_zed_camera
-import tf
+from perception.zed_camera import ZedCamera
 
 TAG_SIZE = 0.08
 
@@ -135,7 +134,7 @@ def get_transform_camera_robot(observation, camera_intrinsic):
 
 def get_transform():
     # Initialize ZED Camera
-    zed = get_zed_camera()
+    zed = ZedCamera()
     camera_intrinsic = zed.camera_intrinsic
     transform = None
 
@@ -148,8 +147,3 @@ def get_transform():
         zed.close()
     
     return transform
-
-def get_quaternion_from_transform(transform):
-    rotation_mat = transform[:3, :3]
-    quaternion = tf.quaternion_from_matrix(rotation_mat)
-    return quaternion

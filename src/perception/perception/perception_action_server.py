@@ -7,11 +7,11 @@ from sensor_msgs.msg import Image
 from geometry_msgs.msg import PoseStamped
 
 from perception.detect_object_pose import ObjectPoseDetector
-from perception.zed_camera import get_zed_camera
+from perception.zed_camera import ZedCamera
 from perception.zed_transform import get_transform_camera_robot
 from perception.pointing_system import PointBot
 
-import tf_transformations as tf
+import tf_transformations
 
 class PerceptionActionServer(Node):
     def __init__(self):
@@ -22,7 +22,7 @@ class PerceptionActionServer(Node):
             'perception',
             self.execute_callback)        
 
-        self.zed = get_zed_camera()
+        self.zed = ZedCamera()
         
         self.pose_detector = ObjectPoseDetector(self.zed.camera_intrinsic)
 
@@ -57,7 +57,7 @@ class PerceptionActionServer(Node):
                 selected = self.pose_detector.select_cube(objects, attention_scores)
 
                 result.pose.header.frame_id = "panda_link0"
-                result.pose.pose.orientation = tf.quaternion_from_matrix(selected[:3, :3])
+                result.pose.pose.orientation = tf_transformations.quaternion_from_matrix(selected[:3, :3])
                 result.pose.pose.position.x = selected[0, 3]
                 result.pose.pose.position.y = selected[1, 3]
                 result.pose.pose.position.z = selected[2, 3]

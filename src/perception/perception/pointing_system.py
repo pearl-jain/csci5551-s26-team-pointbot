@@ -1,12 +1,7 @@
 import cv2
 import numpy as np
 import mediapipe as mp
-from utils.zed_camera import ZedCamera
-import math
-from checkpoint0 import get_transform_camera_robot
-from debug import zed_to_pcd
 import open3d as o3d
-from utils.vis_utils import draw_pose_axes
 
 CUBE_TAG_SIZE = 0.02045
 TARGET_FRAMES = 5
@@ -40,6 +35,20 @@ class PointBot:
             (13, 14, 16, 0, 0.90),# Ring
             (17, 18, 20, 0, 0.90) # Pinky
         ]
+
+    def zed_to_pcd(self, pcd, img):
+        rgb = img[:, :, :3][..., ::-1].reshape(-1, 3) / 255.0
+        xyz = pcd[:, :, :3].reshape(-1, 3)
+
+        mask = ~np.isnan(xyz).any(axis=1)
+        xyz_clean = xyz[mask]
+        rgb_clean = rgb[mask]
+        
+        pcd = o3d.geometry.PointCloud()
+        pcd.points = o3d.utility.Vector3dVector(xyz_clean)
+        pcd.colors = o3d.utility.Vector3dVector(rgb_clean)
+
+        return pcd
 
     # 2D_3D Projection  
     def proj_2d_3d(self, p):
@@ -216,7 +225,7 @@ class PointBot:
         print(p0, p_int)
 
         # 3D Visualization
-        frame_pcd = zed_to_pcd(self.depth, self.image)
+        frame_pcd = self.zed_to_pcd(self.depth, self.image)
         points = np.array([p_tip_cam, intersection_cam])
         lines = [[0,1]]
         line_set = o3d.geometry.LineSet()

@@ -1,93 +1,99 @@
-import numpy, time, threading
+import numpy as np
+import time
+import threading
 import pyzed.sl as sl
 
 class ZedCamera:
-    def __init__(self, resolution=sl.RESOLUTION.HD2K, fps=15, exposure=20):
-        # Initialize ZED Camera
+    _instance = None
+    _lock = threading.Lock()
+
+    def __new__(cls, *args, **kwargs):
+        """Implement Singleton pattern to prevent multiple camera objects."""
+        with cls._lock:
+            if cls._instance is None:
+                cls._instance = super(ZedCamera, cls).__new__(cls)
+                cls._instance._initialized = False
+            return cls._instance
+
+    def __init__(self, resolution=sl.RESOLUTION.HD720, fps=30):
+        # Prevent re-initialization if the singleton already exists
+        if self._initialized:
+            return
+            
         self._zed = sl.Camera()
-        init_params = sl.InitParameters()
-        init_params.enable_image_validity_check = True
-        init_params.camera_resolution = resolution
-        init_params.camera_fps = fps
-        init_params.depth_mode = sl.DEPTH_MODE.NEURAL
-        # init_params.depth_mode = sl.DEPTH_MODE.NEURAL_PLUS
-        init_params.depth_stabilization = 0
+        self._init_params = sl.InitParameters()
+        self._init_params.camera_resolution = resolution
+        self._init_params.camera_fps = fps
+        self._init_params.depth_mode = sl.DEPTH_MODE.NEURAL
+        self._init_params.coordinate_units = sl.UNIT.METER
+        
         self._runtime_parameters = sl.RuntimeParameters()
-        # self._runtime_parameters.enable_depth_smoothing = False
+        
+        # Open the camera
+        status = self._zed.open(self._init_params)
+        if status != sl.ERROR_CODE.SUCCESS:
+            raise ConnectionError(f"ZED Open Failed: {status}")
 
-        # Open ZED Camera
-        err = self._zed.open(init_params)
-        if err > sl.ERROR_CODE.SUCCESS:
-            print("Camera Open : "+repr(err)+". Exit program.")
-            exit(-1)
+        # Warmup and Auto-exposure
+        for _ in range(30):
+            if self._zed.grab() == sl.ERROR_CODE.SUCCESS:
+                break
 
-        # Warmup ZED Camera
-        self._zed.set_camera_settings(sl.VIDEO_SETTINGS.AEC_AGC, 1)
-        self._zed.set_camera_settings(sl.VIDEO_SETTINGS.WHITEBALANCE_AUTO, 1)
-        for _ in range(50):
-            self._zed.grab(sl.RuntimeParameters())
+        # Get Intrinsics
+        calib = self._zed.get_camera_information().camera_configuration.calibration_parameters.left_cam
+        self._camera_intrinsic = np.array([
+            [calib.fx, 0, calib.cx],
+            [0, calib.fy, calib.cy],
+            [0, 0, 1]
+        ])
 
-        # Get Camera Intrinsic
-        camera_info = self._zed.get_camera_information()
-        left_camera_param = camera_info.camera_configuration.calibration_parameters.left_cam
-        self._camera_intrinsic = numpy.eye(3)
-        self._camera_intrinsic[0, 0] = left_camera_param.fx
-        self._camera_intrinsic[1, 1] = left_camera_param.fy
-        self._camera_intrinsic[0, 2] = left_camera_param.cx
-        self._camera_intrinsic[1, 2] = left_camera_param.cy
-
-        # Setup Variable for the Thread
+        # Threading storage
         self._image_mat = sl.Mat()
-        self._measure_XYZ = sl.Mat()
+        self._measure_xyz = sl.Mat()
         self._image = None
         self._point_cloud = None
-
-        # Setup Background Thread
+        
         self._running = True
-        self._lock = threading.Lock()
+        self._data_lock = threading.Lock()
         self._thread = threading.Thread(target=self._update, daemon=True)
         self._thread.start()
-        while self._image is None or self._point_cloud is None:
+
+        # Wait for first frame
+        while self._image is None:
             time.sleep(0.1)
+            
+        self._initialized = True
+        print("ZED Camera initialized and streaming.")
 
     def _update(self):
         while self._running:
-
             if self._zed.grab(self._runtime_parameters) == sl.ERROR_CODE.SUCCESS:
                 self._zed.retrieve_image(self._image_mat, sl.VIEW.LEFT)
-                self._zed.retrieve_measure(self._measure_XYZ, sl.MEASURE.XYZ)
+                self._zed.retrieve_measure(self._measure_xyz, sl.MEASURE.XYZ)
 
-                with self._lock:
+                with self._data_lock:
                     self._image = self._image_mat.get_data().copy()
-                    self._point_cloud = self._measure_XYZ.get_data().copy()
+                    self._point_cloud = self._measure_xyz.get_data().copy()
             else:
                 time.sleep(0.01)
+
+    @property
+    def image(self):
+        with self._data_lock:
+            return self._image if self._image is not None else None
+
+    @property
+    def point_cloud(self):
+        with self._data_lock:
+            return self._point_cloud if self._point_cloud is not None else None
+
+    @property
+    def camera_intrinsic(self):
+        return self._camera_intrinsic
 
     def close(self):
         self._running = False
         if hasattr(self, '_thread'):
             self._thread.join()
         self._zed.close()
-
-    @property
-    def image(self):
-        with self._lock:
-            return self._image.copy() if self._image is not None else None
-    
-    @property
-    def point_cloud(self):
-        with self._lock:
-            return self._point_cloud.copy() if self._point_cloud is not None else None
-
-    @property
-    def camera_intrinsic(self):
-        return self._camera_intrinsic
-
-
-zed = None
-
-def get_zed_camera(resolution=sl.RESOLUTION.HD2K, fps=15, exposure=20):
-    if zed is None:
-        zed = ZedCamera(resolution, fps, exposure)
-
-    return zed
+        ZedCamera._instance = None # Allow re-opening later if needed

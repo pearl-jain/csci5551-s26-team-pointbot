@@ -2,7 +2,7 @@ from geometry_msgs.msg import PoseStamped
 import open3d as o3d
 import numpy as np
 import cv2
-# from perception.zed_camera import get_zed_camera
+from perception.zed_camera import ZedCamera
 
 from pupil_apriltags import Detector
 
@@ -236,9 +236,9 @@ class ObjectPoseDetector():
         return cubes[np.argmax(attention_scores)]
 
 if __name__ == "__main__":
-    # zed = get_zed_camera()
+    zed = ZedCamera()
 
-    detector = ObjectPoseDetector(np.array([]))
+    detector = ObjectPoseDetector(zed.camera_intrinsic)
 
     cubes = [[-25, -32, 1], [30, -30, 1], [30, -20, 1]]
 
