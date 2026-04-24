@@ -243,7 +243,7 @@ class PointBot:
         coord_frame = o3d.geometry.TriangleMesh.create_coordinate_frame(size=20, origin=[0, 0, 0])
 
         # Launch Viewer
-        o3d.visualization.draw_geometries([frame_pcd, line_set, plane_set, intersect_point, coord_frame])
+        # o3d.visualization.draw_geometries([frame_pcd, line_set, plane_set, intersect_point, coord_frame])
         return frame
     
     def run(self):

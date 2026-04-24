@@ -85,7 +85,7 @@ class PerceptionActionServer(Node):
                 result.pose.pose.orientation.w = 1.0
                 result.pose.pose.position.x = attention_pose[0]
                 result.pose.pose.position.y = attention_pose[1]
-                result.pose.pose.position.z = attention_pose[2] + CUBE_SIZE / 2.0
+                result.pose.pose.position.z = attention_pose[2] + CUBE_SIZE
                 result.success = True
 
             case _:

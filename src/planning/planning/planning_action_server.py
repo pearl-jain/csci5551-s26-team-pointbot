@@ -12,7 +12,7 @@ import tf_transformations
 GRIPPER_LENGTH = 0.067 * 1000
 SPEED = 100 # Values 0-1000
 ACCELERATION = 1000 # Values 0-50000
-ROBOT_IP = '192.168.1.xxx' # Hard coded ip, change this based on arm
+ROBOT_IP = '192.168.1.155' # Hard coded ip, change this based on arm
 robot_ip = ROBOT_IP
 
 class PlanningActionServer(Node):
@@ -87,7 +87,7 @@ class PlanningActionServer(Node):
 
         arm.close_lite6_gripper()
         time.sleep(1)
-        arm.stop_lite6_gripper()
+        # arm.stop_lite6_gripper()
 
         arm.set_position(x, y, z_higher, roll, pitch, yaw, is_radian=True, wait=True, speed=SPEED, mvacc=ACCELERATION)
         time.sleep(0.01)
@@ -136,7 +136,7 @@ class PlanningActionServer(Node):
         ori = pose_stamped.pose.orientation
 
         translation = [pos.x, pos.y, pos.z]
-        quaternion = [ori.x, ori.y, ori.z, ori.w]
+        quaternion = [ori.w, ori.x, ori.y, ori.z]
 
         T = tf_transformations.quaternion_matrix(quaternion)
         T[0:3, 3] = translation

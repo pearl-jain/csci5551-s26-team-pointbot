@@ -44,7 +44,7 @@ class ObjectDectector():
             t_cam_cube[:3, 3] = tag.pose_t.flatten()
 
             t_robot_cube = np.linalg.inv(camera_pose) @ t_cam_cube
-            t_robot_cube[2, 3] = t_robot_cube[2, 3] - CUBE_SIZE / 2
+            t_robot_cube[2, 3] = t_robot_cube[2, 3]
 
             cubes.append(t_robot_cube)
 
