@@ -7,6 +7,9 @@ CUBE_TAG_SIZE = 0.02045
 TARGET_FRAMES = 5
 CUBE_SIZE = 0.025
 
+X_MIN, X_MAX = 0, 0.38
+Y_MIN, Y_MAX = -0.4, 0.4
+
 class PointBot:
     def __init__(self, zed, t_cam):
         self.zed = zed
@@ -165,6 +168,10 @@ class PointBot:
         scalar = np.dot((plane_point_rob - pointer_rob), plane_normal_rob) / dot_line_plane
         
         intersect_rob = pointer_rob + scalar * ray_rob
+
+        # Clamps intersect_rob x and y points to workspace bounds
+        intersect_rob[0] = np.clip(intersect_rob[0], X_MIN, X_MAX)
+        intersect_rob[1] = np.clip(intersect_rob[1], Y_MIN, Y_MAX)
 
         intersection_cam = (self.t_cam_robot @ np.append(intersect_rob, 1))[:3]
 
