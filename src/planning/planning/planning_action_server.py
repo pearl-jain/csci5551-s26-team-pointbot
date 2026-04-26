@@ -116,6 +116,7 @@ class PlanningActionServer(Node):
         yaw = R[2]
 
         # Moves arm down to place cube
+        arm.set_position(x, y, z_higher, roll, pitch, yaw, is_radian = True, wait = True, speed=SPEED, mvacc=ACCELERATION)
         arm.set_position(x, y, z, roll, pitch, yaw, is_radian = True, wait = True, speed=SPEED, mvacc=ACCELERATION)
 
         # Opens the gripper to release the cube
