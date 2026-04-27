@@ -4,7 +4,7 @@ import mediapipe as mp
 import open3d as o3d
 
 CUBE_TAG_SIZE = 0.02045
-TARGET_FRAMES = 5
+TARGET_FRAMES = 10
 CUBE_SIZE = 0.025
 
 X_MIN, X_MAX = 0, 0.38
@@ -26,12 +26,12 @@ class PointBot:
 
         self.prev_landmarks = None
         self.stable_counter = 0
-        self.STABLE_FRAMES = 10
-        self.MOTION_THRESH = 0.2
+        self.STABLE_FRAMES = 32
+        self.MOTION_THRESH = 0.05
 
         self.finger_gesture_table = [
             [0, 1, 0, 0, 0], # Pick From Table
-            [1, 1, 1, 1, 1], # Pick From Table
+            [1, 1, 1, 1, 1], # Pick From Hand
         ]
 
         self.finger_props = [
@@ -73,41 +73,76 @@ class PointBot:
         multi_hand_landmarks = landmark_results.multi_hand_landmarks
         if not multi_hand_landmarks: return [-1]
         
+        ANGLE_THRESH = 30
+
         gestures = []
         for hand_landmarks in multi_hand_landmarks:
             extended = []
             for points in self.finger_props:
                 mcp_idx, pip_idx, tip_idx, _, threshold = points
                 
-                m_3d = self.proj_2d_3d(hand_landmarks.landmark[mcp_idx])
-                p_3d = self.proj_2d_3d(hand_landmarks.landmark[pip_idx])
-                t_3d = self.proj_2d_3d(hand_landmarks.landmark[tip_idx])
+                # m_3d = self.proj_2d_3d(hand_landmarks.landmark[mcp_idx])
+                # p_3d = self.proj_2d_3d(hand_landmarks.landmark[pip_idx])
+                # t_3d = self.proj_2d_3d(hand_landmarks.landmark[tip_idx])
                 
-                if m_3d is None or p_3d is None or t_3d is None:
-                    # If 3D fails, assume the finger isn't extended 
-                    extended.append(0)
-                    continue
+                # if m_3d is None or p_3d is None or t_3d is None:
+                #     # If 3D fails, assume the finger isn't extended 
+                #     extended.append(0)
+                #     continue
                     
                 # Calculate if finger is straight
-                finger_len = np.linalg.norm(t_3d - m_3d)
-                max_len = np.linalg.norm(p_3d - m_3d) + np.linalg.norm(t_3d - p_3d)
-                is_straight = int((finger_len / max_len) > threshold)
+                # finger_len = np.linalg.norm(t_3d - m_3d)
+                # max_len = np.linalg.norm(p_3d - m_3d) + np.linalg.norm(t_3d - p_3d)
+                # is_straight = int((finger_len / max_len) > threshold)
+                # extended.append(is_straight)
+
+
+                # Checks in 2D
+                is_straight = self.is_finger_extended(hand_landmarks.landmark[mcp_idx], hand_landmarks.landmark[pip_idx], hand_landmarks.landmark[tip_idx], ANGLE_THRESH)
                 extended.append(is_straight)
             
             print(f"States: {extended}") 
             
-            # Match against table
-            match_found = False
-            for i, target in enumerate(self.finger_gesture_table):
-                if extended == target:
-                    gestures.append(i)
-                    match_found = True
-                    break
+            # # Match against table
+            # match_found = False
+            # for i, target in enumerate(self.finger_gesture_table):
+            #     if extended == target:
+            #         gestures.append(i)
+            #         match_found = True
+            #         break
             
-            if not match_found:
-                gestures.append(0) # Default to pointing
-                
-        return gestures
+            # if not match_found:
+            #     gestures.append(0) # Default to pointing
+
+
+        # Just check index finger vs others for now to differentiate pointing vs open hand
+        index_extended = extended[1]
+        others_extended = sum(extended[2:]) # Middle, Ring, Pinky
+        
+        # Open Hand: Index is out AND at least 2 of the other 3 fingers are out
+        if index_extended and others_extended >= 2:
+            return 1 # Open Hand (Pick)
+            
+        # Pointing: Index is out AND all other 3 fingers are curled
+        if index_extended and others_extended == 0:
+            return 0 # Pointing
+        
+        return -1 # Unrecognized/Unstable Gesture
+    
+    import numpy as np
+
+    def is_finger_extended(self, mcp, pip, tip, threshold_angle=5):
+        v1 = np.array([pip.x - mcp.x, pip.y - mcp.y, pip.z - mcp.z])
+        v2 = np.array([tip.x - pip.x, tip.y - pip.y, tip.z - pip.z])
+        
+        v1_u = v1 / np.linalg.norm(v1)
+        v2_u = v2 / np.linalg.norm(v2)
+  
+        dot_product = np.clip(np.dot(v1_u, v2_u), -1.0, 1.0)
+        angle = np.degrees(np.arccos(dot_product))
+        
+        # If the angle between segments is small, the finger is straight
+        return angle < threshold_angle
 
 
     # Detect MP hands and ray from current 
@@ -271,6 +306,21 @@ class PointBot:
         self.prev_landmarks = curr
         return motion
     
+    def draw_progress_bar(self, frame, progress):
+        h, w = frame.shape[:2]
+        bar_width = int(w * 0.4)
+        bar_height = 30
+        x_start = (w - bar_width) // 2
+        y_start = h - 50
+
+        cv2.rectangle(frame, (x_start, y_start), (x_start + bar_width, y_start + bar_height), (50, 50, 50), -1)
+        cv2.rectangle(frame, (x_start, y_start), (x_start + int(bar_width * progress), y_start + bar_height), (0, 255, 0), -1)
+        cv2.rectangle(frame, (x_start, y_start), (x_start + bar_width, y_start + bar_height), (255, 255, 255), 2)
+
+        cv2.putText(frame, f"Stability: {int(progress * 100)}%", (x_start, y_start - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (255, 255, 255), 2)
+
+        return frame
+    
     def run(self):
         cv2.namedWindow("debug", cv2.WINDOW_NORMAL)
 
@@ -297,6 +347,7 @@ class PointBot:
                     self.stable_counter += 1
                 else:
                     self.stable_counter = 0
+                    self.frame_buffer.clear()
 
                 progress = self.stable_counter / self.STABLE_FRAMES
                 frame = self.draw_progress_bar(frame, progress)
@@ -307,7 +358,7 @@ class PointBot:
                     self.image = color
                     self.depth = depth
                 
-                    if self.detect_gesture(results)[0] == 1:
+                    if self.detect_gesture(results) == 1:
                         print("Gesture Detected: Pick from Hand")
                         wrist_cam = self.proj_2d_3d(lm.landmark[0])
                         wrist_rob = (self.t_cam_robot @ np.append(wrist_cam, 1))[:3]
@@ -318,7 +369,7 @@ class PointBot:
                         cv2.waitKey(0)
                         check_pose = False
                         return wrist_rob, 0, None, None
-                    else:
+                    elif self.detect_gesture(results) == 0:
                         print("Gesture Detected: Pointing")
 
                         # First version usage

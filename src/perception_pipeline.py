@@ -16,9 +16,9 @@ from utils.vis_utils import draw_pose_axes
 def main():
     zed = ZedCamera()
     # Real
-    t_cam_robot = get_transform_camera_robot(zed.image, zed.camera_intrinsic)
+    # t_cam_robot = get_transform_camera_robot(zed.image, zed.camera_intrinsic)
     # Debug without the system
-    # t_cam_robot = np.eye(4)
+    t_cam_robot = np.eye(4)
     cam = PointBot(zed, t_cam_robot)
 
     # p_tip_cam, ray_cam, intersect, intersection_cam = cam.solve()
