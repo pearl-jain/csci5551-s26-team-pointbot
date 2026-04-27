@@ -77,21 +77,21 @@ class PlanningActionServer(Node):
         yaw = R[2]
 
         # Pick up and Place script
-        arm.set_position(x, y, z_higher, roll, pitch, yaw, is_radian=True, wait=True, speed=SPEED, mvacc=ACCELERATION)
+        arm.set_position(x, y, z_higher, pitch, roll, yaw, is_radian=True, wait=True, speed=SPEED, mvacc=ACCELERATION)
         time.sleep(0.01)
 
         arm.open_lite6_gripper()
         time.sleep(1)
         arm.stop_lite6_gripper()
 
-        arm.set_position(x, y, z, roll, pitch, yaw, is_radian=True, wait=True, speed=SPEED, mvacc=ACCELERATION)
+        arm.set_position(x, y, z, pitch, roll, yaw, is_radian=True, wait=True, speed=SPEED, mvacc=ACCELERATION)
         time.sleep(0.01)
 
         arm.close_lite6_gripper()
         time.sleep(1)
         # arm.stop_lite6_gripper()
 
-        arm.set_position(x, y, z_higher, roll, pitch, yaw, is_radian=True, wait=True, speed=SPEED, mvacc=ACCELERATION)
+        arm.set_position(x, y, z_higher, pitch, roll, yaw, is_radian=True, wait=True, speed=SPEED, mvacc=ACCELERATION)
         time.sleep(0.01)
 
     def place_cube(self, arm, cube_pose):
@@ -118,8 +118,8 @@ class PlanningActionServer(Node):
         yaw = R[2]
 
         # Moves arm down to place cube
-        arm.set_position(x, y, z_higher, roll, pitch, yaw, is_radian = True, wait = True, speed=SPEED, mvacc=ACCELERATION)
-        arm.set_position(x, y, z, roll, pitch, yaw, is_radian = True, wait = True, speed=SPEED, mvacc=ACCELERATION)
+        arm.set_position(x, y, z_higher, pitch, roll, yaw, is_radian = True, wait = True, speed=SPEED, mvacc=ACCELERATION)
+        arm.set_position(x, y, z, pitch, roll, yaw, is_radian = True, wait = True, speed=SPEED, mvacc=ACCELERATION)
 
         # Opens the gripper to release the cube
         arm.open_lite6_gripper()
@@ -127,7 +127,7 @@ class PlanningActionServer(Node):
         arm.stop_lite6_gripper()
 
         # Moves arm back up to position 15cm above the placed cube
-        arm.set_position(x, y, z_higher, roll, pitch, yaw, is_radian = True, wait = True, speed=SPEED, mvacc=ACCELERATION)
+        arm.set_position(x, y, z_higher, pitch, roll, yaw, is_radian = True, wait = True, speed=SPEED, mvacc=ACCELERATION)
 
     #3x3 rotation matrix to roll pitch yaw
     # def matrix_to_rpy(self, matrix):
@@ -160,9 +160,8 @@ class PlanningActionServer(Node):
         ori = pose_stamped.pose.orientation
 
         translation = [pos.x, pos.y, pos.z]
-        quaternion = [ori.w, ori.x, ori.y, ori.z]
 
-        T = tf_transformations.quaternion_matrix(quaternion)
+        T = tf_transformations.quaternion_matrix([ori.x, ori.y, ori.z, ori.w])
         T[0:3, 3] = translation
 
         return T

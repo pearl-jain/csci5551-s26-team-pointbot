@@ -222,6 +222,20 @@ class ObjectPoseDetector():
 
         return scores
 
+    def pointing_object_distance_scores(self, object_points, pointing_position, pointing_direction):
+        intersection_point = self.line_plane_intersect(pointing_position, pointing_direction, np.array([0, 0, 0]), np.array([0, 0, 1]))
+
+        if (len(object_points) == 0) or (intersection_point is None):
+            return None
+        
+        scores = []
+        for object_point in object_points:
+            relative_position = object_point[:2] - intersection_point[:2]
+
+            scores.append(1 / np.linalg.norm(relative_position))
+
+        return scores
+
     def detect_cubes(self, observation, camera_pose):
         cube_poses = self.object_detector.detect_april_tag_poses(observation, camera_pose)
 

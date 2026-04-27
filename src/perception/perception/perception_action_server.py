@@ -79,13 +79,15 @@ class PerceptionActionServer(Node):
                     object.pose.orientation.y = q[2]
                     object.pose.orientation.z = q[3]
                     object_posestamped.append(object)
+                    
                 publish_object_markers(self.object_publisher, object_posestamped)
 
                 attention_pose, interaction_type, pointer_position, pointer_direction = self.pointing_system.run(object_poses)
 
                 self.get_logger().info(f"Attention Pose: {attention_pose}\nInteraction Type: {interaction_type}\nPointer Position: {pointer_position}\nPointer Direction: {pointer_direction}")
                 
-                attention_scores = self.pose_detector.pointing_object_space_scores(object_poses, pointer_position, pointer_direction, 0.02, 0.01)
+                # attention_scores = self.pose_detector.pointing_object_space_scores(object_poses, pointer_position, pointer_direction, 0.02, 0.01)
+                attention_scores = self.pose_detector.pointing_object_distance_scores(object_poses, pointer_position, pointer_direction)
 
                 selected = self.pose_detector.select_cube(objects, attention_scores)
 
@@ -94,10 +96,11 @@ class PerceptionActionServer(Node):
                 q = tf_transformations.quaternion_from_matrix(selected)
 
                 result.pose.header.frame_id = "panda_link0"
-                result.pose.pose.orientation.w = q[0]
-                result.pose.pose.orientation.x = q[1]
-                result.pose.pose.orientation.y = q[2]
-                result.pose.pose.orientation.z = q[3]
+                # result.pose.pose.orientation.x = q[0]
+                # result.pose.pose.orientation.y = q[1]
+                # result.pose.pose.orientation.z = q[2]
+                # result.pose.pose.orientation.w = q[3]
+                result.pose.pose.orientation.w = 1.0
                 result.pose.pose.position.x = selected[0, 3]
                 result.pose.pose.position.y = selected[1, 3]
                 result.pose.pose.position.z = selected[2, 3]

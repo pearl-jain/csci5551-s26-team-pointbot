@@ -3,6 +3,7 @@ import numpy as np
 import mediapipe as mp
 import open3d as o3d
 from perception.zed_transform import TAG_SIZE 
+from types import SimpleNamespace
 
 CUBE_TAG_SIZE = 0.02045
 TARGET_FRAMES = 5
@@ -350,13 +351,14 @@ class PointBot:
                     if self.detect_gesture(results) == 0:
                         print("Gesture Detected: Open Hand")
                         palm_indices = [0, 1, 5, 9, 13, 17]
-                        palm_points = np.array([
-                            [results.multi_hand_landmarks[0].landmark[i].x, 
-                            results.multi_hand_landmarks[0].landmark[i].y] 
+                        palm = np.array([
+                            [lm.landmark[i].x, 
+                            lm.landmark[i].y] 
                             for i in palm_indices
                         ])
-                                            
-                        palm_cam = self.proj_2d_3d(np.mean(palm_points, axis=0))
+                        palm = np.mean(palm, axis=0)
+                        palm = SimpleNamespace(x=palm[0], y=palm[1])
+                        palm_cam = self.proj_2d_3d(palm)
                         palm_rob = (np.linalg.inv(self.t_cam_robot) @ np.append(palm_cam, 1))[:3]
                         # Returns 0 when picking from hand, 1 when pointing to table
                         self.frame_buffer.clear()
