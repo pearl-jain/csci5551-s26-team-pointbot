@@ -17,7 +17,7 @@ import cv2
 
 import tf_transformations
 
-from pointbot_rviz.visualization_helpers import publish_object_markers, publish_pointing_vector_marker, publish_selected_marker, publish_goal_marker
+from pointbot_rviz.pointbot_rviz.visualization_helpers import publish_object_markers, publish_pointing_vector_marker, publish_selected_marker, publish_goal_marker
 
 class PerceptionActionServer(Node):
     def __init__(self):
@@ -79,7 +79,7 @@ class PerceptionActionServer(Node):
                     object.pose.orientation.y = q[2]
                     object.pose.orientation.z = q[3]
                     object_posestamped.append(object)
-                    
+
                 publish_object_markers(self.object_publisher, object_posestamped)
 
                 attention_pose, interaction_type, pointer_position, pointer_direction = self.pointing_system.run(object_poses)
@@ -96,11 +96,10 @@ class PerceptionActionServer(Node):
                 q = tf_transformations.quaternion_from_matrix(selected)
 
                 result.pose.header.frame_id = "panda_link0"
-                # result.pose.pose.orientation.x = q[0]
-                # result.pose.pose.orientation.y = q[1]
-                # result.pose.pose.orientation.z = q[2]
-                # result.pose.pose.orientation.w = q[3]
-                result.pose.pose.orientation.w = 1.0
+                result.pose.pose.orientation.w = q[0]
+                result.pose.pose.orientation.x = q[1]
+                result.pose.pose.orientation.y = q[2]
+                result.pose.pose.orientation.z = q[3]
                 result.pose.pose.position.x = selected[0, 3]
                 result.pose.pose.position.y = selected[1, 3]
                 result.pose.pose.position.z = selected[2, 3]
@@ -118,21 +117,22 @@ class PerceptionActionServer(Node):
                 result.pose.pose.position.z = attention_pose[2] + CUBE_SIZE
                 result.success = True
                 
-                publish_goal_marker(self.goal_publisher, attention_pose)
+                publish_goal_marker(self.goal_publisher, result.pose)
 
-                from_pose = PoseStamped()
-                from_pose.header.frame_id = "panda_link0"
-                from_pose.pose.position.x = pointer_position[0]
-                from_pose.pose.position.y = pointer_position[1]
-                from_pose.pose.position.z = pointer_position[2]
+                if interaction_type == 1:
+                    from_pose = PoseStamped()
+                    from_pose.header.frame_id = "panda_link0"
+                    from_pose.pose.position.x = pointer_position[0]
+                    from_pose.pose.position.y = pointer_position[1]
+                    from_pose.pose.position.z = pointer_position[2]
 
-                to_pose = PoseStamped()
-                to_pose.header.frame_id = "panda_link0"
-                to_pose.pose.position.x = pointer_direction[0]
-                to_pose.pose.position.y = pointer_direction[1]
-                to_pose.pose.position.z = pointer_direction[2]
+                    to_pose = PoseStamped()
+                    to_pose.header.frame_id = "panda_link0"
+                    to_pose.pose.position.x = pointer_direction[0]
+                    to_pose.pose.position.y = pointer_direction[1]
+                    to_pose.pose.position.z = pointer_direction[2]
 
-                publish_pointing_vector_marker(self.vector_publisher, from_pose, to_pose)
+                    publish_pointing_vector_marker(self.vector_publisher, from_pose, to_pose)
 
             case _:
                 result.success = False              
