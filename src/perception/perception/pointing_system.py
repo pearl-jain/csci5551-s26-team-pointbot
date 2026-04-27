@@ -175,11 +175,41 @@ class PointBot:
         ray /= norm
         self.frame_buffer.append((p_tip, ray))
         return p_tip, ray
+    
+    def check_sphere_intersections(self, ray_origin, ray_dir, object_centers, radius=CUBE_SIZE):
+        hits = []
+        
+        for center in object_centers:
+            # Dist from object to pointer finger projected on ray
+            L = center - ray_origin
+            closest_approach = np.dot(L, ray_dir)
+            
+            # Object behind the hand 
+            if closest_approach < 0:
+                continue
 
-    def solve(self):
+            # If ray is further than the radius   
+            d2 = np.dot(L, L) - closest_approach * closest_approach
+            if d2 > radius**2:
+                continue
+                
+            # Find distance along ray to intersection points
+            half_cord = np.sqrt(radius**2 - d2)
+            
+            hit_point = closest_approach - half_cord
+            
+            hits.append((center, hit_point))
+            
+        # Sort hits by distance (closest first if we have multiple objects in a row)
+        hits.sort(key=lambda x: x[1])
+        return hits
+    
+    def solve(self, objects):
         t_robot_cam = np.linalg.inv(self.t_cam_robot)
 
         print(f"Robot thinks camera is at: {t_robot_cam[:3, 3]}")
+
+        intersect_rob, intersection_cam = None, None
 
         #t_robot_cam should be camera frame -> robot frame
         p_tips = np.array([f[0] for f in self.frame_buffer])
@@ -191,23 +221,34 @@ class PointBot:
         pointer_rob = (t_robot_cam @ np.append(p_tip_cam, 1))[:3]
         ray_rob = (t_robot_cam[:3, :3] @ ray_cam)
         ray_rob /= np.linalg.norm(ray_rob)
+
         print("p_tip_z:", pointer_rob[2])
         print("dir_z:", ray_rob[2])
 
         if abs(ray_rob[2]) < 1e-6:
             return None
 
-        plane_normal_rob = np.array([0, 0, 1])
-        plane_point_rob = np.array([0, 0, 0])
-
-        dot_line_plane = np.dot(ray_rob, plane_normal_rob)
-        if dot_line_plane >= 0:
-            print("Warning: Pointing away from table")
-            return None
-            
-        scalar = np.dot((plane_point_rob - pointer_rob), plane_normal_rob) / dot_line_plane
+         # Check Sphere Intersections!!
+        if objects is not None:
+            intersected_objects = self.check_sphere_intersections(pointer_rob, ray_rob, objects)
         
-        intersect_rob = pointer_rob + scalar * ray_rob
+            if len(intersected_objects) > 0:
+                best_hit = intersected_objects[0][1]
+                intersect_rob = pointer_rob + (best_hit * ray_rob)
+                print(f"Hit object at: {intersect_rob}")
+
+        if intersect_rob is None:
+            plane_normal_rob = np.array([0, 0, 1])
+            plane_point_rob = np.array([0, 0, 0])
+
+            dot_line_plane = np.dot(ray_rob, plane_normal_rob)
+            if dot_line_plane >= 0:
+                print("Warning: Pointing away from table")
+                return None
+                
+            scalar = np.dot((plane_point_rob - pointer_rob), plane_normal_rob) / dot_line_plane
+            
+            intersect_rob = pointer_rob + scalar * ray_rob
 
         # Clamps intersect_rob x and y points to workspace bounds
         intersect_rob[0] = np.clip(intersect_rob[0], X_MIN, X_MAX)
@@ -293,6 +334,8 @@ class PointBot:
         # o3d.visualization.draw_geometries([frame_pcd, line_set, plane_set, intersect_point, coord_frame])
         return frame
     
+
+    
     def landmark_motion(self, lm):
         curr = np.array([[p.x, p.y, p.z] for p in lm.landmark])
 
@@ -321,7 +364,7 @@ class PointBot:
 
         return frame
     
-    def run(self):
+    def run(self, objects=None):
         cv2.namedWindow("debug", cv2.WINDOW_NORMAL)
 
         check_pose = True
@@ -375,7 +418,7 @@ class PointBot:
                         # First version usage
                         # tip_cam, ray_cam, tip_rob, ray_rob, inter, inter_cam = self.solve(t_cam_robot)
                         # Second version usage
-                        tip_cam, ray_cam, tip_rob, ray_rob, inter_rob, inter_cam = self.solve()
+                        tip_cam, ray_cam, tip_rob, ray_rob, inter_rob, inter_cam = self.solve(objects)
                         frame = self.visualize(frame, tip_cam, ray_cam, inter_cam)
                         cv2.imshow("debug", frame)
                         cv2.waitKey(0)
