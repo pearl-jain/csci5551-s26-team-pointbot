@@ -81,41 +81,13 @@ class PointBot:
             extended = []
             for points in self.finger_props:
                 mcp_idx, pip_idx, tip_idx, _, threshold = points
-                
-                # m_3d = self.proj_2d_3d(hand_landmarks.landmark[mcp_idx])
-                # p_3d = self.proj_2d_3d(hand_landmarks.landmark[pip_idx])
-                # t_3d = self.proj_2d_3d(hand_landmarks.landmark[tip_idx])
-                
-                # if m_3d is None or p_3d is None or t_3d is None:
-                #     # If 3D fails, assume the finger isn't extended 
-                #     extended.append(0)
-                #     continue
-                    
-                # Calculate if finger is straight
-                # finger_len = np.linalg.norm(t_3d - m_3d)
-                # max_len = np.linalg.norm(p_3d - m_3d) + np.linalg.norm(t_3d - p_3d)
-                # is_straight = int((finger_len / max_len) > threshold)
-                # extended.append(is_straight)
-
-
+            
                 # Checks in 2D
                 is_straight = self.is_finger_extended(hand_landmarks.landmark[mcp_idx], hand_landmarks.landmark[pip_idx], hand_landmarks.landmark[tip_idx], ANGLE_THRESH)
                 extended.append(is_straight)
             
             print(f"States: {extended}") 
-            
-            # # Match against table
-            # match_found = False
-            # for i, target in enumerate(self.finger_gesture_table):
-            #     if extended == target:
-            #         gestures.append(i)
-            #         match_found = True
-            #         break
-            
-            # if not match_found:
-            #     gestures.append(0) # Default to pointing
-
-
+        
         # Just check index finger vs others for now to differentiate pointing vs open hand
         index_extended = extended[1]
         others_extended = sum(extended[2:]) # Middle, Ring, Pinky
@@ -130,8 +102,6 @@ class PointBot:
         
         return -1 # Unrecognized/Unstable Gesture
     
-    import numpy as np
-
     def is_finger_extended(self, mcp, pip, tip, threshold_angle=5):
         v1 = np.array([pip.x - mcp.x, pip.y - mcp.y, pip.z - mcp.z])
         v2 = np.array([tip.x - pip.x, tip.y - pip.y, tip.z - pip.z])
@@ -268,67 +238,45 @@ class PointBot:
     def valid_pixel(self, p):
         return p is not None and 0 <= p[0] < self.w and 0 <= p[1] < self.h
     
-    def visualize(self, frame, p_tip_cam, ray_cam, intersection_cam):
-        h, w = frame.shape[:2]
-
-        p_tip_cam *= 1000.0
-        intersection_cam *= 1000.0
-
-        # Project points
-        p0 = self.proj_3d_2d(p_tip_cam)
-        # Can draw to p1 which is a point in the direction where the person is pointing
-        p1 = self.proj_3d_2d(p_tip_cam + 100 * ray_cam) 
-        # p_int is the point where the pointing ray intersects with our plane
-        p_int = self.proj_3d_2d(intersection_cam)
-
-        if self.valid_pixel(p0) and self.valid_pixel(p_int):
+    def visualize(self, frame, origin_cam, ray_cam=None, intersection_cam=None, enable3d=None):
+        # 2D Projection
+        origin_cam *= 1000.0
+        p0 = self.proj_3d_2d(origin_cam)
+        if self.valid_pixel(p0):
             cv2.circle(frame, p0, 5, (255,0,0), -1)
-            cv2.line(frame, p0, p_int, (0, 255, 0), 2)
-            cv2.circle(frame, p_int, 5, (0, 0, 255), -1)
-        else:
-            print("Skipping full ray draw: invalid projection")
 
-        point = [0,1,0]
-        print(p_tip_cam, intersection_cam)
-        print(p0, p_int)
+        if ray_cam is not None and intersection_cam is not None : 
+            intersection_cam *= 1000.0
+            p_int = self.proj_3d_2d(origin_cam)
+            if self.valid_pixel(p0) and self.valid_pixel(p_int):
+                cv2.line(frame, p0, p_int, (0, 255, 0), 2)
+                cv2.circle(frame, p_int, 5, (0, 0, 255), -1)
+            else:
+                print("Skipping full ray draw: invalid projection")
+
+        # print(origin_cam, intersection_cam)
+        # print(p0, p_int)
 
         # 3D Visualization
-        frame_pcd = self.zed_to_pcd(self.depth, self.image, 1000.0)
+        if enable3d is not None:
+            frame_pcd = self.zed_to_pcd(self.depth, self.image, 1000.0)
 
-        points = np.array([p_tip_cam, intersection_cam])
-        lines = [[0,1]]
-        line_set = o3d.geometry.LineSet()
-        line_set.points = o3d.utility.Vector3dVector(points)
-        line_set.lines = o3d.utility.Vector2iVector(lines)
-        line_set.colors = o3d.utility.Vector3dVector([[0,1,0]])
+            points = np.array([origin_cam, intersection_cam])
+            lines = [[0,1]]
+            line_set = o3d.geometry.LineSet()
+            line_set.points = o3d.utility.Vector3dVector(points)
+            line_set.lines = o3d.utility.Vector2iVector(lines)
+            line_set.colors = o3d.utility.Vector3dVector([[0,1,0]])
 
+            intersect_point = o3d.geometry.TriangleMesh.create_sphere(radius=2.0)
+            intersect_point.translate(intersection_cam)
+            intersect_point.paint_uniform_color([0, 0, 1]) # Blue dot
 
-        # Draws Plane with arbitrary y-values for debugging
-        side = 100 
-        plane_height = 100 # Adjusted by Y
-        
-        # Define corners of the plane in the X-Z directions
-        plane_corners = np.array([
-            [-side, plane_height, -side],
-            [ side, plane_height, -side],
-            [ side, plane_height,  side],
-            [-side, plane_height,  side]
-        ])
-        plane_lines = [[0, 1], [1, 2], [2, 3], [3, 0]]
-        plane_set = o3d.geometry.LineSet()
-        plane_set.points = o3d.utility.Vector3dVector(plane_corners)
-        plane_set.lines = o3d.utility.Vector2iVector(plane_lines)
-        plane_set.paint_uniform_color([1, 0, 0]) # Red boundary
+            # Coordinate Frame to see the Origin
+            coord_frame = o3d.geometry.TriangleMesh.create_coordinate_frame(size=20, origin=[0, 0, 0])
 
-        intersect_point = o3d.geometry.TriangleMesh.create_sphere(radius=2.0)
-        intersect_point.translate(intersection_cam)
-        intersect_point.paint_uniform_color([0, 0, 1]) # Blue dot
-
-        # Coordinate Frame to see the Origin
-        coord_frame = o3d.geometry.TriangleMesh.create_coordinate_frame(size=20, origin=[0, 0, 0])
-
-        # Launch Viewer
-        # o3d.visualization.draw_geometries([frame_pcd, line_set, plane_set, intersect_point, coord_frame])
+            # Launch Viewer
+            o3d.visualization.draw_geometries([frame_pcd, line_set, intersect_point, coord_frame])
         return frame
     
 
@@ -386,7 +334,7 @@ class PointBot:
 
                 if motion < self.MOTION_THRESH:
                     self.stable_counter += 1
-                    sample = self.sample_frame(frame, depth, lm)
+                    _ = self.sample_frame(frame, depth, lm)
 
                 else:
                     self.stable_counter = 0
@@ -395,23 +343,31 @@ class PointBot:
                 progress = self.stable_counter / self.STABLE_FRAMES
                 frame = self.draw_progress_bar(frame, progress)
 
-                if self.stable_counter > self.STABLE_FRAMES:
+                if self.stable_counter >= self.STABLE_FRAMES:
                     self.image = color
                     self.depth = depth
                 
                     if self.detect_gesture(results) == 1:
-                        print("Gesture Detected: Pick from Hand")
-                        wrist_cam = self.proj_2d_3d(lm.landmark[0])
-                        wrist_rob = (np.linalg.inv(self.t_cam_robot) @ np.append(wrist_cam, 1))[:3]
+                        print("Gesture Detected: Open Hand")
+                        palm_indices = [0, 1, 5, 9, 13, 17]
+                        palm_points = np.array([
+                            [results.multi_hand_landmarks[0].landmark[i].x, 
+                            results.multi_hand_landmarks[0].landmark[i].y] 
+                            for i in palm_indices
+                        ])
+                                            
+                        palm_cam = self.proj_2d_3d(np.mean(palm_points, axis=0))
+                        palm_rob = (np.linalg.inv(self.t_cam_robot) @ np.append(palm_cam, 1))[:3]
                         # Returns 0 when picking from hand, 1 when pointing to table
                         self.frame_buffer.clear()
-                        wrist_rob[0] = np.clip(wrist_rob[0], X_MIN, X_MAX)
-                        wrist_rob[1] = np.clip(wrist_rob[1], Y_MIN, Y_MAX)
-                        frame = self.visualize(frame, wrist_cam, wrist_cam, wrist_cam)
+
+                        palm_rob[0] = np.clip(palm_rob[0], X_MIN, X_MAX)
+                        palm_rob[1] = np.clip(palm_rob[1], Y_MIN, Y_MAX)
+                        frame = self.visualize(frame, palm_cam)
                         cv2.imshow("debug", frame)
                         cv2.waitKey(0)
                         check_pose = False
-                        return wrist_rob, 0, None, None
+                        return palm_rob, 0, None, None
                     elif self.detect_gesture(results) == 0:
                         print("Gesture Detected: Pointing")
 
@@ -419,6 +375,7 @@ class PointBot:
                         # tip_cam, ray_cam, tip_rob, ray_rob, inter, inter_cam = self.solve(t_cam_robot)
                         # Second version usage
                         tip_cam, ray_cam, tip_rob, ray_rob, inter_rob, inter_cam = self.solve(objects)
+
                         inter_rob[0] = np.clip(inter_rob[0], X_MIN, X_MAX)
                         inter_rob[1] = np.clip(inter_rob[1], Y_MIN, Y_MAX)
                         frame = self.visualize(frame, tip_cam, ray_cam, inter_cam)
