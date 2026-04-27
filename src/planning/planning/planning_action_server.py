@@ -5,6 +5,8 @@ from rclpy.node import Node
 from point_bot_interfaces.action import MoveObject
 from xarm.wrapper import XArmAPI # Might need to 'pip install xarm-python-sdk'
 
+import math
+
 import time
 import numpy
 import tf_transformations
@@ -69,7 +71,7 @@ class PlanningActionServer(Node):
         z_higher = z + 50
 
         #Find rpy
-        R = self.matrix_to_rpy(cube_pose)
+        R = self.matrix_to_rpy(cube_pose[:3, :3])
         roll = R[0]
         pitch = R[1]
         yaw = R[2]
@@ -110,7 +112,7 @@ class PlanningActionServer(Node):
         z = cube_pose[2][3].astype(numpy.float32) * 1000
         z_higher = z + 50 #5 cm above cause matrix units in meters coverted to mm
 
-        R = self.matrix_to_rpy(cube_pose)
+        R = self.matrix_to_rpy(cube_pose[:3, :3])
         roll = R[0]
         pitch = R[1]
         yaw = R[2]
@@ -128,9 +130,30 @@ class PlanningActionServer(Node):
         arm.set_position(x, y, z_higher, roll, pitch, yaw, is_radian = True, wait = True, speed=SPEED, mvacc=ACCELERATION)
 
     #3x3 rotation matrix to roll pitch yaw
+    # def matrix_to_rpy(self, matrix):
+    #     r, p, y = tf_transformations.euler_from_matrix(matrix)
+    #     return [r, p, y]
+    
     def matrix_to_rpy(self, matrix):
-        r, p, y = tf_transformations.euler_from_matrix(matrix)
-        return [r, p, y]
+        R = matrix
+        theta = 0
+        phi = 0
+        psy = 0
+
+        if (R[2][0] != -1 and R[2][0] != 1):   
+            theta = -math.asin(R[2][0])
+            cos_theta = math.cos(theta)
+            phi = math.atan2(R[2][1] / cos_theta, R[2][2] / cos_theta)
+            psy = math.atan2(R[1][0] / cos_theta, R[0][0] / cos_theta)
+        else:
+            if (R[2][0] == -1):
+                theta = math.pi / 2
+                psy = math.atant2(R[0][1], R[0][2])
+            else:
+                theta = -math.pi / 2
+                psy = math.atant2(-R[0][1], -R[0][2])
+
+        return [theta, phi, psy]
     
     def pose_stamped_to_matrix(self, pose_stamped):
         pos = pose_stamped.pose.position

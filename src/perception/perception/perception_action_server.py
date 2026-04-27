@@ -41,10 +41,6 @@ class PerceptionActionServer(Node):
         self.get_logger().info(f"Peforming perception task {task}")
         goal_handle.succeed() # Tell the client that the goal was handled successfully
 
-        attention_pose, interaction_type, pointer_position, pointer_direction = self.pointing_system.run()
-
-        self.get_logger().info(f"Attention Pose: {attention_pose}\nInteraction Type: {interaction_type}\nPointer Position: {pointer_position}\nPointer Direction: {pointer_direction}")
-        
         # Define the result message and populate it with the perception results
         raw_image = self.zed.image.copy()
         if raw_image.shape[2] == 4:
@@ -62,7 +58,11 @@ class PerceptionActionServer(Node):
                 
                 object_poses = [obj[:3, 3] for obj in objects]
 
-                attention_scores = self.pose_detector.pointing_object_surface_scores(object_poses, pointer_position, pointer_direction, 0.1, 0.05)
+                attention_pose, interaction_type, pointer_position, pointer_direction = self.pointing_system.run(object_poses)
+
+                self.get_logger().info(f"Attention Pose: {attention_pose}\nInteraction Type: {interaction_type}\nPointer Position: {pointer_position}\nPointer Direction: {pointer_direction}")
+                
+                attention_scores = self.pose_detector.pointing_object_space_scores(object_poses, pointer_position, pointer_direction, 0.02, 0.01)
 
                 selected = self.pose_detector.select_cube(objects, attention_scores)
 
@@ -81,6 +81,9 @@ class PerceptionActionServer(Node):
                 result.success = True
 
             case "detect_goal":
+                attention_pose, interaction_type, pointer_position, pointer_direction = self.pointing_system.run()
+                self.get_logger().info(f"Attention Pose: {attention_pose}\nInteraction Type: {interaction_type}\nPointer Position: {pointer_position}\nPointer Direction: {pointer_direction}")
+
                 result.pose.header.frame_id = "panda_link0"
                 result.pose.pose.orientation.w = 1.0
                 result.pose.pose.position.x = attention_pose[0]

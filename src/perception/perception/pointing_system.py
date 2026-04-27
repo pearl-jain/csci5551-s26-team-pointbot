@@ -2,13 +2,14 @@ import cv2
 import numpy as np
 import mediapipe as mp
 import open3d as o3d
+from perception.zed_transform import TAG_SIZE 
 
 CUBE_TAG_SIZE = 0.02045
-TARGET_FRAMES = 10
+TARGET_FRAMES = 5
 CUBE_SIZE = 0.025
 
-X_MIN, X_MAX = 0, 0.38
-Y_MIN, Y_MAX = -0.4, 0.4
+X_MIN, X_MAX = 0 + TAG_SIZE / 2, 0.38 - TAG_SIZE / 2
+Y_MIN, Y_MAX = -0.4 + TAG_SIZE / 2, 0.4 - TAG_SIZE / 2
 
 class PointBot:
     def __init__(self, zed, t_cam):
@@ -250,10 +251,6 @@ class PointBot:
             
             intersect_rob = pointer_rob + scalar * ray_rob
 
-        # Clamps intersect_rob x and y points to workspace bounds
-        intersect_rob[0] = np.clip(intersect_rob[0], X_MIN, X_MAX)
-        intersect_rob[1] = np.clip(intersect_rob[1], Y_MIN, Y_MAX)
-
         intersection_cam = (self.t_cam_robot @ np.append(intersect_rob, 1))[:3]
 
         return p_tip_cam, ray_cam, pointer_rob, ray_rob, intersect_rob, intersection_cam
@@ -366,6 +363,7 @@ class PointBot:
     
     def run(self, objects=None):
         cv2.namedWindow("debug", cv2.WINDOW_NORMAL)
+        self.frame_buffer = []
 
         check_pose = True
         while check_pose:
@@ -388,6 +386,8 @@ class PointBot:
 
                 if motion < self.MOTION_THRESH:
                     self.stable_counter += 1
+                    sample = self.sample_frame(frame, depth, lm)
+
                 else:
                     self.stable_counter = 0
                     self.frame_buffer.clear()
@@ -395,18 +395,18 @@ class PointBot:
                 progress = self.stable_counter / self.STABLE_FRAMES
                 frame = self.draw_progress_bar(frame, progress)
 
-                sample = self.sample_frame(frame, depth, lm)
-
-                if len(self.frame_buffer) > TARGET_FRAMES and self.stable_counter > self.STABLE_FRAMES:
+                if self.stable_counter > self.STABLE_FRAMES:
                     self.image = color
                     self.depth = depth
                 
                     if self.detect_gesture(results) == 1:
                         print("Gesture Detected: Pick from Hand")
                         wrist_cam = self.proj_2d_3d(lm.landmark[0])
-                        wrist_rob = (self.t_cam_robot @ np.append(wrist_cam, 1))[:3]
+                        wrist_rob = (np.linalg.inv(self.t_cam_robot) @ np.append(wrist_cam, 1))[:3]
                         # Returns 0 when picking from hand, 1 when pointing to table
                         self.frame_buffer.clear()
+                        wrist_rob[0] = np.clip(wrist_rob[0], X_MIN, X_MAX)
+                        wrist_rob[1] = np.clip(wrist_rob[1], Y_MIN, Y_MAX)
                         frame = self.visualize(frame, wrist_cam, wrist_cam, wrist_cam)
                         cv2.imshow("debug", frame)
                         cv2.waitKey(0)
@@ -419,6 +419,8 @@ class PointBot:
                         # tip_cam, ray_cam, tip_rob, ray_rob, inter, inter_cam = self.solve(t_cam_robot)
                         # Second version usage
                         tip_cam, ray_cam, tip_rob, ray_rob, inter_rob, inter_cam = self.solve(objects)
+                        inter_rob[0] = np.clip(inter_rob[0], X_MIN, X_MAX)
+                        inter_rob[1] = np.clip(inter_rob[1], Y_MIN, Y_MAX)
                         frame = self.visualize(frame, tip_cam, ray_cam, inter_cam)
                         cv2.imshow("debug", frame)
                         cv2.waitKey(0)
