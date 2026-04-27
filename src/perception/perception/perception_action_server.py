@@ -5,6 +5,7 @@ from rclpy.node import Node
 from point_bot_interfaces.action import Perception
 from sensor_msgs.msg import Image
 from geometry_msgs.msg import PoseStamped
+from visualization_msgs.msg import Marker, MarkerArray
 
 from perception.detect_object_pose import ObjectPoseDetector
 from perception.zed_camera import ZedCamera
@@ -15,6 +16,8 @@ from cv_bridge import CvBridge
 import cv2
 
 import tf_transformations
+
+from pointbot_rviz.visualization_helpers import publish_object_markers, publish_pointing_vector_marker, publish_selected_marker, publish_goal_marker
 
 class PerceptionActionServer(Node):
     def __init__(self):
@@ -34,6 +37,11 @@ class PerceptionActionServer(Node):
         self.pointing_system = PointBot(self.zed, self.t_cube_robot)
 
         self.bridge = CvBridge()
+
+        self.object_publisher = self.create_publisher(MarkerArray, '/object_markers', 10)
+        self.vector_publisher = self.create_publisher(Marker, '/pointing_vector', 10)
+        self.selected_publisher = self.create_publisher(Marker, '/selected_object', 10)
+        self.goal_publisher = self.create_publisher(Marker, '/goal_marker', 10)
 
     def execute_callback(self, goal_handle):
         task = goal_handle.request.task
@@ -58,6 +66,21 @@ class PerceptionActionServer(Node):
                 
                 object_poses = [obj[:3, 3] for obj in objects]
 
+                object_posestamped = []
+                for o in objects:
+                    q = tf_transformations.quaternion_from_matrix(o)
+                    object = PoseStamped()
+                    object.header.frame_id = "panda_link0"
+                    object.pose.position.x = o[0, 3]
+                    object.pose.position.y = o[1, 3]
+                    object.pose.position.z = o[2, 3]
+                    object.pose.orientation.w = q[0]
+                    object.pose.orientation.x = q[1]
+                    object.pose.orientation.y = q[2]
+                    object.pose.orientation.z = q[3]
+                    object_posestamped.append(object)
+                publish_object_markers(self.object_publisher, object_posestamped)
+
                 attention_pose, interaction_type, pointer_position, pointer_direction = self.pointing_system.run(object_poses)
 
                 self.get_logger().info(f"Attention Pose: {attention_pose}\nInteraction Type: {interaction_type}\nPointer Position: {pointer_position}\nPointer Direction: {pointer_direction}")
@@ -79,6 +102,7 @@ class PerceptionActionServer(Node):
                 result.pose.pose.position.y = selected[1, 3]
                 result.pose.pose.position.z = selected[2, 3]
                 result.success = True
+                publish_selected_marker(self.selected_publisher, result.pose)
 
             case "detect_goal":
                 attention_pose, interaction_type, pointer_position, pointer_direction = self.pointing_system.run()
@@ -90,6 +114,22 @@ class PerceptionActionServer(Node):
                 result.pose.pose.position.y = attention_pose[1]
                 result.pose.pose.position.z = attention_pose[2] + CUBE_SIZE
                 result.success = True
+                
+                publish_goal_marker(self.goal_publisher, attention_pose)
+
+                from_pose = PoseStamped()
+                from_pose.header.frame_id = "panda_link0"
+                from_pose.pose.position.x = pointer_position[0]
+                from_pose.pose.position.y = pointer_position[1]
+                from_pose.pose.position.z = pointer_position[2]
+
+                to_pose = PoseStamped()
+                to_pose.header.frame_id = "panda_link0"
+                to_pose.pose.position.x = pointer_direction[0]
+                to_pose.pose.position.y = pointer_direction[1]
+                to_pose.pose.position.z = pointer_direction[2]
+
+                publish_pointing_vector_marker(self.vector_publisher, from_pose, to_pose)
 
             case _:
                 result.success = False              
