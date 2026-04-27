@@ -23,12 +23,17 @@ class PointBot:
         self.t_cam_robot = t_cam
         self.h, self.w, self.image, self.depth = None, None, None, None
 
+
+        self.prev_landmarks = None
+        self.stable_counter = 0
+        self.STABLE_FRAMES = 10
+        self.MOTION_THRESH = 0.2
+
         self.finger_gesture_table = [
             [0, 1, 0, 0, 0], # Pick From Table
             [1, 1, 1, 1, 1], # Pick From Table
         ]
 
-    # 1. Update thresholds to be realistic for 3D Straightness (Ratio of ~1.0)
         self.finger_props = [
             (2, 3, 4, 0, 0.85),  # Thumb (MCP=2, PIP=3, Tip=4)
             (5, 6, 8, 0, 0.90),  # Index
@@ -253,6 +258,19 @@ class PointBot:
         # o3d.visualization.draw_geometries([frame_pcd, line_set, plane_set, intersect_point, coord_frame])
         return frame
     
+    def landmark_motion(self, lm):
+        curr = np.array([[p.x, p.y, p.z] for p in lm.landmark])
+
+        if self.prev_landmarks is None:
+            self.prev_landmarks = curr
+            return float('inf')  # force unstable on first frame
+
+        diff = np.linalg.norm(curr - self.prev_landmarks, axis=1)
+        motion = np.mean(diff)
+
+        self.prev_landmarks = curr
+        return motion
+    
     def run(self):
         cv2.namedWindow("debug", cv2.WINDOW_NORMAL)
 
@@ -273,9 +291,19 @@ class PointBot:
             if results.multi_hand_landmarks:
                 lm = results.multi_hand_landmarks[0]
                 
+                motion = self.landmark_motion(lm)
+
+                if motion < self.MOTION_THRESH:
+                    self.stable_counter += 1
+                else:
+                    self.stable_counter = 0
+
+                progress = self.stable_counter / self.STABLE_FRAMES
+                frame = self.draw_progress_bar(frame, progress)
+
                 sample = self.sample_frame(frame, depth, lm)
 
-                if len(self.frame_buffer) > TARGET_FRAMES:
+                if len(self.frame_buffer) > TARGET_FRAMES and self.stable_counter > self.STABLE_FRAMES:
                     self.image = color
                     self.depth = depth
                 
