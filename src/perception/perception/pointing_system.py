@@ -31,8 +31,8 @@ class PointBot:
         self.MOTION_THRESH = 0.05
 
         self.finger_gesture_table = [
-            [0, 1, 0, 0, 0], # Pick From Table
             [1, 1, 1, 1, 1], # Pick From Hand
+            [0, 1, 0, 0, 0] # Pick From Table
         ]
 
         self.finger_props = [
@@ -94,11 +94,11 @@ class PointBot:
         
         # Open Hand: Index is out AND at least 2 of the other 3 fingers are out
         if index_extended and others_extended >= 2:
-            return 1 # Open Hand (Pick)
+            return 0 # Open Hand (Pick)
             
         # Pointing: Index is out AND all other 3 fingers are curled
         if index_extended and others_extended == 0:
-            return 0 # Pointing
+            return 1 # Pointing
         
         return -1 # Unrecognized/Unstable Gesture
     
@@ -247,7 +247,7 @@ class PointBot:
 
         if ray_cam is not None and intersection_cam is not None : 
             intersection_cam *= 1000.0
-            p_int = self.proj_3d_2d(origin_cam)
+            p_int = self.proj_3d_2d(intersection_cam)
             if self.valid_pixel(p0) and self.valid_pixel(p_int):
                 cv2.line(frame, p0, p_int, (0, 255, 0), 2)
                 cv2.circle(frame, p_int, 5, (0, 0, 255), -1)
@@ -347,7 +347,7 @@ class PointBot:
                     self.image = color
                     self.depth = depth
                 
-                    if self.detect_gesture(results) == 1:
+                    if self.detect_gesture(results) == 0:
                         print("Gesture Detected: Open Hand")
                         palm_indices = [0, 1, 5, 9, 13, 17]
                         palm_points = np.array([
@@ -368,7 +368,7 @@ class PointBot:
                         cv2.waitKey(0)
                         check_pose = False
                         return palm_rob, 0, None, None
-                    elif self.detect_gesture(results) == 0:
+                    elif self.detect_gesture(results) == 1:
                         print("Gesture Detected: Pointing")
 
                         # First version usage
@@ -378,7 +378,7 @@ class PointBot:
 
                         inter_rob[0] = np.clip(inter_rob[0], X_MIN, X_MAX)
                         inter_rob[1] = np.clip(inter_rob[1], Y_MIN, Y_MAX)
-                        frame = self.visualize(frame, tip_cam, ray_cam, inter_cam)
+                        frame = self.visualize(frame, tip_cam, ray_cam=ray_cam, intersection_cam=inter_cam)
                         cv2.imshow("debug", frame)
                         cv2.waitKey(0)
                         self.frame_buffer.clear()
