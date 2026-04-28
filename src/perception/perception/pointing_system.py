@@ -27,9 +27,9 @@ class PointBot:
 
 
         self.prev_landmarks = None
-        self.stable_counter = 0
-        self.STABLE_FRAMES = 32
-        self.MOTION_THRESH = 0.05
+        # self.stable_counter = 0
+        self.stable_frames = 32
+        self.motion_thresh = 0.05
 
         self.finger_gesture_table = [
             [1, 1, 1, 1, 1], # Pick From Hand
@@ -44,6 +44,7 @@ class PointBot:
             (17, 18, 20, 0, 0.90) # Pinky
         ]
 
+    # Utility Functions
     def zed_to_pcd(self, pcd, img, scale):
         rgb = img[:, :, :3][..., ::-1].reshape(-1, 3) / 255.0
         xyz = pcd[:, :, :3].reshape(-1, 3) * scale
@@ -57,7 +58,7 @@ class PointBot:
         pcd.colors = o3d.utility.Vector3dVector(rgb_clean)
 
         return pcd
-
+    
     # 2D_3D Projection  
     def proj_2d_3d(self, p):
         if self.h is None or self.depth is None: return None
@@ -70,7 +71,20 @@ class PointBot:
             return None 
         return p_3d
     
-
+    # Project 3D into 2D
+    def proj_3d_2d(self, p):
+        fx, fy = self.K[0,0], self.K[1,1]
+        cx, cy = self.K[0,2], self.K[1,2]
+        if p[2] <= 0:
+            return None
+        x = int((p[0]*fx/p[2]) + cx)
+        y = int((p[1]*fy/p[2]) + cy)
+        return (x, y)
+    
+    def valid_pixel(self, p):
+        return p is not None and 0 <= p[0] < self.w and 0 <= p[1] < self.h
+    
+    # Hand Detection
     def detect_gesture(self, landmark_results):
         multi_hand_landmarks = landmark_results.multi_hand_landmarks
         if not multi_hand_landmarks: return [-1]
@@ -147,6 +161,7 @@ class PointBot:
         ray /= norm
         return p_tip, ray
     
+    # Intersections 
     def check_sphere_intersections(self, ray_origin, ray_dir, object_centers, radius=CUBE_SIZE):
         hits = []
         
@@ -228,19 +243,7 @@ class PointBot:
 
         return p_tip_cam, ray_cam, pointer_rob, ray_rob, intersect_rob, intersection_cam
 
-    # Project 3D into 2D
-    def proj_3d_2d(self, p):
-        fx, fy = self.K[0,0], self.K[1,1]
-        cx, cy = self.K[0,2], self.K[1,2]
-        if p[2] <= 0:
-            return None
-        x = int((p[0]*fx/p[2]) + cx)
-        y = int((p[1]*fy/p[2]) + cy)
-        return (x, y)
-    
-    def valid_pixel(self, p):
-        return p is not None and 0 <= p[0] < self.w and 0 <= p[1] < self.h
-    
+    # Visualizations and Debuggers
     def draw_active_ray(self, frame, frame_data):
         if frame_data is None: return frame
 
@@ -300,8 +303,6 @@ class PointBot:
             # Launch Viewer
             o3d.visualization.draw_geometries([frame_pcd, line_set, intersect_point, coord_frame])
         return frame
-    
-
     
     def landmark_motion(self, lm):
         curr = np.array([[p.x, p.y, p.z] for p in lm.landmark])
@@ -380,7 +381,7 @@ class PointBot:
                         palm = SimpleNamespace(x=palm[0], y=palm[1])
                         palm_cam = self.proj_2d_3d(palm)
                         palm_rob = (np.linalg.inv(self.t_cam_robot) @ np.append(palm_cam, 1))[:3]
-                        self.frame_buffer.clear()
+                        # self.frame_buffer.clear()
 
                         palm_rob[0] = np.clip(palm_rob[0], X_MIN, X_MAX)
                         palm_rob[1] = np.clip(palm_rob[1], Y_MIN, Y_MAX)
@@ -400,7 +401,7 @@ class PointBot:
                         frame = self.visualize(frame, tip_cam, ray_cam=ray_cam, intersection_cam=inter_cam)
                         cv2.imshow("debug", frame)
                         cv2.waitKey(0)
-                        self.frame_buffer.clear()
+                        # self.frame_buffer.clear()
                         check_pose = False
                         return inter_rob, 1, tip_rob, ray_rob
                     
