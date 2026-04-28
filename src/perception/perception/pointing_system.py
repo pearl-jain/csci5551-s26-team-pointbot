@@ -19,7 +19,7 @@ class PointBot:
             min_detection_confidence=0.8,
             min_tracking_confidence=0.8
         )
-        self.frame_buffer = []   
+        # self.frame_buffer = []   
         self.tags = None    
         self.t_cam_robot = t_cam
         self.h, self.w, self.image, self.depth = None, None, None, None
@@ -144,7 +144,6 @@ class PointBot:
             return None
 
         ray /= norm
-        self.frame_buffer.append((p_tip, ray))
         return p_tip, ray
     
     def check_sphere_intersections(self, ray_origin, ray_dir, object_centers, radius=CUBE_SIZE):
@@ -175,7 +174,7 @@ class PointBot:
         hits.sort(key=lambda x: x[1])
         return hits
     
-    def solve(self, objects):
+    def solve(self, frame_data, objects):
         t_robot_cam = np.linalg.inv(self.t_cam_robot)
 
         print(f"Robot thinks camera is at: {t_robot_cam[:3, 3]}")
@@ -183,10 +182,13 @@ class PointBot:
         intersect_rob, intersection_cam = None, None
 
         #t_robot_cam should be camera frame -> robot frame
-        p_tips = np.array([f[0] for f in self.frame_buffer])
-        rays = np.array([f[1] for f in self.frame_buffer])
-        p_tip_cam = np.mean(p_tips, axis=0)
-        ray_cam = np.mean(rays, axis=0)
+        # p_tips = np.array([f[0] for f in self.frame_buffer])
+        # rays = np.array([f[1] for f in self.frame_buffer])
+        # p_tip_cam = np.mean(p_tips, axis=0)
+        # ray_cam = np.mean(rays, axis=0)
+
+        p_tip_cam = frame_data[0]
+        ray_cam = frame_data[1]
         ray_cam /= np.linalg.norm(ray_cam)
 
         pointer_rob = (t_robot_cam @ np.append(p_tip_cam, 1))[:3]
@@ -238,6 +240,25 @@ class PointBot:
     def valid_pixel(self, p):
         return p is not None and 0 <= p[0] < self.w and 0 <= p[1] < self.h
     
+    def draw_active_ray(self, frame, frame_data):
+        if frame_data is None: return frame
+
+        origin_3d, direction_3d = frame_data
+        p1_raw = self.proj_3d_2d(origin_3d * 1000.0)
+        p2_raw = self.proj_3d_2d((origin_3d + direction_3d * 0.5) * 1000.0)
+
+        if p1_raw and p2_raw:
+            p1 = (
+                int(np.clip(p1_raw[0], 0, self.w - 1)),
+                int(np.clip(p1_raw[1], 0, self.h - 1)))
+            p2 = (int(np.clip(p2_raw[0], 0, self.w - 1)),
+                int(np.clip(p2_raw[1], 0, self.h - 1)))
+
+            cv2.line(frame, p1, p2, (255, 0, 255), 3)
+            cv2.circle(frame, p1, 5, (0, 0, 255), -1)
+
+        return frame
+
     def visualize(self, frame, origin_cam, ray_cam=None, intersection_cam=None, enable3d=None):
         # 2D Projection
         origin_cam *= 1000.0
@@ -311,8 +332,9 @@ class PointBot:
     
     def run(self, objects=None):
         cv2.namedWindow("debug", cv2.WINDOW_NORMAL)
-        self.frame_buffer = []
+        # self.frame_buffer = []
 
+        stable_counter = 0
         check_pose = True
         while check_pose:
             color = self.zed.image
@@ -332,18 +354,16 @@ class PointBot:
                 
                 motion = self.landmark_motion(lm)
 
-                if motion < self.MOTION_THRESH:
-                    self.stable_counter += 1
-                    _ = self.sample_frame(frame, depth, lm)
-
+                if motion < self.motion_thresh:
+                    stable_counter += 1
                 else:
-                    self.stable_counter = 0
-                    self.frame_buffer.clear()
+                    stable_counter = 0
 
-                progress = self.stable_counter / self.STABLE_FRAMES
+                progress = stable_counter / self.stable_frames
                 frame = self.draw_progress_bar(frame, progress)
+                sample = self.sample_frame(frame, depth, lm)
 
-                if self.stable_counter >= self.STABLE_FRAMES:
+                if stable_counter >= self.stable_frames:
                     self.image = color
                     self.depth = depth
                 
@@ -358,7 +378,6 @@ class PointBot:
                                             
                         palm_cam = self.proj_2d_3d(np.mean(palm_points, axis=0))
                         palm_rob = (np.linalg.inv(self.t_cam_robot) @ np.append(palm_cam, 1))[:3]
-                        # Returns 0 when picking from hand, 1 when pointing to table
                         self.frame_buffer.clear()
 
                         palm_rob[0] = np.clip(palm_rob[0], X_MIN, X_MAX)
@@ -367,14 +386,12 @@ class PointBot:
                         cv2.imshow("debug", frame)
                         cv2.waitKey(0)
                         check_pose = False
+                        # Returns 0 when picking from hand, 1 when pointing to table
+
                         return palm_rob, 0, None, None
                     elif self.detect_gesture(results) == 1:
                         print("Gesture Detected: Pointing")
-
-                        # First version usage
-                        # tip_cam, ray_cam, tip_rob, ray_rob, inter, inter_cam = self.solve(t_cam_robot)
-                        # Second version usage
-                        tip_cam, ray_cam, tip_rob, ray_rob, inter_rob, inter_cam = self.solve(objects)
+                        tip_cam, ray_cam, tip_rob, ray_rob, inter_rob, inter_cam = self.solve(sample, objects)
 
                         inter_rob[0] = np.clip(inter_rob[0], X_MIN, X_MAX)
                         inter_rob[1] = np.clip(inter_rob[1], Y_MIN, Y_MAX)
@@ -384,6 +401,9 @@ class PointBot:
                         self.frame_buffer.clear()
                         check_pose = False
                         return inter_rob, 1, tip_rob, ray_rob
+                    
+            sample = self.sample_frame(frame)
+            frame = self.draw_active_ray(frame, sample)
 
             cv2.imshow("debug", frame)
             if cv2.waitKey(1) & 0xFF == ord('q'):
