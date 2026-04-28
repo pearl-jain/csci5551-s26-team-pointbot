@@ -29,7 +29,7 @@ class PointBot:
         self.prev_landmarks = None
         # self.stable_counter = 0
         self.stable_frames = 32
-        self.motion_thresh = 0.025
+        self.motion_thresh = 0.05
 
         self.finger_gesture_table = [
             [1, 1, 1, 1, 1], # Pick From Hand
@@ -66,10 +66,28 @@ class PointBot:
         if not (0 <= tx < self.w and 0 <= ty < self.h):
             return None
         
-        p_3d = self.depth[ty, tx][:3]
-        if not np.isfinite(p_3d).all() or np.linalg.norm(p_3d) < 1e-3:
+        p_3d_raw = self.depth[ty, tx][:3]
+        if np.isfinite(p_3d_raw).all() and np.linalg.norm(p_3d_raw) > 1e-3:
+            return p_3d_raw
+        
+        #Try Depth Sampling if needed
+        window_size = 5
+        half_w = window_size // 2
+        y_min, y_max = max(0, ty - half_w), min(self.h, ty + half_w + 1)
+        x_min, x_max = max(0, tx - half_w), min(self.w, tx + half_w + 1)
+        roi = self.depth[y_min:y_max, x_min:x_max, :3]
+        roi_flat = roi.reshape(-1, 3)
+        valid_mask = np.isfinite(roi_flat).all(axis=1)
+        valid_points = roi_flat[valid_mask]
+
+        if len(valid_points) == 0:
+            return None
+        
+        p_3d_filtered = np.median(valid_points, axis=0)
+        if np.linalg.norm(p_3d_filtered) < 1e-3:
             return None 
-        return p_3d
+        
+        return p_3d_filtered
     
     # Project 3D into 2D
     def proj_3d_2d(self, p):
@@ -305,11 +323,27 @@ class PointBot:
         return frame
     
     def landmark_motion(self, lm):
-        curr = np.array([[p.x, p.y, p.z] for p in lm.landmark])
+        if lm is None or not lm.landmark:
+            return float('inf')
+        
+        check_indices = [0, 5, 8, 17] 
+        curr_list = []
+        
+        for i, idx in enumerate(check_indices):
+            p_3d = self.proj_2d_3d(lm.landmark[idx])
+            if p_3d is not None:
+                curr_list.append(p_3d)
+            elif self.prev_landmarks is not None:
+                curr_list.append(self.prev_landmarks[i])
+            else:
+                # Initial frame fallback
+                curr_list.append(np.array([0.0, 0.0, 0.0]))
 
-        if self.prev_landmarks is None:
+        curr = np.array(curr_list)
+
+        if self.prev_landmarks is None or self.prev_landmarks.shape != curr.shape:
             self.prev_landmarks = curr
-            return float('inf')  # force unstable on first frame
+            return float('inf')
 
         diff = np.linalg.norm(curr - self.prev_landmarks, axis=1)
         motion = np.mean(diff)
