@@ -29,7 +29,7 @@ class PointBot:
         self.prev_landmarks = None
         # self.stable_counter = 0
         self.stable_frames = 32
-        self.motion_thresh = 0.05
+        self.motion_thresh = 0.025
 
         self.finger_gesture_table = [
             [1, 1, 1, 1, 1], # Pick From Hand
@@ -244,12 +244,12 @@ class PointBot:
         return p_tip_cam, ray_cam, pointer_rob, ray_rob, intersect_rob, intersection_cam
 
     # Visualizations and Debuggers
-    def draw_active_ray(self, frame, frame_data):
+    def draw_active_ray(self, frame, frame_data, end_point):
         if frame_data is None: return frame
 
-        origin_3d, direction_3d = frame_data
+        origin_3d, _ = frame_data
         p1_raw = self.proj_3d_2d(origin_3d * 1000.0)
-        p2_raw = self.proj_3d_2d((origin_3d + direction_3d * 0.5) * 1000.0)
+        p2_raw = self.proj_3d_2d(end_point * 1000.0)
 
         if p1_raw and p2_raw:
             p1 = (
@@ -364,13 +364,29 @@ class PointBot:
                 progress = stable_counter / self.stable_frames
                 frame = self.draw_progress_bar(frame, progress)
                 sample = self.sample_frame(frame, depth, lm)
+                gesture = self.detect_gesture(results)
+                    # self.image = color
+                    # self.depth = depth
 
-                if stable_counter >= self.stable_frames:
-                    self.image = color
-                    self.depth = depth
-                
-                    if self.detect_gesture(results) == 0:
-                        print("Gesture Detected: Open Hand")
+                if sample is not None and gesture == 1:
+                    print("Gesture Detected: Pointing")
+                    tip_cam, ray_cam, tip_rob, ray_rob, inter_rob, inter_cam = self.solve(sample, objects)
+
+                    inter_rob[0] = np.clip(inter_rob[0], X_MIN, X_MAX)
+                    inter_rob[1] = np.clip(inter_rob[1], Y_MIN, Y_MAX)
+                 
+                    # self.frame_buffer.clear()
+                    if stable_counter >= self.stable_frames:
+                        frame = self.visualize(frame, tip_cam, ray_cam=ray_cam, intersection_cam=inter_cam)
+                        cv2.imshow("debug", frame)
+                        cv2.waitKey(0)
+                        check_pose = False
+                        return inter_rob, 1, tip_rob, ray_rob
+                    else:
+                        frame = self.draw_active_ray(frame, sample, inter_cam)
+                elif sample is not None and gesture == 0:
+                    print("Gesture Detected: Open Hand")
+                    if stable_counter >= self.stable_frames:
                         palm_indices = [0, 1, 5, 9, 13, 17]
                         palm = np.array([
                             [lm.landmark[i].x, 
@@ -388,26 +404,10 @@ class PointBot:
                         frame = self.visualize(frame, palm_cam)
                         cv2.imshow("debug", frame)
                         cv2.waitKey(0)
-                        check_pose = False
                         # Returns 0 when picking from hand, 1 when pointing to table
-
-                        return palm_rob, 0, None, None
-                    elif self.detect_gesture(results) == 1:
-                        print("Gesture Detected: Pointing")
-                        tip_cam, ray_cam, tip_rob, ray_rob, inter_rob, inter_cam = self.solve(sample, objects)
-
-                        inter_rob[0] = np.clip(inter_rob[0], X_MIN, X_MAX)
-                        inter_rob[1] = np.clip(inter_rob[1], Y_MIN, Y_MAX)
-                        frame = self.visualize(frame, tip_cam, ray_cam=ray_cam, intersection_cam=inter_cam)
-                        cv2.imshow("debug", frame)
-                        cv2.waitKey(0)
-                        # self.frame_buffer.clear()
                         check_pose = False
-                        return inter_rob, 1, tip_rob, ray_rob
+                        return palm_rob, 0, None, None                   
                     
-            sample = self.sample_frame(frame)
-            frame = self.draw_active_ray(frame, sample)
-
             cv2.imshow("debug", frame)
             if cv2.waitKey(1) & 0xFF == ord('q'):
                 break
