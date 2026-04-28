@@ -13,6 +13,9 @@ setup(
         ('share/' + package_name + '/launch', ['launch/pointbot_rviz_test.launch.py']),
         ('share/' + package_name + '/rviz', ['rviz/pointbot.rviz']),
     ],
+    py_modules=[
+        'pointbot_rviz.visualization_helpers',
+    ],
     install_requires=['setuptools'],
     zip_safe=True,
     maintainer='',
