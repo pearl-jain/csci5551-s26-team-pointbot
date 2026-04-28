@@ -51,9 +51,7 @@ def publish_hand_marker(publisher, corner1: PoseStamped, corner2: PoseStamped):
         m.points.append(b)
     publisher.publish(m)
 
-def publish_pointing_vector_marker(publisher, start: PoseStamped, end: PoseStamped):
-    s = start.pose.position
-    e = end.pose.position
+def publish_pointing_vector_marker(publisher, start, end):
     m = Marker()
     m.header.frame_id = "world"
     m.id = 200
@@ -61,7 +59,7 @@ def publish_pointing_vector_marker(publisher, start: PoseStamped, end: PoseStamp
     m.action = Marker.ADD
     m.scale.x = 0.01
     m.color = ColorRGBA(r=1.0, g=1.0, b=1.0, a=1.0)
-    m.points = [Point(x=s.x, y=s.y, z=s.z), Point(x=e.x, y=e.y, z=e.z)]
+    m.points = [Point(x=start[0], y=start[1], z=start[2]), Point(x=end[0], y=end[1], z=end[2])]
     publisher.publish(m)
 
 def publish_selected_marker(publisher, pose: PoseStamped):

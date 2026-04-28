@@ -17,7 +17,7 @@ import cv2
 
 import tf_transformations
 
-from pointbot_rviz.pointbot_rviz.visualization_helpers import publish_object_markers, publish_pointing_vector_marker, publish_selected_marker, publish_goal_marker
+from pointbot_rviz.visualization_helpers import publish_object_markers, publish_pointing_vector_marker, publish_selected_marker, publish_goal_marker
 
 class PerceptionActionServer(Node):
     def __init__(self):
@@ -104,7 +104,7 @@ class PerceptionActionServer(Node):
                 result.pose.pose.position.y = selected[1, 3]
                 result.pose.pose.position.z = selected[2, 3]
                 result.success = True
-                publish_selected_marker(self.selected_publisher, result.pose)
+                # publish_selected_marker(self.selected_publisher, result.pose)
 
             case "detect_goal":
                 attention_pose, interaction_type, pointer_position, pointer_direction = self.pointing_system.run()
@@ -117,7 +117,7 @@ class PerceptionActionServer(Node):
                 result.pose.pose.position.z = attention_pose[2] + CUBE_SIZE
                 result.success = True
                 
-                publish_goal_marker(self.goal_publisher, result.pose)
+                # publish_goal_marker(self.goal_publisher, result.pose)
 
                 if interaction_type == 1:
                     from_pose = PoseStamped()
@@ -132,7 +132,7 @@ class PerceptionActionServer(Node):
                     to_pose.pose.position.y = pointer_direction[1]
                     to_pose.pose.position.z = pointer_direction[2]
 
-                    publish_pointing_vector_marker(self.vector_publisher, from_pose, to_pose)
+                    # publish_pointing_vector_marker(self.vector_publisher, from_pose, to_pose)
 
             case _:
                 result.success = False              

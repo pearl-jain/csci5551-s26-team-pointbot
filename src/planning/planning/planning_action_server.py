@@ -118,8 +118,8 @@ class PlanningActionServer(Node):
         psy = R[2]
 
         # Moves arm down to place cube
-        arm.set_position(x, y, z_higher, theta, phi, psy, is_radian = True, wait = True, speed=SPEED, mvacc=ACCELERATION)
-        arm.set_position(x, y, z, theta, phi, psy, is_radian = True, wait = True, speed=SPEED, mvacc=ACCELERATION)
+        arm.set_position(x, y, z_higher, phi, theta, psy, is_radian = True, wait = True, speed=SPEED, mvacc=ACCELERATION)
+        arm.set_position(x, y, z, phi, theta, psy, is_radian = True, wait = True, speed=SPEED, mvacc=ACCELERATION)
 
         # Opens the gripper to release the cube
         arm.open_lite6_gripper()
@@ -127,7 +127,7 @@ class PlanningActionServer(Node):
         arm.stop_lite6_gripper()
 
         # Moves arm back up to position 15cm above the placed cube
-        arm.set_position(x, y, z_higher, theta, phi, psy, is_radian = True, wait = True, speed=SPEED, mvacc=ACCELERATION)
+        arm.set_position(x, y, z_higher, phi, theta, psy, is_radian = True, wait = True, speed=SPEED, mvacc=ACCELERATION)
 
     #3x3 rotation matrix to roll pitch yaw
     # def matrix_to_rpy(self, matrix):

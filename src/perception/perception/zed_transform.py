@@ -133,17 +133,8 @@ def get_transform_camera_robot(observation, camera_intrinsic):
     return transform_mat
 
 def get_transform():
-    # Initialize ZED Camera
-    zed = ZedCamera()
+    zed = ZedCamera() # Returns existing instance if already open
     camera_intrinsic = zed.camera_intrinsic
-    transform = None
-
-    try:
-        # Get Observation
-        cv_image = zed.image
-        transform = get_transform_camera_robot(cv_image, camera_intrinsic)
-    finally:
-        # Close ZED Camera
-        zed.close()
-    
-    return transform
+    cv_image = zed.image
+    # REMOVE zed.close() from here
+    return get_transform_camera_robot(cv_image, camera_intrinsic)

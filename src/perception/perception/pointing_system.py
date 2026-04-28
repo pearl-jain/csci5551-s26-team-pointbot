@@ -29,7 +29,7 @@ class PointBot:
         self.prev_landmarks = None
         # self.stable_counter = 0
         self.stable_frames = 32
-        self.motion_thresh = 0.05
+        self.motion_thresh = 0.025
 
         self.finger_gesture_table = [
             [1, 1, 1, 1, 1], # Pick From Hand
@@ -326,7 +326,7 @@ class PointBot:
         if lm is None or not lm.landmark:
             return float('inf')
         
-        check_indices = [0, 5, 8, 17] 
+        check_indices = [5, 8, 17] 
         curr_list = []
         
         for i, idx in enumerate(check_indices):
