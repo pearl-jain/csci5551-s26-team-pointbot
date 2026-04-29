@@ -15,7 +15,7 @@ class ZedCamera:
                 cls._instance._initialized = False
             return cls._instance
 
-    def __init__(self, resolution=sl.RESOLUTION.HD720, fps=30):
+    def __init__(self, resolution=sl.RESOLUTION.HD2K, fps=30):
         # Prevent re-initialization if the singleton already exists
         if self._initialized:
             return
