@@ -9,11 +9,12 @@ from visualization_msgs.msg import Marker, MarkerArray
 
 from perception.detect_object_pose import ObjectPoseDetector
 from perception.zed_camera import ZedCamera
-from perception.zed_transform import get_transform_camera_robot
+from perception.zed_transform import get_transform_camera_robot, draw_pose_axes
 from perception.pointing_system import PointBot, CUBE_SIZE
 
 from cv_bridge import CvBridge
 import cv2
+import numpy as np
 
 import tf_transformations
 
@@ -54,43 +55,43 @@ class PerceptionActionServer(Node):
         if raw_image.shape[2] == 4:
             raw_image = cv2.cvtColor(raw_image, cv2.COLOR_BGRA2BGR)
 
+        objects = self.pose_detector.detect_cubes(self.zed.image, self.t_cube_robot)
+
+        self.get_logger().info(f"Detected object poses:\n{objects}")
+        
+        object_poses = [obj[:3, 3] for obj in objects]
+
+        object_posestamped = []
+        for o in objects:
+            q = tf_transformations.quaternion_from_matrix(o)
+            object = PoseStamped()
+            object.header.frame_id = "panda_link0"
+            object.pose.position.x = o[0, 3]
+            object.pose.position.y = o[1, 3]
+            object.pose.position.z = o[2, 3]
+            object.pose.orientation.w = q[0]
+            object.pose.orientation.x = q[1]
+            object.pose.orientation.y = q[2]
+            object.pose.orientation.z = q[3]
+            object_posestamped.append(object)
+
+        publish_object_markers(self.object_publisher, object_posestamped)
+
+        attention_pose, interaction_type, pointer_position, pointer_direction = self.pointing_system.run(object_poses)
+
+        self.get_logger().info(f"Attention Pose: {attention_pose}\nInteraction Type: {interaction_type}\nPointer Position: {pointer_position}\nPointer Direction: {pointer_direction}")
+        
+        attention_scores = self.pose_detector.pointing_object_distance_scores(object_poses, pointer_position, pointer_direction)
+
+        selected = self.pose_detector.select_cube(objects, attention_scores)
+
         result = Perception.Result()
         result.image = self.bridge.cv2_to_imgmsg(raw_image, encoding="bgr8")
 
         result.pose = PoseStamped()
         match task:
             case "detect_object":
-                objects = self.pose_detector.detect_cubes(self.zed.image, self.t_cube_robot)
-
-                self.get_logger().info(f"Detected object poses:\n{objects}")
-                
-                object_poses = [obj[:3, 3] for obj in objects]
-
-                object_posestamped = []
-                for o in objects:
-                    q = tf_transformations.quaternion_from_matrix(o)
-                    object = PoseStamped()
-                    object.header.frame_id = "panda_link0"
-                    object.pose.position.x = o[0, 3]
-                    object.pose.position.y = o[1, 3]
-                    object.pose.position.z = o[2, 3]
-                    object.pose.orientation.w = q[0]
-                    object.pose.orientation.x = q[1]
-                    object.pose.orientation.y = q[2]
-                    object.pose.orientation.z = q[3]
-                    object_posestamped.append(object)
-
-                publish_object_markers(self.object_publisher, object_posestamped)
-
-                attention_pose, interaction_type, pointer_position, pointer_direction = self.pointing_system.run(object_poses)
-
-                self.get_logger().info(f"Attention Pose: {attention_pose}\nInteraction Type: {interaction_type}\nPointer Position: {pointer_position}\nPointer Direction: {pointer_direction}")
-                
                 # attention_scores = self.pose_detector.pointing_object_space_scores(object_poses, pointer_position, pointer_direction, 0.02, 0.01)
-                attention_scores = self.pose_detector.pointing_object_distance_scores(object_poses, pointer_position, pointer_direction)
-
-                selected = self.pose_detector.select_cube(objects, attention_scores)
-
                 self.get_logger().info(f"Selected value: {selected} Type: {type(selected)}")
 
                 q = tf_transformations.quaternion_from_matrix(selected)
@@ -107,14 +108,17 @@ class PerceptionActionServer(Node):
                 # publish_selected_marker(self.selected_publisher, result.pose)
 
             case "detect_goal":
-                attention_pose, interaction_type, pointer_position, pointer_direction = self.pointing_system.run()
-                self.get_logger().info(f"Attention Pose: {attention_pose}\nInteraction Type: {interaction_type}\nPointer Position: {pointer_position}\nPointer Direction: {pointer_direction}")
+                selected_goal = attention_pose + np.array([0, 0, CUBE_SIZE])
+    
+                if selected is not None and np.linalg.norm((attention_pose - selected[:3, 3]) * [1, 1, 0]) < CUBE_SIZE * 2:
+                    # If the attention pose is close to an object, set the goal to be on top of that object instead of the raw attention pose
+                    selected_goal = selected[:3, 3] + np.array([0, 0, CUBE_SIZE])
 
                 result.pose.header.frame_id = "panda_link0"
                 result.pose.pose.orientation.w = 1.0
-                result.pose.pose.position.x = attention_pose[0]
-                result.pose.pose.position.y = attention_pose[1]
-                result.pose.pose.position.z = attention_pose[2] + CUBE_SIZE
+                result.pose.pose.position.x = selected_goal[0]
+                result.pose.pose.position.y = selected_goal[1]
+                result.pose.pose.position.z = selected_goal[2]
                 result.success = True
                 
                 # publish_goal_marker(self.goal_publisher, result.pose)

@@ -2,7 +2,7 @@ import cv2
 import numpy as np
 import mediapipe as mp
 import open3d as o3d
-from perception.zed_transform import TAG_SIZE 
+from perception.zed_transform import TAG_SIZE, draw_pose_axes
 from types import SimpleNamespace
 
 CUBE_TAG_SIZE = 0.02045
@@ -28,8 +28,8 @@ class PointBot:
 
         self.prev_landmarks = None
         # self.stable_counter = 0
-        self.stable_frames = 32
-        self.motion_thresh = 0.025
+        self.stable_frames = 64
+        self.motion_thresh = 0.001
 
         self.finger_gesture_table = [
             [1, 1, 1, 1, 1], # Pick From Hand
@@ -153,7 +153,7 @@ class PointBot:
     def sample_frame(self, color, depth, lm):
         h, w = self.h, self.w
         tip = lm.landmark[8]
-        knuckle = lm.landmark[7]
+        knuckle = lm.landmark[6]
 
         # Unnormalize mediapipe outputs
         tx, ty = int(tip.x * w), int(tip.y * h)
@@ -412,6 +412,10 @@ class PointBot:
                     # self.frame_buffer.clear()
                     if stable_counter >= self.stable_frames:
                         frame = self.visualize(frame, tip_cam, ray_cam=ray_cam, intersection_cam=inter_cam)
+                        for object_pose in objects:
+                            pose = np.eye(4)
+                            pose[:3, 3] = object_pose
+                            draw_pose_axes(frame, self.K, pose, size=CUBE_SIZE)
                         cv2.imshow("debug", frame)
                         cv2.waitKey(0)
                         check_pose = False
@@ -436,12 +440,21 @@ class PointBot:
                         palm_rob[0] = np.clip(palm_rob[0], X_MIN, X_MAX)
                         palm_rob[1] = np.clip(palm_rob[1], Y_MIN, Y_MAX)
                         frame = self.visualize(frame, palm_cam)
+                        for object_pose in objects:
+                            pose = np.eye(4)
+                            pose[:3, 3] = object_pose
+                            draw_pose_axes(frame, self.K, pose, size=CUBE_SIZE)
                         cv2.imshow("debug", frame)
                         cv2.waitKey(0)
                         # Returns 0 when picking from hand, 1 when pointing to table
                         check_pose = False
                         return palm_rob, 0, None, None                   
                     
+
+            for object_pose in objects:
+                pose = np.eye(4)
+                pose[:3, 3] = object_pose
+                draw_pose_axes(frame, self.K, pose, size=CUBE_SIZE)
             cv2.imshow("debug", frame)
             if cv2.waitKey(1) & 0xFF == ord('q'):
                 break
