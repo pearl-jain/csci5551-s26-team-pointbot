@@ -48,6 +48,7 @@ class ZedCamera(Node):
         self._image = self.bridge.imgmsg_to_cv2(msg, "bgr8")
     
     def _pc_cb(self, msg):
+        self.get_logger().info(f"Received point cloud data. {msg.width} points.")
         points = point_cloud2.read_points(msg, skip_nans=False, field_names=("x", "y", "z"))
         self._pc = np.array(list(points))
 
