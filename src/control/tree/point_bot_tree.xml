@@ -1,14 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <root BTCPP_format="4"
       main_tree_to_execute="MainTree">
-  <BehaviorTree ID="ActionTree">
-    <Sequence>
-      <LogString message="Determine target"/>
-      <MoveObject object_pose="{object_pose}"
-                  goal_pose="{goal_pose}"/>
-    </Sequence>
-  </BehaviorTree>
-
   <BehaviorTree ID="MainTree">
     <Sequence>
       <Inverter>
@@ -17,12 +9,16 @@
             <RetryUntilSuccessful num_attempts="-1">
               <DetectObject object_pose="{object_pose}"/>
             </RetryUntilSuccessful>
-            <Sleep msec="3000"/>
-            <RetryUntilSuccessful num_attempts="-1">
-              <DetectGoal goal_pose="{goal_pose}"/>
-            </RetryUntilSuccessful>
-            <MoveObject object_pose="{object_pose}"
-                        goal_pose="{goal_pose}"/>
+            <Parallel failure_count="1"
+                      success_count="-1">
+              <MoveObject pose="{object_pose}"
+                          task="pickup"/>
+              <RetryUntilSuccessful num_attempts="-1">
+                <DetectGoal goal_pose="{goal_pose}"/>
+              </RetryUntilSuccessful>
+            </Parallel>
+            <MoveObject pose="{goal_pose}"
+                        task="place"/>
           </Sequence>
         </KeepRunningUntilFailure>
       </Inverter>
@@ -47,8 +43,8 @@
     </Action>
     <Action ID="MoveObject"
             editable="true">
-      <input_port name="object_pose"/>
-      <input_port name="goal_pose"/>
+      <input_port name="pose"/>
+      <input_port name="task"/>
     </Action>
   </TreeNodesModel>
 

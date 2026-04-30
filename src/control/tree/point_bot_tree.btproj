@@ -13,8 +13,8 @@
             <input_port name="message"/>
         </Action>
         <Action ID="MoveObject" editable="true">
-            <input_port name="object_pose"/>
-            <input_port name="goal_pose"/>
+            <input_port name="pose"/>
+            <input_port name="task"/>
         </Action>
     </TreeNodesModel>
 </root>

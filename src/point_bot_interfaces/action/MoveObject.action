@@ -1,6 +1,6 @@
 # Request
-geometry_msgs/PoseStamped object
-geometry_msgs/PoseStamped goal
+string task
+geometry_msgs/PoseStamped pose
 ---
 # Result
 bool success

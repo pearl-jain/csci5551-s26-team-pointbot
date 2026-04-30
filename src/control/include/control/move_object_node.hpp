@@ -12,15 +12,14 @@ public:
 
     static BT::PortsList providedPorts() {
         return providedBasicPorts({
-            BT::InputPort<geometry_msgs::msg::PoseStamped>("object_pose"),
-            BT::InputPort<geometry_msgs::msg::PoseStamped>("goal_pose")
+            BT::InputPort<geometry_msgs::msg::PoseStamped>("pose"),
+            BT::InputPort<std::string>("task")
         });
     }
     
     bool setGoal(Goal& goal) override {
-        getInput("object_pose", goal.object);
-        getInput("goal_pose", goal.goal);
-
+        getInput("task", goal.task);
+        getInput("pose", goal.pose);
         return true;
     }
 

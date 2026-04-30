@@ -36,21 +36,39 @@ class PlanningActionServer(Node):
         time.sleep(0.5)
 
     def execute_callback(self, goal_handle):
-        object_pose = goal_handle.request.object
-        target_goal = goal_handle.request.goal
-        
-        self.get_logger().info(f"Moving object from {object_pose} to {target_goal}")
-        goal_handle.succeed() # Tell the client that the goal was handled successfully
-        result = MoveObject.Result()
+        task = goal_handle.request.task
+        pose = goal_handle.request.pose
 
-        # TODO: Properly implement planning!
-        t_robot_object = self.pose_stamped_to_matrix(object_pose)
-        t_robot_goal = self.pose_stamped_to_matrix(target_goal)
-        self.grasp_cube(self.arm, t_robot_object)
-        self.place_cube(self.arm, t_robot_goal)
-        self.arm.move_gohome(wait=True)
-        time.sleep(0.5)
-        result.success = True
+        goal_handle.succeed()
+
+        result = MoveObject.Result()
+        if task == "pickup":
+            self.get_logger().info(f"Picking up object at {pose}")
+            self.grasp_cube(self.arm, self.pose_stamped_to_matrix(pose))
+            result.success = True
+            time.sleep(0.5)
+            return result
+        elif task == "place":
+            self.get_logger().info(f"Placing object at {pose}")
+            self.place_cube(self.arm, self.pose_stamped_to_matrix(pose))
+            result.success = True
+            time.sleep(0.5)
+            self.arm.move_gohome(wait=True)
+            return result
+        
+        
+        # self.get_logger().info(f"Moving object from {object_pose} to {target_goal}")
+        # goal_handle.succeed() # Tell the client that the goal was handled successfully
+        # result = MoveObject.Result()
+
+        # # TODO: Properly implement planning!
+        # t_robot_object = self.pose_stamped_to_matrix(object_pose)
+        # t_robot_goal = self.pose_stamped_to_matrix(target_goal)
+        # self.grasp_cube(self.arm, t_robot_object)
+        # self.place_cube(self.arm, t_robot_goal)
+        # self.arm.move_gohome(wait=True)
+        # time.sleep(0.5)
+        result.success = False
         return result
     
     def grasp_cube(self, arm, cube_pose):

@@ -57,7 +57,7 @@ class PerceptionActionServer(Node):
 
         objects = self.pose_detector.detect_cubes(self.zed.image, self.t_cube_robot)
 
-        self.get_logger().info(f"Detected object poses:\n{objects}")
+        self.get_logger().info(f"Detected object poses: {len(objects)}")
         
         object_poses = [obj[:3, 3] for obj in objects]
 
@@ -110,9 +110,11 @@ class PerceptionActionServer(Node):
             case "detect_goal":
                 selected_goal = attention_pose + np.array([0, 0, CUBE_SIZE])
     
-                if selected is not None and np.linalg.norm((attention_pose - selected[:3, 3]) * [1, 1, 0]) < CUBE_SIZE * 2:
-                    # If the attention pose is close to an object, set the goal to be on top of that object instead of the raw attention pose
-                    selected_goal = selected[:3, 3] + np.array([0, 0, CUBE_SIZE])
+                if selected is not None:
+                    diff = (attention_pose - selected[:3, 3])
+                    if np.linalg.norm(diff[:2]) < CUBE_SIZE * 2: # If the attention pose is close to an object, set the goal to be on top of that object instead of the raw attention pose
+                        self.get_logger().info(f"Adjusting goal from {attention_pose} to {selected[:3, 3]} based on proximity to detected object.")
+                        selected_goal = selected[:3, 3] + np.array([0, 0, CUBE_SIZE])
 
                 result.pose.header.frame_id = "panda_link0"
                 result.pose.pose.orientation.w = 1.0
@@ -121,23 +123,6 @@ class PerceptionActionServer(Node):
                 result.pose.pose.position.z = selected_goal[2]
                 result.success = True
                 
-                # publish_goal_marker(self.goal_publisher, result.pose)
-
-                if interaction_type == 1:
-                    from_pose = PoseStamped()
-                    from_pose.header.frame_id = "panda_link0"
-                    from_pose.pose.position.x = pointer_position[0]
-                    from_pose.pose.position.y = pointer_position[1]
-                    from_pose.pose.position.z = pointer_position[2]
-
-                    to_pose = PoseStamped()
-                    to_pose.header.frame_id = "panda_link0"
-                    to_pose.pose.position.x = pointer_direction[0]
-                    to_pose.pose.position.y = pointer_direction[1]
-                    to_pose.pose.position.z = pointer_direction[2]
-
-                    # publish_pointing_vector_marker(self.vector_publisher, from_pose, to_pose)
-
             case _:
                 result.success = False              
 

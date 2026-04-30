@@ -5,6 +5,8 @@ import open3d as o3d
 from perception.zed_transform import TAG_SIZE, draw_pose_axes
 from types import SimpleNamespace
 
+import time
+
 CUBE_TAG_SIZE = 0.02045
 TARGET_FRAMES = 5
 CUBE_SIZE = 0.025
@@ -28,7 +30,7 @@ class PointBot:
 
         self.prev_landmarks = None
         # self.stable_counter = 0
-        self.stable_frames = 64
+        self.stable_frames = 20
         self.motion_thresh = 0.001
 
         self.finger_gesture_table = [
@@ -368,7 +370,7 @@ class PointBot:
     
     def run(self, objects=None):
         cv2.namedWindow("debug", cv2.WINDOW_NORMAL)
-        # self.frame_buffer = []
+        self.frame_buffer = []
 
         stable_counter = 0
         check_pose = True
@@ -415,9 +417,9 @@ class PointBot:
                         for object_pose in objects:
                             pose = np.eye(4)
                             pose[:3, 3] = object_pose
-                            draw_pose_axes(frame, self.K, pose, size=CUBE_SIZE)
+                            draw_pose_axes(frame, self.K, self.t_cam_robot @ pose, size=CUBE_SIZE)
                         cv2.imshow("debug", frame)
-                        cv2.waitKey(0)
+                        # cv2.waitKey(0)
                         check_pose = False
                         return inter_rob, 1, tip_rob, ray_rob
                     else:
@@ -435,7 +437,7 @@ class PointBot:
                         palm = SimpleNamespace(x=palm[0], y=palm[1])
                         palm_cam = self.proj_2d_3d(palm)
                         palm_rob = (np.linalg.inv(self.t_cam_robot) @ np.append(palm_cam, 1))[:3]
-                        # self.frame_buffer.clear()
+                        self.frame_buffer.clear()
 
                         palm_rob[0] = np.clip(palm_rob[0], X_MIN, X_MAX)
                         palm_rob[1] = np.clip(palm_rob[1], Y_MIN, Y_MAX)
@@ -443,9 +445,9 @@ class PointBot:
                         for object_pose in objects:
                             pose = np.eye(4)
                             pose[:3, 3] = object_pose
-                            draw_pose_axes(frame, self.K, pose, size=CUBE_SIZE)
+                            draw_pose_axes(frame, self.K, self.t_cam_robot @ pose, size=CUBE_SIZE)
                         cv2.imshow("debug", frame)
-                        cv2.waitKey(0)
+                        # cv2.waitKey(1)
                         # Returns 0 when picking from hand, 1 when pointing to table
                         check_pose = False
                         return palm_rob, 0, None, None                   
@@ -455,6 +457,7 @@ class PointBot:
                 pose = np.eye(4)
                 pose[:3, 3] = object_pose
                 draw_pose_axes(frame, self.K, pose, size=CUBE_SIZE)
+            cv2.resizeWindow("debug", 1280, 720)
             cv2.imshow("debug", frame)
             if cv2.waitKey(1) & 0xFF == ord('q'):
                 break
