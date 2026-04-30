@@ -13,7 +13,7 @@ X_MIN, X_MAX = 0 + TAG_SIZE / 2, 0.38 - TAG_SIZE / 2
 Y_MIN, Y_MAX = -0.4 + TAG_SIZE / 2, 0.4 - TAG_SIZE / 2
 
 class PointBot:
-    def __init__(self, zed, t_cam):
+    def __init__(self, zed, t_cam, node):
         self.zed = zed
         self.K = zed.camera_intrinsic
         self.hands = mp.solutions.hands.Hands(
@@ -24,6 +24,7 @@ class PointBot:
         self.tags = None    
         self.t_cam_robot = t_cam
         self.h, self.w, self.image, self.depth = None, None, None, None
+        self.node = node
 
 
         self.prev_landmarks = None
@@ -370,11 +371,14 @@ class PointBot:
         cv2.namedWindow("debug", cv2.WINDOW_NORMAL)
         # self.frame_buffer = []
 
+
         stable_counter = 0
         check_pose = True
         while check_pose:
             color = self.zed.image
             depth = self.zed.point_cloud
+
+            self.node.get_logger().info(f"Running pointing system loop with depth data: {depth}")
 
             if color is None:
                 continue
@@ -403,7 +407,7 @@ class PointBot:
                     # self.depth = depth
 
                 if sample is not None and gesture == 1:
-                    print("Gesture Detected: Pointing")
+                    self.node.get_logger().info("Gesture Detected: Pointing")
                     tip_cam, ray_cam, tip_rob, ray_rob, inter_rob, inter_cam = self.solve(sample, objects)
 
                     inter_rob[0] = np.clip(inter_rob[0], X_MIN, X_MAX)
@@ -423,7 +427,7 @@ class PointBot:
                     else:
                         frame = self.draw_active_ray(frame, sample, inter_cam)
                 elif sample is not None and gesture == 0:
-                    print("Gesture Detected: Open Hand")
+                    self.node.get_logger().info("Gesture Detected: Open Hand")
                     if stable_counter >= self.stable_frames:
                         palm_indices = [0, 1, 5, 9, 13, 17]
                         palm = np.array([
@@ -455,6 +459,7 @@ class PointBot:
                 pose = np.eye(4)
                 pose[:3, 3] = object_pose
                 draw_pose_axes(frame, self.K, pose, size=CUBE_SIZE)
+
             cv2.imshow("debug", frame)
             if cv2.waitKey(1) & 0xFF == ord('q'):
                 break

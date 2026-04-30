@@ -1,99 +1,69 @@
+import rclpy
+from rclpy.node import Node
+from rclpy.executors import SingleThreadedExecutor
+from sensor_msgs.msg import Image, CameraInfo, PointCloud2
+from cv_bridge import CvBridge
+
+from sensor_msgs_py import point_cloud2
+
 import numpy as np
-import time
 import threading
-import pyzed.sl as sl
 
-class ZedCamera:
-    _instance = None
-    _lock = threading.Lock()
-
-    def __new__(cls, *args, **kwargs):
-        """Implement Singleton pattern to prevent multiple camera objects."""
-        with cls._lock:
-            if cls._instance is None:
-                cls._instance = super(ZedCamera, cls).__new__(cls)
-                cls._instance._initialized = False
-            return cls._instance
-
-    def __init__(self, resolution=sl.RESOLUTION.HD2K, fps=30):
-        # Prevent re-initialization if the singleton already exists
-        if self._initialized:
-            return
-            
-        self._zed = sl.Camera()
-        self._init_params = sl.InitParameters()
-        self._init_params.camera_resolution = resolution
-        self._init_params.camera_fps = fps
-        self._init_params.depth_mode = sl.DEPTH_MODE.NEURAL
-        self._init_params.coordinate_units = sl.UNIT.METER
-        
-        self._runtime_parameters = sl.RuntimeParameters()
-        
-        # Open the camera
-        status = self._zed.open(self._init_params)
-        if status != sl.ERROR_CODE.SUCCESS:
-            raise ConnectionError(f"ZED Open Failed: {status}")
-
-        # Warmup and Auto-exposure
-        for _ in range(30):
-            if self._zed.grab() == sl.ERROR_CODE.SUCCESS:
-                break
-
-        # Get Intrinsics
-        calib = self._zed.get_camera_information().camera_configuration.calibration_parameters.left_cam
-        self._camera_intrinsic = np.array([
-            [calib.fx, 0, calib.cx],
-            [0, calib.fy, calib.cy],
-            [0, 0, 1]
-        ])
-
-        # Threading storage
-        self._image_mat = sl.Mat()
-        self._measure_xyz = sl.Mat()
+class ZedCamera(Node):
+    def __init__(self):
+        super().__init__("zed_camera_client")
+        self.bridge = CvBridge()
         self._image = None
-        self._point_cloud = None
+        self._camera_intrinsic = None
+        self._pc = None
+
+        # These subscriptions now belong to the PerceptionActionServer node
+        self.info_sub = self.create_subscription(
+            CameraInfo, '/zed/zed_node/depth/camera_info', self._info_cb, 10)
+        self.img_sub = self.create_subscription(
+            Image, '/zed/zed_node/rgb/color/rect/image', self._img_cb, 10)
+        self.pc_sub = self.create_subscription(
+            PointCloud2, '/zed/zed_node/point_cloud/cloud_registered', self._pc_cb, 10)
+
+        # Background Spinning logic
+        self._executor = SingleThreadedExecutor()
+        self._executor.add_node(self)
         
-        self._running = True
-        self._data_lock = threading.Lock()
-        self._thread = threading.Thread(target=self._update, daemon=True)
+        self._stop_event = threading.Event()
+        self._thread = threading.Thread(target=self._run_node, daemon=True)
         self._thread.start()
-
-        # Wait for first frame
-        while self._image is None:
-            time.sleep(0.1)
-            
+        
         self._initialized = True
-        print("ZED Camera initialized and streaming.")
+        self.get_logger().info("Standalone ZED Node started in background thread.")
 
-    def _update(self):
-        while self._running:
-            if self._zed.grab(self._runtime_parameters) == sl.ERROR_CODE.SUCCESS:
-                self._zed.retrieve_image(self._image_mat, sl.VIEW.LEFT)
-                self._zed.retrieve_measure(self._measure_xyz, sl.MEASURE.XYZ)
+    def _run_node(self):
+        """Internal thread to handle ROS 2 callbacks."""
+        while rclpy.ok() and not self._stop_event.is_set():
+            self._executor.spin_once(timeout_sec=0.1)
 
-                with self._data_lock:
-                    self._image = self._image_mat.get_data().copy()
-                    self._point_cloud = self._measure_xyz.get_data().copy()
-            else:
-                time.sleep(0.01)
+    def _info_cb(self, msg):
+        self._camera_intrinsic = np.array(msg.k).reshape((3, 3))
+
+    def _img_cb(self, msg):
+        self._image = self.bridge.imgmsg_to_cv2(msg, "bgr8")
+    
+    def _pc_cb(self, msg):
+        points = point_cloud2.read_points(msg, skip_nans=False, field_names=("x", "y", "z"))
+        self._pc = np.array(list(points))
 
     @property
     def image(self):
-        with self._data_lock:
-            return self._image if self._image is not None else None
-
-    @property
-    def point_cloud(self):
-        with self._data_lock:
-            return self._point_cloud if self._point_cloud is not None else None
+        return self._image
 
     @property
     def camera_intrinsic(self):
         return self._camera_intrinsic
-
-    def close(self):
-        self._running = False
-        if hasattr(self, '_thread'):
-            self._thread.join()
-        self._zed.close()
-        ZedCamera._instance = None # Allow re-opening later if needed
+    
+    @property
+    def point_cloud(self):
+        return self._pc
+    
+    def shutdown(self):
+        self._stop_event.set()
+        self._thread.join()
+        self.destroy_node()

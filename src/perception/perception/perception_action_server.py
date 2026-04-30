@@ -23,19 +23,17 @@ from pointbot_rviz.visualization_helpers import publish_object_markers, publish_
 class PerceptionActionServer(Node):
     def __init__(self):
         super().__init__("perception_action_server")
+        self.zed = ZedCamera() # Initialize ZED camera within the node to ensure subscriptions are set up correctly
+
         self._action_server = ActionServer(
             self,
             Perception,
             'perception',
             self.execute_callback)        
-
-        self.zed = ZedCamera()
         
-        self.pose_detector = ObjectPoseDetector(self.zed.camera_intrinsic)
-
-        self.t_cube_robot = get_transform_camera_robot(self.zed.image, self.zed.camera_intrinsic)
-
-        self.pointing_system = PointBot(self.zed, self.t_cube_robot)
+        self.pose_detector = None
+        self.t_cube_robot = None
+        self.pointing_system = None
 
         self.bridge = CvBridge()
 
@@ -45,6 +43,16 @@ class PerceptionActionServer(Node):
         self.goal_publisher = self.create_publisher(Marker, '/goal_marker', 10)
 
     def execute_callback(self, goal_handle):
+        if self.zed.image is None or self.zed.camera_intrinsic is None:
+            self.get_logger().error("ZED camera data not available yet.")
+            goal_handle.abort()
+            return Perception.Result()
+        
+        if self.pose_detector is None:
+            self.pose_detector = ObjectPoseDetector(self.zed.camera_intrinsic)
+            self.t_cube_robot = get_transform_camera_robot(self.zed.image, self.zed.camera_intrinsic)
+            self.pointing_system = PointBot(self.zed, self.t_cube_robot, self)
+
         task = goal_handle.request.task
 
         self.get_logger().info(f"Peforming perception task {task}")
@@ -56,8 +64,6 @@ class PerceptionActionServer(Node):
             raw_image = cv2.cvtColor(raw_image, cv2.COLOR_BGRA2BGR)
 
         objects = self.pose_detector.detect_cubes(self.zed.image, self.t_cube_robot)
-
-        self.get_logger().info(f"Detected object poses:\n{objects}")
         
         object_poses = [obj[:3, 3] for obj in objects]
 
@@ -76,6 +82,8 @@ class PerceptionActionServer(Node):
             object_posestamped.append(object)
 
         publish_object_markers(self.object_publisher, object_posestamped)
+
+        self.get_logger().info(f"Running pointing system with {len(object_poses)} detected objects.")
 
         attention_pose, interaction_type, pointer_position, pointer_direction = self.pointing_system.run(object_poses)
 

@@ -136,7 +136,6 @@ def get_transform():
     zed = ZedCamera() # Returns existing instance if already open
     camera_intrinsic = zed.camera_intrinsic
     cv_image = zed.image
-    # REMOVE zed.close() from here
     return get_transform_camera_robot(cv_image, camera_intrinsic)
 
 def draw_pose_axes(image, camera_intrinsic, pose, size=0.1):
