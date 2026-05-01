@@ -40,6 +40,8 @@ class PerceptionActionServer(Node):
 
         self.bridge = CvBridge()
 
+        # self.percpetion_timer = self.create_timer(0.1, self.timer_callback)
+
         self.object_publisher = self.create_publisher(MarkerArray, '/object_markers', 10)
         self.vector_publisher = self.create_publisher(Marker, '/pointing_vector', 10)
         self.selected_publisher = self.create_publisher(Marker, '/selected_object', 10)

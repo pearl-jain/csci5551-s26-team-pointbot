@@ -30,7 +30,7 @@ class PointBot:
 
 
         self.prev_landmarks = None
-        # self.stable_counter = 0
+        self.stable_counter = 0
         self.stable_frames = 20
         self.motion_thresh = 0.005
 
@@ -196,6 +196,7 @@ class PointBot:
             num_segments = int(np.ceil(z / CUBE_SIZE))
 
             best_hit = None
+
             for i in range(num_segments):
                 segment_center = np.array([x, y, z - i * CUBE_SIZE])
                 # Dist from object to pointer finger projected on ray
@@ -215,8 +216,11 @@ class PointBot:
                 half_cord = np.sqrt(radius**2 - d2)
                 hit_point = closest_approach - half_cord
             
-            if best_hit is None or hit_point < best_hit:
-                best_hit = hit_point
+                if best_hit is None or hit_point < best_hit:
+                    best_hit = hit_point
+
+            if best_hit is not None:
+                hits.append((center, best_hit))
             
         # Sort hits by distance (closest first if we have multiple objects in a row)
         hits.sort(key=lambda x: x[1])
@@ -382,100 +386,119 @@ class PointBot:
         return frame
     
     def run(self, objects=None, detect_object=True):
+        self.initalize_loop()
+        while self.check_pose:
+            attention_pose, interaction_type, pointer_position, pointer_direction = self.iterate(objects, detect_object)
+            
+            if not isinstance(attention_pose, int):
+                return attention_pose, interaction_type, pointer_position, pointer_direction
+
+            if attention_pose == -1:
+                break
+            
+    def iterate(self, objects=None, detect_object=True):
+        if not self.check_pose:
+            return -1, None, None, None
+
+        color = self.zed.image
+        depth = self.zed.point_cloud
+
+        if color is None:
+            return 0, None, None, None
+        if self.h is None or self.w is None:
+            self.h, self.w = color.shape[:2]
+
+        frame = cv2.cvtColor(color, cv2.COLOR_BGRA2BGR)
+        rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+        results = self.hands.process(rgb)
+
+        if results.multi_hand_landmarks:
+            lm = results.multi_hand_landmarks[0]
+            
+            motion = self.landmark_motion(lm)
+
+            if motion < self.motion_thresh:
+                self.stable_counter += 1
+            else:
+                self.stable_counter = 0
+
+            progress = self.stable_counter / self.stable_frames
+            frame = self.draw_progress_bar(frame, progress)
+            sample = self.sample_frame(frame, depth, lm)
+            gesture = self.detect_gesture(results)
+                # self.image = color
+            self.depth = depth
+
+            if sample is not None and gesture == 1:
+                self.node.get_logger().info("Gesture Detected: Pointing")
+                tip_cam, ray_cam, tip_rob, ray_rob, inter_rob, inter_cam = self.solve(sample, objects)
+
+                inter_rob[0] = np.clip(inter_rob[0], X_MIN, X_MAX)
+                inter_rob[1] = np.clip(inter_rob[1], Y_MIN, Y_MAX)
+                
+                # self.frame_buffer.clear()
+                if self.stable_counter > self.stable_frames:
+                    frame = self.visualize(frame, tip_cam, ray_cam=ray_cam, intersection_cam=inter_cam)
+                    for object_pose in objects:
+                        pose = np.eye(4)
+                        pose[:3, 3] = object_pose
+                        draw_pose_axes(frame, self.K, self.t_cam_robot @ pose, size=CUBE_SIZE)
+                    cv2.imshow("debug", frame)
+                    # cv2.waitKey(0)
+                    self.check_pose = False
+                    return inter_rob, 1, tip_rob, ray_rob
+                else:
+                    frame = self.draw_active_ray(frame, sample, inter_cam)
+            elif sample is not None and gesture == 0:
+                if detect_object:
+                    self.stable_counter = 0
+                self.node.get_logger().info("Gesture Detected: Open Hand")
+                if self.stable_counter > self.stable_frames:
+                    palm_indices = [0, 1, 5, 9, 13, 17]
+                    palm = np.array([
+                        [lm.landmark[i].x, 
+                        lm.landmark[i].y] 
+                        for i in palm_indices
+                    ])
+                    palm = np.mean(palm, axis=0)
+                    palm = SimpleNamespace(x=palm[0], y=palm[1])
+                    palm_cam = self.proj_2d_3d(palm)
+                    palm_rob = (np.linalg.inv(self.t_cam_robot) @ np.append(palm_cam, 1))[:3]
+                    self.frame_buffer.clear()
+
+                    palm_rob[0] = np.clip(palm_rob[0], X_MIN, X_MAX)
+                    palm_rob[1] = np.clip(palm_rob[1], Y_MIN, Y_MAX)
+                    frame = self.visualize(frame, palm_cam)
+                    for object_pose in objects:
+                        pose = np.eye(4)
+                        pose[:3, 3] = object_pose
+                        draw_pose_axes(frame, self.K, self.t_cam_robot @ pose, size=CUBE_SIZE)
+                    cv2.imshow("debug", frame)
+                    # cv2.waitKey(1)
+                    # Returns 0 when picking from hand, 1 when pointing to table
+                    self.check_pose = False
+                    return palm_rob, 0, None, None                   
+                
+        for object_pose in objects:
+            pose = np.eye(4)
+            pose[:3, 3] = object_pose
+            draw_pose_axes(frame, self.K, pose, size=CUBE_SIZE)
+        cv2.resizeWindow("debug", 1280, 720)
+        cv2.imshow("debug", frame)
+        if cv2.waitKey(1) & 0xFF == ord('q'):
+            return -1, None, None, None
+        
+        return 0, None, None, None
+
+    def initalize_loop(self):
         cv2.namedWindow("debug", cv2.WINDOW_NORMAL)
         self.frame_buffer = []
 
-        stable_counter = 0
+        self.stable_counter = 0
         self.check_pose = True
-        while self.check_pose:
-            color = self.zed.image
-            depth = self.zed.point_cloud
+    
+    def start_loop(self):
+        self.check_pose = True
 
-            if color is None:
-                continue
-            if self.h is None or self.w is None:
-                self.h, self.w = color.shape[:2]
-
-            frame = cv2.cvtColor(color, cv2.COLOR_BGRA2BGR)
-            rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
-            results = self.hands.process(rgb)
-
-            if results.multi_hand_landmarks:
-                lm = results.multi_hand_landmarks[0]
-                
-                motion = self.landmark_motion(lm)
-
-                if motion < self.motion_thresh:
-                    stable_counter += 1
-                else:
-                    stable_counter = 0
-
-                progress = stable_counter / self.stable_frames
-                frame = self.draw_progress_bar(frame, progress)
-                sample = self.sample_frame(frame, depth, lm)
-                gesture = self.detect_gesture(results)
-                    # self.image = color
-                self.depth = depth
-
-                if sample is not None and gesture == 1:
-                    self.node.get_logger().info("Gesture Detected: Pointing")
-                    tip_cam, ray_cam, tip_rob, ray_rob, inter_rob, inter_cam = self.solve(sample, objects)
-
-                    inter_rob[0] = np.clip(inter_rob[0], X_MIN, X_MAX)
-                    inter_rob[1] = np.clip(inter_rob[1], Y_MIN, Y_MAX)
-                 
-                    # self.frame_buffer.clear()
-                    if stable_counter >= self.stable_frames:
-                        frame = self.visualize(frame, tip_cam, ray_cam=ray_cam, intersection_cam=inter_cam)
-                        for object_pose in objects:
-                            pose = np.eye(4)
-                            pose[:3, 3] = object_pose
-                            draw_pose_axes(frame, self.K, self.t_cam_robot @ pose, size=CUBE_SIZE)
-                        cv2.imshow("debug", frame)
-                        # cv2.waitKey(0)
-                        self.check_pose = False
-                        return inter_rob, 1, tip_rob, ray_rob
-                    else:
-                        frame = self.draw_active_ray(frame, sample, inter_cam)
-                elif sample is not None and gesture == 0:
-                    if detect_object:
-                        stable_counter = 0
-                    self.node.get_logger().info("Gesture Detected: Open Hand")
-                    if stable_counter >= self.stable_frames:
-                        palm_indices = [0, 1, 5, 9, 13, 17]
-                        palm = np.array([
-                            [lm.landmark[i].x, 
-                            lm.landmark[i].y] 
-                            for i in palm_indices
-                        ])
-                        palm = np.mean(palm, axis=0)
-                        palm = SimpleNamespace(x=palm[0], y=palm[1])
-                        palm_cam = self.proj_2d_3d(palm)
-                        palm_rob = (np.linalg.inv(self.t_cam_robot) @ np.append(palm_cam, 1))[:3]
-                        self.frame_buffer.clear()
-
-                        palm_rob[0] = np.clip(palm_rob[0], X_MIN, X_MAX)
-                        palm_rob[1] = np.clip(palm_rob[1], Y_MIN, Y_MAX)
-                        frame = self.visualize(frame, palm_cam)
-                        for object_pose in objects:
-                            pose = np.eye(4)
-                            pose[:3, 3] = object_pose
-                            draw_pose_axes(frame, self.K, self.t_cam_robot @ pose, size=CUBE_SIZE)
-                        cv2.imshow("debug", frame)
-                        # cv2.waitKey(1)
-                        # Returns 0 when picking from hand, 1 when pointing to table
-                        self.check_pose = False
-                        return palm_rob, 0, None, None                   
-                    
-
-            for object_pose in objects:
-                pose = np.eye(4)
-                pose[:3, 3] = object_pose
-                draw_pose_axes(frame, self.K, pose, size=CUBE_SIZE)
-            cv2.resizeWindow("debug", 1280, 720)
-            cv2.imshow("debug", frame)
-            if cv2.waitKey(1) & 0xFF == ord('q'):
-                break
-
-    def cancel(self):
+    def stop_loop(self):
         self.check_pose = False
