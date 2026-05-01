@@ -1,3 +1,4 @@
+from email.header import Header
 import threading
 import time
 import rclpy
@@ -5,7 +6,8 @@ from rclpy.action import ActionServer, CancelResponse
 from rclpy.node import Node
 
 from point_bot_interfaces.action import Perception
-from sensor_msgs.msg import Image, PointCloud2
+from sensor_msgs.msg import Image, PointCloud2, PointField
+from sensor_msgs_py import point_cloud2
 from geometry_msgs.msg import PoseStamped
 from visualization_msgs.msg import Marker, MarkerArray
 
@@ -56,9 +58,15 @@ class PerceptionActionServer(Node):
     def update(self):
         while True:
             if self.zed.point_cloud is not None:
-                point_cloud_msg = self.bridge.cv2_to_imgmsg(self.zed.point_cloud)
-                point_cloud_msg.header.frame_id = "world"
-                self.point_cloud_publisher.publish(point_cloud_msg)
+                fields = [
+                    PointField(name='x', offset=0, datatype=PointField.FLOAT32, count=1),
+                    PointField(name='y', offset=4, datatype=PointField.FLOAT32, count=1),
+                    PointField(name='z', offset=8, datatype=PointField.FLOAT32, count=1),
+                    PointField(name='rgb', offset=12, datatype=PointField.FLOAT32, count=1),
+                ]
+                pc_msg = point_cloud2.create_cloud(Header(), fields, self.zed.point_cloud)
+                pc_msg.header.frame_id = "world"
+                self.point_cloud_publisher.publish(pc_msg)
             else:
                 time.sleep(0.01)
 
