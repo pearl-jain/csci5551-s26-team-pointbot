@@ -186,34 +186,43 @@ class PointBot:
         return p_tip, ray
     
     # Intersections 
-    def check_sphere_intersections(self, ray_origin, ray_dir, object_centers, radius=CUBE_SIZE):
+    def check_sphere_intersections(self, ray_origin, ray_dir, object_centers, radius=CUBE_SIZE/2):
         hits = []
         
         for center in object_centers:
-            # Dist from object to pointer finger projected on ray
-            L = center - ray_origin
-            closest_approach = np.dot(L, ray_dir)
-            
-            # Object behind the hand 
-            if closest_approach < 0:
-                continue
+            x, y, z = center
+            # Down to the middle of the cube
+            z -= radius
+            num_segments = int(np.ceil(z / CUBE_SIZE))
 
-            # If ray is further than the radius   
-            d2 = np.dot(L, L) - closest_approach * closest_approach
-            if d2 > radius**2:
-                continue
+            best_hit = None
+            for i in range(num_segments):
+                segment_center = np.array([x, y, z - i * CUBE_SIZE])
+                # Dist from object to pointer finger projected on ray
+                L = segment_center - ray_origin
+                closest_approach = np.dot(L, ray_dir)
                 
-            # Find distance along ray to intersection points
-            half_cord = np.sqrt(radius**2 - d2)
+                # Object behind the hand 
+                if closest_approach < 0:
+                    continue
+
+                # If ray is further than the radius   
+                d2 = np.dot(L, L) - closest_approach * closest_approach
+                if d2 > radius**2:
+                    continue
+                    
+                # Find distance along ray to intersection points
+                half_cord = np.sqrt(radius**2 - d2)
+                hit_point = closest_approach - half_cord
             
-            hit_point = closest_approach - half_cord
-            
-            hits.append((center, hit_point))
+            if best_hit is None or hit_point < best_hit:
+                best_hit = hit_point
             
         # Sort hits by distance (closest first if we have multiple objects in a row)
         hits.sort(key=lambda x: x[1])
         return hits
-    
+
+
     def solve(self, frame_data, objects):
         t_robot_cam = np.linalg.inv(self.t_cam_robot)
 
