@@ -69,7 +69,7 @@ class ZedCamera:
         while self._running:
             if self._zed.grab(self._runtime_parameters) == sl.ERROR_CODE.SUCCESS:
                 self._zed.retrieve_image(self._image_mat, sl.VIEW.LEFT)
-                self._zed.retrieve_measure(self._measure_xyz, sl.MEASURE.XYZ)
+                self._zed.retrieve_measure(self._measure_xyz, sl.MEASURE.XYZBGRA)
 
                 with self._data_lock:
                     self._image = self._image_mat.get_data().copy()
