@@ -236,6 +236,18 @@ class ObjectPoseDetector():
 
         return scores
 
+    def point_object_distance_scores(self, object_points, attention_point):
+        if (len(object_points) == 0) or (attention_point is None):
+            return None
+        
+        scores = []
+        for object_point in object_points:
+            relative_position = object_point - attention_point
+
+            scores.append(1 / np.linalg.norm(relative_position))
+
+        return scores
+
     def detect_cubes(self, observation, camera_pose):
         cube_poses = self.object_detector.detect_april_tag_poses(observation, camera_pose)
 

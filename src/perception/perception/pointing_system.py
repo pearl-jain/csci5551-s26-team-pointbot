@@ -11,13 +11,14 @@ CUBE_TAG_SIZE = 0.02045
 TARGET_FRAMES = 5
 CUBE_SIZE = 0.025
 
-X_MIN, X_MAX = 0 + TAG_SIZE / 2, 0.38 - TAG_SIZE / 2
+X_MIN, X_MAX = 0 + TAG_SIZE, 0.38 - TAG_SIZE / 2
 Y_MIN, Y_MAX = -0.4 + TAG_SIZE / 2, 0.4 - TAG_SIZE / 2
 
 class PointBot:
-    def __init__(self, zed, t_cam):
+    def __init__(self, zed, t_cam, node):
         self.zed = zed
         self.K = zed.camera_intrinsic
+        self.node = node
         self.hands = mp.solutions.hands.Hands(
             min_detection_confidence=0.8,
             min_tracking_confidence=0.8
@@ -31,7 +32,7 @@ class PointBot:
         self.prev_landmarks = None
         # self.stable_counter = 0
         self.stable_frames = 20
-        self.motion_thresh = 0.001
+        self.motion_thresh = 0.005
 
         self.finger_gesture_table = [
             [1, 1, 1, 1, 1], # Pick From Hand
@@ -63,9 +64,12 @@ class PointBot:
     
     # 2D_3D Projection  
     def proj_2d_3d(self, p):
-        if self.h is None or self.depth is None: return None
+        if self.h is None or self.depth is None: 
+            self.node.get_logger().warn(f"this class does not have a valid height or depth")
+            return None
         tx, ty = int(p.x * self.w), int(p.y * self.h)
-        if not (0 <= tx < self.w and 0 <= ty < self.h):
+        if not ((0 <= tx and tx < self.w) and (0 <= ty and ty < self.h)):
+            self.node.get_logger().warn(f"{tx}, {ty} does not have a valid range")
             return None
         
         p_3d_raw = self.depth[ty, tx][:3]
@@ -102,7 +106,7 @@ class PointBot:
         return (x, y)
     
     def valid_pixel(self, p):
-        return p is not None and 0 <= p[0] < self.w and 0 <= p[1] < self.h
+        return (p is not None) and (0 <= p[0] and p[0] < self.w) and (0 <= p[1] and p[1] < self.h)
     
     # Hand Detection
     def detect_gesture(self, landmark_results):
@@ -161,9 +165,9 @@ class PointBot:
         tx, ty = int(tip.x * w), int(tip.y * h)
         kx, ky = int(knuckle.x * w), int(knuckle.y * h)
 
-        if not (0 <= tx < w and 0 <= ty < h):
+        if not ((0 <= tx and tx < w) and (0 <= ty and ty < h)):
             return None
-        if not (0 <= kx < w and 0 <= ky < h):
+        if not ((0 <= kx and kx < w) and (0 <= ky and ky < h)):
             return None
 
         p_tip = depth[ty, tx][:3]
@@ -331,12 +335,12 @@ class PointBot:
         check_indices = [5, 8, 17] 
         curr_list = []
         
-        for i, idx in enumerate(check_indices):
-            p_3d = self.proj_2d_3d(lm.landmark[idx])
+        for idx, finger_idx in enumerate(check_indices):
+            p_3d = self.proj_2d_3d(lm.landmark[finger_idx])
             if p_3d is not None:
                 curr_list.append(p_3d)
             elif self.prev_landmarks is not None:
-                curr_list.append(self.prev_landmarks[i])
+                curr_list.append(self.prev_landmarks[idx])
             else:
                 # Initial frame fallback
                 curr_list.append(np.array([0.0, 0.0, 0.0]))
@@ -346,7 +350,7 @@ class PointBot:
         if self.prev_landmarks is None or self.prev_landmarks.shape != curr.shape:
             self.prev_landmarks = curr
             return float('inf')
-
+        
         diff = np.linalg.norm(curr - self.prev_landmarks, axis=1)
         motion = np.mean(diff)
 
@@ -368,13 +372,13 @@ class PointBot:
 
         return frame
     
-    def run(self, objects=None):
+    def run(self, objects=None, detect_object=True):
         cv2.namedWindow("debug", cv2.WINDOW_NORMAL)
         self.frame_buffer = []
 
         stable_counter = 0
-        check_pose = True
-        while check_pose:
+        self.check_pose = True
+        while self.check_pose:
             color = self.zed.image
             depth = self.zed.point_cloud
 
@@ -402,10 +406,10 @@ class PointBot:
                 sample = self.sample_frame(frame, depth, lm)
                 gesture = self.detect_gesture(results)
                     # self.image = color
-                    # self.depth = depth
+                self.depth = depth
 
                 if sample is not None and gesture == 1:
-                    print("Gesture Detected: Pointing")
+                    self.node.get_logger().info("Gesture Detected: Pointing")
                     tip_cam, ray_cam, tip_rob, ray_rob, inter_rob, inter_cam = self.solve(sample, objects)
 
                     inter_rob[0] = np.clip(inter_rob[0], X_MIN, X_MAX)
@@ -420,12 +424,14 @@ class PointBot:
                             draw_pose_axes(frame, self.K, self.t_cam_robot @ pose, size=CUBE_SIZE)
                         cv2.imshow("debug", frame)
                         # cv2.waitKey(0)
-                        check_pose = False
+                        self.check_pose = False
                         return inter_rob, 1, tip_rob, ray_rob
                     else:
                         frame = self.draw_active_ray(frame, sample, inter_cam)
                 elif sample is not None and gesture == 0:
-                    print("Gesture Detected: Open Hand")
+                    if detect_object:
+                        stable_counter = 0
+                    self.node.get_logger().info("Gesture Detected: Open Hand")
                     if stable_counter >= self.stable_frames:
                         palm_indices = [0, 1, 5, 9, 13, 17]
                         palm = np.array([
@@ -449,7 +455,7 @@ class PointBot:
                         cv2.imshow("debug", frame)
                         # cv2.waitKey(1)
                         # Returns 0 when picking from hand, 1 when pointing to table
-                        check_pose = False
+                        self.check_pose = False
                         return palm_rob, 0, None, None                   
                     
 
@@ -461,3 +467,6 @@ class PointBot:
             cv2.imshow("debug", frame)
             if cv2.waitKey(1) & 0xFF == ord('q'):
                 break
+
+    def cancel(self):
+        self.check_pose = False

@@ -1,5 +1,5 @@
 import rclpy
-from rclpy.action import ActionServer
+from rclpy.action import ActionServer, CancelResponse
 from rclpy.node import Node
 
 from point_bot_interfaces.action import Perception
@@ -27,7 +27,8 @@ class PerceptionActionServer(Node):
             self,
             Perception,
             'perception',
-            self.execute_callback)        
+            execute_callback=self.execute_callback,
+            cancel_callback=self.handle_cancel)        
 
         self.zed = ZedCamera()
         
@@ -35,7 +36,7 @@ class PerceptionActionServer(Node):
 
         self.t_cube_robot = get_transform_camera_robot(self.zed.image, self.zed.camera_intrinsic)
 
-        self.pointing_system = PointBot(self.zed, self.t_cube_robot)
+        self.pointing_system = PointBot(self.zed, self.t_cube_robot, self)
 
         self.bridge = CvBridge()
 
@@ -44,11 +45,21 @@ class PerceptionActionServer(Node):
         self.selected_publisher = self.create_publisher(Marker, '/selected_object', 10)
         self.goal_publisher = self.create_publisher(Marker, '/goal_marker', 10)
 
+    def handle_cancel(self, cancel_request):
+        """Handle cancellation requests."""
+        self.get_logger().info('Received cancel request')
+        # self.pose_detector.cancel()
+        return CancelResponse.ACCEPT # Accept the cancellation
+
     def execute_callback(self, goal_handle):
         task = goal_handle.request.task
 
         self.get_logger().info(f"Peforming perception task {task}")
         goal_handle.succeed() # Tell the client that the goal was handled successfully
+
+        is_detect_object = (task == "detect_object")
+
+        result = Perception.Result()
 
         # Define the result message and populate it with the perception results
         raw_image = self.zed.image.copy()
@@ -61,31 +72,24 @@ class PerceptionActionServer(Node):
         
         object_poses = [obj[:3, 3] for obj in objects]
 
-        object_posestamped = []
-        for o in objects:
-            q = tf_transformations.quaternion_from_matrix(o)
-            object = PoseStamped()
-            object.header.frame_id = "panda_link0"
-            object.pose.position.x = o[0, 3]
-            object.pose.position.y = o[1, 3]
-            object.pose.position.z = o[2, 3]
-            object.pose.orientation.w = q[0]
-            object.pose.orientation.x = q[1]
-            object.pose.orientation.y = q[2]
-            object.pose.orientation.z = q[3]
-            object_posestamped.append(object)
-
-        publish_object_markers(self.object_publisher, object_posestamped)
-
-        attention_pose, interaction_type, pointer_position, pointer_direction = self.pointing_system.run(object_poses)
+        attention_pose, interaction_type, pointer_position, pointer_direction = self.pointing_system.run(object_poses, is_detect_object)
 
         self.get_logger().info(f"Attention Pose: {attention_pose}\nInteraction Type: {interaction_type}\nPointer Position: {pointer_position}\nPointer Direction: {pointer_direction}")
         
-        attention_scores = self.pose_detector.pointing_object_distance_scores(object_poses, pointer_position, pointer_direction)
+        if interaction_type == 1: # Pointing
+            attention_scores = self.pose_detector.pointing_object_distance_scores(object_poses, pointer_position, pointer_direction)
+        else: # Palm
+            if is_detect_object:
+                result.success = False
+                return result
+            attention_scores = self.pose_detector.point_object_distance_scores(object_poses, attention_pose)
+
+        if attention_scores is None:
+            result.success = False
+            return result
 
         selected = self.pose_detector.select_cube(objects, attention_scores)
 
-        result = Perception.Result()
         result.image = self.bridge.cv2_to_imgmsg(raw_image, encoding="bgr8")
 
         result.pose = PoseStamped()
@@ -124,7 +128,7 @@ class PerceptionActionServer(Node):
                 result.success = True
                 
             case _:
-                result.success = False              
+                result.success = False
 
         return result
 

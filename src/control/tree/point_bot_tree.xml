@@ -9,20 +9,38 @@
             <RetryUntilSuccessful num_attempts="-1">
               <DetectObject object_pose="{object_pose}"/>
             </RetryUntilSuccessful>
-            <Parallel failure_count="1"
-                      success_count="-1">
-              <MoveObject pose="{object_pose}"
-                          task="pickup"/>
-              <RetryUntilSuccessful num_attempts="-1">
-                <DetectGoal goal_pose="{goal_pose}"/>
-              </RetryUntilSuccessful>
-            </Parallel>
-            <MoveObject pose="{goal_pose}"
-                        task="place"/>
+            <Inverter>
+              <KeepRunningUntilFailure>
+                <Sequence>
+                  <Parallel failure_count="1"
+                            success_count="-1">
+                    <MoveObject pose="{object_pose}"
+                                task="pickup"/>
+                    <RetryUntilSuccessful num_attempts="-1">
+                      <DetectGoal goal_pose="{goal_pose}"/>
+                    </RetryUntilSuccessful>
+                  </Parallel>
+                  <MoveObject pose="{goal_pose}"
+                              task="place"/>
+                  <Fallback>
+                    <Timeout msec="10000">
+                      <RetryUntilSuccessful num_attempts="-1">
+                        <DetectObject object_pose="{object_pose}"/>
+                      </RetryUntilSuccessful>
+                    </Timeout>
+                    <Inverter>
+                      <MoveObject pose="{object_pose}"
+                                  task="home"/>
+                    </Inverter>
+                  </Fallback>
+                </Sequence>
+              </KeepRunningUntilFailure>
+            </Inverter>
           </Sequence>
         </KeepRunningUntilFailure>
       </Inverter>
-      <LogString message="Home the Robot, it failed, or perform recovery."/>
+      <MoveObject pose="{object_pose}"
+                  task="home"/>
       <AlwaysFailure/>
     </Sequence>
   </BehaviorTree>
@@ -36,10 +54,6 @@
     <Action ID="DetectObject"
             editable="true">
       <output_port name="object_pose"/>
-    </Action>
-    <Action ID="LogString"
-            editable="true">
-      <input_port name="message"/>
     </Action>
     <Action ID="MoveObject"
             editable="true">

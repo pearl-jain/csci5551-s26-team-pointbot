@@ -53,9 +53,12 @@ class PlanningActionServer(Node):
             self.place_cube(self.arm, self.pose_stamped_to_matrix(pose))
             result.success = True
             time.sleep(0.5)
-            self.arm.move_gohome(wait=True)
             return result
-        
+        elif task == "home":
+            self.get_logger().info(f"Going home")
+            self.arm.move_gohome(wait=True)
+            result.success = True
+            return result
         
         # self.get_logger().info(f"Moving object from {object_pose} to {target_goal}")
         # goal_handle.succeed() # Tell the client that the goal was handled successfully
