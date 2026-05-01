@@ -4,7 +4,7 @@ from rclpy.node import Node
 
 from point_bot_interfaces.action import MoveObject
 from xarm.wrapper import XArmAPI # Might need to 'pip install xarm-python-sdk'
-from perception.perception.pointing_system import CUBE_SIZE
+from perception.pointing_system import CUBE_SIZE
 
 import math
 

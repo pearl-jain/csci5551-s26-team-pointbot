@@ -1,4 +1,3 @@
-from email.header import Header
 import threading
 import time
 import rclpy
@@ -6,6 +5,7 @@ from rclpy.action import ActionServer, CancelResponse
 from rclpy.node import Node
 
 from point_bot_interfaces.action import Perception
+from std_msgs.msg import Header
 from sensor_msgs.msg import Image, PointCloud2, PointField
 from sensor_msgs_py import point_cloud2
 from geometry_msgs.msg import PoseStamped
