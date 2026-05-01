@@ -397,6 +397,7 @@ class PointBot:
                 break
             
     def iterate(self, objects=None, detect_object=True):
+        cv2.namedWindow("debug", cv2.WINDOW_NORMAL)
         if not self.check_pose:
             return -1, None, None, None
 
@@ -491,7 +492,6 @@ class PointBot:
         return 0, None, None, None
 
     def initalize_loop(self):
-        cv2.namedWindow("debug", cv2.WINDOW_NORMAL)
         self.frame_buffer = []
 
         self.stable_counter = 0

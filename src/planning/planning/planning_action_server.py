@@ -67,6 +67,7 @@ class PlanningActionServer(Node):
         elif task == "home":
             self.get_logger().info(f"Going home")
             self.arm.move_gohome(wait=True)
+            time.sleep(1)
             result.success = True
             return result
         
@@ -99,7 +100,7 @@ class PlanningActionServer(Node):
         x = cube_pose[0][3].astype(numpy.float32) * 1000
         y = cube_pose[1][3].astype(numpy.float32) * 1000
         z = cube_pose[2][3].astype(numpy.float32) * 1000
-        z_offset = z_offset.astype(numpy.float32) * 1000
+        z_offset = z_offset * 1000
         z_higher = z + z_offset + 20
 
         #Find rpy
@@ -142,7 +143,7 @@ class PlanningActionServer(Node):
         x = cube_pose[0][3].astype(numpy.float32) * 1000
         y = cube_pose[1][3].astype(numpy.float32) * 1000
         z = cube_pose[2][3].astype(numpy.float32) * 1000
-        z_offset = z_offset.astype(numpy.float32) * 1000
+        z_offset = z_offset * 1000
         z_higher = z + z_offset + 10
 
         R = self.matrix_to_rpy(cube_pose[:3, :3])
