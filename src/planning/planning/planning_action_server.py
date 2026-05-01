@@ -4,6 +4,7 @@ from rclpy.node import Node
 
 from point_bot_interfaces.action import MoveObject
 from xarm.wrapper import XArmAPI # Might need to 'pip install xarm-python-sdk'
+from perception.perception.pointing_system import CUBE_SIZE
 
 import math
 
@@ -33,6 +34,7 @@ class PlanningActionServer(Node):
         self.arm.set_mode(0)
         self.arm.set_state(0)
         self.arm.move_gohome(wait=True)
+        self.highest_stack = 2 * CUBE_SIZE
         time.sleep(0.5)
 
     def execute_callback(self, goal_handle):
@@ -44,13 +46,21 @@ class PlanningActionServer(Node):
         result = MoveObject.Result()
         if task == "pickup":
             self.get_logger().info(f"Picking up object at {pose}")
-            self.grasp_cube(self.arm, self.pose_stamped_to_matrix(pose))
+            object_location = self.pose_stamped_to_matrix(pose)
+            if (math.isclose(object_location[2][3], self.highest_stack, rel_tol=1e-02, abs_tol=0.0)):
+                self.grasp_cube(self.arm, object_location, 50)
+                self.highest_stack -= CUBE_SIZE
+            else:
+                self.grasp_cube(self.arm, object_location, self.highest_stack)
             result.success = True
             time.sleep(0.5)
             return result
         elif task == "place":
             self.get_logger().info(f"Placing object at {pose}")
-            self.place_cube(self.arm, self.pose_stamped_to_matrix(pose))
+            goal_location = self.pose_stamped_to_matrix(pose)
+            self.place_cube(self.arm, goal_location, self.highest_stack)
+            if (goal_location[2][3] > self.highest_stack):
+                self.highest_stack += CUBE_SIZE
             result.success = True
             time.sleep(0.5)
             return result
@@ -74,7 +84,7 @@ class PlanningActionServer(Node):
         result.success = False
         return result
     
-    def grasp_cube(self, arm, cube_pose):
+    def grasp_cube(self, arm, cube_pose, z_offset):
         """
         Execute a pick sequence to grasp a cube at a specified pose.
 
@@ -89,7 +99,8 @@ class PlanningActionServer(Node):
         x = cube_pose[0][3].astype(numpy.float32) * 1000
         y = cube_pose[1][3].astype(numpy.float32) * 1000
         z = cube_pose[2][3].astype(numpy.float32) * 1000
-        z_higher = z + 50
+        z_offset = z_offset.astype(numpy.float32) * 1000
+        z_higher = z + z_offset + 20
 
         #Find rpy
         R = self.matrix_to_rpy(cube_pose[:3, :3])
@@ -115,7 +126,7 @@ class PlanningActionServer(Node):
         arm.set_position(x, y, z_higher, phi, theta, psy, is_radian=True, wait=True, speed=SPEED, mvacc=ACCELERATION)
         time.sleep(0.01)
 
-    def place_cube(self, arm, cube_pose):
+    def place_cube(self, arm, cube_pose, z_offset):
         """
         Execute a place sequence to release a cube at a specified pose.
 
@@ -131,7 +142,8 @@ class PlanningActionServer(Node):
         x = cube_pose[0][3].astype(numpy.float32) * 1000
         y = cube_pose[1][3].astype(numpy.float32) * 1000
         z = cube_pose[2][3].astype(numpy.float32) * 1000
-        z_higher = z + 50 #5 cm above cause matrix units in meters coverted to mm
+        z_offset = z_offset.astype(numpy.float32) * 1000
+        z_higher = z + z_offset + 10
 
         R = self.matrix_to_rpy(cube_pose[:3, :3])
         theta = R[0]

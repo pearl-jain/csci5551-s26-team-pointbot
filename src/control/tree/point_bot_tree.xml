@@ -3,42 +3,27 @@
       main_tree_to_execute="MainTree">
   <BehaviorTree ID="MainTree">
     <Sequence>
-      <Inverter>
-        <KeepRunningUntilFailure>
-          <Sequence>
+      <KeepRunningUntilFailure>
+        <Sequence>
+          <MoveObject pose="{object_pose}"
+                      task="home"/>
+          <RetryUntilSuccessful num_attempts="-1">
+            <DetectObject object_pose="{object_pose}"/>
+          </RetryUntilSuccessful>
+          <MoveObject pose="{object_pose}"
+                      task="pickup"/>
+          <Parallel failure_count="1"
+                    success_count="-1">
+            <MoveObject pose="{object_pose}"
+                        task="home"/>
             <RetryUntilSuccessful num_attempts="-1">
-              <DetectObject object_pose="{object_pose}"/>
+              <DetectGoal goal_pose="{goal_pose}"/>
             </RetryUntilSuccessful>
-            <Inverter>
-              <KeepRunningUntilFailure>
-                <Sequence>
-                  <Parallel failure_count="1"
-                            success_count="-1">
-                    <MoveObject pose="{object_pose}"
-                                task="pickup"/>
-                    <RetryUntilSuccessful num_attempts="-1">
-                      <DetectGoal goal_pose="{goal_pose}"/>
-                    </RetryUntilSuccessful>
-                  </Parallel>
-                  <MoveObject pose="{goal_pose}"
-                              task="place"/>
-                  <Fallback>
-                    <Timeout msec="10000">
-                      <RetryUntilSuccessful num_attempts="-1">
-                        <DetectObject object_pose="{object_pose}"/>
-                      </RetryUntilSuccessful>
-                    </Timeout>
-                    <Inverter>
-                      <MoveObject pose="{object_pose}"
-                                  task="home"/>
-                    </Inverter>
-                  </Fallback>
-                </Sequence>
-              </KeepRunningUntilFailure>
-            </Inverter>
-          </Sequence>
-        </KeepRunningUntilFailure>
-      </Inverter>
+          </Parallel>
+          <MoveObject pose="{goal_pose}"
+                      task="place"/>
+        </Sequence>
+      </KeepRunningUntilFailure>
       <MoveObject pose="{object_pose}"
                   task="home"/>
       <AlwaysFailure/>
