@@ -109,7 +109,7 @@ Visualization Manager:
     - Class: rviz_default_plugins/PointCloud2
       Name: PointCloud
       Enabled: true
-      Topic: /zed/zed_node/point_cloud/cloud_registered
+      Topic: /point_cloud
 
     - Class: rviz_default_plugins/MarkerArray
       Name: Objects

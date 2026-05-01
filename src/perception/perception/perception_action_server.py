@@ -1,9 +1,11 @@
+import threading
+import time
 import rclpy
 from rclpy.action import ActionServer, CancelResponse
 from rclpy.node import Node
 
 from point_bot_interfaces.action import Perception
-from sensor_msgs.msg import Image
+from sensor_msgs.msg import Image, PointCloud2
 from geometry_msgs.msg import PoseStamped
 from visualization_msgs.msg import Marker, MarkerArray
 
@@ -44,6 +46,19 @@ class PerceptionActionServer(Node):
         self.vector_publisher = self.create_publisher(Marker, '/pointing_vector', 10)
         self.selected_publisher = self.create_publisher(Marker, '/selected_object', 10)
         self.goal_publisher = self.create_publisher(Marker, '/goal_marker', 10)
+        self.point_cloud_publisher = self.create_publisher(PointCloud2, '/point_cloud', 10)
+
+        self.thread = threading.Thread(target=self.update, daemon=True)
+        self.thread.start()
+
+    def update(self):
+        while True:
+            if self.zed.point_cloud is not None:
+                point_cloud_msg = self.bridge.cv2_to_imgmsg(self.zed.point_cloud)
+                point_cloud_msg.header.frame_id = "world"
+                self.point_cloud_publisher.publish(point_cloud_msg)
+            else:
+                time.sleep(0.01)
 
     def handle_cancel(self, cancel_request):
         """Handle cancellation requests."""
