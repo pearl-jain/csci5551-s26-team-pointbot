@@ -57,18 +57,23 @@ class PerceptionActionServer(Node):
 
     def update(self):
         while True:
-            if self.zed.point_cloud is not None:
+            pc = self.zed.point_cloud
+            if pc is not None:
                 fields = [
                     PointField(name='x', offset=0, datatype=PointField.FLOAT32, count=1),
                     PointField(name='y', offset=4, datatype=PointField.FLOAT32, count=1),
                     PointField(name='z', offset=8, datatype=PointField.FLOAT32, count=1),
                     PointField(name='rgb', offset=12, datatype=PointField.FLOAT32, count=1),
                 ]
-                pc_msg = point_cloud2.create_cloud(Header(), fields, self.zed.point_cloud)
+                pts = np.asarray(pc)
+                pts = pts.reshape(-1, pts.shape[-1])
+                sampled = pts[::4] # downsample
+                pc_msg = point_cloud2.create_cloud(Header(), fields, sampled)
                 pc_msg.header.frame_id = "world"
                 self.point_cloud_publisher.publish(pc_msg)
+                time.sleep(0.05) # publish delay
             else:
-                time.sleep(0.01)
+                time.sleep(0.1)
 
     def handle_cancel(self, cancel_request):
         """Handle cancellation requests."""
